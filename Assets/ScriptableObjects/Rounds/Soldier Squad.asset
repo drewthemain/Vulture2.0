@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49970af4655ba5148b190e5cc83b3675, type: 3}
+  m_Name: Soldier Squad
+  m_EditorClassIdentifier: 
+  _segments:
+  - _orders:
+    - _enemy: 0
+      _enemyAmount: 6
+    _allowEarlySpawning: 0
+  - _orders:
+    - _enemy: 0
+      _enemyAmount: 10
+    _allowEarlySpawning: 1
+  _maxEnemiesSpawned: 4
