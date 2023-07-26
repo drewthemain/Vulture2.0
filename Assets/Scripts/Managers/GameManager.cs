@@ -81,34 +81,11 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Goes through the proper channels to unpause the game
-    /// </summary>
-    public void Unpause()
-    {
-        _playerTransform.GetComponent<PlayerController>().PauseGame();
-    }
-
-    /// <summary>
-    /// Toggles the pause menu on and off
-    /// </summary>
-    public bool TogglePause()
-    {
-        _isPaused = !_isPaused;
-
-        Time.timeScale = _isPaused ? 0 : 1;
-
-        UIManager.instance.ToggleOnScreenUI(_isPaused ? UIManager.UIType.Pause : UIManager.UIType.Game);
-
-        return _isPaused;
-    }
-
-    /// <summary>
     /// Handles the losing of the game
     /// </summary>
     public void LoseGame()
     {
-        Unpause();
-
+        Pause();
         UIManager.instance.ToggleOnScreenUI(UIManager.UIType.End);
     }
 
@@ -127,6 +104,28 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Handles game aspects of pausing (timescale, cursor, etc.)
+    /// </summary>
+    public void Pause()
+    {
+        _isPaused = true;
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        _playerTransform.GetComponent<PlayerController>().DisableCamera();
+    }
+
+    /// <summary>
+    /// Handles game aspects of unpausing (timescale, cursor, etc.)
+    /// </summary>
+    public void Unpause()
+    {
+        _isPaused = false;
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        _playerTransform.GetComponent<PlayerController>().EnableCamera();
     }
 
     #endregion

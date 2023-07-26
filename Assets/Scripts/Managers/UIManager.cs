@@ -57,10 +57,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _settingsButton;
 
     [Header("Settings References")]
-
-
     [Tooltip("The reference to the sensitivity slider")]
     [SerializeField] private Slider _sensitivitySlider;
+
+    [Tooltip("The reference to the textbox next to the slider displaying the number")]
+    [SerializeField] private TextMeshProUGUI _sensitivityText;
 
     [Tooltip("The reference to the aim sensitivity slider")]
     [SerializeField] private Slider _aimSensitivitySlider;
@@ -68,6 +69,8 @@ public class UIManager : MonoBehaviour
     // General References
     // Reference to the player gameobject
     private PlayerController _controller;
+    // Reference to the player's input actions
+    private InputManager input;
 
 
     void Awake()
@@ -82,10 +85,24 @@ public class UIManager : MonoBehaviour
         }
 
         _controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        input = InputManager.instance;
 
         if (_controller == null)
         {
             Debug.LogWarning("Missing a player in the scene!");
+        }
+    }
+
+    private void Start()
+    {
+        LoadSettings();
+    }
+
+    private void Update()
+    {
+        if (InputManager.instance.PlayerPressedEscape())
+        {
+            PauseGame();
         }
     }
 
@@ -173,26 +190,32 @@ public class UIManager : MonoBehaviour
         switch (newType)
         {
             case UIType.Game:
+                _currentUI = UIType.Game;
                 _gameUIParent.SetActive(true);
                 break;
 
             case UIType.Pause:
+                _currentUI = UIType.Pause;
                 _continueButton.SetActive(true);
                 _settingsButton.SetActive(true);
                 _pauseUIParent.SetActive(true);
                 break;
 
             case UIType.Settings:
+                _currentUI = UIType.Settings;
                 _settingsUIParent.SetActive(true);
                 break;
 
             case UIType.End:
+                _currentUI = UIType.End;
                 _continueButton.SetActive(false);
                 _settingsButton.SetActive(false);
                 _pauseUIParent.SetActive(true);
+                PauseGame();
                 break;
 
             case UIType.Shop:
+                _currentUI = UIType.Shop;
                 break;
         }
     }
@@ -202,8 +225,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void Continue()
     {
-        ToggleOnScreenUI(UIType.Game);
-        GameManager.instance.Unpause();
+        PauseGame();
     }
 
     /// <summary>
@@ -214,19 +236,69 @@ public class UIManager : MonoBehaviour
         ToggleOnScreenUI(UIType.Settings);
     }
 
+    /// <summary>
+    /// Toggles the pausing of the game
+    /// </summary>
+    public void PauseGame()
+    {
+        // pause
+        if (_currentUI == UIType.Game)
+        {
+            ToggleOnScreenUI(UIType.Pause);
+            GameManager.instance.Pause();
+        }
+        // unpause
+        else if (_currentUI == UIType.Pause)
+        {
+            ToggleOnScreenUI(UIType.Game);
+            GameManager.instance.Unpause();
+        }
+        // return to pause
+        else
+        {
+            ReturnToPause();
+        }
+
+    }
+
+    /// <summary>
+    /// Return to the pause menu.
+    /// </summary>
     public void ReturnToPause()
     {
         ToggleOnScreenUI(UIType.Pause);
     }
 
+    /// <summary>
+    /// UI portion of adjusting the players overall sensitivity
+    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity
+    /// </summary>
     public void SensitivitySliderInput()
     {
-        _controller.ChangeSensitivity(_sensitivitySlider.value);
+        float sens = _sensitivitySlider.value;
+        if(_sensitivitySlider.value <= 0.01f)
+        {
+            sens = 0.01f;
+        }
+
+        _sensitivityText.text = (sens * 10).ToString("F2");
+        _controller.ChangeSensitivity(sens);
     }
 
+    /// <summary>
+    /// Not yet implemented
+    /// </summary>
     public void AimSensitivitySliderInput()
     {
         _controller.ChangeSensitivity(_aimSensitivitySlider.value);
+    }
+
+    public void LoadSettings()
+    {
+        // load in sensitivity slider input
+        _sensitivitySlider.value = (PlayerPrefs.GetFloat("sensitivity", .5f));
+        SensitivitySliderInput();
+        
     }
 
 }

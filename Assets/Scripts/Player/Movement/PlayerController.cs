@@ -87,11 +87,16 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Layermask for walls, used in wall run and climbing")]
     public LayerMask wallLayer;
 
+    [Header("Camera Values")]
+    [Tooltip("The sensitivity that the camera should use when the settings slider is all the way up (10.00)")]
+    [SerializeField] float cameraMaxSensitivity;
+
     [Header("Debug")]
     [Tooltip("Drag in a TMPro textbox that will be set to the current state (one can be found in the Canvas in the GamePackage prefab labeled 'PlayerStateText')")]
     [SerializeField] private TextMeshProUGUI debugText;
     [Tooltip("Enable the debug textbox displaying the player state")]
     [SerializeField] private bool enableDebugText;
+
 
     // Global variables for storing player information
     // Global variable assigned by players input for calculating movement direction
@@ -112,6 +117,8 @@ public class PlayerController : MonoBehaviour
     private CinemachineVirtualCamera vCam;
     // Reference to the playerClimb script
     private PlayerClimb climb;
+    // Reference to the UIManager script
+    private UIManager ui;
 
     private void Awake()
     {
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        ui = UIManager.instance;
         input = InputManager.instance;
         rb.freezeRotation = true;
         readyToJump = true;
@@ -393,27 +401,36 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Toggles the pausing of the game
+    /// Enable the camera component.
     /// </summary>
-    public void PauseGame()
+    public void EnableCamera()
     {
-        if (GameManager.instance.TogglePause())
-        {
-            Cursor.lockState = CursorLockMode.None;
-            vCam.enabled = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            vCam.enabled = true;
-        }
+        vCam.enabled = true;
     }
 
+    /// <summary>
+    /// Disable the camera component.
+    /// </summary>
+    public void DisableCamera()
+    {
+        vCam.enabled = false;
+    }
+
+    /// <summary>
+    /// Update the player preferences and change the camera based on the sensitivty slider value passed in
+    /// </summary>
+    /// <param name="settingsValue">Value of the UI slider set by the player</param>
     public void ChangeSensitivity(float settingsValue)
     {
+        PlayerPrefs.SetFloat("sensitivity", settingsValue);
 
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = cameraMaxSensitivity * settingsValue;
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = cameraMaxSensitivity * settingsValue;
     }
 
+    /// <summary>
+    /// Not yet implemented
+    /// </summary>
     public void ChangeAimSensitivity(float settingsValue)
     {
 

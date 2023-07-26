@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 0
   m_VerticalAxis:
-    Value: 0
+    Value: -58
     m_SpeedMode: 1
     m_MaxSpeed: 0.5
     m_AccelTime: 0.1
@@ -185,7 +185,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
-    Value: 0
+    Value: -27.055908
     m_SpeedMode: 1
     m_MaxSpeed: 0.5
     m_AccelTime: 0.1
@@ -467,19 +467,7 @@ MonoBehaviour:
     m_ActionId: c81767e5-f95b-4c5a-ad3c-21f97d29d196
     m_ActionName: Player/Reload[/Keyboard/r]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4471016216214170644}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: f44297d9-6bdb-4832-9d3a-344969cb6d63
     m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
@@ -564,6 +552,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 8192
+  cameraMaxSensitivity: 1.5
   debugText: {fileID: 0}
   enableDebugText: 0
   horizontalInput: 0

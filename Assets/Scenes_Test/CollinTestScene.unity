@@ -715,14 +715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &194456715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,8 +1228,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2815920645035889806, guid: 5147b79648ad52a4fbbd46a89611a5d0,
         type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815920645035889806, guid: 5147b79648ad52a4fbbd46a89611a5d0,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815920645035889806, guid: 5147b79648ad52a4fbbd46a89611a5d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2854964789315208312, guid: 5147b79648ad52a4fbbd46a89611a5d0,
         type: 3}
@@ -1323,6 +1325,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GamePackage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034498382761460703, guid: 5147b79648ad52a4fbbd46a89611a5d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526561807538071276, guid: 5147b79648ad52a4fbbd46a89611a5d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 200.00005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5147b79648ad52a4fbbd46a89611a5d0, type: 3}
@@ -2180,6 +2192,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2482600934367055611, guid: ae00b1e585982514fae9399610aa5f7d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3063529463560417964, guid: ae00b1e585982514fae9399610aa5f7d,
         type: 3}
       propertyPath: shit
@@ -2204,6 +2221,21 @@ PrefabInstance:
         type: 3}
       propertyPath: enableDebugText
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072301102242561568, guid: ae00b1e585982514fae9399610aa5f7d,
+        type: 3}
+      propertyPath: m_VerticalAxis.m_MaxSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072301102242561568, guid: ae00b1e585982514fae9399610aa5f7d,
+        type: 3}
+      propertyPath: m_VerticalAxis.m_SpeedMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072301102242561568, guid: ae00b1e585982514fae9399610aa5f7d,
+        type: 3}
+      propertyPath: m_HorizontalAxis.m_MaxSpeed
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6909681823605554824, guid: ae00b1e585982514fae9399610aa5f7d,
         type: 3}

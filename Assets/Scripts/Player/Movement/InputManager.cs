@@ -152,4 +152,9 @@ public class InputManager : MonoBehaviour
             return false;
         }
     }
+
+    public bool PlayerPressedEscape()
+    {
+        return input.Player.Pause.triggered && input.Player.Pause.ReadValue<float>() > 0;
+    }
 }
