@@ -119,15 +119,15 @@ public class PlayerGun : MonoBehaviour
             {
                 float multiplier = 1;
 
-                if (hit.collider.GetComponent<EnemyHealth>())
-                {
-                    multiplier = hit.collider.GetComponent<EnemyHealth>().HitLocation(hit.point);
-                }
-
                 hit.collider.GetComponent<Health>().TakeDamage(damage, multiplier);
-            }
 
-            if (hit.collider.GetComponent<Prop>())
+            }
+            else if (hit.collider.GetComponent<LimbCollider>())
+            {
+                Debug.Log(hit.collider.transform.name);
+                hit.collider.GetComponent<LimbCollider>().SignalDamage(damage);
+            }
+            else if(hit.collider.GetComponent<Prop>())
             {
                 hit.collider.GetComponent<Prop>().Pushed(direction);
             }

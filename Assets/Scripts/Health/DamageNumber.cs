@@ -20,6 +20,9 @@ public class DamageNumber : MonoBehaviour
     [Tooltip("The color for a greater multiplier")]
     [SerializeField] private Color _greaterMultiplier;
 
+    [Tooltip("The color for the greatest weakpoint")]
+    [SerializeField] private Color _weakPointMultiplier;
+
     // Reference to the damage text
     private TextMeshProUGUI _damageText;
 
@@ -48,9 +51,10 @@ public class DamageNumber : MonoBehaviour
         {
             _damageText.SetText($"{damageAmount * multiplier}");
 
-            if (multiplier > 1 || multiplier == -1)
+            if (multiplier >= 1.5 || multiplier == -1)
             {
-                _damageText.color = _greaterMultiplier;
+                _damageText.color = _weakPointMultiplier;
+                transform.localScale *= 1.2f;
 
                 if (multiplier == -1)
                 {
@@ -59,6 +63,10 @@ public class DamageNumber : MonoBehaviour
 
                     _damageText.SetText($"{damageAmount}");
                 }
+            }
+            else if (multiplier > 1)
+            {
+                _damageText.color = _greaterMultiplier;
             }
             else if (multiplier == 1)
             {
