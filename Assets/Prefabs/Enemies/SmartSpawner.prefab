@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyType: 0
+  _maxSpawnBuffer: 3
   _enemies:
   - {fileID: 3115551479759441371, guid: 6013de50a191d864b8e9b31ebc2a00d5, type: 3}
   - {fileID: 8169422812659762238, guid: e40d5e784fbece2458f6f6a7964ff73a, type: 3}
+  _soldierVFX: {fileID: 7044127631237256457, guid: 3536c8319fc29b44789696db0a805837,
+    type: 3}
+  _swarmVFX: {fileID: 5467098500493598262, guid: d48d97937b9aced46888bea941c7b3b4,
+    type: 3}

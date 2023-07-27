@@ -29,6 +29,14 @@ public class SmartSpawner : MonoBehaviour
     // The timer for the spawn buffer
     private float _spawnTimer = 0;
 
+    [Header("VFX")]
+
+    [Tooltip("The VFX for a soldier enemy spawning")]
+    [SerializeField] private GameObject _soldierVFX;
+
+    [Tooltip("The VFX for a swarm enemy spawning")]
+    [SerializeField] private GameObject _swarmVFX;
+
     #endregion
 
     #region Methods
@@ -73,6 +81,9 @@ public class SmartSpawner : MonoBehaviour
     {
         GameObject newEnemy = Instantiate(SelectEnemy(), transform.position, Quaternion.identity);
         newEnemy.transform.parent = this.transform;
+
+        GameObject vfx = Instantiate(_enemyType == Order.EnemyTypes.Soldier ? _soldierVFX : _swarmVFX, transform.position, Quaternion.identity);
+        vfx.transform.parent = this.transform;
 
         RoundManager._instance.RecordEnemySpawn();
 
