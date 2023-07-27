@@ -127,9 +127,13 @@ public class PlayerGun : MonoBehaviour
                 Debug.Log(hit.collider.transform.name);
                 hit.collider.GetComponent<LimbCollider>().SignalDamage(damage);
             }
-            else if(hit.collider.GetComponent<Prop>())
+            else if (hit.collider.GetComponent<Prop>())
             {
                 hit.collider.GetComponent<Prop>().Pushed(direction);
+            }
+            else if (hit.collider.GetComponent<DoorToggle>())
+            {
+                hit.collider.GetComponent<DoorToggle>().ToggleToggle();
             }
         }
 
