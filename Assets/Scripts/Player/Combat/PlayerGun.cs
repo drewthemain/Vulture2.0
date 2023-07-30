@@ -44,9 +44,17 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [Tooltip("Visual effects for various parts of the gun")]
     [SerializeField] private GameObject muzzleFlash, bulletHole;
+    // Storage for the raycast to use
     private RaycastHit hit;
+    // Reference to the input manager
     private InputManager input;
+    // Reference to the UI manager
     private UIManager ui;
+    // Reference to the recoil shake
+    private GunRecoilShake recoilShake;
+    // Reference for the camera transform
+    private Transform cameraTransform;
+
 
     [Tooltip("Textbox being used for displaying ammo (temporary placeholder until we have a UI manager)")]
     [SerializeField] private TextMeshProUGUI text;
@@ -57,6 +65,8 @@ public class PlayerGun : MonoBehaviour
         readyToShoot = true;
         input = InputManager.instance;
         ui = UIManager.instance;
+        recoilShake = GetComponent<GunRecoilShake>();
+        cameraTransform = Camera.main.transform;
     }
 
     private void Update()
@@ -138,6 +148,7 @@ public class PlayerGun : MonoBehaviour
         }
 
         // Add camera shake call here
+        recoilShake.ScreenShake();
 
         // VFX Spawning
         Instantiate(bulletHole, hit.point, Quaternion.LookRotation(-hit.normal, transform.up));
