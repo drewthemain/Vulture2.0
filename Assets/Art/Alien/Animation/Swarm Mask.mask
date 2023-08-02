@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Swarm Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Melee Alien Armature
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Foot.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Foot.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.L/Leg 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.L/Leg 1.L/Leg
+      2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.L/Leg 1.L/Leg
+      2.L/Leg 3.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.R/Leg 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.R/Leg 1.R/Leg
+      2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Pelvis.R/Leg 1.R/Leg
+      2.R/Leg 3.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Shoulder
+      Plate.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Shoulder
+      Plate.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Index Finger 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Index Finger 1.L/Index Finger
+      2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Index Finger 1.L/Index Finger
+      2.L/Index Finger 3.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Middle Finger 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Middle Finger 1.L/Middle Finger
+      2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Middle Finger 1.L/Middle Finger
+      2.L/Middle Finger 3.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Pinky 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Pinky 1.L/Pinky 2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Pinky 1.L/Pinky 2.L/Pinky 3.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Thumb 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Thumb 1.L/Thumb 2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Arm.L/Forearm 1.L/Forearm 2.L/Hand.L/Thumb 1.L/Thumb 2.L/Thumb 3.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Trap 1.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.L/Trap 1.L/Trap 2.L
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Index Finger 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Index Finger 1.R/Index Finger
+      2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Index Finger 1.R/Index Finger
+      2.R/Index Finger 3.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Middle Finger 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Middle Finger 1.R/Middle Finger
+      2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Middle Finger 1.R/Middle Finger
+      2.R/Middle Finger 3.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Pinky 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Pinky 1.R/Pinky 2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Pinky 1.R/Pinky 2.R/Pinky 3.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Thumb 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Thumb 1.R/Thumb 2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Arm.R/Forearm 1.R/Forearm 2.R/Hand.R/Thumb 1.R/Thumb 2.R/Thumb 3.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Trap 1.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Collar.R/Trap 1.R/Trap 2.R
+    m_Weight: 0
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1/Neck 2
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1/Neck 2/Mouth 1.L
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1/Neck 2/Mouth 1.L/Mouth 2.L
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1/Neck 2/Mouth 1.R
+    m_Weight: 1
+  - m_Path: Melee Alien Armature/Root Bone/Pelvis Control/Hips/Spine 1/Spine 2/Spine
+      3/Neck 1/Neck 2/Mouth 1.R/Mouth 2.R
+    m_Weight: 1
+  - m_Path: Melee Alien Model
+    m_Weight: 0
