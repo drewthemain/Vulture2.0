@@ -17,6 +17,13 @@ public class EnemyGun : EnemyWeapon
     [Tooltip("The distance in which shots can miss in each axis")]
     [SerializeField] protected float _maxMissDistance = 2;
 
+    private Animator _anim;
+
+    private void Awake()
+    {
+        _anim = GetComponentInChildren<Animator>();
+    }
+
     protected override void Fire()
     {
         base.Fire();
@@ -45,6 +52,8 @@ public class EnemyGun : EnemyWeapon
             // Add velocity to bullet rigid body and fire!
             Rigidbody body = newBullet.GetComponent<Rigidbody>();
             body.velocity = dir * _bulletSpeed;
+
+            _anim.SetTrigger("Shoot");
         }
     }
 }

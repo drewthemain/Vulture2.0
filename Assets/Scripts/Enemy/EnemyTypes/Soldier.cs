@@ -118,6 +118,7 @@ public class Soldier : Enemy
                 {
                     _target = _playerRef;
                     _agent.SetDestination(_target.position);
+                    _anim.SetFloat("Speed", 1);
                 }
 
                 break;
@@ -130,6 +131,7 @@ public class Soldier : Enemy
                     _weapon.ToggleFiring(true);
                 }
 
+                _anim.SetFloat("Speed", 0.5f);
                 _actionTimer = 0;
 
                 break;
@@ -147,6 +149,8 @@ public class Soldier : Enemy
                 // Query cover from room and move
                 if (_agent)
                 {
+                    _anim.SetFloat("Speed", 0.5f);
+
                     if (_currentRoom == null)
                     {
                         ChangeState(EnemyStates.InRange);
@@ -280,6 +284,7 @@ public class Soldier : Enemy
             case CoverActions.Shoot:
 
                 _additionalLimit = Random.Range(_coverTimeConstraints.x / 2, _coverTimeConstraints.y / 2);
+                _anim.SetFloat("Speed", 0.5f);
 
                 break;
             case CoverActions.Wait:
@@ -339,6 +344,7 @@ public class Soldier : Enemy
                     if (_agent)
                     {
                         _agent.SetDestination(_playerRef.position);
+                        _anim.SetFloat("Speed", 0.5f);
                     }
                 }
                 else
@@ -349,6 +355,7 @@ public class Soldier : Enemy
                     if (_weapon)
                     {
                         _weapon.ToggleFiring(true);
+                        _anim.SetFloat("Speed", 0);
                     }
                 }
 
@@ -372,6 +379,7 @@ public class Soldier : Enemy
                             if (_weapon)
                             {
                                 _weapon.ToggleFiring(false);
+                                _anim.SetFloat("Speed", 0);
                             }
                         }
                     }
@@ -425,6 +433,8 @@ public class Soldier : Enemy
                 _targetPosition = transform.position + (-transform.right * (Random.Range(5, maxStrafeDistance)));
                 _agent.SetDestination(_targetPosition);
 
+                _anim.SetFloat("Speed", 0.5f);
+
                 break;
 
             case InRangeActions.StrafeRight:
@@ -434,6 +444,8 @@ public class Soldier : Enemy
                 _targetPosition = transform.position + (transform.right * (Random.Range(5, maxStrafeDistance)));
                 _agent.SetDestination(_targetPosition);
 
+                _anim.SetFloat("Speed", 0.5f);
+
                 break;
 
             case InRangeActions.Charge:
@@ -442,11 +454,15 @@ public class Soldier : Enemy
                 _actionLimit = Random.Range(_chargeTimeConstraints.x, _chargeTimeConstraints.y);
                 _target = _playerRef;
 
+                _anim.SetFloat("Speed", 0.5f);
+
                 break;
 
             case InRangeActions.Stand:
 
                 _actionLimit = Random.Range(_standTimeConstraints.x, _standTimeConstraints.y);
+
+                _anim.SetFloat("Speed", 0);
 
                 break;
 
@@ -472,6 +488,8 @@ public class Soldier : Enemy
                 }
 
                 _agent.SetDestination(_targetPosition);
+
+                _anim.SetFloat("Speed", -0.5f);
 
                 break;
         }

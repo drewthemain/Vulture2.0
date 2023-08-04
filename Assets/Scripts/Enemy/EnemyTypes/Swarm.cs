@@ -83,6 +83,11 @@ public class Swarm : Enemy
             _target = null;
         }
 
+        if (_anim)
+        {
+            _anim.SetBool("isWalking", true);
+        }
+
         base.ChangeState(newState);
 
         switch (_state)
@@ -97,6 +102,7 @@ public class Swarm : Enemy
                 if (_weapon)
                 {
                     _weapon.ToggleFiring(false);
+                    _anim.SetLayerWeight(1, 0);
                 }
 
                 break;
@@ -105,6 +111,8 @@ public class Swarm : Enemy
                 if (_weapon)
                 {
                     _weapon.ToggleFiring(true);
+                    _anim.SetLayerWeight(1, 1);
+                    _anim.SetBool("isWalking", false);
                 }
 
                 break;
