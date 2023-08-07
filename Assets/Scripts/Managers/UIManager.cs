@@ -36,8 +36,14 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the ammo counter text")]
     [SerializeField] private TextMeshProUGUI _ammoCounter;
 
+    [Tooltip("The reference to the ammo slider")]
+    [SerializeField] private Slider _ammoSlider;
+
     [Tooltip("The reference to the health counter text")]
     [SerializeField] private TextMeshProUGUI _healthCounter;
+
+    [Tooltip("The reference to the health slider")]
+    [SerializeField] private Slider _healthSlider;
 
     [Tooltip("The reference to the current round text")]
     [SerializeField] private TextMeshProUGUI _currentRound;
@@ -111,12 +117,16 @@ public class UIManager : MonoBehaviour
     /// </summary>
     /// <param name="bulletsLeft">How many bullets left in current mag</param>
     /// <param name="magSize">The total size of the mag</param>
-    public void UpdateAmmoText(int bulletsLeft, int magSize)
+    public void UpdateAmmo(int bulletsLeft, int magSize)
     {
         if (_ammoCounter != null)
         {
             //_ammoCounter.SetText(bulletsLeft + " / " + magSize);
             _ammoCounter.SetText($"{bulletsLeft}");
+        }
+        if (_ammoSlider != null)
+        {
+            _ammoSlider.value = ((float)bulletsLeft/(float)magSize);
         }
     }
 
@@ -124,11 +134,15 @@ public class UIManager : MonoBehaviour
     /// Updates current health of player
     /// </summary>
     /// <param name="currentHealth">The current player health to be displayed</param>
-    public void UpdateHealthText(float currentHealth)
+    public void UpdateHealth(float currentHealth)
     {
         if (_healthCounter != null)
         {
             _healthCounter.SetText($"{currentHealth}");
+        }
+        if (_healthSlider != null)
+        {
+            _healthSlider.value = currentHealth / _controller.GetComponent<PlayerHealth>().GetMaxHealth();
         }
     }
 

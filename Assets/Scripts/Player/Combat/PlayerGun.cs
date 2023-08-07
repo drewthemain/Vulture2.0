@@ -72,7 +72,7 @@ public class PlayerGun : MonoBehaviour
     private void Update()
     {
         UpdateInput();
-        ui.UpdateAmmoText(bulletsLeft, magSize);
+        ui.UpdateAmmo(bulletsLeft, magSize);
     }
 
     /// <summary>

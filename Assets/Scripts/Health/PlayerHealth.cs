@@ -22,12 +22,17 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(dmg, multiplier);
 
-        UIManager.instance.UpdateHealthText(_currentHealth);
+        UIManager.instance.UpdateHealth(_currentHealth);
     }
 
     protected override void Heal(float heal)
     {
         base.Heal(heal);
+    }
+
+    public override float GetMaxHealth()
+    {
+        return base.GetMaxHealth();
     }
 
     #endregion

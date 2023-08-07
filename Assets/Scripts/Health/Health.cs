@@ -59,5 +59,13 @@ public class Health : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// Returns the current max health
+    /// </summary>
+    public virtual float GetMaxHealth()
+    {
+        return _maxHealth;
+    }
+
     #endregion
 }
