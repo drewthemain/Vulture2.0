@@ -35,9 +35,19 @@ public class PlayerGun : MonoBehaviour
     // True if the player is currently able to shoot
     private bool readyToShoot;
     // True if the player is currently reloading
-    private bool reloading;
+    public bool reloading;
+
+    [Header("Recoil Values")]
+    [Tooltip("The length of the upwards portion of the recoil (gun moves up and back down for each shot)")]
+    [SerializeField] private float recoilUpDuration;
+    [Tooltip("The length of the downwards portion of the recoil (gun moves up and back down for each shot)")]
+    [SerializeField] private float recoilDownDuration;
+    [Tooltip("The amount that the gun will be shifted vertically (on the X axis in this case")]
+    [SerializeField] private float targetRecoilHeight;
 
     // References
+    [Tooltip("Reference to the physical body of the gun")]
+    [SerializeField] private Transform gunBody;
     [Tooltip("Point used for spawning the muzzle flash")]
     [SerializeField] private Transform attackPoint;
     [Tooltip("Layers that the gun is able to shoot")]
@@ -54,10 +64,19 @@ public class PlayerGun : MonoBehaviour
     private GunRecoilShake recoilShake;
     // Reference for the camera transform
     private Transform cameraTransform;
-
+    // Initial gun rotation values
+    private Quaternion initialRotation;
+    // Reference to the animator on the gun body
+    private Animator animator;
 
     [Tooltip("Textbox being used for displaying ammo (temporary placeholder until we have a UI manager)")]
     [SerializeField] private TextMeshProUGUI text;
+
+    private void Awake()
+    {
+        recoilShake = GetComponent<GunRecoilShake>();
+        animator = GetComponentInChildren<Animator>();
+    }
 
     private void Start()
     {
@@ -65,8 +84,8 @@ public class PlayerGun : MonoBehaviour
         readyToShoot = true;
         input = InputManager.instance;
         ui = UIManager.instance;
-        recoilShake = GetComponent<GunRecoilShake>();
         cameraTransform = Camera.main.transform;
+        initialRotation = Quaternion.Euler(gunBody.transform.rotation.x, gunBody.transform.rotation.y, gunBody.transform.rotation.z);
     }
 
     private void Update()
@@ -146,8 +165,11 @@ public class PlayerGun : MonoBehaviour
             }
         }
 
-        // Add camera shake call here
+        // Camera shake
         recoilShake.ScreenShake();
+
+        // Object shake
+        StartRecoilShake();
 
         // VFX Spawning
         Instantiate(bulletHole, hit.point, Quaternion.LookRotation(-hit.normal, transform.up));
@@ -178,6 +200,8 @@ public class PlayerGun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        animator.SetBool("Reload", true);
+
         Invoke("EndReload", reloadTime);
     }
 
@@ -188,5 +212,58 @@ public class PlayerGun : MonoBehaviour
     {
         bulletsLeft = magSize;
         reloading = false;
+        animator.SetBool("Reload", false);
+    }
+    
+
+    /// <summary>
+    /// The upwards portion of the recoil
+    /// Recoil can be interrupted by another shot, causing it to restart the upward portion and cancel the current status
+    /// </summary>
+    /// <param name="target">Target position for the gun to rotate into</param>
+    /// <param name="duration">The length that the recoil lasts</param>
+    /// <returns></returns>
+    IEnumerator RecoilLerpUp(Quaternion target, float duration)
+    {
+        float time = 0;
+        while (time < duration)
+        {
+            gunBody.transform.localRotation = Quaternion.Lerp(Quaternion.Euler(gunBody.transform.localRotation.x, gunBody.transform.localRotation.y, gunBody.transform.localRotation.z), target, time / duration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        StartCoroutine(RecoilLerpDown(target, recoilDownDuration));
+    }
+
+    /// <summary>
+    /// The downwards portion of the recoil
+    /// Recoil can be interrupted by another shot, causing it to restart the upward portion and cancel the current status
+    /// </summary>
+    /// <param name="target">Target position for the gun to rotate into</param>
+    /// <param name="duration">The length that the recoil lasts</param>
+    /// <returns></returns>
+    IEnumerator RecoilLerpDown(Quaternion target, float duration)
+    {
+        float time = 0;
+        while (time < duration)
+        {
+            gunBody.transform.localRotation = Quaternion.Lerp(target, initialRotation, time / duration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Begin the recoil when another shot is fired, ending current coroutine and restarting from the bottom
+    /// </summary>
+    private void StartRecoilShake()
+    {
+        StopAllCoroutines();
+        Vector3 rot = gunBody.transform.localEulerAngles;
+        Quaternion target = Quaternion.Euler(rot.x - targetRecoilHeight, rot.y, rot.z);
+        StartCoroutine(RecoilLerpUp(target, recoilUpDuration));
     }
 }
