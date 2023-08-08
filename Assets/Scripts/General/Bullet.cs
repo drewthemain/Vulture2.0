@@ -34,15 +34,15 @@ public class Bullet : MonoBehaviour
         _damage = dmg;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.GetComponent<Health>())
+        if (other.transform.GetComponent<Health>())
         {
-            collision.transform.GetComponent<Health>().TakeDamage(_damage, 1);
+            other.transform.GetComponent<Health>().TakeDamage(_damage, 1);
         }
-        else if (collision.transform.GetComponentInParent<Health>())
+        else if (other.transform.GetComponentInParent<Health>())
         {
-            collision.transform.GetComponentInParent<Health>().TakeDamage(_damage, 1);
+            other.transform.GetComponentInParent<Health>().TakeDamage(_damage, 1);
         }
 
         Destroy(this.gameObject);

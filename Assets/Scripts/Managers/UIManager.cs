@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the pause UI parent")]
     [SerializeField] private GameObject _pauseUIParent;
 
+    [Tooltip("The reference to the lose game UI parent")]
+    [SerializeField] private GameObject _loseUIParent;
+
     [Tooltip("The reference to the settings UI parent")]
     [SerializeField] private GameObject _settingsUIParent;
 
@@ -224,8 +227,8 @@ public class UIManager : MonoBehaviour
                 _currentUI = UIType.End;
                 _continueButton.SetActive(false);
                 _settingsButton.SetActive(false);
-                _pauseUIParent.SetActive(true);
-                PauseGame();
+                _pauseUIParent.SetActive(false);
+                _loseUIParent.SetActive(true);
                 break;
 
             case UIType.Shop:

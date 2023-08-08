@@ -33,25 +33,25 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private List<Round> _rounds;
 
     // The current round
-    private int _currentRound = 0;
+    public int _currentRound = 0;
 
     // The current segment within the round
-    private int _currentSegment = 0;
+    public int _currentSegment = 0;
 
     // The amount of total enemies remaining this round
-    private int _totalEnemiesRemaining = 0;
+    public int _totalEnemiesRemaining = 0;
 
     // The total enemies that are spawned in the world
-    private int _totalEnemiesSpawned = 0;
+    public int _totalEnemiesSpawned = 0;
 
     // The number of enemies left in this segment
-    private int _segmentEnemiesRemaining = 0;
+    public int _segmentEnemiesRemaining = 0;
 
     // The timer for the in-between rounds sequence
     private float _inBetweenTimer = 0;
 
     // The number of enemies left before early spawning
-    private int _spawningEarlyBuffer = 0;
+    public int _spawningEarlyBuffer = 0;
 
     // The overall current number of rounds
     private int _totalCurrentRound = 1;

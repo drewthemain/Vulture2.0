@@ -72,9 +72,12 @@ public class Prop : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.GetComponent<EnemyHealth>() && _body.velocity.sqrMagnitude >= _damageSpeed)
+        if (_isLowGrav)
         {
-            collision.transform.GetComponent<EnemyHealth>().TakeDamage(Mathf.Ceil(_body.velocity.sqrMagnitude - _damageSpeed));
+            if (collision.transform.GetComponent<EnemyHealth>() && _body.velocity.sqrMagnitude >= _damageSpeed)
+            {
+                collision.transform.GetComponent<EnemyHealth>().TakeDamage(Mathf.Ceil(_body.velocity.sqrMagnitude - _damageSpeed));
+            }
         }
     }
 
