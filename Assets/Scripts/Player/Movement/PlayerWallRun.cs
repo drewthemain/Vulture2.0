@@ -33,6 +33,12 @@ public class PlayerWallRun : MonoBehaviour
     [Tooltip("Amount of force applied to counteract the effects of gravity - higher = player drops less (or flies away)")]
     [SerializeField] private float gravityCounterForce;
 
+    [Header("Camera Tilt Values")]
+    [Tooltip("The amount (degrees) that the camera will tilt away from the wall")]
+    [SerializeField] private float tiltAmount;
+    [Tooltip("The amount of time that the lerp to / away from the wall will take")]
+    [SerializeField] private float tiltDuration;
+
     [Header("Debug Values")]
     [Tooltip("Enable to show raycasts from the player used for calculating when the wall run should end - blue = left, red = right")]
     [SerializeField] private bool showRaycastsInScene;
@@ -215,6 +221,17 @@ public class PlayerWallRun : MonoBehaviour
     /// </summary>
     private void StartWallRun()
     {
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        if (wallRight)
+        {
+            CameraManager.instance.CameraTilt(tiltAmount, tiltDuration, true);
+        }
+        if (wallLeft)
+        {
+            CameraManager.instance.CameraTilt(tiltAmount, tiltDuration, false);
+        }
+
         controller.wallrunning = true;
         wallRunTimer = maxWallRunTime;
 
@@ -259,6 +276,8 @@ public class PlayerWallRun : MonoBehaviour
     private void StopWallRun()
     {
         controller.wallrunning = false;
+
+        CameraManager.instance.ResetCameraTilt(tiltDuration);
     }
 
     /// <summary>

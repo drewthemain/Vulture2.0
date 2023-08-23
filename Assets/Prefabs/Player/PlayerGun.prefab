@@ -89,6 +89,7 @@ MonoBehaviour:
   magSize: 30
   bulletsPerTap: 1
   allowAutomatic: 1
+  reloading: 0
   recoilUpDuration: 0.15
   recoilDownDuration: 0.15
   targetRecoilHeight: 2
@@ -126,8 +127,8 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 78012694fe3df3940ab63cb9edfa0e87, type: 2}
-    m_AmplitudeGain: 5
-    m_FrequencyGain: 5
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 0
     m_TimeEnvelope:
@@ -144,8 +145,8 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0
-      m_DecayTime: 0.5
+      m_SustainTime: 0.2
+      m_DecayTime: 0.3
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
