@@ -21,6 +21,11 @@ public class CameraManager : MonoBehaviour
     private Quaternion targetRotation;
     // Reference to the main camera
     private Transform mainCam;
+    private bool isWallRunning;
+    private float tiltAmount;
+    private float tiltDuration;
+    private float tiltTimer = 0;
+    private Quaternion intermediateRotation;
 
     private void Awake()
     {
@@ -46,77 +51,132 @@ public class CameraManager : MonoBehaviour
         initialRotation = Quaternion.Euler(camParent.transform.rotation.x, camParent.transform.rotation.y, camParent.transform.rotation.z);
     }
 
+    private void Update()
+    {
+        if (isWallRunning)
+        {
+            targetRotation = Quaternion.AngleAxis(tiltAmount, Camera.main.transform.forward);
+
+            if (tiltTimer < tiltDuration)
+            {
+                camParent.transform.localRotation = Quaternion.Lerp(intermediateRotation, targetRotation, tiltTimer / tiltDuration);
+            }
+            else
+            {
+                if (targetRotation != camParent.transform.localRotation)
+                {
+                    intermediateRotation = camParent.transform.rotation;
+                    tiltTimer = 0;
+                }
+            }
+
+            tiltTimer += Time.deltaTime;
+        }
+        else
+        {
+            if (tiltTimer < tiltDuration)
+            {
+                camParent.transform.localRotation = Quaternion.Lerp(intermediateRotation, initialRotation, tiltTimer / tiltDuration);
+            }
+            else
+            {
+                camParent.transform.localRotation = initialRotation;
+            }
+
+            tiltTimer += Time.deltaTime;
+        }
+    }
+    
+    /// <summary>
+    /// General camera shake function
+    /// </summary>
+    /// <param name="intensity">The strength of the camera shake</param>
+    /// <param name="duration">How long the shake will last</param>
     public void CameraShake(float intensity, float duration)
     {
         noise.m_AmplitudeGain = intensity;
         StartCoroutine(ShakeTimer(duration));
     }
-
+    
     IEnumerator ShakeTimer(float duration)
     {
         yield return new WaitForSeconds(duration);
         ResetIntensity();
     }
 
+    /// <summary>
+    /// Reset the camera shake intensity
+    /// </summary>
     private void ResetIntensity()
     {
         noise.m_AmplitudeGain = 0f;
     }
 
-    public void CameraTilt(float tiltAmount, float tiltDuration, bool left)
+    /// <summary>
+    /// Tilts the camera towards the specified direction
+    /// </summary>
+    /// <param name="tiltA">The amount in degrees that the angle will change</param>
+    /// <param name="tiltD">The duration of the tilt</param>
+    /// <param name="left">Whether or not the tilt will lean left or right, passed in from the wall run</param>
+    public void CameraTilt(float tiltA, float tiltD, bool left)
     {
         initialRotation = Quaternion.Euler(camParent.transform.rotation.x, camParent.transform.rotation.y, camParent.transform.rotation.z);
+        intermediateRotation = initialRotation;
         Quaternion rot = camParent.transform.localRotation;
 
-        tiltAmount = left ? tiltAmount : -tiltAmount;
+        tiltAmount = left ? tiltA : -tiltA;
+        tiltDuration = tiltD;
 
-        //target = Quaternion.Euler(rot.x, rot.y, rot.z + tiltAmount);
-        //target = Quaternion.Euler(camParent.transform.localRotation.x, camParent.transform.localRotation.y, camParent.transform.localRotation.z + tiltAmount);
-        Quaternion target = Quaternion.Euler(camParent.transform.localRotation.x, camParent.transform.localRotation.y, tiltAmount);
-
-        targetRotation = target;
-        StartCoroutine(CameraTiltOutwards(target, tiltDuration));
+        isWallRunning = true;
     }
 
-    /// <summary>
-    /// The outwards camera tilt
-    /// </summary>
-    /// <param name="target">Target position for the gun to rotate into</param>
-    /// <param name="duration">The length that the recoil lasts</param>
-    /// <returns></returns>
-    IEnumerator CameraTiltOutwards(Quaternion target, float duration)
-    {
-        float time = 0;
-        while (time < duration)
-        {
-            camParent.transform.transform.rotation = Quaternion.Lerp(initialRotation, target, time / duration);
+    ///// <summary>
+    ///// The outwards camera tilt
+    ///// </summary>
+    ///// <param name="target">Target position for the gun to rotate into</param>
+    ///// <param name="duration">The length that the recoil lasts</param>
+    ///// <returns></returns>
+    //IEnumerator CameraTiltOutwards(Quaternion target, float duration)
+    //{
+    //    float time = 0;
+    //    while (time < duration)
+    //    {
+    //        camParent.transform.transform.rotation = Quaternion.Lerp(initialRotation, target, time / duration);
 
-            time += Time.deltaTime;
-            yield return null;
-        }
-    }
+    //        time += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //}
     
+    /// <summary>
+    /// Return the camera 
+    /// </summary>
+    /// <param name="duration"></param>
     public void ResetCameraTilt(float duration)
     {
-        StartCoroutine(CameraTiltInwards(targetRotation, duration));
+        isWallRunning = false;
+
+        tiltTimer = 0;
+        intermediateRotation = camParent.transform.rotation;
+
     }
 
-    /// <summary>
-    /// The downwards portion of the recoil
-    /// Recoil can be interrupted by another shot, causing it to restart the upward portion and cancel the current status
-    /// </summary>
-    /// <param name="target">Target position for the gun to rotate into</param>
-    /// <param name="duration">The length that the recoil lasts</param>
-    /// <returns></returns>
-    IEnumerator CameraTiltInwards(Quaternion target, float duration)
-    {
-        float time = 0;
-        while (time < duration)
-        {
-            camParent.transform.localRotation = Quaternion.Lerp(target, initialRotation, time / duration);
+    ///// <summary>
+    ///// The downwards portion of the recoil
+    ///// Recoil can be interrupted by another shot, causing it to restart the upward portion and cancel the current status
+    ///// </summary>
+    ///// <param name="target">Target position for the gun to rotate into</param>
+    ///// <param name="duration">The length that the recoil lasts</param>
+    ///// <returns></returns>
+    //IEnumerator CameraTiltInwards(Quaternion target, float duration)
+    //{
+    //    float time = 0;
+    //    while (time < duration)
+    //    {
+    //        camParent.transform.localRotation = Quaternion.Lerp(target, initialRotation, time / duration);
 
-            time += Time.deltaTime;
-            yield return null;
-        }
-    }
+    //        time += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //}
 }

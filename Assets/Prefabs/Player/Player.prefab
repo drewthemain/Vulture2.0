@@ -676,14 +676,14 @@ MonoBehaviour:
   wallJumpUpForce: 15
   wallJumpSideForce: 25
   maxWallRunTime: 3
-  wallRunCooldown: 0.5
-  wallCheckDistance: 1.5
+  wallRunCooldown: 0.75
+  wallCheckDistance: 1
   wallRunLookAngle: 90
   minJumpHeight: 2
   useGravity: 1
   gravityCounterForce: 25
-  tiltAmount: 0
-  tiltDuration: 0.5
+  tiltAmount: 10
+  tiltDuration: 0.3
   showRaycastsInScene: 1
 --- !u!114 &3088059780767472184
 MonoBehaviour:
