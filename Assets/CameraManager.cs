@@ -21,10 +21,15 @@ public class CameraManager : MonoBehaviour
     private Quaternion targetRotation;
     // Reference to the main camera
     private Transform mainCam;
+    // Boolean to determine wall run status
     private bool isWallRunning;
+    // Storage for the amount of tilt on the camera
     private float tiltAmount;
+    // Storage for the tilt duration
     private float tiltDuration;
+    // Reference to the timer tilt
     private float tiltTimer = 0;
+    // Rotation storage
     private Quaternion intermediateRotation;
 
     private void Awake()
