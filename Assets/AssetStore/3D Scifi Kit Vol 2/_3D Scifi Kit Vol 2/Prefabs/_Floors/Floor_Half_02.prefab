@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3330640}
   - component: {fileID: 2316798}
   - component: {fileID: 6424866}
+  - component: {fileID: 2008417918668409573}
   m_Layer: 0
   m_Name: Floor_Half_02
   m_TagString: Untagged
@@ -93,11 +94,24 @@ MeshCollider:
   m_GameObject: {fileID: 110464}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: df155d1774d2243db945d35a6452ec96, type: 3}
+--- !u!65 &2008417918668409573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.000002, y: 2.000001, z: 0.500001}
+  m_Center: {x: 3.0000048, y: 1.0000005, z: -0.25000006}
 --- !u!1 &170826
 GameObject:
   m_ObjectHideFlags: 0

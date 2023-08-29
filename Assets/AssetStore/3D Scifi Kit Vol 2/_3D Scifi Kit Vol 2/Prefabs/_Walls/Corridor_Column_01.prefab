@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &471124
 Transform:
   m_ObjectHideFlags: 0
@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 498234}
   - component: {fileID: 3341948}
   - component: {fileID: 2390722}
+  - component: {fileID: 8955606122450234244}
   m_Layer: 0
   m_Name: Corridor_Column_01
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8955606122450234244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999992, y: 1.0000017, z: 4.0001383}
+  m_Center: {x: -0.9999998, y: 0.50000036, z: 1.9999316}
 --- !u!1 &156430
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &418232
 Transform:
   m_ObjectHideFlags: 0
@@ -189,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &485278
 Transform:
   m_ObjectHideFlags: 0
@@ -234,7 +248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410784
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &462214
 Transform:
   m_ObjectHideFlags: 0
