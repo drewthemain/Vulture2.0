@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class ArmDismember : MonoBehaviour
 {
-    
-    public GameObject fleshRight;
-    public GameObject fleshLeft;
+    [Header("References")]
+    public GameObject fleshyBit;
+    public GameObject dismemberedArm;
+    public GameObject scaledArm;
 
-    public GameObject dismemberArmRight;
-    public GameObject dismemberArmleft;
+    [Header("Options")]
 
-    public GameObject scaledArmRight;
-    public GameObject scaledArmLeft;
+    public float health = 20;
 
-
-    void Update()
+    public void TakeDamage(float damage)
     {
-        // if (arm health == 0)
+        health -= damage;
 
-        //Scale Forearm 1 right and left in the rig (scaledArmRight and scaledArmLeft) to 0,0,0
-
-        //Enable fleshRight and fleshLeft
-
-        // Instantiate dismemberArmRight and dismemberArmLeft
-
+        if (health <= 0)
+        {
+            Dismember();
+        }
     }
+
+    public void Dismember()
+    {
+        if (!fleshyBit.activeSelf)
+        {
+            fleshyBit.SetActive(true);
+            dismemberedArm.SetActive(true);
+            dismemberedArm.transform.parent = null;
+            scaledArm.transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
 }

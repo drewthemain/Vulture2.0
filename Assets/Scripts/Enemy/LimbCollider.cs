@@ -12,6 +12,8 @@ public class LimbCollider : MonoBehaviour
     // Reference to the overall enemy health
     EnemyHealth health;
 
+    private ArmDismember dismember;
+
     #endregion
 
     #region Methods
@@ -19,6 +21,11 @@ public class LimbCollider : MonoBehaviour
     private void Awake()
     {
         health = GetComponentInParent<EnemyHealth>();
+
+        if (GetComponent<ArmDismember>())
+        {
+            dismember = GetComponent<ArmDismember>();
+        }
     }
 
     /// <summary>
@@ -30,6 +37,11 @@ public class LimbCollider : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(damage, _damageMultiplier);
+
+            if (dismember)
+            {
+                dismember.TakeDamage(damage);
+            }
         }
     }
 
