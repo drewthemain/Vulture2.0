@@ -54,6 +54,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the objective text")]
     [SerializeField] private TextMeshProUGUI _objectiveText;
 
+    [Tooltip("The reference to the warning banner")]
+    [SerializeField] private GameObject _warningBanner;
+
     [Tooltip("The reference to the world space canvas")]
     public Canvas _worldSpaceCanvas;
 
@@ -172,6 +175,11 @@ public class UIManager : MonoBehaviour
         {
             _objectiveText.SetText($"{roundName} {ToRoman(loop)}");
         }
+    }
+
+    public void ToggleWarningBanner(bool activeStatus = false)
+    {
+        _warningBanner.SetActive(activeStatus);
     }
 
     public string ToRoman(int number)

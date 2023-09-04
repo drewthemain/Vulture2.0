@@ -198,7 +198,13 @@ public class RoundManager : MonoBehaviour
 
                 if (_inBetweenTimer <= 0)
                 {
+                    UIManager.instance.ToggleWarningBanner(false);
+
                     ChangeRoundState(RoundState.InRound);
+                }
+                else if (_inBetweenTimer <= 2)
+                {
+                    UIManager.instance.ToggleWarningBanner(true);
                 }
 
                 _inBetweenTimer -= Time.deltaTime;
