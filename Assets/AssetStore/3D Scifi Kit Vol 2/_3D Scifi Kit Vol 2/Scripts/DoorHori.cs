@@ -10,14 +10,16 @@ public class DoorHori : MonoBehaviour {
 	
 	private Vector3 StartlocalPos;
 	private Vector3 endlocalPos;
-	
-	private void Start(){
+
+	public HoriDoorManager manager;
+
+    private void Start(){
 		StartlocalPos = transform.localPosition;	
 		gameObject.isStatic = false;
 	}
 		
 	public void OpenDoor(){
-		OTween.ValueTo( gameObject,ease,0.0f,-translateValue,easeTime,0.0f,"StartOpen","UpdateOpenDoor","EndOpen");
+		OTween.ValueTo(gameObject, ease, 0.0f, -translateValue, easeTime, 0.0f, "StartOpen", "UpdateOpenDoor", "EndOpen");
 		GetComponent<AudioSource>().Play();
 	}
 	
@@ -34,7 +36,8 @@ public class DoorHori : MonoBehaviour {
 		
 	}
 	
-	private void EndOpen(){
+	public void EndOpen(){
+		StopAllCoroutines();
 		endlocalPos = transform.localPosition ;
 		StartCoroutine( WaitToClose());
 	}
@@ -44,5 +47,7 @@ public class DoorHori : MonoBehaviour {
 		yield return new WaitForSeconds(waitTime);
 		OTween.ValueTo( gameObject,ease,0.0f,translateValue,easeTime,0.0f,"StartClose","UpdateCloseDoor","EndClose");
 		GetComponent<AudioSource>().Play();
+
+		manager.isClosed = true;
 	}
 }
