@@ -157,7 +157,7 @@ public class Enemy : MonoBehaviour
                 // Set velocity toward the window
                 if (_currentRoom.GetWindow() != null)
                 {
-                    Vector3 targetDir = (_currentRoom.GetWindow().transform.position - transform.position).normalized;
+                    Vector3 targetDir = (_currentRoom.GetWindow()._pullTarget.transform.position - transform.position).normalized;
                     _body.velocity = targetDir * _pullSpeed * 10;
 
                     Ragdollize("Sucked");

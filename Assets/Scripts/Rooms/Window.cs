@@ -14,6 +14,9 @@ public class Window : MonoBehaviour
     [Tooltip("The material this becomes after locking itself")]
     [SerializeField] private Material _lockedMaterial;
 
+    [Tooltip("The target for the enemy pull when destroyed")]
+    public GameObject _pullTarget;
+
     private Room _parentRoom;
     private bool _broken = false;
     private CanisterHealth _canister;
