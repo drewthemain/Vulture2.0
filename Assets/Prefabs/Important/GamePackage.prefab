@@ -2406,7 +2406,7 @@ Camera:
   m_GameObject: {fileID: 3053400672929089749}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3291,7 +3291,7 @@ RectTransform:
   m_GameObject: {fileID: 4034498382761460703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4101218891068914216}
@@ -4868,7 +4868,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1664662269256742131}
   - component: {fileID: 6429013234825573209}
-  - component: {fileID: 4702246269402920038}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -4934,14 +4933,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4702246269402920038
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387206986416682681}
-  m_Enabled: 1
 --- !u!1 &6475056549228304848
 GameObject:
   m_ObjectHideFlags: 0
