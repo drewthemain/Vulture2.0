@@ -6,6 +6,8 @@ public class PlayerWallRun : MonoBehaviour
     [Header("Wall Run Values")]
     [Tooltip("The amount of force that's pushing the player when wall running")]
     [SerializeField] private float wallRunForce;
+    [Tooltip("The amount of force pushing the player up the wall when starting to wall run")]
+    [SerializeField] private float verticalForceAmount;
     [Tooltip("Amount of vertical force when jumping off of a wall run")]
     [SerializeField] private float wallJumpUpForce;
     [Tooltip("Amount of horizontal force when jumping off of a wall run")]
@@ -50,6 +52,8 @@ public class PlayerWallRun : MonoBehaviour
     private bool wallLeft;
     // Checks if the wall exiting timer has run out
     private bool exitingWall;
+    // Checks if a wall run is the player's first time wall running after touching the ground 
+    private bool firstWallRun;
 
     // Raycasts
     private RaycastHit leftWallHit;
@@ -76,6 +80,7 @@ public class PlayerWallRun : MonoBehaviour
     void Start()
     {
         input = InputManager.instance;
+        firstWallRun = true;
     }
 
     // Update is called once per frame
@@ -153,9 +158,10 @@ public class PlayerWallRun : MonoBehaviour
     /// <returns>Returns if the player is grounded or not</returns>
     private bool AboveGround()
     {
+        //Debug.DrawRay()
         return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, controller.groundLayer);
-    }   
-    
+    }
+
     /// <summary>
     /// Checks the player state and adjusts accordingly based on position to a wall, keyboard inputs, and other factors. 
     /// </summary>
@@ -164,18 +170,18 @@ public class PlayerWallRun : MonoBehaviour
         // wall running
         if ((wallLeft || wallRight) && input.PlayerIsHoldingForward() && AboveGround() && !exitingWall)
         {
-            if(!controller.wallrunning)
+            if (!controller.wallrunning)
             {
                 StartWallRun();
             }
 
             // wall run timer
-            if(wallRunTimer > 0)
+            if (wallRunTimer > 0)
             {
                 wallRunTimer -= Time.deltaTime;
             }
 
-            if(wallRunTimer <= 0 && controller.wallrunning)
+            if (wallRunTimer <= 0 && controller.wallrunning)
             {
                 exitingWall = true;
                 exitWallTimer = wallRunCooldown;
@@ -183,32 +189,41 @@ public class PlayerWallRun : MonoBehaviour
 
 
             // wall jump
-            if(input.PlayerStartedJumping())
+            if (input.PlayerStartedJumping())
             {
                 WallJump();
             }
         }
 
-        else if(exitingWall)
+        else if (exitingWall)
         {
-            if(controller.wallrunning)
+            if (controller.wallrunning)
             {
                 StopWallRun();
             }
-            if(exitWallTimer > 0)
+            if (exitWallTimer > 0)
             {
                 exitWallTimer -= Time.deltaTime;
             }
-            if(exitWallTimer <= 0)
+            if (exitWallTimer <= 0)
             {
                 exitingWall = false;
+            }
+        }
+
+        else if (!AboveGround())
+        {
+            firstWallRun = true;
+            if (controller.wallrunning)
+            {
+                StopWallRun();
             }
         }
 
         // not wall running
         else
         {
-            if(controller.wallrunning)
+            if (controller.wallrunning)
             {
                 StopWallRun();
             }
@@ -221,8 +236,6 @@ public class PlayerWallRun : MonoBehaviour
     /// </summary>
     private void StartWallRun()
     {
-        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
-
         if (wallRight)
         {
             CameraManager.instance.CameraTilt(tiltAmount, tiltDuration, true);
@@ -232,6 +245,11 @@ public class PlayerWallRun : MonoBehaviour
             CameraManager.instance.CameraTilt(tiltAmount, tiltDuration, false);
         }
 
+        if(firstWallRun)
+        {
+            rb.AddForce(Vector3.up * verticalForceAmount, ForceMode.Impulse);
+            firstWallRun = false;
+        }
         controller.wallrunning = true;
         wallRunTimer = maxWallRunTime;
 

@@ -608,7 +608,7 @@ MonoBehaviour:
     m_Bits: 2048
   wallLayer:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 1
   cameraMaxSensitivity: 1.5
   debugText: {fileID: 0}
   enableDebugText: 0
@@ -673,6 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallRunForce: 200
+  verticalForceAmount: 12
   wallJumpUpForce: 15
   wallJumpSideForce: 25
   maxWallRunTime: 3

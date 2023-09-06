@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
         verticalInput = movement.y;
 
         // jump
-        if (input.PlayerIsJumping() && readyToJump && grounded)
+        if (input.PlayerStartedJumping() && readyToJump && grounded)
         {
             readyToJump = false;
 
