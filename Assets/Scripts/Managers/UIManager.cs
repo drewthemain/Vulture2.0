@@ -258,6 +258,16 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void Settings()
     {
+        StartCoroutine(ToSettingsCoroutine());
+    }
+
+    /// <summary>
+    /// Allows the previous menu to finish animating before moving to Settings
+    /// </summary>
+    private IEnumerator ToSettingsCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+
         ToggleOnScreenUI(UIType.Settings);
     }
 
@@ -275,8 +285,11 @@ public class UIManager : MonoBehaviour
         // unpause
         else if (_currentUI == UIType.Pause)
         {
-            ToggleOnScreenUI(UIType.Game);
-            GameManager.instance.Unpause();
+            _pauseUIParent.GetComponent<Animator>().SetTrigger("Continue");
+            StartCoroutine(PauseToGameCoroutine());
+            
+            //ToggleOnScreenUI(UIType.Game);
+            //GameManager.instance.Unpause;
         }
         // return to pause
         else
@@ -284,6 +297,17 @@ public class UIManager : MonoBehaviour
             ReturnToPause();
         }
 
+    }
+
+    /// <summary>
+    /// Allows the Pause menu to finish animating before unpausing
+    /// </summary>
+    private IEnumerator PauseToGameCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+
+        ToggleOnScreenUI(UIType.Game);
+        GameManager.instance.Unpause();
     }
 
     /// <summary>
