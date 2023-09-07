@@ -3567,6 +3567,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3118694255260725708}
     m_Modifications:
+    - target: {fileID: 2812938235798893217, guid: 87864b646d5019941ab6049eb6f2e911,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 3551876004339557494, guid: 87864b646d5019941ab6049eb6f2e911,
         type: 3}
       propertyPath: m_RootOrder
@@ -3644,8 +3649,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4179653561045810892, guid: 87864b646d5019941ab6049eb6f2e911,
         type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179653561045810892, guid: 87864b646d5019941ab6049eb6f2e911,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060160598016661836, guid: 87864b646d5019941ab6049eb6f2e911,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87864b646d5019941ab6049eb6f2e911, type: 3}
@@ -3679,6 +3694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dismembered Arm Right (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160502031162039924, guid: fd171872a2281724d971c5821fbfba88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7160502031162039924, guid: fd171872a2281724d971c5821fbfba88,
         type: 3}
@@ -3754,6 +3774,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042970958388951263, guid: fd171872a2281724d971c5821fbfba88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042970959575805770, guid: fd171872a2281724d971c5821fbfba88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd171872a2281724d971c5821fbfba88, type: 3}
