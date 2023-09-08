@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour
         Pause,
         End,
         Shop,
-        Settings
+        Settings,
+        Main
     }
 
     // The current UI in effect
@@ -83,6 +84,10 @@ public class UIManager : MonoBehaviour
     private PlayerController _controller;
     // Reference to the player's input actions
     private InputManager input;
+    //Reference to animator on pause menu
+    private Animator _PauseAnim;
+    //Reference to animator on settings menu
+    private Animator _settingsAnim;
 
 
     void Awake()
@@ -97,6 +102,8 @@ public class UIManager : MonoBehaviour
         }
 
         _controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _PauseAnim = _pauseUIParent.GetComponent<Animator>();
+        _settingsAnim = _settingsUIParent.GetComponent<Animator>();
         input = InputManager.instance;
 
         if (_controller == null)
@@ -114,7 +121,15 @@ public class UIManager : MonoBehaviour
     {
         if (InputManager.instance.PlayerPressedEscape())
         {
-            PauseGame();
+            if (_currentUI == UIType.Game || _currentUI == UIType.Pause)
+            {
+                PauseGame();
+            }
+            else if (_currentUI == UIType.Settings)
+            {
+                ExitSettings();
+            }
+            
         }
     }
 
@@ -285,7 +300,7 @@ public class UIManager : MonoBehaviour
         // unpause
         else if (_currentUI == UIType.Pause)
         {
-            _pauseUIParent.GetComponent<Animator>().SetTrigger("Continue");
+            _PauseAnim.SetTrigger("Continue");
             StartCoroutine(PauseToGameCoroutine());
             
             //ToggleOnScreenUI(UIType.Game);
@@ -308,6 +323,28 @@ public class UIManager : MonoBehaviour
 
         ToggleOnScreenUI(UIType.Game);
         GameManager.instance.Unpause();
+    }
+
+    /// <summary>
+    /// Go from settings to either the main menu or the pause menu
+    /// </summary>
+    public void ExitSettings()
+    {
+        _settingsAnim.SetTrigger("EndSettings");
+        StartCoroutine(ExitSettingsCoroutine());
+    }
+
+    /// <summary>
+    /// Allows the Settings menu to continue animating before moving to pause or main menu
+    /// </summary>
+    private IEnumerator ExitSettingsCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+
+        //ADD LOGIC HERE TO DETERMINE WHERE TO GO
+
+        ReturnToPause();
+        _PauseAnim.SetTrigger("FromSettings");
     }
 
     /// <summary>
