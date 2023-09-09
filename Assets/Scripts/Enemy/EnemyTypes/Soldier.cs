@@ -61,9 +61,6 @@ public class Soldier : Enemy
     [Tooltip("The time constraints of which a cover can be performed. X is bottom constraint, Y is top")]
     [SerializeField] private Vector2 _coverTimeConstraints;
 
-    // The target transform reference for pathing
-    private Transform _target;
-
     // The target position reference for pathing (strafing)
     private Vector3 _targetPosition;
 

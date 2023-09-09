@@ -59,20 +59,12 @@ public class SmartMap : MonoBehaviour
             
             if (backlog.x != 0)
             {
-                Order newOrder = new Order();
-                newOrder._enemy = Order.EnemyTypes.Soldier;
-                newOrder._enemyAmount = (int)backlog.x;
-
-                backlogSegment._orders.Add(newOrder);
+                backlogSegment._orders.Add(CreateOrder(Order.EnemyTypes.Soldier, (int)backlog.x));
             }
 
             if (backlog.y != 0)
             {
-                Order newOrder = new Order();
-                newOrder._enemy = Order.EnemyTypes.Swarm;
-                newOrder._enemyAmount = (int)backlog.y;
-
-                backlogSegment._orders.Add(newOrder);
+                backlogSegment._orders.Add(CreateOrder(Order.EnemyTypes.Swarm, (int)backlog.y));
             }
 
             AcceptSegment(backlogSegment, 1);
@@ -139,6 +131,25 @@ public class SmartMap : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RespawnEnemy(Order.EnemyTypes enemyType)
+    {
+        Segment backlogSegment = new Segment();
+        backlogSegment._orders = new List<Order>();
+
+        backlogSegment._orders.Add(CreateOrder(enemyType, 1));
+
+        AcceptSegment(backlogSegment, 1);
+    }
+
+    public Order CreateOrder(Order.EnemyTypes enemyType, int amount)
+    {
+        Order newOrder = new Order();
+        newOrder._enemy = enemyType;
+        newOrder._enemyAmount = amount;
+
+        return newOrder;
     }
 
     #endregion

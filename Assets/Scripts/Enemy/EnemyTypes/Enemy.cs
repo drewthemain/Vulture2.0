@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
         OutOfRange,
         InRange,
         NoGrav,
-        Covering
+        Covering,
+        Stop
     }
 
     [Header("References")]
@@ -58,6 +59,9 @@ public class Enemy : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] protected float _speedBoostPercentage = 0.5f;
 
+    [Tooltip("The range of time in between the enemy determining if it should respawn")]
+    [SerializeField] protected float _respawnCheckBuffer = 5f;
+
     [Header("Room")]
 
     [Tooltip("The layermask for room detection")]
@@ -78,6 +82,9 @@ public class Enemy : MonoBehaviour
 
     // Reference to the NavMesh Agent
     protected NavMeshAgent _agent;
+
+    // The target transform reference for pathing
+    protected Transform _target;
 
     // Reference to this enemies weapon script
     protected EnemyWeapon _weapon;
@@ -105,6 +112,8 @@ public class Enemy : MonoBehaviour
     private int _pullChecks = 0;
 
     private float _pullTimer = 0f;
+
+    private float _respawnTimer = 0f;
 
     #endregion
 
@@ -294,6 +303,8 @@ public class Enemy : MonoBehaviour
         {
             case EnemyStates.OutOfRange:
 
+                CheckIfStuck();
+
                 if (_distanceFromPlayer <= _inRangeProximity && (_playerInSight || _distanceFromPlayer < 2f))
                 {
                     ChangeState(EnemyStates.InRange);
@@ -400,6 +411,37 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Checks whether an enemy is stuck
+    /// </summary>
+    void CheckIfStuck()
+    {
+        if (_agent.velocity.magnitude <= 0)
+        {
+            _respawnTimer += Time.deltaTime;
+
+            if (_respawnTimer >= _respawnCheckBuffer)
+            {
+                _respawnTimer = 0;
+                Respawn();
+            }
+        }
+        else
+        {
+            _respawnTimer = 0;
+        }
+    }
+
+    public void Respawn()
+    {
+        ChangeState(EnemyStates.Stop);
+        RoundManager._instance._totalEnemiesSpawned--;
+        SmartMap.instance.RespawnEnemy(GetComponent<EnemyHealth>()._enemyType);
+        Debug.Log($"Respawning, stuck in room {_currentRoom.GetRoomID()}");
+
+        Destroy(this.gameObject);
     }
 
     #endregion
