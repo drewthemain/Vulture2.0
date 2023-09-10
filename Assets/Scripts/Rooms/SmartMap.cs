@@ -135,6 +135,8 @@ public class SmartMap : MonoBehaviour
 
     public void RespawnEnemy(Order.EnemyTypes enemyType)
     {
+        RoundManager._instance._totalEnemiesSpawned--;
+
         Segment backlogSegment = new Segment();
         backlogSegment._orders = new List<Order>();
 
