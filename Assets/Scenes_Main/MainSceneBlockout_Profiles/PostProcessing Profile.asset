@@ -117,13 +117,13 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -5
+    value: -7
   tint:
     overrideState: 0
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.9386792, g: 0.9463546, b: 1, a: 1}
+    value: {r: 0.8254717, g: 0.8472877, b: 1, a: 1}
   hueShift:
     overrideState: 0
     value: -15
@@ -1396,10 +1396,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.2
+    value: 2.12
   color:
     overrideState: 1
-    value: {r: 0.31132078, g: 0.2743398, b: 0.2599235, a: 1}
+    value: {r: 0.18729973, g: 0.21036492, b: 0.21698111, a: 1}
   ambientOnly:
     overrideState: 0
     value: 1
@@ -1442,7 +1442,7 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 270
+    value: 220
   sampleCount:
     overrideState: 1
-    value: 10
+    value: 7
