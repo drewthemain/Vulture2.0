@@ -133,6 +133,10 @@ public class SmartMap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Respawns a single enemy
+    /// </summary>
+    /// <param name="enemyType">The enemy type to be respawned</param>
     public void RespawnEnemy(Order.EnemyTypes enemyType)
     {
         RoundManager._instance._totalEnemiesSpawned--;
@@ -145,6 +149,12 @@ public class SmartMap : MonoBehaviour
         AcceptSegment(backlogSegment, 1);
     }
 
+    /// <summary>
+    /// Creates a new order from a type and amount
+    /// </summary>
+    /// <param name="enemyType">The type of enemy</param>
+    /// <param name="amount">The amount of the enemy</param>
+    /// <returns></returns>
     public Order CreateOrder(Order.EnemyTypes enemyType, int amount)
     {
         Order newOrder = new Order();
