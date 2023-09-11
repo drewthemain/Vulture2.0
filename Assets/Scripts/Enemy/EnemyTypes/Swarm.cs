@@ -107,6 +107,7 @@ public class Swarm : Enemy
 
                 if (_weapon)
                 {
+                    _agent.ResetPath();
                     _weapon.ToggleFiring(true);
                     _anim.SetLayerWeight(1, 1);
                     _anim.SetBool("isWalking", false);

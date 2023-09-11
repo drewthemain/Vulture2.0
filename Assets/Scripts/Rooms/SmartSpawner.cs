@@ -120,6 +120,10 @@ public class SmartSpawner : MonoBehaviour
         _orderAmount += amount;
     }
 
+    /// <summary>
+    /// Clears the current order remaining for a reset
+    /// </summary>
+    /// <returns>Number of remaining enemies in the order</returns>
     public int ClearOrderRemaining()
     {
         int remaining = _orderAmount;

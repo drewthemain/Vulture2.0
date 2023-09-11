@@ -1460,6 +1460,7 @@ MonoBehaviour:
   _speedReductionPercentage: 0.5
   _proximitySpeedBoost: 1
   _speedBoostPercentage: 0.25
+  _respawnCheckBuffer: 3
   _roomMask:
     serializedVersion: 2
     m_Bits: 1024

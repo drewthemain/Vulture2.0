@@ -434,6 +434,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Respawns an enemy if they're stuck too long
+    /// </summary>
     public void Respawn()
     {
         ChangeState(EnemyStates.Stop);
