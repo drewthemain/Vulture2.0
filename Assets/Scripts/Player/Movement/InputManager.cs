@@ -157,4 +157,22 @@ public class InputManager : MonoBehaviour
     {
         return input.Player.Pause.triggered && input.Player.Pause.ReadValue<float>() > 0;
     }
+
+    public bool PlayerIsAiming()
+    {
+        float inputVal = input.Player.ADS.ReadValue<float>();
+        if (inputVal == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public bool PlayerStartedAiming()
+    {
+        return input.Player.ADS.triggered && input.Player.ADS.ReadValue<float>() > 0;
+    }
 }
