@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-// TO DO LIST
-// set the recoil super low (switch out recoil object)
-// -- physical recoil to half + spread lower
-// swap out crosshair canvas overlay mode (worldspace vs camera)
-// in UI manager add crosshair reference / canvas
-
-
 public class PlayerADS : MonoBehaviour
 {
     [Header("ADS Values")]
