@@ -44,6 +44,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private float recoilDownDuration;
     [Tooltip("The amount that the gun will be shifted vertically (on the X axis in this case")]
     [SerializeField] private float targetRecoilHeight;
+    [Tooltip("The amount that the gun will be shifted vertically while ADS'ing (on the X axis in this case")]
+    [SerializeField] private float targetADSRecoilHeight;
 
     // References
     [Tooltip("Reference to the physical body of the gun")]
@@ -62,6 +64,8 @@ public class PlayerGun : MonoBehaviour
     private UIManager ui;
     // Reference to the recoil shake
     private GunRecoilShake recoilShake;
+        // Reference to the ADS
+    private PlayerADS ads;
     // Reference for the camera transform
     private Transform cameraTransform;
     // Initial gun rotation values
@@ -75,6 +79,7 @@ public class PlayerGun : MonoBehaviour
     private void Awake()
     {
         recoilShake = GetComponent<GunRecoilShake>();
+        ads = GetComponent<PlayerADS>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -200,6 +205,7 @@ public class PlayerGun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        ads.StopADS();
         animator.SetBool("Reload", true);
 
         Invoke("EndReload", reloadTime);
@@ -263,7 +269,9 @@ public class PlayerGun : MonoBehaviour
     {
         StopAllCoroutines();
         Vector3 rot = gunBody.transform.localEulerAngles;
-        Quaternion target = Quaternion.Euler(rot.x - targetRecoilHeight, rot.y, rot.z);
+        float height = targetRecoilHeight;
+        if(ads.aiming) { height = targetADSRecoilHeight; }
+        Quaternion target = Quaternion.Euler(rot.x - height, rot.y, rot.z);
         StartCoroutine(RecoilLerpUp(target, recoilUpDuration));
     }
 }

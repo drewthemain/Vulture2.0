@@ -79,6 +79,16 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the aim sensitivity slider")]
     [SerializeField] private Slider _aimSensitivitySlider;
 
+    [Header("Crosshair References")]
+    [Tooltip("The reference to the continue button")]
+    [SerializeField] private Canvas _crosshairCanvas;
+
+    [Tooltip("The reference to the settings button")]
+    [SerializeField] private GameObject _crosshair;
+
+    [Tooltip("The reference to the crosshair canvas position transform")]
+    [SerializeField] private Transform _crosshairCanvasPosition;
+
     // General References
     // Reference to the player gameobject
     private PlayerController _controller;
@@ -385,6 +395,24 @@ public class UIManager : MonoBehaviour
         _sensitivitySlider.value = (PlayerPrefs.GetFloat("sensitivity", .5f));
         SensitivitySliderInput();
         
+    }
+
+    /// <summary>
+    /// Switch the crosshair to display on the gun rather than on the camera
+    /// </summary>
+    public void EnableWorldspaceCrosshair()
+    {
+        _crosshairCanvas.renderMode = RenderMode.WorldSpace;
+        Vector3 pos = _crosshairCanvasPosition.localPosition;
+        _crosshairCanvas.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(pos.x, pos.y, pos.z);
+    }
+
+    /// <summary>
+    /// Switch the crosshair to display on the screenspace rather than on the gun
+    /// </summary>
+    public void EnableScreenCamCrosshair()
+    {
+        _crosshairCanvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
 }

@@ -8,6 +8,11 @@ public class GunRecoilShake : MonoBehaviour
     // Reference to the impulse source
     private CinemachineImpulseSource impulse;
 
+    //[Tooltip("")]
+    //[SerializeField] private float hipfireAmplitude;
+    //[Tooltip("")]
+    //[SerializeField] private float adsAmplitude;
+
     private void Start()
     {
         impulse = GetComponent<CinemachineImpulseSource>();
@@ -18,6 +23,10 @@ public class GunRecoilShake : MonoBehaviour
     /// </summary>
     public void ScreenShake()
     {
+        //if(ads)
+        //{
+        //    impulse.m_ImpulseDefinition.m_RawSignal
+        //}
         impulse.GenerateImpulse(Camera.main.transform.forward);
     }
 }
