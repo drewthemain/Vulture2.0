@@ -4433,6 +4433,11 @@ PrefabInstance:
       propertyPath: m_PixelPerfect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1413306062149472042, guid: 2c069714f59171345b9ff3934301bf05,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1734982761395929630, guid: 2c069714f59171345b9ff3934301bf05,
         type: 3}
       propertyPath: m_Name
