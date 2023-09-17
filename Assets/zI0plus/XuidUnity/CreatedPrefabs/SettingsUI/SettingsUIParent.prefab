@@ -593,7 +593,7 @@ Animator:
   m_GameObject: {fileID: 1164060262336345964}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -1075,17 +1075,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: StartGameplay
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 8284878884831286107}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -1108,7 +1108,7 @@ Animator:
   m_GameObject: {fileID: 2292493901625079957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -1817,6 +1817,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: StartAccessibility
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7667776891669516220}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -1839,7 +1851,7 @@ Animator:
   m_GameObject: {fileID: 4443083161003700832}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -1994,7 +2006,7 @@ Animator:
   m_GameObject: {fileID: 4528300656920797521}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -2916,18 +2928,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2936,7 +2936,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Settings
+          m_StringArgument: StartSound
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2924533300144509432}
@@ -2961,7 +2961,7 @@ Animator:
   m_GameObject: {fileID: 5614369463732376563}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -3116,7 +3116,7 @@ Animator:
   m_GameObject: {fileID: 5677601805018578879}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -3461,7 +3461,7 @@ Animator:
   m_GameObject: {fileID: 6781979993003763007}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -3750,7 +3750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8202265741561037533}
   m_Layer: 5
-  m_Name: SettingsUI
+  m_Name: SettingsUIParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4214,17 +4214,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: StartVideo
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 6447672939721140521}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -4247,7 +4247,7 @@ Animator:
   m_GameObject: {fileID: 8575415258864754275}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 214e5bff1901f864ab054d8037b0363b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7eaa4334cbc7c040a2e6aae2449afdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
