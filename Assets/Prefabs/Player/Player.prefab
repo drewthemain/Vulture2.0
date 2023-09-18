@@ -111,7 +111,7 @@ MonoBehaviour:
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+    m_NoiseOffsets: {x: -204.88632, y: -231.41183, z: -317.45422}
 --- !u!1 &2547628216260439480
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
+  mNoiseOffsets: {x: 603.6539, y: 15.726196, z: -248.53003}
 --- !u!1 &2648411846397296336
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +567,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 34263f5c-4f23-4e3a-954e-3e379da37ab8
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8506cbf-7ec9-49a7-9eb8-e798988a00c3
+    m_ActionName: Player/ADS[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -585,9 +589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 7
-  sprintSpeed: 11
+  sprintSpeed: 12
   slideSpeed: 30
-  wallRunSpeed: 12
+  wallRunSpeed: 13
   climbSpeed: 3
   groundDrag: 5
   instantSpeedChangeThreshold: 8
@@ -599,7 +603,7 @@ MonoBehaviour:
   jumpCooldown: 0.25
   airMultiplier: 0.4
   crouchSpeed: 4
-  crouchYScale: 0.5
+  crouchYScale: 0.75
   playerHeight: 2
   grounded: 0
   maxSlopeAngle: 50
@@ -642,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650f5770b21502c49bbfcc202a0f621b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlideDuration: 0.5
+  maxSlideDuration: 0.75
   slideForce: 200
   slideYScale: 0.5
   slideSpeedThreshold: 8
@@ -678,13 +682,13 @@ MonoBehaviour:
   wallJumpSideForce: 25
   maxWallRunTime: 3
   wallRunCooldown: 0.75
-  wallCheckDistance: 1
+  wallCheckDistance: 0.7
   wallRunLookAngle: 90
   minJumpHeight: 2
   useGravity: 1
   gravityCounterForce: 25
-  tiltAmount: 10
-  tiltDuration: 0.3
+  tiltAmount: 5
+  tiltDuration: 0.2
   showRaycastsInScene: 1
 --- !u!114 &3088059780767472184
 MonoBehaviour:
