@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd467e45284d4b42b5b073d63affd1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  fireRate: 0.1
+  damage: 12
+  fireRate: 0.15
   spread: 0.02
   range: 100
   reloadTime: 1.75
@@ -321,8 +321,8 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowAutomatic: 1
   reloading: 0
-  recoilUpDuration: 0.15
-  recoilDownDuration: 0.15
+  recoilUpDuration: 0.2
+  recoilDownDuration: 0.2
   targetRecoilHeight: 2
   targetADSRecoilHeight: 0.5
   gunBody: {fileID: 3923897838658350836}
