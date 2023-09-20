@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 11422344}
   - component: {fileID: 6558736}
   - component: {fileID: 6336014616475068474}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Door_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 472192}
   - component: {fileID: 6584672}
   - component: {fileID: 11474550}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Horizontal_Doors_Kit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 11443130}
   - component: {fileID: 6534360}
   - component: {fileID: 8640921420330607139}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Door_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
