@@ -99,6 +99,9 @@ public class UIManager : MonoBehaviour
     //Reference to animator on settings menu
     private Animator _settingsAnim;
 
+    // UI Animation References
+    private float animDuration = 1 / 6f;
+
 
     void Awake()
     {
@@ -291,7 +294,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator ToSettingsCoroutine()
     {
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(animDuration);
 
         ToggleOnScreenUI(UIType.Settings);
     }
@@ -329,7 +332,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator PauseToGameCoroutine()
     {
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(animDuration);
 
         ToggleOnScreenUI(UIType.Game);
         GameManager.instance.Unpause();
@@ -349,7 +352,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator ExitSettingsCoroutine()
     {
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(animDuration);
 
         //ADD LOGIC HERE TO DETERMINE WHERE TO GO
 

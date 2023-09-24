@@ -44,3 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d726c3a0fb8f4eb64812626763e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameUIParent: {fileID: 0}
+  _pauseUIParent: {fileID: 0}
+  _loseUIParent: {fileID: 0}
+  _settingsUIParent: {fileID: 0}
+  _ammoCounter: {fileID: 0}
+  _ammoSlider: {fileID: 0}
+  _healthCounter: {fileID: 0}
+  _healthSlider: {fileID: 0}
+  _currentRound: {fileID: 0}
+  _objectiveText: {fileID: 0}
+  _warningBanner: {fileID: 0}
+  _worldSpaceCanvas: {fileID: 0}
+  _continueButton: {fileID: 0}
+  _settingsButton: {fileID: 0}
+  _sensitivitySlider: {fileID: 0}
+  _sensitivityText: {fileID: 0}
+  _aimSensitivitySlider: {fileID: 0}
+  _crosshairCanvas: {fileID: 0}
+  _crosshair: {fileID: 0}
+  _crosshairCanvasPosition: {fileID: 0}
