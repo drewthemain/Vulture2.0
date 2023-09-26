@@ -1533,7 +1533,7 @@ MonoBehaviour:
     type: 3}
   _colliderDamage: 5
   _attackDelay: 2
-  _colliderOffset: 1
+  _colliderOffset: {x: 1, y: 1}
   _bulletSpeed: 30
   _aimPercentage: 0.9
   _maxMissDistance: 0.1

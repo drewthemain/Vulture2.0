@@ -31,7 +31,7 @@ public class EnemyGun : EnemyWeapon
         if (_colliderPrefab != null)
         {
             // Instaniate the bullet and set as child
-            GameObject newBullet = Instantiate(_colliderPrefab, transform.position + transform.forward * _colliderOffset, Quaternion.identity);
+            GameObject newBullet = Instantiate(_colliderPrefab, transform.position + (transform.forward * _colliderOffset.x + transform.up * _colliderOffset.y), Quaternion.identity);
             newBullet.GetComponent<Bullet>().SetDamage(_colliderDamage);
 
             // Determine chances of successful aiming

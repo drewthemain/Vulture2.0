@@ -88,10 +88,6 @@ public class Room : MonoBehaviour
         {
             _window = GetComponentInChildren<Window>();
         }
-        else
-        {
-            Debug.LogWarning("This room is missing a depressurization window!");
-        }
     }
 
     private void Update()

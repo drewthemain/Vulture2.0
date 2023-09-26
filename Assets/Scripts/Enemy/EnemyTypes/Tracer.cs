@@ -71,9 +71,6 @@ public class Tracer : Enemy
     [Tooltip("The layermask for detecting floors")]
     [SerializeField] private LayerMask _floorMask;
 
-    // The target of this enemies movement
-    private Transform _target;
-
     // The target position reference for pathing (strafing)
     private Vector3 _targetPosition;
 

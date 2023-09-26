@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     // Is the game currently paused?
     private bool _isPaused = false;
 
+    // Is the game currently in low grav?
     public bool _isLowGrav = false;
 
+    // The number of broken windows
     private int _brokenCount = 0;
 
     public delegate void GravChange();
@@ -47,6 +49,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles gravity for all gravity-affected objects
+    /// </summary>
+    /// <param name="toLow">Move to low gravity?</param>
     public void ToggleGravity(bool toLow)
     {
         if (toLow)

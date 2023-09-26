@@ -11,7 +11,7 @@ public class EnemyClaw : EnemyWeapon
         if (_colliderPrefab != null)
         {
             // Instaniate the bullet and set as child
-            GameObject clawCollider = Instantiate(_colliderPrefab, transform.position + transform.forward * _colliderOffset, Quaternion.identity);
+            GameObject clawCollider = Instantiate(_colliderPrefab, transform.position + (transform.forward * _colliderOffset.x + transform.up * _colliderOffset.y), Quaternion.identity);
             clawCollider.GetComponent<Bullet>().SetDamage(_colliderDamage);
         }
     }

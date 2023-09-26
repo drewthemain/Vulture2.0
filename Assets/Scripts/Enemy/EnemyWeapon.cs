@@ -17,8 +17,8 @@ public class EnemyWeapon : MonoBehaviour
     [Tooltip("The delay between attacking")]
     [SerializeField] protected float _attackDelay = 1;
 
-    [Tooltip("The offset for bullet instantiation")]
-    [SerializeField] protected float _colliderOffset = 1;
+    [Tooltip("The offset for bullet instantiation, X being forward/backward, Y being up/down")]
+    [SerializeField] protected Vector2 _colliderOffset = Vector2.zero;
 
     // Is the weapon currently firing?
     private bool _isFiring = false;

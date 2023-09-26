@@ -28,9 +28,6 @@ public class Patrol : Enemy
     [Tooltip("The speed of the patrol search sweeping movement")]
     [SerializeField] private float _sweepSpeed = 0.5f;
 
-    // The target of this enemies target
-    private Transform _target;
-
     // Is the enemy currently moving?
     private bool _isMoving = false;
 
