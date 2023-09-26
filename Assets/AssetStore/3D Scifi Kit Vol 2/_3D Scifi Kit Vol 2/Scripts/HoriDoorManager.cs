@@ -14,33 +14,34 @@ public class HoriDoorManager : MonoBehaviour {
 		door2.manager = this;
     }
 
-    void OnTriggerEnter(){
+    void OnTriggerEnter(Collider other){
+		if(other.gameObject.CompareTag("Player") || other.gameObject.GetComponent<Enemy>())
+		{
+			if (isClosed) {
+				isClosed = false;
 
-		if (isClosed) {
-			isClosed = false;
+				if (door1 != null)
+				{
+					door1.OpenDoor();
+				}
 
-			if (door1 != null)
-			{
-				door1.OpenDoor();
+				if (door2 != null)
+				{
+					door2.OpenDoor();
+				}
 			}
-
-			if (door2 != null)
+			else
 			{
-				door2.OpenDoor();
+				if (door1 != null)
+				{
+					door1.EndOpen();
+				}
+
+				if (door2 != null && isClosed)
+				{
+					door2.EndOpen();
+				}
 			}
 		}
-		else
-        {
-			if (door1 != null)
-			{
-				door1.EndOpen();
-			}
-
-			if (door2 != null && isClosed)
-			{
-				door2.EndOpen();
-			}
-		}
-
 	}
 }
