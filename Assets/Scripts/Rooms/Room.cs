@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float _neighboringSpawnOdds = 0.4f;
 
+    [Tooltip("The chance a window will be fixed in-between rounds")]
+    [SerializeField] private float _windowFixChance = 0.3f;
+
     [Header("Cover")]
 
     [Tooltip("List of cover transforms")]
@@ -34,13 +37,8 @@ public class Room : MonoBehaviour
     // The list of all possible spawners
     private List<SmartSpawner> _soldierSpawners = new List<SmartSpawner>();
 
-    [Header("Environment")]
-
-    [Tooltip("The amount of time the room will remain depressurized")]
-    [SerializeField] private float _depressurizeTime = 15f;
-
     // Reference to the breakable window
-    private Window _window;
+    private List<Window> _windows = new List<Window>();
 
     // Is the room currently depressurized?
     private bool _depressurized = false;
@@ -50,9 +48,6 @@ public class Room : MonoBehaviour
 
     // Is the player currently inside this room?
     private bool _playerInside = false;
-
-    // The timer for the depressurize countdown
-    private float _depressureTimer = 0;
 
     #endregion
 
@@ -84,26 +79,9 @@ public class Room : MonoBehaviour
             }
         }
 
-        if (GetComponentInChildren<Window>())
+        foreach(Window window in GetComponentsInChildren<Window>())
         {
-            _window = GetComponentInChildren<Window>();
-        }
-    }
-
-    private void Update()
-    {
-        if (_depressurized && _window != null)
-        {
-            // Timer for the initial depressurization suck
-            _depressureTimer += Time.deltaTime;
-
-            if (_depressureTimer > _depressurizeTime)
-            {
-                _depressurized = false;
-                _depressureTimer = 0;
-
-                _window.Pressurize();
-            }
+            _windows.Add(window);
         }
     }
 
@@ -321,19 +299,26 @@ public class Room : MonoBehaviour
     /// Getter for the window
     /// </summary>
     /// <returns>Window reference</returns>
-    public Window GetWindow()
+    public Window GetBrokenWindow()
     {
-        return _window;
+        Window window = GameManager.instance.GetPullingWindow();
+
+        if (window && _windows.Contains(window))
+        {
+            return GameManager.instance.GetPullingWindow();
+        }
+
+        return null;
     }
 
     /// <summary>
     /// Toggles the depressurization state
     /// </summary>
-    public void Depressurize()
+    public void Depressurize(Window window)
     {
         _depressurized = true;
 
-        GameManager.instance.ToggleGravity(true);
+        GameManager.instance.ToggleGravity(true, window);
     }
 
     /// <summary>
@@ -342,7 +327,28 @@ public class Room : MonoBehaviour
     /// <returns>Is the room depressurized?</returns>
     public bool GetPressureStatus()
     {
-        return _depressurized;
+        return GetBrokenWindow() != null;
+    }
+
+    /// <summary>
+    /// Fixes a certain amount of windows
+    /// </summary>
+    /// <param name="fixAll">Should all of the windows be fixed?</param>
+    /// <param name="num">The number of windows to be fixed</param>
+    public void FixWindows()
+    {
+        foreach(Window window in _windows)
+        {
+            if (Random.Range(0,1) < _windowFixChance)
+            {
+                window.FixWindow();
+            }
+        }
+    }
+
+    public bool isActiveRoom()
+    {
+        return _playerInside;
     }
 
     #endregion

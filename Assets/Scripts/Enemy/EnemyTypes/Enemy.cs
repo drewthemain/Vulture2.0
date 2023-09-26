@@ -164,9 +164,9 @@ public class Enemy : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("Sucked");
 
                 // Set velocity toward the window
-                if (_currentRoom.GetWindow() != null)
+                if (_currentRoom.GetBrokenWindow() != null)
                 {
-                    Vector3 targetDir = (_currentRoom.GetWindow()._pullTarget.transform.position - transform.position).normalized;
+                    Vector3 targetDir = (_currentRoom.GetBrokenWindow()._pullTarget.transform.position - transform.position).normalized;
                     _body.velocity = targetDir * _pullSpeed * 10;
 
                     Ragdollize("Sucked");
@@ -418,7 +418,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void CheckIfStuck()
     {
-        if (_agent.velocity.magnitude <= 0)
+        if ((_currentRoom && !_currentRoom.isActiveRoom()) && !_playerInSight)
         {
             _respawnTimer += Time.deltaTime;
 

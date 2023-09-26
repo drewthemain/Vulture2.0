@@ -9,18 +9,24 @@ public class Window : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The material this window is while broken")]
-    [SerializeField] private Material _brokenMaterial;
+    [SerializeField] private Material _normalMaterial;
 
-    [Tooltip("The material this becomes after locking itself")]
-    [SerializeField] private Material _lockedMaterial;
+    [Tooltip("The material this window is while broken")]
+    [SerializeField] private Material _brokenMaterial;
 
     [Tooltip("The target for the enemy pull when destroyed")]
     public GameObject _pullTarget;
+
+    [Tooltip("The amount of time the room will remain depressurized")]
+    [SerializeField] private float _depressurizeTime = 15f;
 
     private Room _parentRoom;
     private bool _broken = false;
     private CanisterHealth _canister;
     private GameObject _glass;
+
+    // The timer for the depressurize countdown
+    private float _depressureTimer = 0;
 
     #endregion
 
@@ -34,8 +40,24 @@ public class Window : MonoBehaviour
         }
 
         _canister = GetComponentInChildren<CanisterHealth>();
-
         _glass = transform.GetChild(0).gameObject;
+    }
+
+    private void Update()
+    {
+        if (_broken)
+        {
+            // Timer for the initial depressurization suck
+            _depressureTimer += Time.deltaTime;
+
+            if (_depressureTimer > _depressurizeTime)
+            {
+                _broken = false;
+                _depressureTimer = 0;
+
+                Pressurize();
+            }
+        }
     }
 
     /// <summary>
@@ -49,7 +71,7 @@ public class Window : MonoBehaviour
 
         if (_parentRoom)
         {
-            _parentRoom.Depressurize();
+            _parentRoom.Depressurize(this);
         }
     }
 
@@ -60,28 +82,17 @@ public class Window : MonoBehaviour
     {
         _glass.GetComponent<Renderer>().enabled = true;
         _glass.GetComponent<Renderer>().material = _brokenMaterial;
+
+        GameManager.instance.ToggleGravity(false, this);
     }
 
-    /// <summary>
-    /// Sets the glass material to the correct locked visual
-    /// </summary>
-    public bool Lock()
+    public void FixWindow()
     {
-        if (_broken)
+        if (!_canister.gameObject.activeSelf)
         {
-            _broken = false;
-
-            GameManager.instance.ToggleGravity(false);
-
-            if (_lockedMaterial)
-            {
-                transform.GetChild(0).GetComponent<Renderer>().material = _lockedMaterial;
-            }
-
-            return true;
+            _glass.GetComponent<Renderer>().material = _normalMaterial;
+            _canister.gameObject.SetActive(true);
         }
-
-        return false;
     }
 
     #endregion

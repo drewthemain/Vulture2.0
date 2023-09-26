@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool _isLowGrav = false;
 
     // The number of broken windows
-    private int _brokenCount = 0;
+    private List<Window> _brokenWindowPool = new List<Window>();
 
     public delegate void GravChange();
     public static event GravChange OnLowGrav;
@@ -53,13 +53,13 @@ public class GameManager : MonoBehaviour
     /// Toggles gravity for all gravity-affected objects
     /// </summary>
     /// <param name="toLow">Move to low gravity?</param>
-    public void ToggleGravity(bool toLow)
+    public void ToggleGravity(bool toLow, Window window)
     {
         if (toLow)
         {
-            _brokenCount++;
+            _brokenWindowPool.Add(window);
 
-            if (_brokenCount == 1)
+            if (_brokenWindowPool.Count == 1)
             {
                 _isLowGrav = true;
                 OnLowGrav?.Invoke();
@@ -67,14 +67,19 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _brokenCount--;
-
-            if (_brokenCount <= 0)
-            {
-                _isLowGrav = false;
-                OnLowGrav?.Invoke();
-            }
+            _brokenWindowPool.Remove(window);
         }
+    }
+
+    public void ResetGravity()
+    {
+        _isLowGrav = false;
+        OnLowGrav?.Invoke();
+    }
+
+    public Window GetPullingWindow()
+    {
+        return _brokenWindowPool.Count > 0 ? _brokenWindowPool[0] : null;
     }
 
     /// <summary>
