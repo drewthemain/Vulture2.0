@@ -28,6 +28,12 @@ public class EnemyGun : EnemyWeapon
     {
         base.Fire();
 
+        // Animation now triggers the bullet instantiation
+        _anim.SetTrigger("Shoot");
+    }
+
+    public void SpawnBullet()
+    {
         if (_colliderPrefab != null)
         {
             // Instaniate the bullet and set as child
@@ -36,7 +42,8 @@ public class EnemyGun : EnemyWeapon
 
             // Determine chances of successful aiming
             float aimCheck = Random.Range(0f, 1f);
-            Vector3 dir = transform.forward;
+            Vector3 dir = _playerReference.position - newBullet.transform.position;
+            dir.Normalize();
 
             // Is an unsuccessful aim chance
             if (aimCheck > _aimPercentage)
@@ -52,8 +59,6 @@ public class EnemyGun : EnemyWeapon
             // Add velocity to bullet rigid body and fire!
             Rigidbody body = newBullet.GetComponent<Rigidbody>();
             body.velocity = dir * _bulletSpeed;
-
-            _anim.SetTrigger("Shoot");
         }
     }
 }

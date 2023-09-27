@@ -27,7 +27,7 @@ public class EnemyWeapon : MonoBehaviour
     private float _currentDelay = 0;
 
     // Reference to the player transform
-    private Transform _playerReference;
+    protected Transform _playerReference;
 
     #endregion
 
