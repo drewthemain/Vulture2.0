@@ -447,5 +447,11 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    protected void LockedLookAt(Transform target)
+    {
+        Vector3 targetPostition = new Vector3(target.position.x, this.transform.position.y, target.position.z);
+        this.transform.LookAt(targetPostition);
+    }
+
     #endregion
 }

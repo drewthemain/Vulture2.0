@@ -61,7 +61,7 @@ public class Swarm : Enemy
                 break;
             case EnemyStates.InRange:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
             case EnemyStates.NoGrav:

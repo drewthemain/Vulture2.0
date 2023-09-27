@@ -98,6 +98,7 @@ public class Soldier : Enemy
             _agent.ResetPath();
             _target = null;
             _targetPosition = Vector3.zero;
+            _agent.updateRotation = false;
 
             // Resets all timers
             _actionTimer = 0;
@@ -128,7 +129,7 @@ public class Soldier : Enemy
                     _weapon.ToggleFiring(true);
                 }
 
-                _anim.SetFloat("Speed", 0.5f);
+                _anim.SetFloat("Speed", 1f);
                 _actionTimer = 0;
 
                 break;
@@ -146,7 +147,7 @@ public class Soldier : Enemy
                 // Query cover from room and move
                 if (_agent)
                 {
-                    _anim.SetFloat("Speed", 0.5f);
+                    _anim.SetFloat("Speed", 1f);
 
                     if (_currentRoom == null)
                     {
@@ -176,10 +177,7 @@ public class Soldier : Enemy
                     _additionalLimit = 0;
                     _additionalTimer = 0;
 
-                    if (_weapon)
-                    {
-                        _weapon.ToggleFiring(true);
-                    }
+                    _agent.updateRotation = true;
 
                     _agent.SetDestination(_target.position);
                 }
@@ -227,7 +225,7 @@ public class Soldier : Enemy
                     if (_agent != null && _target != null)
                     {
                         _agent.SetDestination(_playerRef.position - Vector3.up);
-                        transform.LookAt(_playerRef);
+                        LockedLookAt(_playerRef);
                     }
 
                     if (_playerInSight && _distanceFromPlayer < (_inRangeProximity * 2))
@@ -256,13 +254,10 @@ public class Soldier : Enemy
                         if (_agent.remainingDistance < 2f)
                         {
                             _coverActionsStarted = true;
+                            _agent.updateRotation = false;
 
                             _additionalTimer = 0;
                             ChangeCoverAction((CoverActions)Random.Range(0, 2));
-                        }
-                        else
-                        {
-                            transform.LookAt(_playerRef);
                         }
                     }
                     else
@@ -291,7 +286,7 @@ public class Soldier : Enemy
             case CoverActions.Shoot:
 
                 _additionalLimit = Random.Range(_coverTimeConstraints.x / 2, _coverTimeConstraints.y / 2);
-                _anim.SetFloat("Speed", 0.5f);
+                _anim.SetFloat("Speed", 1f);
 
                 break;
             case CoverActions.Wait:
@@ -300,6 +295,7 @@ public class Soldier : Enemy
                 if (_agent && _target)
                 {
                     _agent.SetDestination(_target.position);
+                    _anim.SetFloat("Speed", 1f);
                 }
 
                 // Stop firing!
@@ -351,7 +347,7 @@ public class Soldier : Enemy
                     if (_agent)
                     {
                         _agent.SetDestination(_playerRef.position);
-                        _anim.SetFloat("Speed", 0.5f);
+                        _anim.SetFloat("Speed", 1f);
                     }
                 }
                 else
@@ -366,12 +362,12 @@ public class Soldier : Enemy
                     }
                 }
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
             case CoverActions.Wait:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 if (_target)
                 {
@@ -440,7 +436,7 @@ public class Soldier : Enemy
                 _targetPosition = transform.position + (-transform.right * (Random.Range(5, maxStrafeDistance)));
                 _agent.SetDestination(_targetPosition);
 
-                _anim.SetFloat("Speed", 0.5f);
+                _anim.SetFloat("Speed", 1f);
 
                 break;
 
@@ -451,7 +447,7 @@ public class Soldier : Enemy
                 _targetPosition = transform.position + (transform.right * (Random.Range(5, maxStrafeDistance)));
                 _agent.SetDestination(_targetPosition);
 
-                _anim.SetFloat("Speed", 0.5f);
+                _anim.SetFloat("Speed", 1f);
 
                 break;
 
@@ -461,7 +457,7 @@ public class Soldier : Enemy
                 _actionLimit = Random.Range(_chargeTimeConstraints.x, _chargeTimeConstraints.y);
                 _target = _playerRef;
 
-                _anim.SetFloat("Speed", 0.5f);
+                _anim.SetFloat("Speed", 1f);
 
                 break;
 
@@ -496,7 +492,7 @@ public class Soldier : Enemy
 
                 _agent.SetDestination(_targetPosition);
 
-                _anim.SetFloat("Speed", -0.5f);
+                _anim.SetFloat("Speed", -1f);
 
                 break;
         }
@@ -519,11 +515,11 @@ public class Soldier : Enemy
         // If the player is too close to enemy, try to back up or find cover
         if (_distanceFromPlayer < _closestDesiredRange)
         {
-            if (_inRangeAction != InRangeActions.Back && _state != EnemyStates.Covering)
+            if (!_coverActionsStarted)
             {
                 _actionTimer = 0;
 
-                ChangeAction(InRangeActions.Back);
+                ChangeState(EnemyStates.Covering);
             }
         }
 
@@ -532,18 +528,18 @@ public class Soldier : Enemy
         {
             case InRangeActions.StrafeLeft:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
             case InRangeActions.StrafeRight:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
 
             case InRangeActions.Charge:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 if (_agent && _target != null)
                 {
@@ -553,12 +549,12 @@ public class Soldier : Enemy
                 break;
             case InRangeActions.Stand:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
             case InRangeActions.Back:
 
-                transform.LookAt(_playerRef);
+                LockedLookAt(_playerRef);
 
                 break;
         }
@@ -609,7 +605,7 @@ public class Soldier : Enemy
     /// <returns></returns>
     public Vector3 GetFleePosition()
     {
-        Vector3 testPos = _playerRef.position - transform.forward * _inRangeProximity * 2;
+        Vector3 testPos = transform.position - ((transform.forward + transform.right) * (Random.Range(5, maxStrafeDistance)));
 
         NavMeshPath path = new NavMeshPath();
         if (!_agent.CalculatePath(testPos, path))

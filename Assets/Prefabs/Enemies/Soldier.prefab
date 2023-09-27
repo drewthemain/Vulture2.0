@@ -1364,7 +1364,7 @@ MonoBehaviour:
   _speedReductionPercentage: 0.2
   _proximitySpeedBoost: 1
   _speedBoostPercentage: 0.25
-  _respawnCheckBuffer: 10
+  _respawnCheckBuffer: 20
   _roomMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   _timeTilDeathAfterSuck: 5
   _currentRoom: {fileID: 0}
   _inRangeAction: 0
-  _closestDesiredRange: 10
+  _closestDesiredRange: 2
   maxStrafeDistance: 10
   _strafeTimeConstraints: {x: 0.5, y: 2}
   _chargeTimeConstraints: {x: 0.3, y: 0.5}
