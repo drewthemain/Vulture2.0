@@ -1356,12 +1356,12 @@ MonoBehaviour:
   _state: 0
   _playerInSight: 0
   _inRangeProximity: 20
-  _sightDistance: 30
+  _sightDistance: 100
   _sightMask:
     serializedVersion: 2
     m_Bits: 567
   _slowWhenPlayerSpotted: 1
-  _speedReductionPercentage: 0.5
+  _speedReductionPercentage: 0.2
   _proximitySpeedBoost: 1
   _speedBoostPercentage: 0.25
   _respawnCheckBuffer: 10

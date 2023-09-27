@@ -209,6 +209,8 @@ public class Soldier : Enemy
         }
 
         _coverOdds = _initialCoverOdds;
+
+        ChangeState(EnemyStates.OutOfRange);
     }
 
     protected override void Update()
@@ -224,8 +226,16 @@ public class Soldier : Enemy
                     // Soldiers chase the player when out of attack proximity
                     if (_agent != null && _target != null)
                     {
-                        _agent.SetDestination(_target.position);
-                        transform.LookAt(_target);
+                        _agent.SetDestination(_playerRef.position - Vector3.up);
+                        transform.LookAt(_playerRef);
+                    }
+
+                    if (_playerInSight && _distanceFromPlayer < (_inRangeProximity * 2))
+                    {
+                        if (!_weapon.IsFiring())
+                        {
+                            _weapon.ToggleFiring(true);
+                        }
                     }
                     
                     break;

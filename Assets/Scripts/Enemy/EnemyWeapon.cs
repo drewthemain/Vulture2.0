@@ -63,6 +63,11 @@ public class EnemyWeapon : MonoBehaviour
         _isFiring = shouldFire;
     }
 
+    public bool IsFiring()
+    {
+        return _isFiring;
+    }
+
     /// <summary>
     /// Handles logic for creating, setup, aiming, and firing of a bullet
     /// </summary>
