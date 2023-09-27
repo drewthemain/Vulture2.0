@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd224766016fc449ba1eca5390d073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adsSnapTime: 0.25
+  adsSnapTime: 0.1
   adsTransform: {fileID: 6565453778934463349}
   initialTransform: {fileID: 1511564511946641363}
   gunModel: {fileID: 3923897838658350836}
