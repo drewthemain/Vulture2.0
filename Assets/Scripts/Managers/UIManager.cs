@@ -18,8 +18,20 @@ public class UIManager : MonoBehaviour
         Main
     }
 
+    public enum SettingsMenuType
+    {
+        Main,
+        Accessibility,
+        Gameplay,
+        Sound,
+        Video,
+    }
+
     // The current UI in effect
     private UIType _currentUI = UIType.Game;
+
+    // The current UI in effect
+    private SettingsMenuType _currentSettingsMenu = SettingsMenuType.Main;
 
     [Header("Parent References")]
 
@@ -140,7 +152,14 @@ public class UIManager : MonoBehaviour
             }
             else if (_currentUI == UIType.Settings)
             {
-                ExitSettings();
+                if(_currentSettingsMenu == SettingsMenuType.Main)
+                {
+                    ExitSettings();
+                }
+                else
+                {
+                    ExitSettingsMenus();
+                }
             }
             
         }
@@ -348,16 +367,35 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Return to the main settings menu from each of the sub menus
+    /// </summary>
+    public void ExitSettingsMenus()
+    {
+        // capitalize first letter for formatting
+        _settingsAnim.SetTrigger("End" + _currentSettingsMenu.ToString());
+        StartCoroutine(ExitSettingsMenusCoroutine());
+    }
+
+    /// <summary>
     /// Allows the Settings menu to continue animating before moving to pause or main menu
     /// </summary>
     private IEnumerator ExitSettingsCoroutine()
     {
         yield return new WaitForSecondsRealtime(animDuration);
 
-        //ADD LOGIC HERE TO DETERMINE WHERE TO GO
-
         ReturnToPause();
         _PauseAnim.SetTrigger("FromSettings");
+    }
+
+    /// <summary>
+    /// Allows the Settings sub menus to continue animating before moving to settings main
+    /// </summary>
+    private IEnumerator ExitSettingsMenusCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(animDuration);
+
+        ReturnToSettings();
+        //_settingsAnim.SetTrigger("FromSettingsMenu");
     }
 
     /// <summary>
@@ -366,6 +404,44 @@ public class UIManager : MonoBehaviour
     public void ReturnToPause()
     {
         ToggleOnScreenUI(UIType.Pause);
+    }
+
+    /// <summary>
+    /// Return to the settings menu.
+    /// </summary>
+    public void ReturnToSettings()
+    {
+        ToggleOnScreenUI(UIType.Settings);
+        UpdateSettingsSubMenuState("Main");
+    }
+
+    /// <summary>
+    /// Changes the current settings submenu state based on the string entered
+    /// </summary>
+    /// <param name="subMenuType">The EXACT name of the sub menu type from the enum that you want to switch to</param>
+    public void UpdateSettingsSubMenuState(string subMenuType)
+    {
+        switch(subMenuType)
+        {
+            case "Video":
+                _currentSettingsMenu = SettingsMenuType.Video;
+                break;
+            case "Sound":
+                _currentSettingsMenu = SettingsMenuType.Sound;
+                break;
+            case "Gameplay":
+                _currentSettingsMenu = SettingsMenuType.Gameplay;
+                break;
+            case "Accessibility":
+                _currentSettingsMenu = SettingsMenuType.Accessibility;
+                break;
+            case "Main":
+                _currentSettingsMenu = SettingsMenuType.Main;
+                break;
+            default:
+                _currentSettingsMenu = SettingsMenuType.Main;
+                break;
+        }
     }
 
     /// <summary>
