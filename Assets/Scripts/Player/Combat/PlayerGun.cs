@@ -54,6 +54,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [Tooltip("Layers that the gun is able to shoot")]
     [SerializeField] private LayerMask hitLayers;
+    [Tooltip("Layers that will spawn a bullethole")]
+    [SerializeField] private LayerMask bulletholeLayers;
     [Tooltip("Visual effects for various parts of the gun")]
     [SerializeField] private GameObject muzzleFlash, bulletHole;
     // Storage for the raycast to use
@@ -170,6 +172,12 @@ public class PlayerGun : MonoBehaviour
             }
         }
 
+        if (Physics.Raycast(Camera.main.transform.position, direction, out hit, range, bulletholeLayers))
+        {
+            SpawnBullethole(hit);
+        }
+
+
         // Camera shake
         recoilShake.ScreenShake();
 
@@ -177,7 +185,6 @@ public class PlayerGun : MonoBehaviour
         StartRecoilShake();
 
         // VFX Spawning
-        Instantiate(bulletHole, hit.point, Quaternion.LookRotation(-hit.normal, transform.up));
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity, transform);
 
         bulletsLeft--;
@@ -273,5 +280,14 @@ public class PlayerGun : MonoBehaviour
         if(ads.aiming) { height = targetADSRecoilHeight; }
         Quaternion target = Quaternion.Euler(rot.x - height, rot.y, rot.z);
         StartCoroutine(RecoilLerpUp(target, recoilUpDuration));
+    }
+    
+    /// <summary>
+    /// Spawn a bullethole facing outwards from the target it hits (layers determined by raycast layermask)
+    /// </summary>
+    /// <param name="hit">The hit information from performing the raycast</param>
+    private void SpawnBullethole(RaycastHit hit)
+    {
+        Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
     }
 }

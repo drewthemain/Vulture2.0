@@ -330,6 +330,9 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 43136
+  bulletholeLayers:
+    serializedVersion: 2
+    m_Bits: 43009
   muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
     type: 3}
   bulletHole: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
