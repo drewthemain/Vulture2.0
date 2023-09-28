@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3380782}
   - component: {fileID: 2301450}
   - component: {fileID: 263861964}
+  - component: {fileID: 7441623145968983819}
   m_Layer: 13
   m_Name: Roof_Simple_Top_02
   m_TagString: Untagged
@@ -95,11 +96,24 @@ MeshCollider:
   m_GameObject: {fileID: 112876}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f6d3ac5d917d5483bb8c3c9263caeb97, type: 3}
+--- !u!65 &7441623145968983819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6.0000014, z: 0.7500009}
+  m_Center: {x: 3, y: 3.0000007, z: 4.1250005}
 --- !u!1 &191444
 GameObject:
   m_ObjectHideFlags: 0

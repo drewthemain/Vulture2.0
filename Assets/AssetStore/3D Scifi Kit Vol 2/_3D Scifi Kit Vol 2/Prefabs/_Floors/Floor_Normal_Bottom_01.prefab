@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 481442}
   - component: {fileID: 3340086}
   - component: {fileID: 2344068}
+  - component: {fileID: 371562084829837142}
   m_Layer: 0
   m_Name: Floor_Normal_Bottom_01
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &371562084829837142
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 30c886855a8e64c05abaae7f10b58454, type: 3}
 --- !u!1 &154844
 GameObject:
   m_ObjectHideFlags: 0
