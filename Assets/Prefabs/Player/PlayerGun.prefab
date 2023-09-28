@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1511564511946641363}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: InitialPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7678826392296084357}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6565453778934463349}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: ADSPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7788792630144862871}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: CanvasPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 3628941023735501717}
   - component: {fileID: 3288520439297685989}
   - component: {fileID: -39613773500466557}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: PlayerGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,6 +431,10 @@ PrefabInstance:
       value: SciFiGunLightBlack
       objectReference: {fileID: 0}
     - target: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -563,16 +567,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4164947733445412494, guid: 2e1b03b7ac270a64c8ccb42aace98180,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2e1b03b7ac270a64c8ccb42aace98180,
         type: 3}
       propertyPath: m_Name
       value: Player Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e1b03b7ac270a64c8ccb42aace98180,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4438925243333955809, guid: 2e1b03b7ac270a64c8ccb42aace98180,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09d00f4add2669246ab553c8f24fe33f, type: 2}
+    - target: {fileID: 4522583307316034152, guid: 2e1b03b7ac270a64c8ccb42aace98180,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 2e1b03b7ac270a64c8ccb42aace98180,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909848542033764120, guid: 2e1b03b7ac270a64c8ccb42aace98180,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1b03b7ac270a64c8ccb42aace98180, type: 3}
 --- !u!4 &3923897838658350836 stripped
