@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     // Speed that the player movement uses to move the player
-    private float moveSpeed;
+    public float moveSpeed;
     [Tooltip("Walking speed for the player")]
     [SerializeField] private float walkSpeed;
     [Tooltip("Sprinting speed for the player")]
@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCooldown;
     [Tooltip("Multiplier for speed while flying through the air, also takes into account moveSpeed")]
     [SerializeField] private float airMultiplier;
+    [Tooltip("The distance from the player (not counting the player) to the wall for the movespeed to be reset for unsticking the player")]
+    [SerializeField] private float wallStickRaycastLength;
     // Boolean for keeping track of when the player can jump based on the jump cooldown
     private bool readyToJump;
 
@@ -301,10 +303,20 @@ public class PlayerController : MonoBehaviour
 
         // in air
         else if (!grounded)
+        {
+            if (state == MovementState.air)
+            {
+                if (Physics.Raycast(transform.position, cameraTransform.forward, .5f + wallStickRaycastLength, wallLayer))
+                {
+                    Debug.Log(moveSpeed);
+                    desiredMoveSpeed = walkSpeed;
+                }
+            }
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
 
         // gravity off while on slope
-        if(!wallrunning) rb.useGravity = !OnSlope();
+        if (!wallrunning) rb.useGravity = !OnSlope();
     }
 
     /// <summary>
