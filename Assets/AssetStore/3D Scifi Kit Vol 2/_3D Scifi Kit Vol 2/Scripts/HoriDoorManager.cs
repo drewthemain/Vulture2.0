@@ -14,8 +14,8 @@ public class HoriDoorManager : MonoBehaviour {
 		door2.manager = this;
     }
 
-    void OnTriggerEnter(Collider other){
-		if(other.gameObject.CompareTag("Player") || other.gameObject.GetComponent<Enemy>())
+    void OnTriggerStay(Collider other){
+		if(other.gameObject.CompareTag("Player") && !other.transform.parent.GetComponent<PlayerController>().wallrunning || other.gameObject.GetComponent<Enemy>())
 		{
 			if (isClosed) {
 				isClosed = false;
