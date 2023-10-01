@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4643016955785280}
   - component: {fileID: 33206625792921948}
   - component: {fileID: 23076764213853850}
-  - component: {fileID: 65426775386624878}
+  - component: {fileID: 6844296840878997462}
   m_Layer: 0
   m_Name: Roof_Simple_Top_02_B
   m_TagString: Untagged
@@ -201,7 +201,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65426775386624878
+--- !u!65 &6844296840878997462
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,4 +213,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6, y: 6.0000014, z: 0.7500009}
-  m_Center: {x: 3, y: 3.0000007, z: 4.1250005}
+  m_Center: {x: 3, y: 3.0000007, z: 4.125001}
