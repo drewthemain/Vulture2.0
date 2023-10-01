@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     // Speed that the player movement uses to move the player
-    public float moveSpeed;
+    private float moveSpeed;
     [Tooltip("Walking speed for the player")]
     [SerializeField] private float walkSpeed;
     [Tooltip("Sprinting speed for the player")]
@@ -304,6 +304,7 @@ public class PlayerController : MonoBehaviour
         // in air
         else if (!grounded)
         {
+            // unstick the player if they sprint at a wall
             if (state == MovementState.air)
             {
                 if (Physics.Raycast(transform.position, cameraTransform.forward, .5f + wallStickRaycastLength, wallLayer))

@@ -573,11 +573,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa4c1a630aec994285de2b44974a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
   walkSpeed: 7
   sprintSpeed: 12
   slideSpeed: 30
-  wallRunSpeed: 13
+  wallRunSpeed: 12
   climbSpeed: 3
   groundDrag: 5
   instantSpeedChangeThreshold: 8
@@ -664,11 +663,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallRunForce: 200
-  verticalForceAmount: 12
-  wallJumpUpForce: 15
-  wallJumpSideForce: 25
+  verticalForceAmount: 10
+  wallJumpUpForce: 11.5
+  wallJumpSideForce: 23.5
   maxWallRunTime: 3
-  wallRunCooldown: 0.75
+  wallRunCooldown: 0.7
   wallCheckDistance: 0.7
   wallRunLookAngle: 90
   minJumpHeight: 2
