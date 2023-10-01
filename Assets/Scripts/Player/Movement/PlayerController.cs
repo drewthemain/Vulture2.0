@@ -309,7 +309,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, cameraTransform.forward, .5f + wallStickRaycastLength, wallLayer))
                 {
-                    Debug.Log(moveSpeed);
                     desiredMoveSpeed = walkSpeed;
                 }
             }
