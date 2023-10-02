@@ -69,11 +69,11 @@ public class PlayerController : MonoBehaviour
     // The initial height of the player
     private float startYScale;
 
-    [Header("Ground Check")]
-    [Tooltip("The height of the player")]
-    [SerializeField] private float playerHeight;
-    [Tooltip("(Do not touch this) General boolean for checking if the player is on the ground")]
-    public bool grounded;
+    //[Header("Ground Check")]
+    // The height of the player, set to the collider height on start
+    private float playerHeight;
+    // General boolean for checking if the player is on the ground
+    [HideInInspector] public bool grounded;
 
     [Header("Slope Handling")]
     [Tooltip("Maximum angle for slopes before player can no longer walk up them")]
@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Values")]
     [Tooltip("The sensitivity that the camera should use when the settings slider is all the way up (10.00)")]
     [SerializeField] float cameraMaxSensitivity;
+    [Tooltip("The physical collider for the player")]
+    [SerializeField] CapsuleCollider playerCollider;
 
     [Header("Debug")]
     [Tooltip("Drag in a TMPro textbox that will be set to the current state (one can be found in the Canvas in the GamePackage prefab labeled 'PlayerStateText')")]
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
         input = InputManager.instance;
         rb.freezeRotation = true;
         readyToJump = true;
-
+        playerHeight = playerCollider.height;
         startYScale = transform.localScale.y;
 
         Cursor.lockState = CursorLockMode.Locked;
