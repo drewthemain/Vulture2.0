@@ -17,6 +17,10 @@ public class SmartSpawner : MonoBehaviour
     [Tooltip("The current pool of enemies")]
     [SerializeField] private List<GameObject> _enemies;
 
+    private Transform _eggParent;
+
+    private List<GameObject> _eggSpawns = new List<GameObject>();
+
     // Reference to the Room this belongs to
     private Room _parentRoom;
 
@@ -45,6 +49,16 @@ public class SmartSpawner : MonoBehaviour
         }
 
         _spawnBuffer = Random.Range(_maxSpawnBuffer / 2, _maxSpawnBuffer);
+
+        if (transform.GetChild(0))
+        {
+            _eggParent = transform.GetChild(0);
+
+            foreach(Transform child in _eggParent.transform)
+            {
+                _eggSpawns.Add(child.gameObject);
+            }
+        }
     }
 
     private void Update()
