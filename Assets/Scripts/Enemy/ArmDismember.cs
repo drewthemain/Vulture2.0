@@ -39,8 +39,7 @@ public class ArmDismember : MonoBehaviour
     {
         if (!fleshyBit.activeSelf)
         {
-            scaledArm.GetComponent<Animator>().SetTrigger("KillLimb");
-            //scaledArm.transform.localScale = new Vector3(0, 0, 0);
+            scaledArm.transform.localScale = new Vector3(0, 0, 0);
             fleshyBit.SetActive(true);
             dismemberedArm.SetActive(true);
             dismemberedArm.transform.parent = null;
