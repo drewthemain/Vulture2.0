@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: -1372625422
-  m_StartPoint: {x: 0.5000105, y: -4.00008, z: 0}
-  m_EndPoint: {x: 1.5000305, y: -4.79, z: 0}
+  m_StartPoint: {x: 0, y: 0, z: 0}
+  m_EndPoint: {x: 0.75, y: -1, z: 0}
   m_Width: 20
   m_CostModifier: -1
   m_Bidirectional: 1
