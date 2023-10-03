@@ -47,6 +47,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the settings UI parent")]
     [SerializeField] private GameObject _settingsUIParent;
 
+    [Tooltip("The UI aspects that are always displayed and can change opacity")]
+    [SerializeField] private GameObject _GUI;
+
     [Header("Game References")]
 
     [Tooltip("The reference to the ammo counter text")]
@@ -80,16 +83,6 @@ public class UIManager : MonoBehaviour
 
     [Tooltip("The reference to the settings button")]
     [SerializeField] private GameObject _settingsButton;
-
-    [Header("Settings References")]
-    [Tooltip("The reference to the sensitivity slider")]
-    [SerializeField] private Slider _sensitivitySlider;
-
-    [Tooltip("The reference to the textbox next to the slider displaying the number")]
-    [SerializeField] private TextMeshProUGUI _sensitivityText;
-
-    [Tooltip("The reference to the aim sensitivity slider")]
-    [SerializeField] private Slider _aimSensitivitySlider;
 
     [Header("Crosshair References")]
     [Tooltip("The reference to the continue button")]
@@ -135,11 +128,6 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogWarning("Missing a player in the scene!");
         }
-    }
-
-    private void Start()
-    {
-        LoadSettings();
     }
 
     private void Update()
@@ -445,38 +433,6 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// UI portion of adjusting the players overall sensitivity
-    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity
-    /// </summary>
-    public void SensitivitySliderInput()
-    {
-        float sens = _sensitivitySlider.value;
-        if(_sensitivitySlider.value <= 0.01f)
-        {
-            sens = 0.01f;
-        }
-
-        _sensitivityText.text = (sens * 10).ToString("F2");
-        _controller.ChangeSensitivity(sens);
-    }
-
-    /// <summary>
-    /// Not yet implemented
-    /// </summary>
-    public void AimSensitivitySliderInput()
-    {
-        _controller.ChangeSensitivity(_aimSensitivitySlider.value);
-    }
-
-    public void LoadSettings()
-    {
-        // load in sensitivity slider input
-        _sensitivitySlider.value = (PlayerPrefs.GetFloat("sensitivity", .5f));
-        SensitivitySliderInput();
-        
-    }
-
-    /// <summary>
     /// Switch the crosshair to display on the gun rather than on the camera
     /// </summary>
     public void EnableWorldspaceCrosshair()
@@ -494,4 +450,22 @@ public class UIManager : MonoBehaviour
         _crosshairCanvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
+    public void ChangeGUIOpacity(float opacityPercentage)
+    {
+        PlayerPrefs.SetFloat("GUIopacity", opacityPercentage);
+        Image[] GUIElements = _GUI.GetComponentsInChildren<Image>();
+        foreach(Image img in GUIElements)
+        {
+            Color imgColor = img.color;
+            imgColor.a = opacityPercentage;
+            img.color = imgColor;
+        }
+        TextMeshProUGUI[] textElements = _GUI.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (TextMeshProUGUI text in textElements)
+        {
+            Color textColor = text.color;
+            textColor.a = opacityPercentage;
+            text.color = textColor;
+        }
+    }
 }

@@ -447,6 +447,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void ChangeAimSensitivity(float settingsValue)
     {
-
+        PlayerPrefs.SetFloat("aimSensitivity", settingsValue);
     }
 }

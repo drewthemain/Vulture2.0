@@ -32,6 +32,9 @@ public class CameraManager : MonoBehaviour
     // Rotation storage
     private Quaternion intermediateRotation;
 
+    // Toggle for the camera shake
+    [HideInInspector] public bool cameraShakeEnabled = true;
+
     private void Awake()
     {
         if (instance == null)
@@ -54,6 +57,7 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         initialRotation = Quaternion.Euler(camParent.transform.rotation.x, camParent.transform.rotation.y, camParent.transform.rotation.z);
+        // load in camera setting from playerprefs
     }
 
     private void Update()
@@ -99,8 +103,18 @@ public class CameraManager : MonoBehaviour
     /// <param name="duration">How long the shake will last</param>
     public void CameraShake(float intensity, float duration)
     {
-        noise.m_AmplitudeGain = intensity;
-        StartCoroutine(ShakeTimer(duration));
+        if(cameraShakeEnabled)
+        {
+            noise.m_AmplitudeGain = intensity;
+            StartCoroutine(ShakeTimer(duration));
+        }
+    }
+
+    public void ToggleCameraShake(bool state)
+    {
+        cameraShakeEnabled = state;
+        int toggle = cameraShakeEnabled ? 1 : 0;
+        PlayerPrefs.SetInt("cameraShake", toggle);
     }
     
     IEnumerator ShakeTimer(float duration)
