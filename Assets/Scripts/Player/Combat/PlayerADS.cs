@@ -26,10 +26,14 @@ public class PlayerADS : MonoBehaviour
     private UIManager ui;
     // Reference to the player gun
     private PlayerGun gun;
+    // Reference to the player controller
+    private PlayerController controller;
 
     private void Awake()
     {
         gun = GetComponent<PlayerGun>();
+        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if (controller == null) { Debug.LogWarning("Missing a player in the scene!"); }
     }
 
     private void Start()
@@ -84,6 +88,7 @@ public class PlayerADS : MonoBehaviour
         if(!aiming)
         {
             ui.EnableScreenCamCrosshair();
+            controller.DisableAimSensitivity();
         }
         while (time < adsSnapTime)
         {
@@ -93,9 +98,12 @@ public class PlayerADS : MonoBehaviour
         }
         gunModel.localPosition = target;
 
+        // gun has fully scoped in
         if (aiming && gunModel.localPosition == adsTransform.localPosition)
         {
             ui.EnableWorldspaceCrosshair();
+            // switch the sensitivity to aiming
+            controller.EnableAimSensitivity();
         }
         yield return null;
     }

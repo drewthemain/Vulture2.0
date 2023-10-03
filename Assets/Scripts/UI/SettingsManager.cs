@@ -92,6 +92,7 @@ public class SettingsManager : MonoBehaviour
         // load in sensitivity slider input
         sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", .1f);
         sensitivityText.text = (sensitivitySlider.value * 10).ToString("F2");
+
         // load in aim sensitivity slider input
         aimSensitivitySlider.value = PlayerPrefs.GetFloat("aimSensitivity", .1f);
         aimSensitivityText.text = (aimSensitivitySlider.value * 10).ToString("F2");
@@ -114,7 +115,8 @@ public class SettingsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Not yet implemented
+    /// UI portion of adjusting the players overall aim sensitivity
+    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity for ADS
     /// </summary>
     public void AimSensitivitySliderInput()
     {

@@ -91,7 +91,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Camera Values")]
     [Tooltip("The sensitivity that the camera should use when the settings slider is all the way up (10.00)")]
-    [SerializeField] float cameraMaxSensitivity;
+    [SerializeField] private float cameraMaxSensitivity;
+    [Tooltip("The aim sensitivity that the camera should use when the settings slider is all the way up (10.00)")]
+    [SerializeField] private float cameraMaxAimSensitivity;
     [Tooltip("The physical collider for the player")]
     [SerializeField] CapsuleCollider playerCollider;
 
@@ -109,6 +111,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float verticalInput;
     // Direction the player should move after the inputs have been multiplied in
     private Vector3 moveDirection;
+    // Status for changing sensitivity when aiming down sights
+    [HideInInspector] public bool useAimSensitivity;
 
     // References
     // Reference to the player rigidbody
@@ -123,6 +127,7 @@ public class PlayerController : MonoBehaviour
     private PlayerClimb climb;
     // Reference to the UIManager script
     private UIManager ui;
+
 
     private void Awake()
     {
@@ -140,7 +145,8 @@ public class PlayerController : MonoBehaviour
         readyToJump = true;
         playerHeight = playerCollider.height;
         startYScale = transform.localScale.y;
-
+        useAimSensitivity = false;
+        UpdateSensitivity();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -431,22 +437,56 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Update the player preferences and change the camera based on the sensitivty slider value passed in
+    /// Update the player preferences and change the camera based on the sensitivity slider value passed in
     /// </summary>
     /// <param name="settingsValue">Value of the UI slider set by the player</param>
     public void ChangeSensitivity(float settingsValue)
     {
         PlayerPrefs.SetFloat("sensitivity", settingsValue);
-
-        vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = cameraMaxSensitivity * settingsValue;
-        vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = cameraMaxSensitivity * settingsValue;
     }
 
     /// <summary>
-    /// Not yet implemented
+    /// Update the player preferences and change the camera based on the aim sensitivity slider value passed in
     /// </summary>
+    /// <param name="settingsValue">Value of the UI slider set by the player</param>
     public void ChangeAimSensitivity(float settingsValue)
     {
         PlayerPrefs.SetFloat("aimSensitivity", settingsValue);
+    }
+
+    /// <summary>
+    /// Update the camera based on the player preferences
+    /// </summary>
+    /// <param name="settingsValue">Value of the UI slider set by the player</param>
+    public void UpdateSensitivity()
+    {
+        if(useAimSensitivity)
+        {
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = cameraMaxAimSensitivity * PlayerPrefs.GetFloat("aimSensitivity", 1f);
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = cameraMaxAimSensitivity * PlayerPrefs.GetFloat("aimSensitivity", 1f);
+        }
+        else
+        {
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = cameraMaxSensitivity * PlayerPrefs.GetFloat("sensitivity", 1f);
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = cameraMaxSensitivity * PlayerPrefs.GetFloat("sensitivity", 1f);
+        }
+    }
+
+    /// <summary>
+    /// Switch the sensitivity to aiming speed and update the useAimSensitivity state
+    /// </summary>
+    public void EnableAimSensitivity()
+    {
+        useAimSensitivity = true;
+        UpdateSensitivity();
+    }
+
+    /// <summary>
+    /// Switch the sensitivity to normal look speed and update the useAimSensitivity state
+    /// </summary>
+    public void DisableAimSensitivity()
+    {
+        useAimSensitivity = false;
+        UpdateSensitivity();
     }
 }

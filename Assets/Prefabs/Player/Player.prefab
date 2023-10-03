@@ -654,11 +654,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   cameraMaxSensitivity: 1.5
+  cameraMaxAimSensitivity: 1.5
   playerCollider: {fileID: 1168023433343950115}
   debugText: {fileID: 0}
   enableDebugText: 0
   horizontalInput: 0
   verticalInput: 0
+  useAimSensitivity: 0
 --- !u!54 &5078521362320132855
 Rigidbody:
   m_ObjectHideFlags: 0
