@@ -5,16 +5,25 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     #region Variables
+    [Header("Passive Healing")]
     [Tooltip("The amount that the heal over time will increment by when passively healing")]
     [SerializeField] private float passiveHealingIncrement;
     [Tooltip("The delay between passive healing increments (in seconds)")]
     [SerializeField] private float passiveHealTickDelay;
     [Tooltip("How long the player waits to heal after taking damage (in seconds)")]
     [SerializeField] private float inCombatTime;
+
+    [Header("Round End Healing")]
     [Tooltip("How long the player waits to heal after taking damage (in seconds)")]
     [SerializeField] private float roundEndHealIncrement;
     [Tooltip("How long the player waits to heal after taking damage (in seconds)")]
     [SerializeField] private float roundEndHealDelay;
+
+    [Header("Camera Shake")]
+    [Tooltip("Intensity of the camera shake for taking damage")]
+    [SerializeField] private float onDamageShakeIntensity;
+    [Tooltip("Duration of the camera shake for taking damage")]
+    [SerializeField] private float onDamageShakeDuration;
 
     // status for if the player is currently in combat
     private bool inCombat;
@@ -36,7 +45,7 @@ public class PlayerHealth : Health
     public override void TakeDamage(float dmg, float multiplier)
     {
         base.TakeDamage(dmg, multiplier);
-
+        CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(_currentHealth);
         EnterCombat();
     }

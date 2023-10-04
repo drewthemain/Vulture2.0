@@ -712,6 +712,8 @@ MonoBehaviour:
   inCombatTime: 3
   roundEndHealIncrement: 1
   roundEndHealDelay: 0.1
+  onDamageShakeIntensity: 3
+  onDamageShakeDuration: 0.1
 --- !u!114 &3063529463560417964
 MonoBehaviour:
   m_ObjectHideFlags: 0
