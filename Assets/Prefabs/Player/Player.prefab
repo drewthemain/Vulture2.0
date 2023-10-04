@@ -707,6 +707,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
+  passiveHealingIncrement: 1
+  passiveHealTickDelay: 0.5
+  inCombatTime: 3
+  roundEndHealIncrement: 1
+  roundEndHealDelay: 0.1
 --- !u!114 &3063529463560417964
 MonoBehaviour:
   m_ObjectHideFlags: 0

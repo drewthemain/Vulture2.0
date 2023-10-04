@@ -29,6 +29,9 @@ public class RoundManager : MonoBehaviour
     [Tooltip("The list of rounds that runs the game loop")]
     [SerializeField] private List<Round> _rounds;
 
+    // Reference to the player health
+    private PlayerHealth _playerHealth;
+
     // The current round
     public int _currentRound = 0;
 
@@ -82,6 +85,8 @@ public class RoundManager : MonoBehaviour
         {
             Debug.LogWarning("RoundManager is missing rounds!");
         }
+        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        if (_playerHealth == null) { Debug.LogWarning("Missing a player in the scene!"); }
     }
 
     /// <summary>
@@ -158,6 +163,7 @@ public class RoundManager : MonoBehaviour
                     Debug.Log($"Round {_rounds[_currentRound]} over!");
                     _currentRound++;
                     _totalCurrentRound++;
+                    _playerHealth.EndOfTurnHeal();
                     ChangeRoundState(RoundState.InBetween);
 
                     return;
