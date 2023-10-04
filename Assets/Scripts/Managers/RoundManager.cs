@@ -124,6 +124,11 @@ public class RoundManager : MonoBehaviour
                     Debug.LogWarning("Current round is missing segments!");
                 }
 
+                if (EventManager.instance)
+                {
+                    EventManager.instance.AugmentSubscribers();
+                }
+
                 UIManager.instance.UpdateRound(_totalCurrentRound, _rounds[_currentRound].name, _currentLoop);
 
                 SpawnSegment();
@@ -131,6 +136,11 @@ public class RoundManager : MonoBehaviour
                 break;
 
             case RoundState.InBetween:
+
+                if (EventManager.instance)
+                {
+                    EventManager.instance.RestoreSubscribers();
+                }
 
                 _inBetweenTimer = _inBetweenLength;
 

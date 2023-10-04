@@ -14,9 +14,16 @@ public class Health : MonoBehaviour
     [Tooltip("The maximum amount of health")]
     public float _currentHealth = 100f;
 
+    protected float _currentMaxHealth = 100f;
+
     #endregion
 
     #region Methods
+
+    private void Start()
+    {
+        _currentMaxHealth = _maxHealth;
+    }
 
     /// <summary>
     /// Subtract damage from health and check for death
@@ -38,16 +45,27 @@ public class Health : MonoBehaviour
     /// <param name="heal">The amount of healing done</param>
     protected virtual void Heal(float heal)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth + heal, 0f, _maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth + heal, 0f, _currentMaxHealth);
     }
 
     /// <summary>
     /// Increases max health and heals
     /// </summary>
     /// <param name="increase">The amount of HP to increase by</param>
-    protected virtual void IncreaseMax(float increase)
+    public virtual void IncreaseMax(float increase)
     {
-        _maxHealth += increase;
+        _currentMaxHealth += increase;
+
+        _currentHealth = _currentMaxHealth;
+    }
+
+    /// <summary>
+    /// Increases max health and heals
+    /// </summary>
+    /// <param name="increase">The amount of HP to increase by</param>
+    public virtual void ResetMax()
+    {
+        _currentMaxHealth = _maxHealth;
 
         _currentHealth = _maxHealth;
     }
@@ -64,7 +82,7 @@ public class Health : MonoBehaviour
     /// </summary>
     public virtual float GetMaxHealth()
     {
-        return _maxHealth;
+        return _currentMaxHealth;
     }
 
     #endregion
