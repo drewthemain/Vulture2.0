@@ -106,13 +106,13 @@ public class RoundManager : MonoBehaviour
                 {
                     _currentRound = 0;
                     _currentLoop++;
-                    Debug.Log("Ran out of rounds! Restarting the sequence...");
+                    Debug.Log("Ran out of rounds! Restarting the sequence...".Color("red").Italic());
                 }
 
                 // Calculate the total number of enemies this round
                 _totalEnemiesRemaining = _rounds[_currentRound].GetTotalEnemies() * _currentLoop;
 
-                Debug.Log($"Current Round: {_rounds[_currentRound].name}");
+                Debug.Log("Current Round: ".Color("white").Size(12) + $"{_rounds[_currentRound].name}".Bold().Color("green").Size(13));
 
                 // Set the segment value
                 if (_rounds[_currentRound]._segments.Count > 0)
@@ -170,7 +170,7 @@ public class RoundManager : MonoBehaviour
                 // Overall round check
                 if (_totalEnemiesRemaining <= 0)
                 {
-                    Debug.Log($"Round {_rounds[_currentRound]} over!");
+                    Debug.Log($"Round {_rounds[_currentRound]} over!".Color("green").Bold());
                     _currentRound++;
                     _totalCurrentRound++;
                     _playerHealth.EndOfTurnHeal();
@@ -186,7 +186,7 @@ public class RoundManager : MonoBehaviour
                     {
                         if (_rounds[_currentRound]._segments[_currentSegment + 1]._allowEarlySpawning)
                         {
-                            Debug.Log($"Starting spawning of segment {_currentSegment + 1} early!");
+                            Debug.Log($"Starting spawning of segment {_currentSegment + 1} early!".Color("yellow").Italic());
 
                             _spawningEarlyBuffer = _segmentEnemiesRemaining;
 
@@ -199,7 +199,7 @@ public class RoundManager : MonoBehaviour
                 // Segment check
                 if (_segmentEnemiesRemaining <= 0)
                 {
-                    Debug.Log($"Segment {_currentSegment} of {_rounds[_currentRound]} over!");
+                    Debug.Log($"Segment {_currentSegment} of {_rounds[_currentRound]} over!".Color("yellow").Italic());
                     _currentSegment += 1;
                     SpawnSegment();
                 }
@@ -257,8 +257,8 @@ public class RoundManager : MonoBehaviour
 
             if (_spawningEarlyBuffer <= 0)
             {
-                Debug.Log($"Spawning early for segment {_currentSegment} has ended!");
-                Debug.Log($"Segment {_currentSegment - 1} of {_rounds[_currentRound]} over!");
+                Debug.Log($"Spawning early for segment {_currentSegment} has ended!".Color("yellow").Italic());
+                Debug.Log($"Segment {_currentSegment - 1} of {_rounds[_currentRound]} over!".Color("yellow").Italic());
             }
         }
     }

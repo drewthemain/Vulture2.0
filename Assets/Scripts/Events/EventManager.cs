@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EventManager : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class EventManager : MonoBehaviour
     [Tooltip("The list of available events to choose from")]
     [SerializeField] private List<Event> events;
 
-    private int currentIndex = 0;
+    private int currentIndex = -1;
+    private int previousIndex = -1;
 
     public delegate Component EventStart();
     public static event EventStart OnEventStart;
@@ -46,6 +48,11 @@ public class EventManager : MonoBehaviour
 
     public string GetTargetComponent()
     {
+        if (currentIndex == -1)
+        {
+            return null;
+        }
+
         return events[currentIndex].component;
     }
 
@@ -55,6 +62,12 @@ public class EventManager : MonoBehaviour
         foreach (System.Delegate d in invokeList)
         {
             Component target = (Component) d.Method.Invoke(d.Target, null);
+
+            if (target == null)
+            {
+                continue;
+            }
+
             FactoryChannels(target, up);
         }
     }
@@ -73,25 +86,99 @@ public class EventManager : MonoBehaviour
 
                 switch (events[currentIndex].action)
                 {
-                    case "AlterMaxHealth":
-                        EventFactory.AlterMaxHealth((Health)target, up);
+                    case "IncreaseEnemyMaxHealth":
+                        EventFactory.IncreaseEnemyMaxHealth((EnemyHealth)target, up);
                         break;
 
+                    default:
+                        Debug.Log("No factory function found. Make sure the action in your event matches the name of the factory function, and it has an entry in FactoryChannels!");
+                        break;
                 }
                 break;
+
+            case NavMeshAgent:
+
+                switch (events[currentIndex].action)
+                {
+                    case "EnemySpeedBoost":
+                        EventFactory.EnemySpeedBoost((NavMeshAgent)target, up);
+                        break;
+
+                    default:
+                        Debug.Log("No factory function found. Make sure the action in your event matches the name of the factory function, and it has an entry in FactoryChannels!");
+                        break;
+                }
+                break;
+
+            case Enemy:
+
+                switch (events[currentIndex].action)
+                {
+                    case "ToggleDoubleBullets":
+                        EventFactory.ToggleDoubleBullets((Soldier)target, up);
+                        break;
+
+                    default:
+                        Debug.Log("No factory function found. Make sure the action in your event matches the name of the factory function, and it has an entry in FactoryChannels!");
+                        break;
+                }
+                break;
+
+            case GameManager:
+
+                switch (events[currentIndex].action)
+                {
+                    case "ToggleGravity":
+                        EventFactory.ToggleGravity(up);
+                        break;
+
+                    default:
+                        Debug.Log("No factory function found. Make sure the action in your event matches the name of the factory function, and it has an entry in FactoryChannels!");
+                        break;
+                }
+                break;
+
         }
     }
 
     public void AugmentSubscribers()
     {
-        Debug.Log($"Starting event: {events[currentIndex].name}");
+        if (events.Count == 0)
+        {
+            Debug.Log("Events are turned on, but missing events!");
+            return;
+        }
+
+        int safety = 0;
+        do
+        {
+            currentIndex = Random.Range(0, events.Count);
+
+            if (events.Count <= 1 || safety >= 50)
+            {
+                break;
+            }
+
+            safety++;
+        } 
+        while (currentIndex == previousIndex);
+
+        Debug.Log("Starting event: ".Color("white").Size(12) +  $"{events[currentIndex].name}".Bold().Color("orange").Size(13));
         TransmitSubscribers(true);
     }
 
     public void RestoreSubscribers()
     {
-        Debug.Log($"Ending event: {events[currentIndex].name}");
+        if (currentIndex == -1)
+        {
+            return;
+        }
+
+        Debug.Log("Ending event: ".Color("white").Size(12) + $"{events[currentIndex].name}".Bold().Color("orange").Size(13));
         TransmitSubscribers(false);
+
+        previousIndex = currentIndex;
+        currentIndex = -1;
     }
 
 

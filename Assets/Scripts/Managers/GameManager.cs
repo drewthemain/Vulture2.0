@@ -57,22 +57,40 @@ public class GameManager : MonoBehaviour
     {
         if (toLow)
         {
-            _brokenWindowPool.Add(window);
-
-            if (_brokenWindowPool.Count == 1)
+            if (window)
             {
-                _isLowGrav = true;
-                OnLowGrav?.Invoke();
+                _brokenWindowPool.Add(window);
+
+                if (_brokenWindowPool.Count == 1 && !_isLowGrav)
+                {
+                    _isLowGrav = true;
+                    OnLowGrav?.Invoke();
+                }
+
+                return;
             }
+
+            _isLowGrav = true;
+            OnLowGrav?.Invoke();
         }
         else
         {
-            _brokenWindowPool.Remove(window);
+            if (window)
+            {
+                _brokenWindowPool.Remove(window);
+            }
         }
     }
 
     public void ResetGravity()
     {
+        foreach (Window window in _brokenWindowPool)
+        {
+            window.ForceClose();
+        }
+
+        _brokenWindowPool.Clear();
+
         _isLowGrav = false;
         OnLowGrav?.Invoke();
     }

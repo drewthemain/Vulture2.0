@@ -15,6 +15,9 @@ public class Event : ScriptableObject
     [Tooltip("The name of the factory function as a string")]
     public string action;
 
+    [Tooltip("A description for this action")]
+    public string description;
+
     #endregion
 
     #region Methods

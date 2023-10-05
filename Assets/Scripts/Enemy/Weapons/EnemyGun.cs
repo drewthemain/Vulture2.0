@@ -19,6 +19,8 @@ public class EnemyGun : EnemyWeapon
 
     private Animator _anim;
 
+    private bool fireDoubleBullets = false;
+
     private void Awake()
     {
         _anim = GetComponentInChildren<Animator>();
@@ -35,6 +37,22 @@ public class EnemyGun : EnemyWeapon
     public void SpawnBullet()
     {
         if (_colliderPrefab != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine("BulletInstantiate");
+        }
+    }
+
+    public void ToggleDoubleBullets(bool doDouble)
+    {
+        fireDoubleBullets = doDouble;
+    }
+
+    IEnumerator BulletInstantiate()
+    {
+        int amount = fireDoubleBullets ? 2 : 1;
+
+        for (int i = 0; i < amount; i++)
         {
             // Instaniate the bullet and set as child
             GameObject newBullet = Instantiate(_colliderPrefab, transform.position + (transform.forward * _colliderOffset.x + transform.up * _colliderOffset.y), Quaternion.identity);
@@ -59,6 +77,8 @@ public class EnemyGun : EnemyWeapon
             // Add velocity to bullet rigid body and fire!
             Rigidbody body = newBullet.GetComponent<Rigidbody>();
             body.velocity = dir * _bulletSpeed;
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

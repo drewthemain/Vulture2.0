@@ -55,7 +55,7 @@ public class Window : MonoBehaviour
                 _broken = false;
                 _depressureTimer = 0;
 
-                Pressurize();
+                Pressurize(true);
             }
         }
     }
@@ -75,15 +75,26 @@ public class Window : MonoBehaviour
         }
     }
 
+    public void ForceClose()
+    {
+        _broken = false;
+        _depressureTimer = 0;
+
+        Pressurize(false);
+    }
+
     /// <summary>
     /// Sets the glass to it's in-between state
     /// </summary>
-    public void Pressurize()
+    public void Pressurize(bool toggleGrav)
     {
         _glass.GetComponent<Renderer>().enabled = true;
         _glass.GetComponent<Renderer>().material = _brokenMaterial;
 
-        GameManager.instance.ToggleGravity(false, this);
+        if (toggleGrav)
+        {
+            GameManager.instance.ToggleGravity(false, this);
+        }
     }
 
     public void FixWindow()

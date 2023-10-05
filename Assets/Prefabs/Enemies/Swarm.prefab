@@ -2665,6 +2665,7 @@ GameObject:
   - component: {fileID: 8169422812659762231}
   - component: {fileID: 743340607595286029}
   - component: {fileID: 7579260106337620847}
+  - component: {fileID: 981896740632364073}
   m_Layer: 7
   m_Name: Swarm
   m_TagString: Untagged
@@ -2865,6 +2866,19 @@ MonoBehaviour:
   _colliderDamage: 5
   _attackDelay: 1
   _colliderOffset: {x: 1, y: 0}
+--- !u!114 &981896740632364073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169422812659762238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9d9c3b26e83914ba147dcf245fef1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitOnStart: 1
 --- !u!1 &8424459043398684590
 GameObject:
   m_ObjectHideFlags: 0
