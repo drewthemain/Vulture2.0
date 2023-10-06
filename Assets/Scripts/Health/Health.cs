@@ -14,6 +14,13 @@ public class Health : MonoBehaviour
     [Tooltip("The maximum amount of health")]
     public float currentHealth = 100f;
 
+    [Header("Options")]
+
+    // The amount of speed to increase when taking damage
+    [HideInInspector] public float speedIncreaseOnDamage = 0;
+    // The amount of speed to decrease when taking damage
+    [HideInInspector] public float speedDecreaseOnDamage = 0;
+
     protected float currentMaxHealth = 100f;
 
     #endregion

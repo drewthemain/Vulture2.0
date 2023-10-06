@@ -138,6 +138,24 @@ public class EventManager : MonoBehaviour
                 }
                 break;
 
+            case PlayerController:
+
+                switch (events[currentIndex].action)
+                {
+                    case "SlowOnDamage":
+                        EventFactory.SlowOnDamage((PlayerController)target, up);
+                        break;
+
+                    case "PlayerSpeedBoost":
+                        EventFactory.PlayerSpeedBoost((PlayerController)target, up);
+                        break;
+
+                    default:
+                        Debug.Log("No factory function found. Make sure the action in your event matches the name of the factory function, and it has an entry in FactoryChannels!");
+                        break;
+                }
+                break;
+
         }
     }
 

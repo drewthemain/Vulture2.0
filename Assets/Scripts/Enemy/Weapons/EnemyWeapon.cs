@@ -29,6 +29,9 @@ public class EnemyWeapon : MonoBehaviour
     // Reference to the player transform
     protected Transform playerReference;
 
+    // Reference to player health
+    protected PlayerHealth playerHealth;
+
     #endregion
 
     #region Methods
@@ -37,6 +40,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         // Player reference needed for aiming matters, can be changed later if needed
         playerReference = GameManager.instance.GetPlayerReference();
+        playerHealth = playerReference.GetComponent<PlayerHealth>();
         currentDelay = attackDelay;
     }
 

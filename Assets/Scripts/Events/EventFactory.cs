@@ -48,4 +48,26 @@ public static class EventFactory
 
         GameManager.instance.ResetGravity();
     }
+
+    public static void SlowOnDamage(PlayerController controller, bool up)
+    {
+        if (up)
+        {
+            controller.GetComponent<PlayerHealth>().speedDecreaseOnDamage = 0.03f;
+            return;
+        }
+
+        controller.speedMultiplier = 1;
+    }
+
+    public static void PlayerSpeedBoost(PlayerController controller, bool up)
+    {
+        if (up)
+        {
+            controller.speedMultiplier = 2f;
+            return;
+        }
+
+        controller.speedMultiplier = 1;
+    }
 }

@@ -2846,6 +2846,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   currentHealth: 30
+  speedIncreaseOnDamage: 0
+  speedDecreaseOnDamage: 0
   enemyType: 1
   damageNumber: {fileID: 495747941628052658, guid: a3ce85dd2c796db4b86983ac0b88a9a1,
     type: 3}
@@ -2865,7 +2867,7 @@ MonoBehaviour:
     type: 3}
   colliderDamage: 5
   attackDelay: 1
-  colliderOffset: {x: 1, y: 0}
+  colliderOffset: {x: 4, y: 0}
 --- !u!114 &981896740632364073
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomID: 
   neighboringRooms: []
-  neighboringSpawnOdds: 0.4
+  neighboringSpawnOdds: 0.2
   windowFixChance: 0.3
   coverParent: {fileID: 4350653900447216614}
 --- !u!1 &4350653899486939533

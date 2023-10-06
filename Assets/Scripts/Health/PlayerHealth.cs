@@ -28,9 +28,18 @@ public class PlayerHealth : Health
     // status for if the player is currently in combat
     private bool inCombat;
 
+    // References
+
+    private PlayerController controller;
+
     #endregion
 
     #region Methods
+
+    private void Awake()
+    {
+        controller = GetComponent<PlayerController>();
+    }
 
     protected override void Die()
     {
@@ -45,6 +54,13 @@ public class PlayerHealth : Health
     public override void TakeDamage(float dmg, float multiplier)
     {
         base.TakeDamage(dmg, multiplier);
+
+        if (speedDecreaseOnDamage != 0 && controller)
+        {
+            Debug.Log(speedDecreaseOnDamage);
+            controller.speedMultiplier -= speedDecreaseOnDamage;
+        }
+
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);
         EnterCombat();

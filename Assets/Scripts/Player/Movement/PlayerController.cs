@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Climbing speed for the player")]
     [SerializeField] private float climbSpeed;
 
+    // A multiplier for all player speeds
+    public float speedMultiplier = 1;
+
     [Tooltip("Intended speed for the player to be moving at")]
     private float desiredMoveSpeed;
     [Tooltip("Most recent speed that the player should have been at")]
@@ -135,6 +138,7 @@ public class PlayerController : MonoBehaviour
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
         cameraTransform = Camera.main.transform;
         climb = GetComponent<PlayerClimb>();
+        speedMultiplier = 1;
     }
 
     private void Start()
@@ -220,13 +224,13 @@ public class PlayerController : MonoBehaviour
         if(climbing)
         {
             state = MovementState.climbing;
-            desiredMoveSpeed = climbSpeed;
+            desiredMoveSpeed = climbSpeed * speedMultiplier;
         }
         // State - Wall Running
         else if (wallrunning)
         {
             state = MovementState.wallrunning;
-            desiredMoveSpeed = wallRunSpeed;
+            desiredMoveSpeed = wallRunSpeed * speedMultiplier;
         }
         // State - Sliding
         else if (sliding)
@@ -235,30 +239,30 @@ public class PlayerController : MonoBehaviour
 
             if(OnSlope() && rb.velocity.y < 0.1f)
             {
-                desiredMoveSpeed = slideSpeed;
+                desiredMoveSpeed = slideSpeed * speedMultiplier;
             }
             else
             {
-                desiredMoveSpeed = sprintSpeed;
+                desiredMoveSpeed = sprintSpeed * speedMultiplier;
             }
         }
         // State - Crouching
         else if (input.PlayerIsCrouching())
         {
             state = MovementState.crouching;
-            desiredMoveSpeed = crouchSpeed;
+            desiredMoveSpeed = crouchSpeed * speedMultiplier;
         }
         // State - Sprinting
         else if (grounded && input.PlayerIsSprinting())
         {
             state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed * speedMultiplier;
         }
         // State - Walking
         else if (grounded)
         {
             state = MovementState.walking;
-            desiredMoveSpeed = walkSpeed;
+            desiredMoveSpeed = walkSpeed * speedMultiplier;
         }
         // State - Air
         else
@@ -417,7 +421,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        moveSpeed = desiredMoveSpeed;
+        moveSpeed = desiredMoveSpeed * speedMultiplier;
     }
 
     /// <summary>
