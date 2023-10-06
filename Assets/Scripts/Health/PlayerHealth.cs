@@ -57,7 +57,6 @@ public class PlayerHealth : Health
 
         if (speedDecreaseOnDamage != 0 && controller)
         {
-            Debug.Log(speedDecreaseOnDamage);
             controller.speedMultiplier -= speedDecreaseOnDamage;
         }
 
