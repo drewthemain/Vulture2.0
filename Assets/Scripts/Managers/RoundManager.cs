@@ -6,7 +6,7 @@ public class RoundManager : MonoBehaviour
 {
     #region Variables
 
-    public static RoundManager _instance;
+    public static RoundManager instance;
 
     public enum RoundState
     {
@@ -19,44 +19,44 @@ public class RoundManager : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The current state of the game")]
-    [SerializeField] private RoundState _roundState = RoundState.InRound;
+    [SerializeField] private RoundState roundState = RoundState.InRound;
 
     [Tooltip("The amount of time inbetween rounds")]
-    [SerializeField] private float _inBetweenLength = 15;
+    [SerializeField] private float inBetweenLength = 15;
 
     [Header("References")]
 
     [Tooltip("The list of rounds that runs the game loop")]
-    [SerializeField] private List<Round> _rounds;
+    [SerializeField] private List<Round> rounds;
 
     // Reference to the player health
-    private PlayerHealth _playerHealth;
+    private PlayerHealth playerHealth;
 
     // The current round
-    public int _currentRound = 0;
+    public int currentRound = 0;
 
     // The current segment within the round
-    public int _currentSegment = 0;
+    public int currentSegment = 0;
 
     // The amount of total enemies remaining this round
-    public int _totalEnemiesRemaining = 0;
+    public int totalEnemiesRemaining = 0;
 
     // The total enemies that are spawned in the world
-    public int _totalEnemiesSpawned = 0;
+    public int totalEnemiesSpawned = 0;
 
     // The number of enemies left in this segment
-    public int _segmentEnemiesRemaining = 0;
+    public int segmentEnemiesRemaining = 0;
 
     // The timer for the in-between rounds sequence
-    private float _inBetweenTimer = 0;
+    private float inBetweenTimer = 0;
 
     // The number of enemies left before early spawning
-    public int _spawningEarlyBuffer = 0;
+    public int spawningEarlyBuffer = 0;
 
     // The overall current number of rounds
-    private int _totalCurrentRound = 1;
+    private int totalCurrentRound = 1;
 
-    private int _currentLoop = 1;
+    private int currentLoop = 1;
 
 
     #endregion
@@ -65,9 +65,9 @@ public class RoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance == null)
+        if (instance == null)
         {
-            _instance = this;
+            instance = this;
         }
         else
         {
@@ -77,7 +77,7 @@ public class RoundManager : MonoBehaviour
 
     private void Start()
     {
-        if (_rounds.Count > 0)
+        if (rounds.Count > 0)
         {
             ChangeRoundState(RoundState.InBetween);
         }
@@ -85,8 +85,8 @@ public class RoundManager : MonoBehaviour
         {
             Debug.LogWarning("RoundManager is missing rounds!");
         }
-        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        if (_playerHealth == null) { Debug.LogWarning("Missing a player in the scene!"); }
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        if (playerHealth == null) { Debug.LogWarning("Missing a player in the scene!"); }
     }
 
     /// <summary>
@@ -95,29 +95,29 @@ public class RoundManager : MonoBehaviour
     /// <param name="newState">The new round state</param>
     public void ChangeRoundState(RoundState newState)
     {
-        _roundState = newState;
+        roundState = newState;
 
-        switch (_roundState)
+        switch (roundState)
         {
             case RoundState.InRound:
 
                 // Loop the rounds, currently
-                if (_currentRound >= _rounds.Count)
+                if (currentRound >= rounds.Count)
                 {
-                    _currentRound = 0;
-                    _currentLoop++;
+                    currentRound = 0;
+                    currentLoop++;
                     Debug.Log("Ran out of rounds! Restarting the sequence...".Color("red").Italic());
                 }
 
                 // Calculate the total number of enemies this round
-                _totalEnemiesRemaining = _rounds[_currentRound].GetTotalEnemies() * _currentLoop;
+                totalEnemiesRemaining = rounds[currentRound].GetTotalEnemies() * currentLoop;
 
-                Debug.Log("Current Round: ".Color("white").Size(12) + $"{_rounds[_currentRound].name}".Bold().Color("green").Size(13));
+                Debug.Log("Current Round: ".Color("white").Size(12) + $"{rounds[currentRound].name}".Bold().Color("green").Size(13));
 
                 // Set the segment value
-                if (_rounds[_currentRound]._segments.Count > 0)
+                if (rounds[currentRound].segments.Count > 0)
                 {
-                    _currentSegment = 0;
+                    currentSegment = 0;
                 }
                 else
                 {
@@ -129,7 +129,7 @@ public class RoundManager : MonoBehaviour
                     EventManager.instance.AugmentSubscribers();
                 }
 
-                UIManager.instance.UpdateRound(_totalCurrentRound, _rounds[_currentRound].name, _currentLoop);
+                UIManager.instance.UpdateRound(totalCurrentRound, rounds[currentRound].name, currentLoop);
 
                 SpawnSegment();
 
@@ -142,7 +142,7 @@ public class RoundManager : MonoBehaviour
                     EventManager.instance.RestoreSubscribers();
                 }
 
-                _inBetweenTimer = _inBetweenLength;
+                inBetweenTimer = inBetweenLength;
 
                 UIManager.instance.UpdateRound(-1, "Prepare.", -1);
 
@@ -163,44 +163,44 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        switch (_roundState)
+        switch (roundState)
         {
             case RoundState.InRound:
 
                 // Overall round check
-                if (_totalEnemiesRemaining <= 0)
+                if (totalEnemiesRemaining <= 0)
                 {
-                    Debug.Log($"Round {_rounds[_currentRound]} over!".Color("green").Bold());
-                    _currentRound++;
-                    _totalCurrentRound++;
-                    _playerHealth.EndOfTurnHeal();
+                    Debug.Log($"Round {rounds[currentRound]} over!".Color("green").Bold());
+                    currentRound++;
+                    totalCurrentRound++;
+                    playerHealth.EndOfTurnHeal();
                     ChangeRoundState(RoundState.InBetween);
 
                     return;
                 }
 
                 // Early spawning block
-                if (_segmentEnemiesRemaining < _rounds[_currentRound]._maxEnemiesSpawned)
+                if (segmentEnemiesRemaining < rounds[currentRound].maxEnemiesSpawned)
                 {
-                    if (_currentSegment + 1 < _rounds[_currentRound]._segments.Count)
+                    if (currentSegment + 1 < rounds[currentRound].segments.Count)
                     {
-                        if (_rounds[_currentRound]._segments[_currentSegment + 1]._allowEarlySpawning)
+                        if (rounds[currentRound].segments[currentSegment + 1].allowEarlySpawning)
                         {
-                            Debug.Log($"Starting spawning of segment {_currentSegment + 1} early!".Color("yellow").Italic());
+                            Debug.Log($"Starting spawning of segment {currentSegment + 1} early!".Color("yellow").Italic());
 
-                            _spawningEarlyBuffer = _segmentEnemiesRemaining;
+                            spawningEarlyBuffer = segmentEnemiesRemaining;
 
-                            _currentSegment += 1;
+                            currentSegment += 1;
                             SpawnSegment();
                         }
                     }
                 }
 
                 // Segment check
-                if (_segmentEnemiesRemaining <= 0)
+                if (segmentEnemiesRemaining <= 0)
                 {
-                    Debug.Log($"Segment {_currentSegment} of {_rounds[_currentRound]} over!".Color("yellow").Italic());
-                    _currentSegment += 1;
+                    Debug.Log($"Segment {currentSegment} of {rounds[currentRound]} over!".Color("yellow").Italic());
+                    currentSegment += 1;
                     SpawnSegment();
                 }
 
@@ -208,18 +208,18 @@ public class RoundManager : MonoBehaviour
 
             case RoundState.InBetween:
 
-                if (_inBetweenTimer <= 0)
+                if (inBetweenTimer <= 0)
                 {
                     UIManager.instance.ToggleWarningBanner(false);
 
                     ChangeRoundState(RoundState.InRound);
                 }
-                else if (_inBetweenTimer <= 2)
+                else if (inBetweenTimer <= 2)
                 {
                     UIManager.instance.ToggleWarningBanner(true);
                 }
 
-                _inBetweenTimer -= Time.deltaTime;
+                inBetweenTimer -= Time.deltaTime;
 
                 break;
 
@@ -237,7 +237,7 @@ public class RoundManager : MonoBehaviour
     /// <returns>The round state</returns>
     public RoundState GetRoundState()
     {
-        return _roundState;
+        return roundState;
     }
 
     /// <summary>
@@ -246,19 +246,19 @@ public class RoundManager : MonoBehaviour
     /// <param name="enemyType">Type of enemy (currently unused)</param>
     public void RecordEnemyKill(Order.EnemyTypes enemyType)
     {
-        _segmentEnemiesRemaining -= 1;
-        _totalEnemiesRemaining -= 1;
-        _totalEnemiesSpawned -= 1;
+        segmentEnemiesRemaining -= 1;
+        totalEnemiesRemaining -= 1;
+        totalEnemiesSpawned -= 1;
 
         // Keeps track of when the prior segment ends after early spawning
-        if (_spawningEarlyBuffer > 0)
+        if (spawningEarlyBuffer > 0)
         {
-            _spawningEarlyBuffer -= 1;
+            spawningEarlyBuffer -= 1;
 
-            if (_spawningEarlyBuffer <= 0)
+            if (spawningEarlyBuffer <= 0)
             {
-                Debug.Log($"Spawning early for segment {_currentSegment} has ended!".Color("yellow").Italic());
-                Debug.Log($"Segment {_currentSegment - 1} of {_rounds[_currentRound]} over!".Color("yellow").Italic());
+                Debug.Log($"Spawning early for segment {currentSegment} has ended!".Color("yellow").Italic());
+                Debug.Log($"Segment {currentSegment - 1} of {rounds[currentRound]} over!".Color("yellow").Italic());
             }
         }
     }
@@ -268,7 +268,7 @@ public class RoundManager : MonoBehaviour
     /// </summary>
     public void RecordEnemySpawn()
     {
-        _totalEnemiesSpawned += 1;
+        totalEnemiesSpawned += 1;
     }
 
     /// <summary>
@@ -276,8 +276,8 @@ public class RoundManager : MonoBehaviour
     /// </summary>
     public void SpawnSegment()
     {
-        _segmentEnemiesRemaining += _rounds[_currentRound]._segments[_currentSegment].GetTotalEnemies() * _currentLoop;
-        SmartMap.instance.AcceptSegment(_rounds[_currentRound]._segments[_currentSegment], _currentLoop);
+        segmentEnemiesRemaining += rounds[currentRound].segments[currentSegment].GetTotalEnemies() * currentLoop;
+        SmartMap.instance.AcceptSegment(rounds[currentRound].segments[currentSegment], currentLoop);
     }
 
     /// <summary>
@@ -286,9 +286,9 @@ public class RoundManager : MonoBehaviour
     /// <returns>Whether more enemies can be spawned</returns>
     public bool CanSpawn()
     {
-        if (_currentRound < _rounds.Count)
+        if (currentRound < rounds.Count)
         {
-            return _totalEnemiesSpawned < (_rounds[_currentRound]._maxEnemiesSpawned * _currentLoop) && _roundState != RoundState.Paused;
+            return totalEnemiesSpawned < (rounds[currentRound].maxEnemiesSpawned * currentLoop) && roundState != RoundState.Paused;
         }
 
         return false;

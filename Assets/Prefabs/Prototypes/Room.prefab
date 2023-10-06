@@ -77,10 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe4d63f6a4e30d45a647850628310a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomID: TestRoom
-  _neighboringRooms: []
-  _neighboringSpawnOdds: 0.4
-  _coverParent: {fileID: 4350653900447216614}
+  roomID: 
+  neighboringRooms: []
+  neighboringSpawnOdds: 0.4
+  windowFixChance: 0.3
+  coverParent: {fileID: 4350653900447216614}
 --- !u!1 &4350653899486939533
 GameObject:
   m_ObjectHideFlags: 0

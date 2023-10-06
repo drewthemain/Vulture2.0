@@ -9,33 +9,33 @@ public class Patrol : Enemy
     [Header("Patrol References")]
 
     [Tooltip("The patrol mover this guard will follow")]
-    [SerializeField] private Transform _patrolMover;
+    [SerializeField] private Transform patrolMover;
 
     [Header("Patrol Options")]
 
     [Tooltip("Should the enemy chase the player when close enough?")]
-    [SerializeField] private bool _chaseInProximity = false;
+    [SerializeField] private bool chaseInProximity = false;
 
     [Tooltip("Should the enemy face the player?")]
-    [SerializeField] private bool _facePlayer = false;
+    [SerializeField] private bool facePlayer = false;
 
     [Tooltip("Should the enemy shoot at the player?")]
-    [SerializeField] private bool _shootPlayer = false;
+    [SerializeField] private bool shootPlayer = false;
 
     [Tooltip("The angle of the patrol search sweeping movement")]
-    [SerializeField] private float _sweepAngle = 90f;
+    [SerializeField] private float sweepAngle = 90f;
 
     [Tooltip("The speed of the patrol search sweeping movement")]
-    [SerializeField] private float _sweepSpeed = 0.5f;
+    [SerializeField] private float sweepSpeed = 0.5f;
 
     // Is the enemy currently moving?
-    private bool _isMoving = false;
+    private bool isMoving = false;
 
     // The upper rotation during the sweeping phase
-    private float _higherRotation = 0;
+    private float higherRotation = 0;
 
     // The initial direction the enemy is facing upon a sweep
-    private float _initDir = 0;
+    private float initDir = 0;
 
     #endregion
 
@@ -50,21 +50,21 @@ public class Patrol : Enemy
     {
         base.Start();
 
-        if (_patrolMover == null)
+        if (patrolMover == null)
         {
             Debug.LogWarning($"Guard '{transform.name}' is missing a Patrol Mover!");
             return;
         }
 
-        if (_facePlayer)
+        if (facePlayer)
         {
-            _agent.updateRotation = false;
+            agent.updateRotation = false;
         }
 
-        _weapon.ToggleFiring(_shootPlayer);
+        weapon.ToggleFiring(shootPlayer);
 
         // Start patrol sequence
-        _target = _patrolMover;
+        target = patrolMover;
         ChangeState(EnemyStates.OutOfRange);
     }
 
@@ -72,15 +72,15 @@ public class Patrol : Enemy
     {
         base.Update();
 
-        switch(_state)
+        switch(state)
         {
             case EnemyStates.OutOfRange:
 
                 CheckPath();
 
-                if (_facePlayer && _playerRef)
+                if (facePlayer && playerRef)
                 {
-                    transform.LookAt(_playerRef);
+                    transform.LookAt(playerRef);
                 }
 
                 break;
@@ -89,9 +89,9 @@ public class Patrol : Enemy
 
                 CheckPath();
 
-                if (_facePlayer && _playerRef)
+                if (facePlayer && playerRef)
                 {
-                    transform.LookAt(_playerRef);
+                    transform.LookAt(playerRef);
                 }
 
                 break;
@@ -104,35 +104,35 @@ public class Patrol : Enemy
 
     private void CheckPath()
     {
-        if (_agent && _target)
+        if (agent && target)
         {
-            if (Vector3.Distance(transform.position, _target.position) < 2f)
+            if (Vector3.Distance(transform.position, target.position) < 2f)
             {
-                if (_isMoving)
+                if (isMoving)
                 {
-                    _agent.ResetPath();
+                    agent.ResetPath();
 
-                    _isMoving = false;
+                    isMoving = false;
 
                     // Sets the angle spread for guard sweeping based on initial direction
 
-                    _initDir = transform.rotation.eulerAngles.y;
+                    initDir = transform.rotation.eulerAngles.y;
 
-                    _higherRotation = _initDir + _sweepAngle;
+                    higherRotation = initDir + sweepAngle;
                 }
 
                 // Sweeps enemy rotation back and forth
-                float rY = Mathf.SmoothStep(_initDir, _higherRotation, Mathf.PingPong(Time.time * _sweepSpeed, 1));
+                float rY = Mathf.SmoothStep(initDir, higherRotation, Mathf.PingPong(Time.time * sweepSpeed, 1));
                 transform.rotation = Quaternion.Euler(0, rY, 0);
 
                 return;
             }
             else
             {
-                _isMoving = true;
+                isMoving = true;
             }
 
-            _agent.SetDestination(_target.position);
+            agent.SetDestination(target.position);
         }
     }
 
@@ -144,18 +144,18 @@ public class Patrol : Enemy
         {
             case EnemyStates.OutOfRange:
 
-                if (_agent && _target)
+                if (agent && target)
                 {
-                    _agent.SetDestination(_target.position);
+                    agent.SetDestination(target.position);
                 }
 
                 break;
 
             case EnemyStates.InRange:
 
-                if (_chaseInProximity)
+                if (chaseInProximity)
                 {
-                    _target = _playerRef;
+                    target = playerRef;
                 }
 
                 break;

@@ -6,7 +6,7 @@ public class PlayerRoom : MonoBehaviour
 {
     #region Variables
 
-    private Room _currentRoom;
+    private Room currentRoom;
 
     #endregion
 
@@ -17,13 +17,13 @@ public class PlayerRoom : MonoBehaviour
         if (other.CompareTag("Room"))
         {
             // If was in a previous room, leave it!
-            if (_currentRoom != null && (_currentRoom.GetRoomID() != other.GetComponent<Room>().GetRoomID()))
+            if (currentRoom != null && (currentRoom.GetRoomID() != other.GetComponent<Room>().GetRoomID()))
             {
-                _currentRoom.PlayerToggle(false);
+                currentRoom.PlayerToggle(false);
             }
 
-            _currentRoom = other.GetComponent<Room>();
-            _currentRoom.PlayerToggle(true);
+            currentRoom = other.GetComponent<Room>();
+            currentRoom.PlayerToggle(true);
         }
     }
 

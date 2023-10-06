@@ -14,10 +14,10 @@ public class Bullet : MonoBehaviour
     [Header("Collision Values")]
 
     [Tooltip("The layer for enemy bullets")]
-    [SerializeField] private string _enemyBulletLayer;
+    [SerializeField] private string enemyBulletLayer;
 
     // The damage done by this bullet
-    private float _damage;
+    private float damage;
 
     #endregion
 
@@ -31,18 +31,18 @@ public class Bullet : MonoBehaviour
 
     public void SetDamage(float dmg)
     {
-        _damage = dmg;
+        damage = dmg;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.GetComponent<Health>())
         {
-            other.transform.GetComponent<Health>().TakeDamage(_damage, 1);
+            other.transform.GetComponent<Health>().TakeDamage(damage, 1);
         }
         else if (other.transform.GetComponentInParent<Health>())
         {
-            other.transform.GetComponentInParent<Health>().TakeDamage(_damage, 1);
+            other.transform.GetComponentInParent<Health>().TakeDamage(damage, 1);
         }
 
         Destroy(this.gameObject);

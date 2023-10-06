@@ -10,13 +10,13 @@ public class Swarm : Enemy
     [Header("Layer Masks")]
 
     [Tooltip("The layermask for detecting walls to climb")]
-    [SerializeField] private LayerMask _wallMask;
+    [SerializeField] private LayerMask wallMask;
 
     [Tooltip("The layermask for detecting floors")]
-    [SerializeField] private LayerMask _floorMask;
+    [SerializeField] private LayerMask floorMask;
 
     // Is the enemy currently grounded?
-    public bool _grounded = true;
+    public bool grounded = true;
 
     #endregion
 
@@ -26,15 +26,15 @@ public class Swarm : Enemy
     {
         base.Start();
 
-        if (_agent)
+        if (agent)
         {
-            _agent.updateRotation = true;
+            agent.updateRotation = true;
         }
 
         // Start by targeting the player
-        if (_playerRef)
+        if (playerRef)
         {
-            _target = _playerRef;
+            target = playerRef;
         }
 
         ChangeState(EnemyStates.OutOfRange);
@@ -47,13 +47,13 @@ public class Swarm : Enemy
         // Check constantly whether grounded
         GroundedCheck();
 
-        switch (_state)
+        switch (state)
         {
             case EnemyStates.OutOfRange:
 
-                if (_agent)
+                if (agent)
                 {
-                    _agent.SetDestination(_target.position);
+                    agent.SetDestination(target.position);
 
                     UpdateRotation();
                 }
@@ -61,7 +61,7 @@ public class Swarm : Enemy
                 break;
             case EnemyStates.InRange:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
             case EnemyStates.NoGrav:
@@ -74,43 +74,43 @@ public class Swarm : Enemy
     public override void ChangeState(EnemyStates newState)
     {
         // Resets (clears out) the path of the navmesh for every change
-        if (_agent != null && _agent.enabled)
+        if (agent != null && agent.enabled)
         {
-            _agent.ResetPath();
-            _target = null;
+            agent.ResetPath();
+            target = null;
         }
 
-        if (_anim)
+        if (anim)
         {
-            _anim.SetBool("isWalking", true);
+            anim.SetBool("isWalking", true);
         }
 
         base.ChangeState(newState);
 
-        switch (_state)
+        switch (state)
         {
             case EnemyStates.OutOfRange:
 
-                if (_playerRef)
+                if (playerRef)
                 {
-                    _target = _playerRef;
+                    target = playerRef;
                 }
 
-                if (_weapon)
+                if (weapon)
                 {
-                    _weapon.ToggleFiring(false);
-                    _anim.SetLayerWeight(1, 0);
+                    weapon.ToggleFiring(false);
+                    anim.SetLayerWeight(1, 0);
                 }
 
                 break;
             case EnemyStates.InRange:
 
-                if (_weapon)
+                if (weapon)
                 {
-                    _agent.ResetPath();
-                    _weapon.ToggleFiring(true);
-                    _anim.SetLayerWeight(1, 1);
-                    _anim.SetBool("isWalking", false);
+                    agent.ResetPath();
+                    weapon.ToggleFiring(true);
+                    anim.SetLayerWeight(1, 1);
+                    anim.SetBool("isWalking", false);
                 }
 
                 break;
@@ -128,18 +128,18 @@ public class Swarm : Enemy
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, _agent.height, _floorMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, agent.height, floorMask))
         {
-            _grounded = true;
+            grounded = true;
 
-            _anim.SetBool("isGrounded", _grounded);
+            anim.SetBool("isGrounded", grounded);
 
             return;
         }
 
-        _anim.SetBool("isGrounded", _grounded);
+        anim.SetBool("isGrounded", grounded);
 
-        _grounded = false;
+        grounded = false;
     }
 
     /// <summary>
@@ -148,17 +148,17 @@ public class Swarm : Enemy
     private void UpdateRotation()
     {
         NavMeshHit navMeshHit;
-        _agent.SamplePathPosition(NavMesh.AllAreas, 0f, out navMeshHit);
+        agent.SamplePathPosition(NavMesh.AllAreas, 0f, out navMeshHit);
 
         // If the enemy is on the ceiling, set new rotation
         // 262144 is the bitmap location for the ceiling area in the NavMesh areas map
         if (navMeshHit.mask == 262144)
         {
-            _agent.updateRotation = false;
+            agent.updateRotation = false;
 
-            if (_agent.velocity != Vector3.zero)
+            if (agent.velocity != Vector3.zero)
             {
-                Quaternion newRot = Quaternion.LookRotation(_agent.velocity);
+                Quaternion newRot = Quaternion.LookRotation(agent.velocity);
                 newRot *= Quaternion.Euler(0, 0, 180);
 
                 transform.rotation = newRot;
@@ -166,7 +166,7 @@ public class Swarm : Enemy
             }
         }
 
-        _agent.updateRotation = true;
+        agent.updateRotation = true;
     }
 
     #endregion

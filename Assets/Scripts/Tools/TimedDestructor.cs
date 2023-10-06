@@ -9,7 +9,7 @@ public class TimedDestructor : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The amount of time until destruction")]
-    [SerializeField] private float _timeTilDestroy = 5;
+    [SerializeField] private float timeTilDestroy = 5;
 
     #endregion
 
@@ -18,7 +18,7 @@ public class TimedDestructor : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, _timeTilDestroy);
+        Destroy(this.gameObject, timeTilDestroy);
     }
 
     #endregion

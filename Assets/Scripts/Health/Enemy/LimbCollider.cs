@@ -7,7 +7,7 @@ public class LimbCollider : MonoBehaviour
     #region Variables
 
     [Tooltip("The multiplier of this specific limb")]
-    [SerializeField] private float _damageMultiplier = 1;
+    [SerializeField] private float damageMultiplier = 1;
 
     // Reference to the overall enemy health
     EnemyHealth health;
@@ -36,7 +36,7 @@ public class LimbCollider : MonoBehaviour
     {
         if (health != null)
         {
-            health.TakeDamage(damage, _damageMultiplier);
+            health.TakeDamage(damage, damageMultiplier);
 
             if (dismember)
             {

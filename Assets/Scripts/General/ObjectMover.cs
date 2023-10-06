@@ -9,30 +9,30 @@ public class ObjectMover : MonoBehaviour
     [Header("References")]
 
     [Tooltip("The parent of the points this object will be bouncing between")]
-    [SerializeField] private Transform _pointsParent;
+    [SerializeField] private Transform pointsParent;
 
     [Header("Options")]
 
     [Tooltip("The time it takes a target to move from point to point")]
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float speed = 5f;
 
     [Tooltip("Should the points create a full loop? (if not, it back tracks)")]
-    [SerializeField] private bool _isFullLoop = true;
+    [SerializeField] private bool isFullLoop = true;
 
     [Tooltip("The time to wait at every point")]
-    [SerializeField] private float _waitTime = 2f;
+    [SerializeField] private float waitTime = 2f;
 
     // The actual list of points
-    private List<Vector3> _points = new List<Vector3>();
+    private List<Vector3> points = new List<Vector3>();
 
     // The current point (index) in the list
-    private int _currPoint = 0;
+    private int currPoint = 0;
 
     // The direction of the point flow (1 for forward, -1 for backward)
-    private int _direction = 1;
+    private int direction = 1;
 
     // The current timer of waiting at a point
-    private float _currWaitTimer = 0;
+    private float currWaitTimer = 0;
 
     #endregion
 
@@ -41,28 +41,28 @@ public class ObjectMover : MonoBehaviour
     private void Awake()
     {
         // Populate the points list
-        foreach (Transform point in _pointsParent)
+        foreach (Transform point in pointsParent)
         {
-            _points.Add(point.position);
+            points.Add(point.position);
         }
     }
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _points[_currPoint]) > 0.2f)
+        if (Vector3.Distance(transform.position, points[currPoint]) > 0.2f)
         {
-            float step = _speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, _points[_currPoint], step);
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, points[currPoint], step);
         }
         else
         {
             // Wait at point!
-            if (_currWaitTimer > _waitTime)
+            if (currWaitTimer > waitTime)
             {
                 NextPoint();
             }
 
-            _currWaitTimer += Time.deltaTime;
+            currWaitTimer += Time.deltaTime;
         }
     }
 
@@ -71,27 +71,27 @@ public class ObjectMover : MonoBehaviour
     /// </summary>
     private void NextPoint()
     {
-        if (_isFullLoop)
+        if (isFullLoop)
         {
-            _currPoint = _currPoint >= _points.Count - 1 ? 0 : _currPoint + 1;
+            currPoint = currPoint >= points.Count - 1 ? 0 : currPoint + 1;
         }
         else
         {
             // Determines the direction of the current track
 
-            if (_currPoint >= _points.Count - 1)
+            if (currPoint >= points.Count - 1)
             {
-                _direction = -1;
+                direction = -1;
             }
-            else if (_currPoint <= 0)
+            else if (currPoint <= 0)
             {
-                _direction = 1;
+                direction = 1;
             }
 
-            _currPoint += _direction;
+            currPoint += direction;
         }
 
-        _currWaitTimer = 0;
+        currWaitTimer = 0;
     }
 
     #endregion

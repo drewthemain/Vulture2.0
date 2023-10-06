@@ -19,101 +19,101 @@ public class Enemy : MonoBehaviour
     [Header("References")]
 
     [Tooltip("Reference to this enemy's normal mesh")]
-    public GameObject _mesh;
+    public GameObject mesh;
 
     [Tooltip("Reference to this enemy's ragdoll GO")]
-    public GameObject _ragdoll;
+    public GameObject ragdoll;
 
     [Header("Detection Debug")]
 
     [Tooltip("The current state of the enemy")]
-    [SerializeField] protected EnemyStates _state;
+    [SerializeField] protected EnemyStates state;
 
     [Tooltip("Is the player in sight?")]
-    [SerializeField] protected bool _playerInSight = false;
+    [SerializeField] protected bool playerInSight = false;
 
     [Header("Detection")]
 
     [Tooltip("The distance from the player to trigger an attack state")]
-    [SerializeField] protected float _inRangeProximity = 8f;
+    [SerializeField] protected float inRangeProximity = 8f;
 
     [Tooltip("The distance in which the enemy can 'see' the player")]
-    [SerializeField] protected float _sightDistance = 30f;
+    [SerializeField] protected float sightDistance = 30f;
 
     [Tooltip("The layers that will be allowed in the player detection raycast")]
-    [SerializeField] protected LayerMask _sightMask;
+    [SerializeField] protected LayerMask sightMask;
 
     [Header("Movement")]
 
     [Tooltip("Should the enemy slow down once the player is spotted?")]
-    [SerializeField] protected bool _slowWhenPlayerSpotted = true;
+    [SerializeField] protected bool slowWhenPlayerSpotted = true;
 
     [Tooltip("If slowed, this value will be the speed reduction percentage")]
     [Range(0, 1)]
-    [SerializeField] protected float _speedReductionPercentage = 0.5f;
+    [SerializeField] protected float speedReductionPercentage = 0.5f;
 
     [Tooltip("Should the enemy speed up the further they are from the player?")]
-    [SerializeField] protected bool _proximitySpeedBoost = true;
+    [SerializeField] protected bool proximitySpeedBoost = true;
 
     [Tooltip("If out of range, this value will be the speed boost percentage")]
     [Range(0, 1)]
-    [SerializeField] protected float _speedBoostPercentage = 0.5f;
+    [SerializeField] protected float speedBoostPercentage = 0.5f;
 
     [Tooltip("The range of time in between the enemy determining if it should respawn")]
-    [SerializeField] protected float _respawnCheckBuffer = 5f;
+    [SerializeField] protected float respawnCheckBuffer = 5f;
 
     [Header("Room")]
 
     [Tooltip("The layermask for room detection")]
-    [SerializeField] protected LayerMask _roomMask;
+    [SerializeField] protected LayerMask roomMask;
 
     [Tooltip("The speed in which an enemy will be pulled out of the room")]
-    [SerializeField] protected float _pullSpeed = 300f;
+    [SerializeField] protected float pullSpeed = 300f;
 
     [Tooltip("The slowdown multiplier after an enemy is pulled out")]
     [Range(0, 1)]
-    [SerializeField] protected float _pullSlowdownMultiplier = 0.5f;
+    [SerializeField] protected float pullSlowdownMultiplier = 0.5f;
 
     [Tooltip("The time after sucked until destroy")]
-    [SerializeField] protected float _timeTilDeathAfterSuck = 5f;
+    [SerializeField] protected float timeTilDeathAfterSuck = 5f;
 
     // Reference to the player GameObject
-    protected Transform _playerRef;
+    protected Transform playerRef;
 
     // Reference to the NavMesh Agent
-    protected NavMeshAgent _agent;
+    protected NavMeshAgent agent;
 
     // The target transform reference for pathing
-    protected Transform _target;
+    protected Transform target;
 
     // Reference to this enemies weapon script
-    protected EnemyWeapon _weapon;
+    protected EnemyWeapon weapon;
 
-    protected Rigidbody _body;
+    protected Rigidbody body;
 
-    protected Animator _anim;
+    protected Animator anim;
 
     // Reference to the room this enemy is within
-    public Room _currentRoom;
+    public Room currentRoom;
 
     // Reference to the base speed of the enemy
-    protected float _baseSpeed = 0;
+    protected float baseSpeed = 0;
 
     // Reference to the current speed of the enemy
-    protected float _currentSpeed = 0;
+    protected float currentSpeed = 0;
 
     // Is this enemy currently mutable in terms of speed/actions?
-    protected bool _mutable = true;
+    protected bool mutable = true;
 
     // Updated distance from player
-    protected float _distanceFromPlayer = 0;
+    protected float distanceFromPlayer = 0;
 
     // An integer check for aiding the suck process
-    private int _pullChecks = 0;
+    private int pullChecks = 0;
 
-    private float _pullTimer = 0f;
+    private float pullTimer = 0f;
 
-    private float _respawnTimer = 0f;
+    private float respawnTimer = 0f;
 
     #endregion
 
@@ -125,57 +125,57 @@ public class Enemy : MonoBehaviour
     /// <param name="newState">The new state of this enemy</param>
     public virtual void ChangeState(EnemyStates newState)
     {
-        _state = newState;
+        state = newState;
 
-        if (_agent && _agent.enabled == false)
+        if (agent && agent.enabled == false)
         {
-            _agent.enabled = true;
-            _body.isKinematic = true;
+            agent.enabled = true;
+            body.isKinematic = true;
         }
 
         switch (newState)
         {
             case EnemyStates.OutOfRange:
 
-                if (_agent && _proximitySpeedBoost)
+                if (agent && proximitySpeedBoost)
                 {
-                    _agent.speed = _baseSpeed + (_baseSpeed * _speedBoostPercentage);
+                    agent.speed = baseSpeed + (baseSpeed * speedBoostPercentage);
                 }
 
-                _mutable = true;
+                mutable = true;
                 break;
             case EnemyStates.InRange:
 
-                if (_agent)
+                if (agent)
                 {
-                    _agent.speed = _baseSpeed;
+                    agent.speed = baseSpeed;
                 }
 
-                _mutable = true;
+                mutable = true;
                 break;
             case EnemyStates.NoGrav:
 
                 // Turn off navmesh when floating
-                _agent.enabled = false;
+                agent.enabled = false;
 
                 // Turn on rigidbody
-                _body.isKinematic = false;
+                body.isKinematic = false;
 
                 gameObject.layer = LayerMask.NameToLayer("Sucked");
 
                 // Set velocity toward the window
-                if (_currentRoom.GetBrokenWindow() != null)
+                if (currentRoom.GetBrokenWindow() != null)
                 {
-                    Vector3 targetDir = (_currentRoom.GetBrokenWindow()._pullTarget.transform.position - transform.position).normalized;
-                    _body.velocity = targetDir * _pullSpeed * 10;
+                    Vector3 targetDir = (currentRoom.GetBrokenWindow().pullTarget.transform.position - transform.position).normalized;
+                    body.velocity = targetDir * pullSpeed * 10;
 
                     Ragdollize("Sucked");
                 }
 
-                _mutable = false;
+                mutable = false;
                 break;
             case EnemyStates.Covering:
-                _mutable = false;
+                mutable = false;
                 break;
         }
     }
@@ -183,20 +183,20 @@ public class Enemy : MonoBehaviour
     protected virtual void Awake()
     {
         // Initial reference grabbing
-        _state = EnemyStates.OutOfRange;
-        _agent = GetComponent<NavMeshAgent>();
-        _weapon = GetComponent<EnemyWeapon>();
-        _body = GetComponent<Rigidbody>();
-        _anim = GetComponentInChildren<Animator>();
+        state = EnemyStates.OutOfRange;
+        agent = GetComponent<NavMeshAgent>();
+        weapon = GetComponent<EnemyWeapon>();
+        body = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
 
-        _baseSpeed = _agent.speed;
+        baseSpeed = agent.speed;
 
-        if (!_agent)
+        if (!agent)
         {
             Debug.LogWarning($"Enemy {this.transform.name} is missing a NavMeshAgent component!");
         }
 
-        if (!_weapon)
+        if (!weapon)
         {
             Debug.LogWarning($"Enemy {this.transform.name} is missing a weapon component!");
         }
@@ -207,17 +207,17 @@ public class Enemy : MonoBehaviour
         // Grabs player reference AFTER it's set in GameManager
         if (GameManager.instance)
         {
-            _playerRef = GameManager.instance.GetPlayerReference();
+            playerRef = GameManager.instance.GetPlayerReference();
         }
     }
 
     protected virtual void Update()
     {
-        if (_playerRef)
+        if (playerRef)
         {
-            _distanceFromPlayer = Vector3.Distance(transform.position, _playerRef.position);
+            distanceFromPlayer = Vector3.Distance(transform.position, playerRef.position);
 
-            switch (_state)
+            switch (state)
             {
                 case EnemyStates.OutOfRange:
                     CheckProximity();
@@ -225,7 +225,7 @@ public class Enemy : MonoBehaviour
                 case EnemyStates.InRange:
                     CheckProximity();
 
-                    if (!_playerInSight)
+                    if (!playerInSight)
                     {
                         ChangeState(EnemyStates.OutOfRange);
                     }
@@ -233,13 +233,13 @@ public class Enemy : MonoBehaviour
                     break;
                 case EnemyStates.NoGrav:
 
-                    if (_pullTimer > _timeTilDeathAfterSuck)
+                    if (pullTimer > timeTilDeathAfterSuck)
                     {
-                        _pullTimer = -1000f;
+                        pullTimer = -1000f;
                         GetComponent<EnemyHealth>().TakeDamage(1000, -1);
                     }
 
-                    _pullTimer += Time.deltaTime;
+                    pullTimer += Time.deltaTime;
 
                     break;
                 case EnemyStates.Covering:
@@ -248,7 +248,7 @@ public class Enemy : MonoBehaviour
             }
 
             // Checks for player raycast
-            if (!_playerInSight)
+            if (!playerInSight)
             {
                 if (CheckSightline())
                 {
@@ -271,15 +271,15 @@ public class Enemy : MonoBehaviour
     /// <param name="playerSpotted">Is the player currently spotted?</param>
     protected virtual void TogglePlayerSightline(bool playerSpotted)
     {
-        _playerInSight = playerSpotted;
+        playerInSight = playerSpotted;
         
-        if (_slowWhenPlayerSpotted && _mutable)
+        if (slowWhenPlayerSpotted && mutable)
         {
-            _agent.speed = !playerSpotted ? _baseSpeed : (_baseSpeed - (_baseSpeed * _speedReductionPercentage));
+            agent.speed = !playerSpotted ? baseSpeed : (baseSpeed - (baseSpeed * speedReductionPercentage));
 
-            if (_proximitySpeedBoost && _state == EnemyStates.OutOfRange)
+            if (proximitySpeedBoost && state == EnemyStates.OutOfRange)
             {
-                _agent.speed += _baseSpeed * _speedBoostPercentage;
+                agent.speed += baseSpeed * speedBoostPercentage;
             }
         }
     }
@@ -290,22 +290,22 @@ public class Enemy : MonoBehaviour
     protected virtual void CheckProximity()
     {
         // Depressurize check
-        if (_currentRoom != null)
+        if (currentRoom != null)
         {
-            if (_currentRoom.GetPressureStatus())
+            if (currentRoom.GetPressureStatus())
             {
                 ChangeState(EnemyStates.NoGrav);
                 return;
             }
         }
 
-        switch (_state)
+        switch (state)
         {
             case EnemyStates.OutOfRange:
 
                 CheckIfStuck();
 
-                if (_distanceFromPlayer <= _inRangeProximity && (_playerInSight || _distanceFromPlayer < 2f))
+                if (distanceFromPlayer <= inRangeProximity && (playerInSight || distanceFromPlayer < 2f))
                 {
                     ChangeState(EnemyStates.InRange);
                 }
@@ -313,7 +313,7 @@ public class Enemy : MonoBehaviour
 
             case EnemyStates.InRange:
 
-                if (_distanceFromPlayer > _inRangeProximity)
+                if (distanceFromPlayer > inRangeProximity)
                 {
                     ChangeState(EnemyStates.OutOfRange);
                 }
@@ -321,7 +321,7 @@ public class Enemy : MonoBehaviour
 
             case EnemyStates.Covering:
 
-                if (_distanceFromPlayer > (_inRangeProximity * 1.5f))
+                if (distanceFromPlayer > (inRangeProximity * 1.5f))
                 {
                     ChangeState(EnemyStates.OutOfRange);
                 }
@@ -336,10 +336,10 @@ public class Enemy : MonoBehaviour
     protected virtual bool CheckSightline()
     {
         RaycastHit hit;
-        Vector3 dir = _playerRef.position - this.transform.position;
+        Vector3 dir = playerRef.position - this.transform.position;
 
         // Simple raycast
-        if (Physics.Raycast(transform.position, dir, out hit, _sightDistance, _sightMask))
+        if (Physics.Raycast(transform.position, dir, out hit, sightDistance, sightMask))
         {
             if (hit.transform.CompareTag("Player"))
             {
@@ -355,9 +355,9 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Room"))
         {
             // If the enemy doesn't have a current room OR the found room is different, set as new room
-            if (_currentRoom == null || other.GetComponent<Room>().GetRoomID() != _currentRoom.GetRoomID())
+            if (currentRoom == null || other.GetComponent<Room>().GetRoomID() != currentRoom.GetRoomID())
             {
-                _currentRoom = other.GetComponent<Room>();
+                currentRoom = other.GetComponent<Room>();
             }
         }
     }
@@ -366,16 +366,16 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Room"))
         {
-            _currentRoom = null;
+            currentRoom = null;
 
-            if (_state == EnemyStates.NoGrav)
+            if (state == EnemyStates.NoGrav)
             {
-                _pullChecks++;
+                pullChecks++;
 
-                if (_pullChecks > 1)
+                if (pullChecks > 1)
                 {
-                    _body.velocity *= _pullSlowdownMultiplier;
-                    _pullTimer = 0;
+                    body.velocity *= pullSlowdownMultiplier;
+                    pullTimer = 0;
                 }
             }
         }
@@ -387,21 +387,21 @@ public class Enemy : MonoBehaviour
     /// <returns>The current enemy state</returns>
     public EnemyStates GetState()
     {
-        return _state;
+        return state;
     }
 
     public void Ragdollize(string layer = "")
     {
-        _mesh.SetActive(false);
-        _ragdoll.SetActive(true);
+        mesh.SetActive(false);
+        ragdoll.SetActive(true);
 
-        _ragdoll.transform.parent = this.transform.parent;
+        ragdoll.transform.parent = this.transform.parent;
 
-        _ragdoll.GetComponentInChildren<SkinnedMeshRenderer>().updateWhenOffscreen = true;
+        ragdoll.GetComponentInChildren<SkinnedMeshRenderer>().updateWhenOffscreen = true;
 
-        if (GameManager.instance._isLowGrav)
+        if (GameManager.instance.isLowGrav)
         {
-            foreach (Rigidbody body in _ragdoll.GetComponentsInChildren<Rigidbody>())
+            foreach (Rigidbody body in ragdoll.GetComponentsInChildren<Rigidbody>())
             {
                 body.useGravity = false;
 
@@ -418,19 +418,19 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void CheckIfStuck()
     {
-        if ((_currentRoom && !_currentRoom.isActiveRoom()) && !_playerInSight)
+        if ((currentRoom && !currentRoom.isActiveRoom()) && !playerInSight)
         {
-            _respawnTimer += Time.deltaTime;
+            respawnTimer += Time.deltaTime;
 
-            if (_respawnTimer >= _respawnCheckBuffer)
+            if (respawnTimer >= respawnCheckBuffer)
             {
-                _respawnTimer = 0;
+                respawnTimer = 0;
                 Respawn();
             }
         }
         else
         {
-            _respawnTimer = 0;
+            respawnTimer = 0;
         }
     }
 
@@ -440,9 +440,9 @@ public class Enemy : MonoBehaviour
     public void Respawn()
     {
         ChangeState(EnemyStates.Stop);
-        SmartMap.instance.RespawnEnemy(GetComponent<EnemyHealth>()._enemyType);
+        SmartMap.instance.RespawnEnemy(GetComponent<EnemyHealth>().enemyType);
 
-        Debug.Log($"Respawning, stuck in room {(_currentRoom ? _currentRoom.GetRoomID() : "hallway")}".Color("red").Italic());
+        Debug.Log($"Respawning, stuck in room {(currentRoom ? currentRoom.GetRoomID() : "hallway")}".Color("red").Italic());
 
         Destroy(this.gameObject);
     }

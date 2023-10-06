@@ -473,9 +473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca18c38bda9ef1e499f86bf3b2ff16ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyType: 0
-  _maxSpawnBuffer: 3
-  _enemies:
+  enemyType: 0
+  maxSpawnBuffer: 3
+  enemies:
   - {fileID: 3115551479759441371, guid: 6013de50a191d864b8e9b31ebc2a00d5, type: 3}
   - {fileID: 8169422812659762238, guid: e40d5e784fbece2458f6f6a7964ff73a, type: 3}
 --- !u!1 &4939854844668315738

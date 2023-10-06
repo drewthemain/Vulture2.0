@@ -10,19 +10,19 @@ public class Prop : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The amount of force this prop will rise upon low gravity")]
-    [SerializeField] private float _riseForce = 50;
+    [SerializeField] private float riseForce = 50;
 
     [Tooltip("The amount of force this prop will take when shot")]
-    [SerializeField] private float _shotForce = 100;
+    [SerializeField] private float shotForce = 100;
 
     [Tooltip("The speed this prop must be going to damage enemies")]
-    [SerializeField] private float _damageSpeed = 5;
+    [SerializeField] private float damageSpeed = 5;
 
     // Reference to this rigidbody
-    private Rigidbody _body;
+    private Rigidbody body;
 
     // Is the object currently floating?
-    private bool _isLowGrav = false;
+    private bool isLowGrav = false;
 
     #endregion
 
@@ -40,8 +40,8 @@ public class Prop : MonoBehaviour
 
     private void Awake()
     {
-        _body = GetComponent<Rigidbody>();
-        _isLowGrav = false;
+        body = GetComponent<Rigidbody>();
+        isLowGrav = false;
     }
 
     /// <summary>
@@ -49,15 +49,15 @@ public class Prop : MonoBehaviour
     /// </summary>
     public void ToggleFloat()
     {
-        _isLowGrav = !_isLowGrav;
+        isLowGrav = !isLowGrav;
 
-        _body.useGravity = !_isLowGrav;
+        body.useGravity = !isLowGrav;
 
         float limiter = Mathf.Max(new float[] { transform.localScale.x, transform.localScale.y, transform.localScale.z });
 
-        if (_isLowGrav)
+        if (isLowGrav)
         {
-            _body.AddForce(Vector3.up * _riseForce * (1 / limiter));
+            body.AddForce(Vector3.up * riseForce * (1 / limiter));
         }
     }
     
@@ -67,16 +67,16 @@ public class Prop : MonoBehaviour
     /// <param name="dir">The direction the shot took place</param>
     public void Pushed(Vector3 dir)
     {
-        _body.AddForce(dir * _shotForce);
+        body.AddForce(dir * shotForce);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isLowGrav)
+        if (isLowGrav)
         {
-            if (collision.transform.GetComponent<EnemyHealth>() && _body.velocity.sqrMagnitude >= _damageSpeed)
+            if (collision.transform.GetComponent<EnemyHealth>() && body.velocity.sqrMagnitude >= damageSpeed)
             {
-                collision.transform.GetComponent<EnemyHealth>().TakeDamage(Mathf.Ceil(_body.velocity.sqrMagnitude - _damageSpeed));
+                collision.transform.GetComponent<EnemyHealth>().TakeDamage(Mathf.Ceil(body.velocity.sqrMagnitude - damageSpeed));
             }
         }
     }

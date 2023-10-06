@@ -11,16 +11,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Reference to the player transform
-    private Transform _playerTransform;
+    private Transform playerTransform;
 
     // Is the game currently paused?
-    private bool _isPaused = false;
+    private bool isPaused = false;
 
     // Is the game currently in low grav?
-    public bool _isLowGrav = false;
+    public bool isLowGrav = false;
 
     // The number of broken windows
-    private List<Window> _brokenWindowPool = new List<Window>();
+    private List<Window> brokenWindowPool = new List<Window>();
 
     public delegate void GravChange();
     public static event GravChange OnLowGrav;
@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour
             instance = this;
 
             // Initial player grab (can be changed later for a more logical approach)
-            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-            if (_playerTransform == null)
+            if (playerTransform == null)
             {
                 Debug.LogWarning("Missing a player in the scene!");
             }
@@ -59,45 +59,45 @@ public class GameManager : MonoBehaviour
         {
             if (window)
             {
-                _brokenWindowPool.Add(window);
+                brokenWindowPool.Add(window);
 
-                if (_brokenWindowPool.Count == 1 && !_isLowGrav)
+                if (brokenWindowPool.Count == 1 && !isLowGrav)
                 {
-                    _isLowGrav = true;
+                    isLowGrav = true;
                     OnLowGrav?.Invoke();
                 }
 
                 return;
             }
 
-            _isLowGrav = true;
+            isLowGrav = true;
             OnLowGrav?.Invoke();
         }
         else
         {
             if (window)
             {
-                _brokenWindowPool.Remove(window);
+                brokenWindowPool.Remove(window);
             }
         }
     }
 
     public void ResetGravity()
     {
-        foreach (Window window in _brokenWindowPool)
+        foreach (Window window in brokenWindowPool)
         {
             window.ForceClose();
         }
 
-        _brokenWindowPool.Clear();
+        brokenWindowPool.Clear();
 
-        _isLowGrav = false;
+        isLowGrav = false;
         OnLowGrav?.Invoke();
     }
 
     public Window GetPullingWindow()
     {
-        return _brokenWindowPool.Count > 0 ? _brokenWindowPool[0] : null;
+        return brokenWindowPool.Count > 0 ? brokenWindowPool[0] : null;
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     /// <returns>Player transform</returns>
     public Transform GetPlayerReference()
     {
-        return _playerTransform;
+        return playerTransform;
     }
 
     /// <summary>
@@ -140,10 +140,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Pause()
     {
-        _isPaused = true;
+        isPaused = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
-        _playerTransform.GetComponent<PlayerController>().DisableCamera();
+        playerTransform.GetComponent<PlayerController>().DisableCamera();
     }
 
     /// <summary>
@@ -151,10 +151,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Unpause()
     {
-        _isPaused = false;
+        isPaused = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
-        _playerTransform.GetComponent<PlayerController>().EnableCamera();
+        playerTransform.GetComponent<PlayerController>().EnableCamera();
     }
 
     #endregion

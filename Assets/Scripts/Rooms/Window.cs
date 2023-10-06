@@ -9,24 +9,24 @@ public class Window : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The material this window is while broken")]
-    [SerializeField] private Material _normalMaterial;
+    [SerializeField] private Material normalMaterial;
 
     [Tooltip("The material this window is while broken")]
-    [SerializeField] private Material _brokenMaterial;
+    [SerializeField] private Material brokenMaterial;
 
     [Tooltip("The target for the enemy pull when destroyed")]
-    public GameObject _pullTarget;
+    public GameObject pullTarget;
 
     [Tooltip("The amount of time the room will remain depressurized")]
-    [SerializeField] private float _depressurizeTime = 15f;
+    [SerializeField] private float depressurizeTime = 15f;
 
-    private Room _parentRoom;
-    private bool _broken = false;
-    private CanisterHealth _canister;
-    private GameObject _glass;
+    private Room parentRoom;
+    private bool broken = false;
+    private CanisterHealth canister;
+    private GameObject glass;
 
     // The timer for the depressurize countdown
-    private float _depressureTimer = 0;
+    private float depressureTimer = 0;
 
     #endregion
 
@@ -36,24 +36,24 @@ public class Window : MonoBehaviour
     {
         if (GetComponentInParent<Room>())
         {
-            _parentRoom = GetComponentInParent<Room>();
+            parentRoom = GetComponentInParent<Room>();
         }
 
-        _canister = GetComponentInChildren<CanisterHealth>();
-        _glass = transform.GetChild(0).gameObject;
+        canister = GetComponentInChildren<CanisterHealth>();
+        glass = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
-        if (_broken)
+        if (broken)
         {
             // Timer for the initial depressurization suck
-            _depressureTimer += Time.deltaTime;
+            depressureTimer += Time.deltaTime;
 
-            if (_depressureTimer > _depressurizeTime)
+            if (depressureTimer > depressurizeTime)
             {
-                _broken = false;
-                _depressureTimer = 0;
+                broken = false;
+                depressureTimer = 0;
 
                 Pressurize(true);
             }
@@ -65,20 +65,20 @@ public class Window : MonoBehaviour
     /// </summary>
     public void Depressurize()
     {
-        _broken = true;
+        broken = true;
 
-        _glass.GetComponent<Renderer>().enabled = false;
+        glass.GetComponent<Renderer>().enabled = false;
 
-        if (_parentRoom)
+        if (parentRoom)
         {
-            _parentRoom.Depressurize(this);
+            parentRoom.Depressurize(this);
         }
     }
 
     public void ForceClose()
     {
-        _broken = false;
-        _depressureTimer = 0;
+        broken = false;
+        depressureTimer = 0;
 
         Pressurize(false);
     }
@@ -88,8 +88,8 @@ public class Window : MonoBehaviour
     /// </summary>
     public void Pressurize(bool toggleGrav)
     {
-        _glass.GetComponent<Renderer>().enabled = true;
-        _glass.GetComponent<Renderer>().material = _brokenMaterial;
+        glass.GetComponent<Renderer>().enabled = true;
+        glass.GetComponent<Renderer>().material = brokenMaterial;
 
         if (toggleGrav)
         {
@@ -99,10 +99,10 @@ public class Window : MonoBehaviour
 
     public void FixWindow()
     {
-        if (!_canister.gameObject.activeSelf)
+        if (!canister.gameObject.activeSelf)
         {
-            _glass.GetComponent<Renderer>().material = _normalMaterial;
-            _canister.gameObject.SetActive(true);
+            glass.GetComponent<Renderer>().material = normalMaterial;
+            canister.gameObject.SetActive(true);
         }
     }
 

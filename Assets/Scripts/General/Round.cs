@@ -10,12 +10,12 @@ public class Round : ScriptableObject
     [Header("Segment Values")]
 
     [Tooltip("The segments that make up this round")]
-    public List<Segment> _segments;
+    public List<Segment> segments;
 
     [Header("Options")]
 
     [Tooltip("The max amount of enemies that can be spawned at one time")]
-    public int _maxEnemiesSpawned = 10;
+    public int maxEnemiesSpawned = 10;
 
     #endregion
 
@@ -29,7 +29,7 @@ public class Round : ScriptableObject
     {
         int total = 0;
 
-        foreach (Segment segment in _segments)
+        foreach (Segment segment in segments)
         {
             total += segment.GetTotalEnemies();
         }

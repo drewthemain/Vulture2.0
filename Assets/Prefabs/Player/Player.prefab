@@ -706,8 +706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eced168f7d8d743bffcf277d16b179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxHealth: 100
+  currentHealth: 100
   passiveHealingIncrement: 1
   passiveHealTickDelay: 0.5
   inCombatTime: 3

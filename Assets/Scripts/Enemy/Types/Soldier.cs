@@ -25,62 +25,62 @@ public class Soldier : Enemy
     [Header("In Range Behavior")]
 
     [Tooltip("The current in range action of the soldier")]
-    [SerializeField] private InRangeActions _inRangeAction = InRangeActions.StrafeLeft;
+    [SerializeField] private InRangeActions inRangeAction = InRangeActions.StrafeLeft;
 
     [Tooltip("The range in which the player is too close to the enemy")]
-    [SerializeField] private float _closestDesiredRange = 10f;
+    [SerializeField] private float closestDesiredRange = 10f;
 
     [Tooltip("The max distance a strafe can be performed")]
     [SerializeField] private float maxStrafeDistance = 10;
 
     [Tooltip("The time constraints of which a strafe can be performed. X is bottom constraint, Y is top")]
-    [SerializeField] private Vector2 _strafeTimeConstraints;
+    [SerializeField] private Vector2 strafeTimeConstraints;
 
     [Tooltip("The time constraints of which a charge can be performed. X is bottom constraint, Y is top")]
-    [SerializeField] private Vector2 _chargeTimeConstraints;
+    [SerializeField] private Vector2 chargeTimeConstraints;
 
     [Tooltip("The time constraints of which a stand can be performed. X is bottom constraint, Y is top")]
-    [SerializeField] private Vector2 _standTimeConstraints;
+    [SerializeField] private Vector2 standTimeConstraints;
 
     [Tooltip("Should this enemy shoot while moving?")]
-    [SerializeField] private bool _shootWhileMoving = true;
+    [SerializeField] private bool shootWhileMoving = true;
 
     [Header("Cover Behavior")]
 
     [Tooltip("The current in range action of the soldier")]
-    [SerializeField] private CoverActions _coverAction = CoverActions.Shoot;
+    [SerializeField] private CoverActions coverAction = CoverActions.Shoot;
 
     [Tooltip("Initial chances of recieveing a cover action (should be small, grows over time")]
     [Range(0, 1)]
-    [SerializeField] private float _initialCoverOdds = 0.05f;
+    [SerializeField] private float initialCoverOdds = 0.05f;
 
     [Tooltip("Growth to chances of recieveing a cover after every action")]
     [Range(0, 0.1f)]
-    [SerializeField] private float _coverOddsGrowth = 0.01f;
+    [SerializeField] private float coverOddsGrowth = 0.01f;
 
     [Tooltip("The time constraints of which a cover can be performed. X is bottom constraint, Y is top")]
-    [SerializeField] private Vector2 _coverTimeConstraints;
+    [SerializeField] private Vector2 coverTimeConstraints;
 
     // The target position reference for pathing (strafing)
-    private Vector3 _targetPosition;
+    private Vector3 targetPosition;
 
     // The timer for each action
-    private float _actionTimer = 0;
+    private float actionTimer = 0;
 
     // The point in which a cover will be stopped
-    private float _actionLimit = 0;
+    private float actionLimit = 0;
 
     // An additional timer for more complex actions
-    private float _additionalTimer = 0;
+    private float additionalTimer = 0;
 
     // An additional limit for more complex actions
-    private float _additionalLimit = 0;
+    private float additionalLimit = 0;
 
     // Have the cover actions been started?
-    private bool _coverActionsStarted = false;
+    private bool coverActionsStarted = false;
 
     // The current odds of choosing a cover
-    private float _coverOdds = 0.05f;
+    private float coverOdds = 0.05f;
 
     #endregion
 
@@ -93,16 +93,16 @@ public class Soldier : Enemy
     public override void ChangeState(EnemyStates newState)
     {
         // Resets (clears out) the path of the navmesh for every change
-        if (_agent != null && _agent.enabled)
+        if (agent != null && agent.enabled)
         {
-            _agent.ResetPath();
-            _target = null;
-            _targetPosition = Vector3.zero;
-            _agent.updateRotation = false;
+            agent.ResetPath();
+            target = null;
+            targetPosition = Vector3.zero;
+            agent.updateRotation = false;
 
             // Resets all timers
-            _actionTimer = 0;
-            _actionLimit = 0;
+            actionTimer = 0;
+            actionLimit = 0;
         }
 
         base.ChangeState(newState);
@@ -112,11 +112,11 @@ public class Soldier : Enemy
             case EnemyStates.OutOfRange:
 
                 // Initial following of the player
-                if (_agent)
+                if (agent)
                 {
-                    _target = _playerRef;
-                    _agent.SetDestination(_target.position);
-                    _anim.SetFloat("Speed", 1);
+                    target = playerRef;
+                    agent.SetDestination(target.position);
+                    anim.SetFloat("Speed", 1);
                 }
 
                 break;
@@ -124,62 +124,62 @@ public class Soldier : Enemy
             case EnemyStates.InRange:
 
                 // Turn firing back on if we weren't shooting while moving
-                if (_weapon && !_shootWhileMoving && _playerInSight)
+                if (weapon && !shootWhileMoving && playerInSight)
                 {
-                    _weapon.ToggleFiring(true);
+                    weapon.ToggleFiring(true);
                 }
 
-                _anim.SetFloat("Speed", 1f);
-                _actionTimer = 0;
+                anim.SetFloat("Speed", 1f);
+                actionTimer = 0;
 
                 break;
 
             case EnemyStates.NoGrav:
 
-                if (_weapon)
+                if (weapon)
                 {
-                    _weapon.ToggleFiring(false);
+                    weapon.ToggleFiring(false);
                 }
 
                 break;
             case EnemyStates.Covering:
 
                 // Query cover from room and move
-                if (_agent)
+                if (agent)
                 {
-                    _anim.SetFloat("Speed", 1f);
+                    anim.SetFloat("Speed", 1f);
 
-                    if (_currentRoom == null)
+                    if (currentRoom == null)
                     {
                         ChangeState(EnemyStates.InRange);
                         return;
                     }
 
-                    _target = _currentRoom.QueryCover(_playerRef, this.transform, _sightMask);
+                    target = currentRoom.QueryCover(playerRef, this.transform, sightMask);
 
-                    if (_target == null)
+                    if (target == null)
                     {
                         ChangeState(EnemyStates.InRange);
                         return;
                     }
 
-                    if (_weapon != null)
+                    if (weapon != null)
                     {
-                        _weapon.ToggleFiring(false);
+                        weapon.ToggleFiring(false);
                     }
 
-                    _agent.speed = _baseSpeed * 1.5f;
-                    _actionLimit = Random.Range(_coverTimeConstraints.x, _coverTimeConstraints.y);
+                    agent.speed = baseSpeed * 1.5f;
+                    actionLimit = Random.Range(coverTimeConstraints.x, coverTimeConstraints.y);
 
                     // Cover action resetting
-                    _coverOdds = _initialCoverOdds;
-                    _coverActionsStarted = false;
-                    _additionalLimit = 0;
-                    _additionalTimer = 0;
+                    coverOdds = initialCoverOdds;
+                    coverActionsStarted = false;
+                    additionalLimit = 0;
+                    additionalTimer = 0;
 
-                    _agent.updateRotation = true;
+                    agent.updateRotation = true;
 
-                    _agent.SetDestination(_target.position);
+                    agent.SetDestination(target.position);
                 }
 
                 break;
@@ -196,17 +196,17 @@ public class Soldier : Enemy
         base.Start();
 
         // Start by targeting the player
-        if (_playerRef)
+        if (playerRef)
         {
-            _target = _playerRef;
+            target = playerRef;
         }
 
-        if (_agent)
+        if (agent)
         {
-            _agent.updateRotation = false;
+            agent.updateRotation = false;
         }
 
-        _coverOdds = _initialCoverOdds;
+        coverOdds = initialCoverOdds;
 
         ChangeState(EnemyStates.OutOfRange);
     }
@@ -215,24 +215,24 @@ public class Soldier : Enemy
     {
         base.Update();
 
-        if (_playerRef)
+        if (playerRef)
         {
-            switch (_state)
+            switch (state)
             {
                 case EnemyStates.OutOfRange:
 
                     // Soldiers chase the player when out of attack proximity
-                    if (_agent != null && _target != null)
+                    if (agent != null && target != null)
                     {
-                        _agent.SetDestination(_playerRef.position - Vector3.up);
-                        LockedLookAt(_playerRef);
+                        agent.SetDestination(playerRef.position - Vector3.up);
+                        LockedLookAt(playerRef);
                     }
 
-                    if (_playerInSight && _distanceFromPlayer < (_inRangeProximity * 2))
+                    if (playerInSight && distanceFromPlayer < (inRangeProximity * 2))
                     {
-                        if (!_weapon.IsFiring())
+                        if (!weapon.IsFiring())
                         {
-                            _weapon.ToggleFiring(true);
+                            weapon.ToggleFiring(true);
                         }
                     }
                     
@@ -248,15 +248,15 @@ public class Soldier : Enemy
                     break;
                 case EnemyStates.Covering:
 
-                    if (!_coverActionsStarted)
+                    if (!coverActionsStarted)
                     {
                         // If done moving to cover, start doing actions!
-                        if (_agent.remainingDistance < 2f)
+                        if (agent.remainingDistance < 2f)
                         {
-                            _coverActionsStarted = true;
-                            _agent.updateRotation = false;
+                            coverActionsStarted = true;
+                            agent.updateRotation = false;
 
-                            _additionalTimer = 0;
+                            additionalTimer = 0;
                             ChangeCoverAction((CoverActions)Random.Range(0, 2));
                         }
                     }
@@ -276,36 +276,36 @@ public class Soldier : Enemy
     /// <param name="newAction">The new cover action to perform</param>
     private void ChangeCoverAction(CoverActions newAction)
     {
-        _coverAction = newAction;
-        _agent.ResetPath();
-        _additionalLimit = 0;
-        _additionalTimer = 0;
+        coverAction = newAction;
+        agent.ResetPath();
+        additionalLimit = 0;
+        additionalTimer = 0;
 
         switch (newAction)
         {
             case CoverActions.Shoot:
 
-                _additionalLimit = Random.Range(_coverTimeConstraints.x / 2, _coverTimeConstraints.y / 2);
-                _anim.SetFloat("Speed", 1f);
+                additionalLimit = Random.Range(coverTimeConstraints.x / 2, coverTimeConstraints.y / 2);
+                anim.SetFloat("Speed", 1f);
 
                 break;
             case CoverActions.Wait:
 
                 // Send the enemy back to cover
-                if (_agent && _target)
+                if (agent && target)
                 {
-                    _agent.SetDestination(_target.position);
-                    _anim.SetFloat("Speed", 1f);
+                    agent.SetDestination(target.position);
+                    anim.SetFloat("Speed", 1f);
                 }
 
                 // Stop firing!
-                if (_weapon && !_playerInSight)
+                if (weapon && !playerInSight)
                 {
-                    _weapon.ToggleFiring(false);
+                    weapon.ToggleFiring(false);
                 }
 
                 // Wait currently has less credence than shoot
-                _additionalLimit = Random.Range(_coverTimeConstraints.x / 4, _coverTimeConstraints.y / 4);
+                additionalLimit = Random.Range(coverTimeConstraints.x / 4, coverTimeConstraints.y / 4);
 
                 break;
         }
@@ -317,72 +317,72 @@ public class Soldier : Enemy
     private void ThinkCover()
     {
         // Timer for the OVERALL cover status
-        if (_actionTimer >= _actionLimit)
+        if (actionTimer >= actionLimit)
         {
-            _currentRoom.ReturnCover(_target);
+            currentRoom.ReturnCover(target);
             ChangeState(EnemyStates.InRange);
         }
 
         // If player rushes enemy in cover, break out of cover
-        if (_distanceFromPlayer < _closestDesiredRange / 2)
+        if (distanceFromPlayer < closestDesiredRange / 2)
         {
-            _currentRoom.ReturnCover(_target);
+            currentRoom.ReturnCover(target);
             ChangeState(EnemyStates.InRange);
             return;
         }
 
         // Timer for the actions within the cover
-        if (_additionalTimer >= _additionalLimit)
+        if (additionalTimer >= additionalLimit)
         {
-            _additionalTimer = 0;
+            additionalTimer = 0;
             ChangeCoverAction((CoverActions)Random.Range(0, 2));
         }
 
-        switch (_coverAction)
+        switch (coverAction)
         {
             case CoverActions.Shoot:
 
-                if (!_playerInSight)
+                if (!playerInSight)
                 {
-                    if (_agent)
+                    if (agent)
                     {
-                        _agent.SetDestination(_playerRef.position);
-                        _anim.SetFloat("Speed", 1f);
+                        agent.SetDestination(playerRef.position);
+                        anim.SetFloat("Speed", 1f);
                     }
                 }
                 else
                 {
                     // If player can be seen, stop and start shooting!
-                    _agent.ResetPath();
+                    agent.ResetPath();
 
-                    if (_weapon)
+                    if (weapon)
                     {
-                        _weapon.ToggleFiring(true);
-                        _anim.SetFloat("Speed", 0);
+                        weapon.ToggleFiring(true);
+                        anim.SetFloat("Speed", 0);
                     }
                 }
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
             case CoverActions.Wait:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
-                if (_target)
+                if (target)
                 {
-                    if (Vector3.Distance(_target.position, transform.position) < 0.5f)
+                    if (Vector3.Distance(target.position, transform.position) < 0.5f)
                     {
-                        if (_playerInSight)
+                        if (playerInSight)
                         {
                             ChangeState(EnemyStates.InRange);
                         }
                         else
                         {
-                            if (_weapon)
+                            if (weapon)
                             {
-                                _weapon.ToggleFiring(false);
-                                _anim.SetFloat("Speed", 0);
+                                weapon.ToggleFiring(false);
+                                anim.SetFloat("Speed", 0);
                             }
                         }
                     }
@@ -391,8 +391,8 @@ public class Soldier : Enemy
                 break;
         }
 
-        _actionTimer += Time.deltaTime;
-        _additionalTimer += Time.deltaTime;
+        actionTimer += Time.deltaTime;
+        additionalTimer += Time.deltaTime;
     }
 
     /// <summary>
@@ -402,29 +402,29 @@ public class Soldier : Enemy
     private void ChangeAction(InRangeActions newAction)
     {
         // Resets all action values
-        _inRangeAction = newAction;
-        _agent.ResetPath();
-        _agent.speed = _baseSpeed;
-        _target = null;
-        _targetPosition = Vector3.zero;
+        inRangeAction = newAction;
+        agent.ResetPath();
+        agent.speed = baseSpeed;
+        target = null;
+        targetPosition = Vector3.zero;
 
-        if (_weapon)
+        if (weapon)
         {
-            _weapon.ToggleFiring(true);
+            weapon.ToggleFiring(true);
         }
 
         // Only add to cover odds under normal circumstances
-        if (_inRangeAction != InRangeActions.Back && _currentRoom != null)
+        if (inRangeAction != InRangeActions.Back && currentRoom != null)
         {
             float coverRoll = Random.Range(0f, 1f);
 
-            if (coverRoll < _coverOdds)
+            if (coverRoll < coverOdds)
             {
                 ChangeState(EnemyStates.Covering);
                 return;
             }
 
-            _coverOdds += _coverOddsGrowth;
+            coverOdds += coverOddsGrowth;
         }
 
         switch (newAction)
@@ -432,52 +432,52 @@ public class Soldier : Enemy
             case InRangeActions.StrafeLeft:
 
                 // Set new target position
-                _actionLimit = Random.Range(_strafeTimeConstraints.x, _strafeTimeConstraints.y);
-                _targetPosition = transform.position + (-transform.right * (Random.Range(5, maxStrafeDistance)));
-                _agent.SetDestination(_targetPosition);
+                actionLimit = Random.Range(strafeTimeConstraints.x, strafeTimeConstraints.y);
+                targetPosition = transform.position + (-transform.right * (Random.Range(5, maxStrafeDistance)));
+                agent.SetDestination(targetPosition);
 
-                _anim.SetFloat("Speed", 1f);
+                anim.SetFloat("Speed", 1f);
 
                 break;
 
             case InRangeActions.StrafeRight:
 
                 // Set new target position
-                _actionLimit = Random.Range(_strafeTimeConstraints.x, _strafeTimeConstraints.y);
-                _targetPosition = transform.position + (transform.right * (Random.Range(5, maxStrafeDistance)));
-                _agent.SetDestination(_targetPosition);
+                actionLimit = Random.Range(strafeTimeConstraints.x, strafeTimeConstraints.y);
+                targetPosition = transform.position + (transform.right * (Random.Range(5, maxStrafeDistance)));
+                agent.SetDestination(targetPosition);
 
-                _anim.SetFloat("Speed", 1f);
+                anim.SetFloat("Speed", 1f);
 
                 break;
 
             case InRangeActions.Charge:
 
                 // Target the player
-                _actionLimit = Random.Range(_chargeTimeConstraints.x, _chargeTimeConstraints.y);
-                _target = _playerRef;
+                actionLimit = Random.Range(chargeTimeConstraints.x, chargeTimeConstraints.y);
+                target = playerRef;
 
-                _anim.SetFloat("Speed", 1f);
+                anim.SetFloat("Speed", 1f);
 
                 break;
 
             case InRangeActions.Stand:
 
-                _actionLimit = Random.Range(_standTimeConstraints.x, _standTimeConstraints.y);
+                actionLimit = Random.Range(standTimeConstraints.x, standTimeConstraints.y);
 
-                _anim.SetFloat("Speed", 0);
+                anim.SetFloat("Speed", 0);
 
                 break;
 
             case InRangeActions.Back:
 
-                _actionLimit = Random.Range(_strafeTimeConstraints.x, _strafeTimeConstraints.y);
+                actionLimit = Random.Range(strafeTimeConstraints.x, strafeTimeConstraints.y);
 
                 // Try to flee backwards, else take cover
-                _targetPosition = GetFleePosition();
-                if (_targetPosition == Vector3.zero)
+                targetPosition = GetFleePosition();
+                if (targetPosition == Vector3.zero)
                 {
-                    if (_currentRoom != null)
+                    if (currentRoom != null)
                     {
                         ChangeState(EnemyStates.Covering);
                         return;
@@ -485,14 +485,14 @@ public class Soldier : Enemy
                     else
                     {
                         // If no cover, strafe instead!
-                        _agent.speed = _baseSpeed * 1.5f;
-                        _targetPosition = transform.position + ((Random.Range(0, 2) * 2 - 1) * transform.right * (Random.Range(5, maxStrafeDistance)));
+                        agent.speed = baseSpeed * 1.5f;
+                        targetPosition = transform.position + ((Random.Range(0, 2) * 2 - 1) * transform.right * (Random.Range(5, maxStrafeDistance)));
                     }
                 }
 
-                _agent.SetDestination(_targetPosition);
+                agent.SetDestination(targetPosition);
 
-                _anim.SetFloat("Speed", -1f);
+                anim.SetFloat("Speed", -1f);
 
                 break;
         }
@@ -505,62 +505,62 @@ public class Soldier : Enemy
     {
         // Checking if the current action is finished
         // If so, start new action
-        if (_actionTimer > _actionLimit)
+        if (actionTimer > actionLimit)
         {
-            _actionTimer = 0;
+            actionTimer = 0;
 
             ChangeAction((InRangeActions)Random.Range(0, 4));
         }
 
         // If the player is too close to enemy, try to back up or find cover
-        if (_distanceFromPlayer < _closestDesiredRange)
+        if (distanceFromPlayer < closestDesiredRange)
         {
-            if (!_coverActionsStarted)
+            if (!coverActionsStarted)
             {
-                _actionTimer = 0;
+                actionTimer = 0;
 
                 ChangeState(EnemyStates.Covering);
             }
         }
 
         // Constant behavior for every action
-        switch (_inRangeAction)
+        switch (inRangeAction)
         {
             case InRangeActions.StrafeLeft:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
             case InRangeActions.StrafeRight:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
 
             case InRangeActions.Charge:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
-                if (_agent && _target != null)
+                if (agent && target != null)
                 {
-                    _agent.SetDestination(_target.position);
+                    agent.SetDestination(target.position);
                 }
 
                 break;
             case InRangeActions.Stand:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
             case InRangeActions.Back:
 
-                LockedLookAt(_playerRef);
+                LockedLookAt(playerRef);
 
                 break;
         }
 
         // Update the timer to increment between actions
-        _actionTimer += Time.deltaTime;
+        actionTimer += Time.deltaTime;
     }
 
     /// <summary>
@@ -572,27 +572,27 @@ public class Soldier : Enemy
         base.TogglePlayerSightline(playerSpotted);
 
         // If moving and we don't want to shoot, turn firing off!
-        if (_state == EnemyStates.OutOfRange && !_shootWhileMoving)
+        if (state == EnemyStates.OutOfRange && !shootWhileMoving)
         {
-            _weapon.ToggleFiring(false);
+            weapon.ToggleFiring(false);
             return;
         }
 
-        if (!_mutable)
+        if (!mutable)
         {
             return;
         }
 
-        _weapon.ToggleFiring(playerSpotted);
+        weapon.ToggleFiring(playerSpotted);
     }
 
     protected override void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Room"))
         {
-            if (_state == EnemyStates.Covering)
+            if (state == EnemyStates.Covering)
             {
-                _currentRoom.ReturnCover(_target);
+                currentRoom.ReturnCover(target);
             }
         }
 
@@ -608,7 +608,7 @@ public class Soldier : Enemy
         Vector3 testPos = transform.position - ((transform.forward + transform.right) * (Random.Range(5, maxStrafeDistance)));
 
         NavMeshPath path = new NavMeshPath();
-        if (!_agent.CalculatePath(testPos, path))
+        if (!agent.CalculatePath(testPos, path))
         {
             return Vector3.zero;
         }

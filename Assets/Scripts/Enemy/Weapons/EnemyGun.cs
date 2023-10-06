@@ -6,24 +6,24 @@ public class EnemyGun : EnemyWeapon
 {
 
     [Tooltip("The speed of the bullet")]
-    [SerializeField] protected float _bulletSpeed = 20;
+    [SerializeField] protected float bulletSpeed = 20;
 
     [Header("Aiming Variables")]
 
     [Tooltip("The percentage of shots that should hit the player")]
     [Range(0, 1)]
-    [SerializeField] protected float _aimPercentage = 0.5f;
+    [SerializeField] protected float aimPercentage = 0.5f;
 
     [Tooltip("The distance in which shots can miss in each axis")]
-    [SerializeField] protected float _maxMissDistance = 2;
+    [SerializeField] protected float maxMissDistance = 2;
 
-    private Animator _anim;
+    private Animator anim;
 
     private bool fireDoubleBullets = false;
 
     private void Awake()
     {
-        _anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     protected override void Fire()
@@ -31,12 +31,12 @@ public class EnemyGun : EnemyWeapon
         base.Fire();
 
         // Animation now triggers the bullet instantiation
-        _anim.SetTrigger("Shoot");
+        anim.SetTrigger("Shoot");
     }
 
     public void SpawnBullet()
     {
-        if (_colliderPrefab != null)
+        if (colliderPrefab != null)
         {
             StopAllCoroutines();
             StartCoroutine("BulletInstantiate");
@@ -55,28 +55,28 @@ public class EnemyGun : EnemyWeapon
         for (int i = 0; i < amount; i++)
         {
             // Instaniate the bullet and set as child
-            GameObject newBullet = Instantiate(_colliderPrefab, transform.position + (transform.forward * _colliderOffset.x + transform.up * _colliderOffset.y), Quaternion.identity);
-            newBullet.GetComponent<Bullet>().SetDamage(_colliderDamage);
+            GameObject newBullet = Instantiate(colliderPrefab, transform.position + (transform.forward * colliderOffset.x + transform.up * colliderOffset.y), Quaternion.identity);
+            newBullet.GetComponent<Bullet>().SetDamage(colliderDamage);
 
             // Determine chances of successful aiming
             float aimCheck = Random.Range(0f, 1f);
-            Vector3 dir = _playerReference.position - newBullet.transform.position;
+            Vector3 dir = playerReference.position - newBullet.transform.position;
             dir.Normalize();
 
             // Is an unsuccessful aim chance
-            if (aimCheck > _aimPercentage)
+            if (aimCheck > aimPercentage)
             {
                 dir += new Vector3(
-                    Random.Range(-_maxMissDistance, _maxMissDistance),
-                    Random.Range(-_maxMissDistance, _maxMissDistance),
-                    Random.Range(-_maxMissDistance, _maxMissDistance));
+                    Random.Range(-maxMissDistance, maxMissDistance),
+                    Random.Range(-maxMissDistance, maxMissDistance),
+                    Random.Range(-maxMissDistance, maxMissDistance));
 
                 dir.Normalize();
             }
 
             // Add velocity to bullet rigid body and fire!
             Rigidbody body = newBullet.GetComponent<Rigidbody>();
-            body.velocity = dir * _bulletSpeed;
+            body.velocity = dir * bulletSpeed;
 
             yield return new WaitForSeconds(0.1f);
         }

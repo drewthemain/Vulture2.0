@@ -9,7 +9,7 @@ public class CanisterHealth : Health
     [Header("Canister Options")]
 
     [Tooltip("A reference to the window this is tied to")]
-    [SerializeField] private Window _window;
+    [SerializeField] private Window window;
 
     #endregion
 
@@ -25,7 +25,7 @@ public class CanisterHealth : Health
         base.Die();
 
         // If canister is broken, break the window
-        _window.Depressurize();
+        window.Depressurize();
 
         Heal(100);
         gameObject.SetActive(false);

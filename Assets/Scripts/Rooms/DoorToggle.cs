@@ -9,13 +9,13 @@ public class DoorToggle : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("The MAT for a toggled-off button")]
-    [SerializeField] private Material _offButtonMAT;
+    [SerializeField] private Material offButtonMAT;
 
     [Tooltip("The MAT for a toggled-on button")]
-    [SerializeField] private Material _onButtonMAT;
+    [SerializeField] private Material onButtonMAT;
 
     // Reference to the connected door
-    Door _door;
+    Door door;
 
     #endregion
 
@@ -23,17 +23,17 @@ public class DoorToggle : MonoBehaviour
 
     private void Awake()
     {
-        _door = GetComponentInParent<Door>();
+        door = GetComponentInParent<Door>();
     }
 
     public void ToggleToggle()
     {
-        _door.ToggleDoor(false);
+        door.ToggleDoor(false);
     }
 
     public void Refresh()
     {
-        GetComponent<MeshRenderer>().material = _door._isOpen ? _onButtonMAT : _offButtonMAT;
+        GetComponent<MeshRenderer>().material = door.isOpen ? onButtonMAT : offButtonMAT;
     }
 
     #endregion

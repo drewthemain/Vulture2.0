@@ -16,10 +16,10 @@ public class Label : MonoBehaviour
     [SerializeField] private bool orientToCamera;
 
     // Refernce to the UI canvas for this label
-    private Canvas _canvas;
+    private Canvas canvas;
 
     // Reference to the TextMeshPro Text for this label
-    private TMP_Text _tmpText;
+    private TMP_Text tmpText;
 
     #endregion
 
@@ -28,11 +28,11 @@ public class Label : MonoBehaviour
     private void Awake()
     {
         // Getting references and checking for null
-        _canvas = GetComponentInChildren<Canvas>();
-        if (_canvas == null) Debug.LogError("Label must contain a Canvas!");
+        canvas = GetComponentInChildren<Canvas>();
+        if (canvas == null) Debug.LogError("Label must contain a Canvas!");
 
-        _tmpText = GetComponentInChildren<TMP_Text>();
-        if (_tmpText == null) Debug.LogError("Label must contain a TMP_Text!");
+        tmpText = GetComponentInChildren<TMP_Text>();
+        if (tmpText == null) Debug.LogError("Label must contain a TMPText!");
     }
 
     private void Start()
@@ -40,7 +40,7 @@ public class Label : MonoBehaviour
         // Change text in label if the inspector field isn't empty
         if (text != "")
         {
-            _tmpText.text = text;
+            tmpText.text = text;
         }
     }
 

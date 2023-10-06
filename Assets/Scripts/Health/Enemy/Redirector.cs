@@ -7,7 +7,7 @@ public class Redirector : MonoBehaviour
     #region Variables
 
     // Reference to a Soldier's gun script
-    private EnemyGun _gun;
+    private EnemyGun gun;
 
     #endregion
 
@@ -15,7 +15,7 @@ public class Redirector : MonoBehaviour
 
     private void Awake()
     {
-        _gun = GetComponentInParent<EnemyGun>();
+        gun = GetComponentInParent<EnemyGun>();
     }
 
     /// <summary>
@@ -23,9 +23,9 @@ public class Redirector : MonoBehaviour
     /// </summary>
     public void Fire()
     {
-        if (_gun)
+        if (gun)
         {
-            _gun.SpawnBullet();
+            gun.SpawnBullet();
         }
     }
 

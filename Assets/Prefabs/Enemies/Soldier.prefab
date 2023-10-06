@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 1.5
+  damageMultiplier: 1.4
 --- !u!1 &788557608091694992
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.5
+  damageMultiplier: 0.8
 --- !u!114 &9185203299791043091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.9
+  damageMultiplier: 1.4
 --- !u!1 &1145531094802066764
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.8
+  damageMultiplier: 1.1
 --- !u!1 &1239607476259175824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 1
+  damageMultiplier: 1.2
 --- !u!114 &7913278407110283467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 1.3
+  damageMultiplier: 1.3
 --- !u!114 &7410531464800557546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.9
+  damageMultiplier: 1.4
 --- !u!1 &2717688461558479628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4784c878cd9f942a73a1a9a565101a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeTilDestroy: 5
+  timeTilDestroy: 5
 --- !u!1 &2945374025499323460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,38 +2460,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac8fe17bd846334a903bf97010b36fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mesh: {fileID: 8752873450615848224}
-  _ragdoll: {fileID: 2932668563791513202}
-  _state: 0
-  _playerInSight: 0
-  _inRangeProximity: 20
-  _sightDistance: 100
-  _sightMask:
+  mesh: {fileID: 8752873450615848224}
+  ragdoll: {fileID: 2932668563791513202}
+  state: 0
+  playerInSight: 0
+  inRangeProximity: 20
+  sightDistance: 100
+  sightMask:
     serializedVersion: 2
     m_Bits: 567
-  _slowWhenPlayerSpotted: 1
-  _speedReductionPercentage: 0.2
-  _proximitySpeedBoost: 1
-  _speedBoostPercentage: 0.25
-  _respawnCheckBuffer: 20
-  _roomMask:
+  slowWhenPlayerSpotted: 1
+  speedReductionPercentage: 0.2
+  proximitySpeedBoost: 1
+  speedBoostPercentage: 0.25
+  respawnCheckBuffer: 20
+  roomMask:
     serializedVersion: 2
     m_Bits: 1024
-  _pullSpeed: 150
-  _pullSlowdownMultiplier: 0.7
-  _timeTilDeathAfterSuck: 5
-  _currentRoom: {fileID: 0}
-  _inRangeAction: 0
-  _closestDesiredRange: 2
+  pullSpeed: 150
+  pullSlowdownMultiplier: 0.7
+  timeTilDeathAfterSuck: 5
+  currentRoom: {fileID: 0}
+  inRangeAction: 0
+  closestDesiredRange: 2
   maxStrafeDistance: 10
-  _strafeTimeConstraints: {x: 0.5, y: 2}
-  _chargeTimeConstraints: {x: 0.3, y: 0.5}
-  _standTimeConstraints: {x: 0.3, y: 0.8}
-  _shootWhileMoving: 1
-  _coverAction: 0
-  _initialCoverOdds: 0.01
-  _coverOddsGrowth: 0.01
-  _coverTimeConstraints: {x: 5, y: 8}
+  strafeTimeConstraints: {x: 0.5, y: 2}
+  chargeTimeConstraints: {x: 0.3, y: 0.5}
+  standTimeConstraints: {x: 0.3, y: 0.8}
+  shootWhileMoving: 1
+  coverAction: 0
+  initialCoverOdds: 0.01
+  coverOddsGrowth: 0.01
+  coverTimeConstraints: {x: 5, y: 8}
 --- !u!114 &8215323132662823611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2504,10 +2504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eaa2e27f537a8d41ae7f8198fd432db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _currentHealth: 50
-  _enemyType: 0
-  _damageNumber: {fileID: 495747941628052658, guid: a3ce85dd2c796db4b86983ac0b88a9a1,
+  maxHealth: 50
+  currentHealth: 50
+  enemyType: 0
+  damageNumber: {fileID: 495747941628052658, guid: a3ce85dd2c796db4b86983ac0b88a9a1,
     type: 3}
 --- !u!114 &5738036413460159365
 MonoBehaviour:
@@ -2521,14 +2521,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc12f2f9a0e0dff4688d54a2fda9d053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderPrefab: {fileID: 4978727838991092556, guid: a0ef9cbaddbfdfd438d59bd2126d03d6,
+  colliderPrefab: {fileID: 4978727838991092556, guid: a0ef9cbaddbfdfd438d59bd2126d03d6,
     type: 3}
-  _colliderDamage: 5
-  _attackDelay: 2
-  _colliderOffset: {x: 1, y: 1.6}
-  _bulletSpeed: 35
-  _aimPercentage: 0.8
-  _maxMissDistance: 0.1
+  colliderDamage: 5
+  attackDelay: 2
+  colliderOffset: {x: 1, y: 1.6}
+  bulletSpeed: 35
+  aimPercentage: 0.8
+  maxMissDistance: 0.1
 --- !u!114 &7950505621841049875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.8
+  damageMultiplier: 1.1
 --- !u!1 &3258706722575203127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,7 +2828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 1.3
+  damageMultiplier: 1.3
 --- !u!1 &3449675940922513239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.8
+  damageMultiplier: 1
 --- !u!1 &3770865567311284223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 0.5
+  damageMultiplier: 0.8
 --- !u!1 &4322758892136931612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb33c8be6f04f4697b8996d713b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageMultiplier: 1
+  damageMultiplier: 1.2
 --- !u!1 &7972691867403329859
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,7 +6306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4784c878cd9f942a73a1a9a565101a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeTilDestroy: 5
+  timeTilDestroy: 5
 --- !u!1001 &1571759410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6429,7 +6429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4784c878cd9f942a73a1a9a565101a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeTilDestroy: 5
+  timeTilDestroy: 5
 --- !u!4 &7499872184534245884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7499872185781060814, guid: fd171872a2281724d971c5821fbfba88,

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49970af4655ba5148b190e5cc83b3675, type: 3}
   m_Name: Soldier Squad
   m_EditorClassIdentifier: 
-  _segments:
-  - _orders:
-    - _enemy: 0
-      _enemyAmount: 6
-    _allowEarlySpawning: 0
-  - _orders:
-    - _enemy: 0
-      _enemyAmount: 10
-    _allowEarlySpawning: 1
-  _maxEnemiesSpawned: 4
+  segments:
+  - orders:
+    - enemy: 0
+      enemyAmount: 6
+    allowEarlySpawning: 0
+  - orders:
+    - enemy: 0
+      enemyAmount: 10
+    allowEarlySpawning: 1
+  maxEnemiesSpawned: 4

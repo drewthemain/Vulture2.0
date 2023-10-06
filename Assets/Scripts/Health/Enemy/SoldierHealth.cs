@@ -5,11 +5,11 @@ using UnityEngine;
 public class SoldierHealth : EnemyHealth
 {
     // Reference to Soldier script
-    private Soldier _soldier;
+    private Soldier soldier;
 
     private void Awake()
     {
-        _soldier = GetComponent<Soldier>();
+        soldier = GetComponent<Soldier>();
     }
 
     /// <summary>
@@ -20,9 +20,9 @@ public class SoldierHealth : EnemyHealth
     {
         base.TakeDamage(dmg, multiplier);
 
-        if (_currentHealth <= (_currentMaxHealth / 2) && _currentHealth > 0 && _soldier.GetState() != Enemy.EnemyStates.Covering)
+        if (currentHealth <= (currentMaxHealth / 2) && currentHealth > 0 && soldier.GetState() != Enemy.EnemyStates.Covering)
         {
-            _soldier.ChangeState(Enemy.EnemyStates.Covering);
+            soldier.ChangeState(Enemy.EnemyStates.Covering);
         }
     }
 }

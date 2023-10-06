@@ -8,10 +8,10 @@ public class Segment
     #region Variables
 
     [Tooltip("The orders in this round segment")]
-    public List<Order> _orders;
+    public List<Order> orders;
 
     [Tooltip("If the prior segment is about to end, begin spawning from new segment instead of waiting")]
-    public bool _allowEarlySpawning = true;
+    public bool allowEarlySpawning = true;
 
     #endregion
 
@@ -25,9 +25,9 @@ public class Segment
     {
         int total = 0;
 
-        foreach (Order order in _orders)
+        foreach (Order order in orders)
         {
-            total += order._enemyAmount;
+            total += order.enemyAmount;
         }
 
         return total;

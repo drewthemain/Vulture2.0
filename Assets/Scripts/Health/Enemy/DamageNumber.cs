@@ -9,28 +9,28 @@ public class DamageNumber : MonoBehaviour
     #region Variables
 
     [Header("Options")]
-    [SerializeField] private float _timeTillDeath = 1f;
+    [SerializeField] private float timeTillDeath = 1f;
 
     [Tooltip("The color for a lesser multiplier")]
-    [SerializeField] private Color _lesserMultiplier;
+    [SerializeField] private Color lesserMultiplier;
 
     [Tooltip("The color for an equal multiplier")]
-    [SerializeField] private Color _equalMultiplier;
+    [SerializeField] private Color equalMultiplier;
 
     [Tooltip("The color for a greater multiplier")]
-    [SerializeField] private Color _greaterMultiplier;
+    [SerializeField] private Color greaterMultiplier;
 
     [Tooltip("The color for the greatest weakpoint")]
-    [SerializeField] private Color _weakPointMultiplier;
+    [SerializeField] private Color weakPointMultiplier;
 
     // Reference to the damage text
-    private TextMeshProUGUI _damageText;
+    private TextMeshProUGUI damageText;
 
     // Has the number been setup yet?
-    private bool _initialized = false;
+    private bool initialized = false;
 
     // Internal timer for movement and deletion
-    private float _timer = 0;
+    private float timer = 0;
 
     #endregion
 
@@ -45,53 +45,53 @@ public class DamageNumber : MonoBehaviour
         transform.LookAt(Camera.main.transform);
         transform.Rotate(Vector3.up * 180);
 
-        _damageText = GetComponent<TextMeshProUGUI>();
+        damageText = GetComponent<TextMeshProUGUI>();
 
-        if (_damageText)
+        if (damageText)
         {
-            _damageText.SetText($"{damageAmount * multiplier}");
+            damageText.SetText($"{damageAmount * multiplier}");
 
             if (multiplier >= 1.5 || multiplier == -1)
             {
-                _damageText.color = _weakPointMultiplier;
+                damageText.color = weakPointMultiplier;
                 transform.localScale *= 1.2f;
 
                 if (multiplier == -1)
                 {
-                    _timeTillDeath *= 2;
+                    timeTillDeath *= 2;
                     transform.localScale *= 50;
 
-                    _damageText.SetText($"{damageAmount}");
+                    damageText.SetText($"{damageAmount}");
                 }
             }
             else if (multiplier > 1)
             {
-                _damageText.color = _greaterMultiplier;
+                damageText.color = greaterMultiplier;
             }
             else if (multiplier == 1)
             {
-                _damageText.color = _equalMultiplier;
+                damageText.color = equalMultiplier;
             }
             else
             {
-                _damageText.color = _lesserMultiplier;
+                damageText.color = lesserMultiplier;
             }
         }
 
-        _initialized = true;
+        initialized = true;
     }
 
     private void Update()
     {
-        if (_initialized)
+        if (initialized)
         {
             // Lower number position and scale over time
-            if (_timer < _timeTillDeath)
+            if (timer < timeTillDeath)
             {
                 transform.position -= Vector3.up * Time.deltaTime;
                 transform.localScale -= transform.localScale * (Time.deltaTime * 2);
 
-                _timer += Time.deltaTime;
+                timer += Time.deltaTime;
 
                 return;
             }

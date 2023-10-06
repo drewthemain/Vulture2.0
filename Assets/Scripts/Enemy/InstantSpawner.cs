@@ -9,10 +9,10 @@ public class InstantSpawner : MonoBehaviour
     [Header("References")]
 
     [Tooltip("The types of enemies to spawn")]
-    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private List<GameObject> enemies;
 
     [Tooltip("The delay between new enemies being spawned")]
-    [SerializeField] private float _spawnDelay = 5f;
+    [SerializeField] private float spawnDelay = 5f;
 
     #endregion
 
@@ -20,7 +20,7 @@ public class InstantSpawner : MonoBehaviour
 
     private void Start()
     {
-        if (_enemies.Count == 0)
+        if (enemies.Count == 0)
         {
             Debug.LogWarning($"Spawner {transform.name} is missing enemies to spawn!");
             return;
@@ -28,7 +28,7 @@ public class InstantSpawner : MonoBehaviour
 
         // Currently spawn based on a timer
         // WIP WILL BECOME A SMARTER, ROOMBASED SYSTEM
-        InvokeRepeating("Spawn", Random.Range(_spawnDelay / 2, _spawnDelay + _spawnDelay / 2), _spawnDelay);
+        InvokeRepeating("Spawn", Random.Range(spawnDelay / 2, spawnDelay + spawnDelay / 2), spawnDelay);
     }
 
     /// <summary>
@@ -36,9 +36,9 @@ public class InstantSpawner : MonoBehaviour
     /// </summary>
     private void Spawn()
     {
-        int index = Random.Range(0, _enemies.Count);
+        int index = Random.Range(0, enemies.Count);
 
-        GameObject newEnemy = Instantiate(_enemies[index], transform.position, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemies[index], transform.position, Quaternion.identity);
         newEnemy.transform.parent = this.transform;
     }
 

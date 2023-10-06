@@ -9,45 +9,45 @@ public class Room : MonoBehaviour
     [Header("Identification")]
 
     [Tooltip("The unique ID of this room")]
-    [SerializeField] private string _roomID = "";
+    [SerializeField] private string roomID = "";
 
     [Header("Spawning")]
 
     [Tooltip("Rooms that should be considered 'connected' to this room")]
-    [SerializeField] private List<Room> _neighboringRooms;
+    [SerializeField] private List<Room> neighboringRooms;
 
     [Tooltip("The odds that an enemy will be spawned in a neighboring room")]
     [Range(0, 1)]
-    [SerializeField] private float _neighboringSpawnOdds = 0.4f;
+    [SerializeField] private float neighboringSpawnOdds = 0.4f;
 
     [Tooltip("The chance a window will be fixed in-between rounds")]
-    [SerializeField] private float _windowFixChance = 0.3f;
+    [SerializeField] private float windowFixChance = 0.3f;
 
     [Header("Cover")]
 
     [Tooltip("List of cover transforms")]
-    [SerializeField] private Transform _coverParent;
+    [SerializeField] private Transform coverParent;
 
     // A record of which covers are taken
-    private Dictionary<Transform, Transform> _coverRecords = new Dictionary<Transform, Transform>();
+    private Dictionary<Transform, Transform> coverRecords = new Dictionary<Transform, Transform>();
 
     // The transforms of every cover position
-    private List<Transform> _coverTransforms = new List<Transform>();
+    private List<Transform> coverTransforms = new List<Transform>();
 
     // The list of all possible spawners
-    private List<SmartSpawner> _soldierSpawners = new List<SmartSpawner>();
+    private List<SmartSpawner> soldierSpawners = new List<SmartSpawner>();
 
     // Reference to the breakable window
-    private List<Window> _windows = new List<Window>();
+    private List<Window> windows = new List<Window>();
 
     // Is the room currently depressurized?
-    private bool _depressurized = false;
+    private bool depressurized = false;
 
     // The list of all possible spawners
-    private List<SmartSpawner> _swarmSpawners = new List<SmartSpawner>();
+    private List<SmartSpawner> swarmSpawners = new List<SmartSpawner>();
 
     // Is the player currently inside this room?
-    private bool _playerInside = false;
+    private bool playerInside = false;
 
     #endregion
 
@@ -55,33 +55,33 @@ public class Room : MonoBehaviour
 
     void Start()
     {
-        if (_roomID.Length == 0)
+        if (roomID.Length == 0)
         {
             Debug.LogWarning("Each room should have a unique identifier. Try naming it after a function or landmark of the room.");
         }
 
         // Populate records with length of covers
-        foreach (Transform cover in _coverParent)
+        foreach (Transform cover in coverParent)
         {
-            _coverTransforms.Add(cover);
-            _coverRecords[cover] = null;
+            coverTransforms.Add(cover);
+            coverRecords[cover] = null;
         }
 
         foreach (SmartSpawner spawner in GetComponentsInChildren<SmartSpawner>())
         {
-            if (spawner._enemyType == Order.EnemyTypes.Soldier)
+            if (spawner.enemyType == Order.EnemyTypes.Soldier)
             {
-                _soldierSpawners.Add(spawner);
+                soldierSpawners.Add(spawner);
             }
             else
             {
-                _swarmSpawners.Add(spawner);
+                swarmSpawners.Add(spawner);
             }
         }
 
         foreach(Window window in GetComponentsInChildren<Window>())
         {
-            _windows.Add(window);
+            windows.Add(window);
         }
     }
 
@@ -91,7 +91,7 @@ public class Room : MonoBehaviour
     /// <returns>The room ID string</returns>
     public string GetRoomID()
     {
-        return _roomID;
+        return roomID;
     }
 
 
@@ -104,13 +104,13 @@ public class Room : MonoBehaviour
     public Transform QueryCover(Transform player, Transform enemy, LayerMask playerMask)
     {
         // Sort transforms by distance to enemy
-        List<Transform> temp = new List<Transform>(_coverTransforms);
+        List<Transform> temp = new List<Transform>(coverTransforms);
         temp.Sort((p1, p2) => Vector3.Distance(p1.position, enemy.position).CompareTo(Vector3.Distance(p2.position, enemy.position)));
 
         for (int i = 0; i < temp.Count; i++)
         {
             // If the cover is already being used, continue
-            if (_coverRecords[temp[i]] != null)
+            if (coverRecords[temp[i]] != null)
             {
                 continue;
             }
@@ -130,7 +130,7 @@ public class Room : MonoBehaviour
             }
 
             // Player can't see the cover!
-            _coverRecords[temp[i]] = enemy;
+            coverRecords[temp[i]] = enemy;
             return temp[i];
         }
 
@@ -144,9 +144,9 @@ public class Room : MonoBehaviour
     /// <param name="returnedCover">Reference to the returned cover</param>
     public void ReturnCover(Transform returnedCover)
     {
-        if (_coverRecords[returnedCover] != null)
+        if (coverRecords[returnedCover] != null)
         {
-            _coverRecords[returnedCover] = null;
+            coverRecords[returnedCover] = null;
         }
         else
         {
@@ -160,7 +160,7 @@ public class Room : MonoBehaviour
     /// <param name="isInside">Is the player inside the room?</param>
     public void PlayerToggle(bool isInside)
     {
-        _playerInside = isInside;
+        playerInside = isInside;
 
         // Let the SmartMap know which room is being prioritized
         if (isInside)
@@ -179,27 +179,27 @@ public class Room : MonoBehaviour
     /// <returns>True if it was successful, else false</returns>
     public bool SmartSpawn(Order order, int multiplier)
     {
-        for (int i = 0; i < order._enemyAmount * multiplier; i++)
+        for (int i = 0; i < order.enemyAmount * multiplier; i++)
         {
             // Start by getting a neighboring room
-            Room neighborRoom = CheckNeighbors(order._enemy);
+            Room neighborRoom = CheckNeighbors(order.enemy);
 
             if (neighborRoom)
             {
                 // RNG to see if enemy will spawn in neighboring room instead of player room
-                if (Random.Range(0f, 1f) <= _neighboringSpawnOdds)
+                if (Random.Range(0f, 1f) <= neighboringSpawnOdds)
                 {
-                    neighborRoom.CommandSpawn(order._enemy);
+                    neighborRoom.CommandSpawn(order.enemy);
                     continue;
                 }
             }
 
             // Try to spawn in player room. If failure, try spawning in neighbor
-            if (!CommandSpawn(order._enemy))
+            if (!CommandSpawn(order.enemy))
             {
                 if (neighborRoom)
                 {
-                    neighborRoom.CommandSpawn(order._enemy);
+                    neighborRoom.CommandSpawn(order.enemy);
                 }
                 else
                 {
@@ -215,14 +215,14 @@ public class Room : MonoBehaviour
     /// <summary>
     /// Finds a possible neighboring room that could spawn an enemy
     /// </summary>
-    /// <param name="_type">The type of enemy to be spawned</param>
+    /// <param name="type">The type of enemy to be spawned</param>
     /// <returns>A room if one fits, else null</returns>
-    public Room CheckNeighbors(Order.EnemyTypes _type)
+    public Room CheckNeighbors(Order.EnemyTypes type)
     {
         List<Room> possibleRooms = new List<Room>();
-        foreach (Room room in _neighboringRooms)
+        foreach (Room room in neighboringRooms)
         {
-            if (room.CheckSpawnerCapacity(_type))
+            if (room.CheckSpawnerCapacity(type))
             {
                 possibleRooms.Add(room);
             }
@@ -240,11 +240,11 @@ public class Room : MonoBehaviour
     /// <summary>
     /// Spawn one enemy based on the type from the available spawners
     /// </summary>
-    /// <param name="_type">The type of enemy to be spawned</param>
+    /// <param name="type">The type of enemy to be spawned</param>
     /// <returns>True if spawned, else false</returns>
-    public bool CommandSpawn(Order.EnemyTypes _type)
+    public bool CommandSpawn(Order.EnemyTypes type)
     {
-        List<SmartSpawner> spawners = _type == Order.EnemyTypes.Soldier ? _soldierSpawners : _swarmSpawners;
+        List<SmartSpawner> spawners = type == Order.EnemyTypes.Soldier ? soldierSpawners : swarmSpawners;
 
         if (spawners.Count == 0)
         {
@@ -259,16 +259,16 @@ public class Room : MonoBehaviour
     /// <summary>
     /// Checker to see if a room has that type of spawner available
     /// </summary>
-    /// <param name="_type">The type of enemy that the spawner can handle</param>
+    /// <param name="type">The type of enemy that the spawner can handle</param>
     /// <returns>True if the room has spawners, else false</returns>
-    public bool CheckSpawnerCapacity(Order.EnemyTypes _type)
+    public bool CheckSpawnerCapacity(Order.EnemyTypes type)
     {
-        switch (_type)
+        switch (type)
         {
             case Order.EnemyTypes.Soldier:
-                return _soldierSpawners.Count > 0;
+                return soldierSpawners.Count > 0;
             case Order.EnemyTypes.Swarm:
-                return _swarmSpawners.Count > 0;
+                return swarmSpawners.Count > 0;
         }
 
         return false;
@@ -282,12 +282,12 @@ public class Room : MonoBehaviour
     {
         Vector2 carryOn = Vector2.zero;
 
-        foreach (SmartSpawner spawner in _soldierSpawners)
+        foreach (SmartSpawner spawner in soldierSpawners)
         {
             carryOn.x += spawner.ClearOrderRemaining();
         }
 
-        foreach (SmartSpawner spawner in _swarmSpawners)
+        foreach (SmartSpawner spawner in swarmSpawners)
         {
             carryOn.y += spawner.ClearOrderRemaining();
         }
@@ -303,7 +303,7 @@ public class Room : MonoBehaviour
     {
         Window window = GameManager.instance.GetPullingWindow();
 
-        if (window && _windows.Contains(window))
+        if (window && windows.Contains(window))
         {
             return GameManager.instance.GetPullingWindow();
         }
@@ -316,7 +316,7 @@ public class Room : MonoBehaviour
     /// </summary>
     public void Depressurize(Window window)
     {
-        _depressurized = true;
+        depressurized = true;
 
         GameManager.instance.ToggleGravity(true, window);
     }
@@ -337,9 +337,9 @@ public class Room : MonoBehaviour
     /// <param name="num">The number of windows to be fixed</param>
     public void FixWindows()
     {
-        foreach(Window window in _windows)
+        foreach(Window window in windows)
         {
-            if (Random.Range(0,1) < _windowFixChance)
+            if (Random.Range(0,1) < windowFixChance)
             {
                 window.FixWindow();
             }
@@ -348,7 +348,7 @@ public class Room : MonoBehaviour
 
     public bool isActiveRoom()
     {
-        return _playerInside;
+        return playerInside;
     }
 
     #endregion

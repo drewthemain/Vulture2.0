@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c026fa79f8d05e4ca82f963a9edd819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normalMaterial: {fileID: 2100000, guid: 83d117dbf4c5a41ae9625ee462a6ef16, type: 2}
-  _brokenMaterial: {fileID: 2100000, guid: 3d358bf2e1dd69642b1b976fb3046bf6, type: 2}
-  _pullTarget: {fileID: 7387982683186604190}
-  _depressurizeTime: 15
+  normalMaterial: {fileID: 2100000, guid: 83d117dbf4c5a41ae9625ee462a6ef16, type: 2}
+  brokenMaterial: {fileID: 2100000, guid: 3d358bf2e1dd69642b1b976fb3046bf6, type: 2}
+  pullTarget: {fileID: 7387982683186604190}
+  depressurizeTime: 15
 --- !u!1 &7386868558634584740
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24de020eb1aaef4c81938f312f85ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 30
-  _currentHealth: 30
-  _window: {fileID: 7387982682393839552}
+  maxHealth: 30
+  currentHealth: 30
+  window: {fileID: 7387982682393839552}
 --- !u!1 &7387982683186604190
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24de020eb1aaef4c81938f312f85ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 20
-  _currentHealth: 20
-  _window: {fileID: 7387982682393839552}
+  maxHealth: 100
+  currentHealth: 100
+  window: {fileID: 0}

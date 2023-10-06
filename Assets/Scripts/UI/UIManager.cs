@@ -28,81 +28,81 @@ public class UIManager : MonoBehaviour
     }
 
     // The current UI in effect
-    private UIType _currentUI = UIType.Game;
+    private UIType currentUI = UIType.Game;
 
     // The current UI in effect
-    private SettingsMenuType _currentSettingsMenu = SettingsMenuType.Main;
+    private SettingsMenuType currentSettingsMenu = SettingsMenuType.Main;
 
     [Header("Parent References")]
 
     [Tooltip("The reference to the game UI parent")]
-    [SerializeField] private GameObject _gameUIParent;
+    [SerializeField] private GameObject gameUIParent;
 
     [Tooltip("The reference to the pause UI parent")]
-    [SerializeField] private GameObject _pauseUIParent;
+    [SerializeField] private GameObject pauseUIParent;
 
     [Tooltip("The reference to the lose game UI parent")]
-    [SerializeField] private GameObject _loseUIParent;
+    [SerializeField] private GameObject loseUIParent;
 
     [Tooltip("The reference to the settings UI parent")]
-    [SerializeField] private GameObject _settingsUIParent;
+    [SerializeField] private GameObject settingsUIParent;
 
     [Tooltip("The UI aspects that are always displayed and can change opacity")]
-    [SerializeField] private GameObject _GUI;
+    [SerializeField] private GameObject GUI;
 
     [Header("Game References")]
 
     [Tooltip("The reference to the ammo counter text")]
-    [SerializeField] private TextMeshProUGUI _ammoCounter;
+    [SerializeField] private TextMeshProUGUI ammoCounter;
 
     [Tooltip("The reference to the ammo slider")]
-    [SerializeField] private Slider _ammoSlider;
+    [SerializeField] private Slider ammoSlider;
 
     [Tooltip("The reference to the health counter text")]
-    [SerializeField] private TextMeshProUGUI _healthCounter;
+    [SerializeField] private TextMeshProUGUI healthCounter;
 
     [Tooltip("The reference to the health slider")]
-    [SerializeField] private Slider _healthSlider;
+    [SerializeField] private Slider healthSlider;
 
     [Tooltip("The reference to the current round text")]
-    [SerializeField] private TextMeshProUGUI _currentRound;
+    [SerializeField] private TextMeshProUGUI currentRound;
 
     [Tooltip("The reference to the objective text")]
-    [SerializeField] private TextMeshProUGUI _objectiveText;
+    [SerializeField] private TextMeshProUGUI objectiveText;
 
     [Tooltip("The reference to the warning banner")]
-    [SerializeField] private GameObject _warningBanner;
+    [SerializeField] private GameObject warningBanner;
 
     [Tooltip("The reference to the world space canvas")]
-    public Canvas _worldSpaceCanvas;
+    public Canvas worldSpaceCanvas;
 
     [Header("Pause References")]
 
     [Tooltip("The reference to the continue button")]
-    [SerializeField] private GameObject _continueButton;
+    [SerializeField] private GameObject continueButton;
 
     [Tooltip("The reference to the settings button")]
-    [SerializeField] private GameObject _settingsButton;
+    [SerializeField] private GameObject settingsButton;
 
     [Header("Crosshair References")]
     [Tooltip("The reference to the continue button")]
-    [SerializeField] private Canvas _crosshairCanvas;
+    [SerializeField] private Canvas crosshairCanvas;
 
     [Tooltip("The reference to the settings button")]
-    [SerializeField] private GameObject _crosshair;
+    [SerializeField] private GameObject crosshair;
 
     [Tooltip("The reference to the crosshair canvas position transform")]
-    [SerializeField] private Transform _crosshairCanvasPosition;
+    [SerializeField] private Transform crosshairCanvasPosition;
 
     // General References
     // Reference to the player gameobject
-    private PlayerController _controller;
+    private PlayerController controller;
     // Reference to the player's input actions
     private InputManager input;
     //Reference to animator on pause menu
-    private Animator _PauseAnim;
+    private Animator PauseAnim;
     //Reference to animator on settings menu
-    private Animator _settingsAnim;
+    private Animator settingsAnim;
 
     // UI Animation References
     private float animDuration = 1 / 6f;
@@ -119,12 +119,12 @@ public class UIManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        _controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        _PauseAnim = _pauseUIParent.GetComponent<Animator>();
-        _settingsAnim = _settingsUIParent.GetComponent<Animator>();
+        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        PauseAnim = pauseUIParent.GetComponent<Animator>();
+        settingsAnim = settingsUIParent.GetComponent<Animator>();
         input = InputManager.instance;
 
-        if (_controller == null)
+        if (controller == null)
         {
             Debug.LogWarning("Missing a player in the scene!");
         }
@@ -134,13 +134,13 @@ public class UIManager : MonoBehaviour
     {
         if (InputManager.instance.PlayerPressedEscape())
         {
-            if (_currentUI == UIType.Game || _currentUI == UIType.Pause)
+            if (currentUI == UIType.Game || currentUI == UIType.Pause)
             {
                 PauseGame();
             }
-            else if (_currentUI == UIType.Settings)
+            else if (currentUI == UIType.Settings)
             {
-                if(_currentSettingsMenu == SettingsMenuType.Main)
+                if(currentSettingsMenu == SettingsMenuType.Main)
                 {
                     ExitSettings();
                 }
@@ -160,14 +160,14 @@ public class UIManager : MonoBehaviour
     /// <param name="magSize">The total size of the mag</param>
     public void UpdateAmmo(int bulletsLeft, int magSize)
     {
-        if (_ammoCounter != null)
+        if (ammoCounter != null)
         {
-            //_ammoCounter.SetText(bulletsLeft + " / " + magSize);
-            _ammoCounter.SetText($"{bulletsLeft}");
+            //ammoCounter.SetText(bulletsLeft + " / " + magSize);
+            ammoCounter.SetText($"{bulletsLeft}");
         }
-        if (_ammoSlider != null)
+        if (ammoSlider != null)
         {
-            _ammoSlider.value = ((float)bulletsLeft/(float)magSize);
+            ammoSlider.value = ((float)bulletsLeft/(float)magSize);
         }
     }
 
@@ -177,13 +177,13 @@ public class UIManager : MonoBehaviour
     /// <param name="currentHealth">The current player health to be displayed</param>
     public void UpdateHealth(float currentHealth)
     {
-        if (_healthCounter != null)
+        if (healthCounter != null)
         {
-            _healthCounter.SetText($"{currentHealth}");
+            healthCounter.SetText($"{currentHealth}");
         }
-        if (_healthSlider != null)
+        if (healthSlider != null)
         {
-            _healthSlider.value = currentHealth / _controller.GetComponent<PlayerHealth>().GetMaxHealth();
+            healthSlider.value = currentHealth / controller.GetComponent<PlayerHealth>().GetMaxHealth();
         }
     }
 
@@ -194,27 +194,27 @@ public class UIManager : MonoBehaviour
     /// <param name="roundName">The name of the current round</param>
     public void UpdateRound(int currRound, string roundName, int loop)
     {
-        if (_currentRound != null)
+        if (currentRound != null)
         {
             if (currRound == -1)
             {
-                _currentRound.SetText("Incoming hostiles...");
+                currentRound.SetText("Incoming hostiles...");
             }
             else
             {
-                _currentRound.SetText($"Round {currRound}");
+                currentRound.SetText($"Round {currRound}");
             }
         }
 
-        if (_objectiveText != null)
+        if (objectiveText != null)
         {
-            _objectiveText.SetText($"{roundName} {ToRoman(loop)}");
+            objectiveText.SetText($"{roundName} {ToRoman(loop)}");
         }
     }
 
     public void ToggleWarningBanner(bool activeStatus = false)
     {
-        _warningBanner.SetActive(activeStatus);
+        warningBanner.SetActive(activeStatus);
     }
 
     public string ToRoman(int number)
@@ -241,41 +241,41 @@ public class UIManager : MonoBehaviour
     public void ToggleOnScreenUI(UIType newType)
     {
         // Toggle off all prior UI
-        _gameUIParent.SetActive(false);
-        _pauseUIParent.SetActive(false);
-        _settingsUIParent.SetActive(false);
+        gameUIParent.SetActive(false);
+        pauseUIParent.SetActive(false);
+        settingsUIParent.SetActive(false);
 
-        _currentUI = newType;
+        currentUI = newType;
 
         switch (newType)
         {
             case UIType.Game:
-                _currentUI = UIType.Game;
-                _gameUIParent.SetActive(true);
+                currentUI = UIType.Game;
+                gameUIParent.SetActive(true);
                 break;
 
             case UIType.Pause:
-                _currentUI = UIType.Pause;
-                _continueButton.SetActive(true);
-                _settingsButton.SetActive(true);
-                _pauseUIParent.SetActive(true);
+                currentUI = UIType.Pause;
+                continueButton.SetActive(true);
+                settingsButton.SetActive(true);
+                pauseUIParent.SetActive(true);
                 break;
 
             case UIType.Settings:
-                _currentUI = UIType.Settings;
-                _settingsUIParent.SetActive(true);
+                currentUI = UIType.Settings;
+                settingsUIParent.SetActive(true);
                 break;
 
             case UIType.End:
-                _currentUI = UIType.End;
-                _continueButton.SetActive(false);
-                _settingsButton.SetActive(false);
-                _pauseUIParent.SetActive(false);
-                _loseUIParent.SetActive(true);
+                currentUI = UIType.End;
+                continueButton.SetActive(false);
+                settingsButton.SetActive(false);
+                pauseUIParent.SetActive(false);
+                loseUIParent.SetActive(true);
                 break;
 
             case UIType.Shop:
-                _currentUI = UIType.Shop;
+                currentUI = UIType.Shop;
                 break;
         }
     }
@@ -312,15 +312,15 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         // pause
-        if (_currentUI == UIType.Game)
+        if (currentUI == UIType.Game)
         {
             ToggleOnScreenUI(UIType.Pause);
             GameManager.instance.Pause();
         }
         // unpause
-        else if (_currentUI == UIType.Pause)
+        else if (currentUI == UIType.Pause)
         {
-            _PauseAnim.SetTrigger("Continue");
+            PauseAnim.SetTrigger("Continue");
             StartCoroutine(PauseToGameCoroutine());
             
             //ToggleOnScreenUI(UIType.Game);
@@ -350,7 +350,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ExitSettings()
     {
-        _settingsAnim.SetTrigger("EndSettings");
+        settingsAnim.SetTrigger("EndSettings");
         StartCoroutine(ExitSettingsCoroutine());
     }
 
@@ -360,7 +360,7 @@ public class UIManager : MonoBehaviour
     public void ExitSettingsMenus()
     {
         // capitalize first letter for formatting
-        _settingsAnim.SetTrigger("End" + _currentSettingsMenu.ToString());
+        settingsAnim.SetTrigger("End" + currentSettingsMenu.ToString());
         StartCoroutine(ExitSettingsMenusCoroutine());
     }
 
@@ -372,7 +372,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(animDuration);
 
         ReturnToPause();
-        _PauseAnim.SetTrigger("FromSettings");
+        PauseAnim.SetTrigger("FromSettings");
     }
 
     /// <summary>
@@ -383,7 +383,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(animDuration);
 
         ReturnToSettings();
-        //_settingsAnim.SetTrigger("FromSettingsMenu");
+        //settingsAnim.SetTrigger("FromSettingsMenu");
     }
 
     /// <summary>
@@ -412,22 +412,22 @@ public class UIManager : MonoBehaviour
         switch(subMenuType)
         {
             case "Video":
-                _currentSettingsMenu = SettingsMenuType.Video;
+                currentSettingsMenu = SettingsMenuType.Video;
                 break;
             case "Sound":
-                _currentSettingsMenu = SettingsMenuType.Sound;
+                currentSettingsMenu = SettingsMenuType.Sound;
                 break;
             case "Gameplay":
-                _currentSettingsMenu = SettingsMenuType.Gameplay;
+                currentSettingsMenu = SettingsMenuType.Gameplay;
                 break;
             case "Accessibility":
-                _currentSettingsMenu = SettingsMenuType.Accessibility;
+                currentSettingsMenu = SettingsMenuType.Accessibility;
                 break;
             case "Main":
-                _currentSettingsMenu = SettingsMenuType.Main;
+                currentSettingsMenu = SettingsMenuType.Main;
                 break;
             default:
-                _currentSettingsMenu = SettingsMenuType.Main;
+                currentSettingsMenu = SettingsMenuType.Main;
                 break;
         }
     }
@@ -437,9 +437,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void EnableWorldspaceCrosshair()
     {
-        _crosshairCanvas.renderMode = RenderMode.WorldSpace;
-        Vector3 pos = _crosshairCanvasPosition.localPosition;
-        _crosshairCanvas.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(pos.x, pos.y, pos.z);
+        crosshairCanvas.renderMode = RenderMode.WorldSpace;
+        Vector3 pos = crosshairCanvasPosition.localPosition;
+        crosshairCanvas.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(pos.x, pos.y, pos.z);
     }
 
     /// <summary>
@@ -447,20 +447,20 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void EnableScreenCamCrosshair()
     {
-        _crosshairCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        crosshairCanvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
     public void ChangeGUIOpacity(float opacityPercentage)
     {
         PlayerPrefs.SetFloat("GUIopacity", opacityPercentage);
-        Image[] GUIElements = _GUI.GetComponentsInChildren<Image>();
+        Image[] GUIElements = GUI.GetComponentsInChildren<Image>();
         foreach(Image img in GUIElements)
         {
             Color imgColor = img.color;
             imgColor.a = opacityPercentage;
             img.color = imgColor;
         }
-        TextMeshProUGUI[] textElements = _GUI.GetComponentsInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI[] textElements = GUI.GetComponentsInChildren<TextMeshProUGUI>();
         foreach (TextMeshProUGUI text in textElements)
         {
             Color textColor = text.color;

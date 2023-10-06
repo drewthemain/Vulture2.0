@@ -9,38 +9,38 @@ public class Door : MonoBehaviour
     [Header("Options")]
 
     [Tooltip("Should the door begin open or closed?")]
-    [SerializeField] private bool _beginOpen = true;
+    [SerializeField] private bool beginOpen = true;
 
     [Tooltip("Should the door change back to original position after a set amount of time?")]
-    [SerializeField] private bool _isTimedDoor = false;
+    [SerializeField] private bool isTimedDoor = false;
 
     [Tooltip("The time it takes for the door to revert")]
-    [SerializeField] private float _doorTimer = 5f;
+    [SerializeField] private float doorTimer = 5f;
 
     [Tooltip("The time it takes the door to be toggled again")]
-    [SerializeField] private float _toggleBuffer = 3f;
+    [SerializeField] private float toggleBuffer = 3f;
 
     [Header("References")]
 
     [Tooltip("List of door toggles")]
-    [SerializeField] private List<DoorToggle> _toggles;
+    [SerializeField] private List<DoorToggle> toggles;
 
     [Tooltip("Reference to the door animator")]
-    [SerializeField] private Animator _doorAnim;
+    [SerializeField] private Animator doorAnim;
 
     // Is the door currently open?
-    public bool _isOpen = false;
+    public bool isOpen = false;
 
     // Is the reverter currently in progress?
-    private bool _revertTime = false;
+    private bool revertTime = false;
 
     // Is the reverter currently in progress?
-    private bool _bufferTime = false;
+    private bool bufferTime = false;
 
-    private float _bufferTimer = 0;
-    private float _revertTimer = 0;
+    private float bufferTimer = 0;
+    private float revertTimer = 0;
 
-    private bool _isToggleable = true;
+    private bool isToggleable = true;
 
     #endregion
 
@@ -48,73 +48,73 @@ public class Door : MonoBehaviour
 
     private void Awake()
     {
-        if (_doorAnim)
+        if (doorAnim)
         {
-            _doorAnim.SetBool("Open", _beginOpen);
+            doorAnim.SetBool("Open", beginOpen);
         }
 
-        _isOpen = _beginOpen;
+        isOpen = beginOpen;
         RefreshToggles();
     }
 
     private void Update()
     {
         // Buffer gate
-        if (_bufferTime)
+        if (bufferTime)
         {
-            if (_bufferTimer >= _toggleBuffer)
+            if (bufferTimer >= toggleBuffer)
             {
-                _isToggleable = true;
-                _bufferTime = false;
+                isToggleable = true;
+                bufferTime = false;
 
-                _bufferTimer = 0;
+                bufferTimer = 0;
             }
 
-            _bufferTimer += Time.deltaTime;
+            bufferTimer += Time.deltaTime;
         }
 
         // Revert gate
-        if (_revertTime)
+        if (revertTime)
         {
-            if (_revertTimer >= _doorTimer)
+            if (revertTimer >= doorTimer)
             {
-                _revertTime = false;
-                _revertTimer = 0;
+                revertTime = false;
+                revertTimer = 0;
 
                 ToggleDoor(true);
             }
 
-            _revertTimer += Time.deltaTime;
+            revertTimer += Time.deltaTime;
         }
     }
 
     public void ToggleDoor(bool revert)
     {
-        if (_isToggleable)
+        if (isToggleable)
         {
-            _isOpen = !_isOpen;
+            isOpen = !isOpen;
 
             if (!revert)
             {
-                _isToggleable = false;
-                _bufferTime = true;
-                _bufferTimer = 0;
+                isToggleable = false;
+                bufferTime = true;
+                bufferTimer = 0;
 
-                if (_isTimedDoor)
+                if (isTimedDoor)
                 {
-                    _revertTime = true;
-                    _revertTimer = 0;
+                    revertTime = true;
+                    revertTimer = 0;
                 }
             }
 
             RefreshToggles();
-            _doorAnim.SetBool("Open", _isOpen);
+            doorAnim.SetBool("Open", isOpen);
         }
     }
 
     private void RefreshToggles()
     {
-        foreach (DoorToggle toggle in _toggles)
+        foreach (DoorToggle toggle in toggles)
         {
             toggle.Refresh();
         }

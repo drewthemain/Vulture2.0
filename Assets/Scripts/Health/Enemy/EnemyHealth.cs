@@ -7,10 +7,10 @@ public class EnemyHealth : Health
 {
     #region Variables
 
-    public Order.EnemyTypes _enemyType;
+    public Order.EnemyTypes enemyType;
 
     [Tooltip("Prefab reference for damage numbers")]
-    [SerializeField] private GameObject _damageNumber;
+    [SerializeField] private GameObject damageNumber;
 
     #endregion
 
@@ -22,10 +22,10 @@ public class EnemyHealth : Health
     /// <param name="dmg">The amount of damage taken</param>
     public override void TakeDamage(float dmg, float multiplier=1)
     {
-        if (_damageNumber)
+        if (damageNumber)
         {
-            GameObject dmgNumber = Instantiate(_damageNumber);
-            dmgNumber.transform.SetParent(UIManager.instance._worldSpaceCanvas.transform, true);
+            GameObject dmgNumber = Instantiate(damageNumber);
+            dmgNumber.transform.SetParent(UIManager.instance.worldSpaceCanvas.transform, true);
             dmgNumber.transform.position = transform.position + 
                 new Vector3(Random.Range(-0.7f, 0.7f), Random.Range(-0.7f, 0.7f), Random.Range(-0.7f, 0.7f));
             dmgNumber.GetComponent<DamageNumber>().Initialize(dmg, multiplier);
@@ -43,9 +43,9 @@ public class EnemyHealth : Health
     {
         base.Die();
 
-        RoundManager._instance.RecordEnemyKill(_enemyType);
+        RoundManager.instance.RecordEnemyKill(enemyType);
 
-        if (GetComponent<Enemy>()._ragdoll != null)
+        if (GetComponent<Enemy>().ragdoll != null)
         {
             GetComponent<Enemy>().Ragdollize();
         }

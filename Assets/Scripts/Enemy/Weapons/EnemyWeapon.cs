@@ -9,25 +9,25 @@ public class EnemyWeapon : MonoBehaviour
     [Header("Collider Variables")]
 
     [Tooltip("The prefab that will be spawned as a projectile")]
-    [SerializeField] protected GameObject _colliderPrefab;
+    [SerializeField] protected GameObject colliderPrefab;
 
     [Tooltip("The damage done by this collider")]
-    [SerializeField] protected float _colliderDamage = 5;
+    [SerializeField] protected float colliderDamage = 5;
 
     [Tooltip("The delay between attacking")]
-    [SerializeField] protected float _attackDelay = 1;
+    [SerializeField] protected float attackDelay = 1;
 
     [Tooltip("The offset for bullet instantiation, X being forward/backward, Y being up/down")]
-    [SerializeField] protected Vector2 _colliderOffset = Vector2.zero;
+    [SerializeField] protected Vector2 colliderOffset = Vector2.zero;
 
     // Is the weapon currently firing?
-    private bool _isFiring = false;
+    private bool isFiring = false;
 
     // The current delay timer between firing
-    private float _currentDelay = 0;
+    private float currentDelay = 0;
 
     // Reference to the player transform
-    protected Transform _playerReference;
+    protected Transform playerReference;
 
     #endregion
 
@@ -36,19 +36,19 @@ public class EnemyWeapon : MonoBehaviour
     protected virtual void Start()
     {
         // Player reference needed for aiming matters, can be changed later if needed
-        _playerReference = GameManager.instance.GetPlayerReference();
-        _currentDelay = _attackDelay;
+        playerReference = GameManager.instance.GetPlayerReference();
+        currentDelay = attackDelay;
     }
 
     protected virtual void Update()
     {
-        if (_isFiring)
+        if (isFiring)
         {
-            _currentDelay += Time.deltaTime;
+            currentDelay += Time.deltaTime;
 
-            if (_currentDelay >= _attackDelay)
+            if (currentDelay >= attackDelay)
             {
-                _currentDelay = 0;
+                currentDelay = 0;
                 Fire();
             }
         }
@@ -60,12 +60,12 @@ public class EnemyWeapon : MonoBehaviour
     /// <param name="shouldFire">True if this enemy should be attacking</param>
     public virtual void ToggleFiring(bool shouldFire)
     {
-        _isFiring = shouldFire;
+        isFiring = shouldFire;
     }
 
     public bool IsFiring()
     {
-        return _isFiring;
+        return isFiring;
     }
 
     /// <summary>

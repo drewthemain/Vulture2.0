@@ -13,10 +13,10 @@ public class Order
     }
 
     [Tooltip("The type of enemy of this order")]
-    public EnemyTypes _enemy;
+    public EnemyTypes enemy;
 
     [Tooltip("The amount of this enemy to spawn ")]
-    public int _enemyAmount = 1;
+    public int enemyAmount = 1;
 
     #endregion
 

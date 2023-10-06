@@ -9,12 +9,12 @@ public class Health : MonoBehaviour
     [Header("Values")]
 
     [Tooltip("The maximum amount of health")]
-    [SerializeField] protected float _maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
 
     [Tooltip("The maximum amount of health")]
-    public float _currentHealth = 100f;
+    public float currentHealth = 100f;
 
-    protected float _currentMaxHealth = 100f;
+    protected float currentMaxHealth = 100f;
 
     #endregion
 
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        _currentMaxHealth = _maxHealth;
+        currentMaxHealth = maxHealth;
     }
 
     /// <summary>
@@ -31,9 +31,9 @@ public class Health : MonoBehaviour
     /// <param name="dmg">The amount of damage done</param>
     public virtual void TakeDamage(float dmg, float multiplier=1)
     {
-        _currentHealth -= dmg * multiplier;
+        currentHealth -= dmg * multiplier;
 
-        if (_currentHealth <= 0f)
+        if (currentHealth <= 0f)
         {
             Die();
         }
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
     /// <param name="heal">The amount of healing done</param>
     protected virtual void Heal(float heal)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth + heal, 0f, _currentMaxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + heal, 0f, currentMaxHealth);
     }
 
     /// <summary>
@@ -54,9 +54,9 @@ public class Health : MonoBehaviour
     /// <param name="increase">The amount of HP to increase by</param>
     public virtual void IncreaseMax(float increase)
     {
-        _currentMaxHealth += increase;
+        currentMaxHealth += increase;
 
-        _currentHealth = _currentMaxHealth;
+        currentHealth = currentMaxHealth;
     }
 
     /// <summary>
@@ -65,9 +65,9 @@ public class Health : MonoBehaviour
     /// <param name="increase">The amount of HP to increase by</param>
     public virtual void ResetMax()
     {
-        _currentMaxHealth = _maxHealth;
+        currentMaxHealth = maxHealth;
 
-        _currentHealth = _maxHealth;
+        currentHealth = maxHealth;
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class Health : MonoBehaviour
     /// </summary>
     public virtual float GetMaxHealth()
     {
-        return _currentMaxHealth;
+        return currentMaxHealth;
     }
 
     #endregion

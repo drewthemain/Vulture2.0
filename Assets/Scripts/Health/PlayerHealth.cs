@@ -46,14 +46,14 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(dmg, multiplier);
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
-        UIManager.instance.UpdateHealth(_currentHealth);
+        UIManager.instance.UpdateHealth(currentHealth);
         EnterCombat();
     }
 
     protected override void Heal(float heal)
     {
         base.Heal(heal);
-        UIManager.instance.UpdateHealth(_currentHealth);
+        UIManager.instance.UpdateHealth(currentHealth);
     }
 
     public override float GetMaxHealth()
@@ -78,7 +78,7 @@ public class PlayerHealth : Health
     private void ExitCombat()
     {
         inCombat = false;
-        StartCoroutine(LerpHealth(passiveHealingIncrement, passiveHealTickDelay, (_maxHealth / 2)));
+        StartCoroutine(LerpHealth(passiveHealingIncrement, passiveHealTickDelay, (maxHealth / 2)));
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public class PlayerHealth : Health
     /// </summary>
     public void EndOfTurnHeal()
     {
-        StartCoroutine(LerpHealth(roundEndHealIncrement, roundEndHealDelay, _maxHealth));
+        StartCoroutine(LerpHealth(roundEndHealIncrement, roundEndHealDelay, maxHealth));
     }
 
     /// <summary>
@@ -105,12 +105,12 @@ public class PlayerHealth : Health
     /// </summary>
     IEnumerator LerpHealth(float increment, float delay, float maxHealthLimit)
     {
-        while (_currentHealth < maxHealthLimit)
+        while (currentHealth < maxHealthLimit)
         {
             Heal(increment);
             yield return new WaitForSeconds(delay);
         }
-        _currentHealth = maxHealthLimit;
+        currentHealth = maxHealthLimit;
     }
 
     #endregion

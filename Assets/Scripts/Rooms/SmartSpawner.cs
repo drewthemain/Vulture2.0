@@ -7,31 +7,31 @@ public class SmartSpawner : MonoBehaviour
     #region Variables
 
     [Tooltip("The types of enemies to spawn")]
-    public Order.EnemyTypes _enemyType;
+    public Order.EnemyTypes enemyType;
 
     [Tooltip("The amount of time inbetween spawns")]
-    [SerializeField] private float _maxSpawnBuffer = 3;
+    [SerializeField] private float maxSpawnBuffer = 3;
 
     [Header("References")]
 
     [Tooltip("The current pool of enemies")]
-    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private List<GameObject> enemies;
 
-    private Transform _eggParent;
+    private Transform eggParent;
 
-    private List<GameObject> _eggSpawns = new List<GameObject>();
+    private List<GameObject> eggSpawns = new List<GameObject>();
 
     // Reference to the Room this belongs to
-    private Room _parentRoom;
+    private Room parentRoom;
 
     // The current number of enemies waiting to be spawned
-    private int _orderAmount = 0;
+    private int orderAmount = 0;
 
     // The time inbetween spawns
-    private float _spawnBuffer = 0;
+    private float spawnBuffer = 0;
 
     // The timer for the spawn buffer
-    private float _spawnTimer = 0;
+    private float spawnTimer = 0;
 
     #endregion
 
@@ -41,38 +41,38 @@ public class SmartSpawner : MonoBehaviour
     {
         if (GetComponentInParent<Room>())
         {
-            _parentRoom = GetComponentInParent<Room>();
+            parentRoom = GetComponentInParent<Room>();
         }
         else
         {
             Debug.LogWarning($"Smart Spawner {transform.name} is not a proper child of a room!");
         }
 
-        _spawnBuffer = Random.Range(_maxSpawnBuffer / 2, _maxSpawnBuffer);
+        spawnBuffer = Random.Range(maxSpawnBuffer / 2, maxSpawnBuffer);
 
         if (transform.GetChild(0))
         {
-            _eggParent = transform.GetChild(0);
+            eggParent = transform.GetChild(0);
 
-            foreach(Transform child in _eggParent.transform)
+            foreach(Transform child in eggParent.transform)
             {
-                _eggSpawns.Add(child.gameObject);
+                eggSpawns.Add(child.gameObject);
             }
         }
     }
 
     private void Update()
     {
-        if (_orderAmount > 0)
+        if (orderAmount > 0)
         {
-            _spawnTimer += Time.deltaTime;
+            spawnTimer += Time.deltaTime;
 
-            if (_spawnTimer >= _spawnBuffer)
+            if (spawnTimer >= spawnBuffer)
             {
-                _spawnTimer = 0;
-                _spawnBuffer = Random.Range(_maxSpawnBuffer / 2, _maxSpawnBuffer);
+                spawnTimer = 0;
+                spawnBuffer = Random.Range(maxSpawnBuffer / 2, maxSpawnBuffer);
 
-                if (RoundManager._instance.CanSpawn())
+                if (RoundManager.instance.CanSpawn())
                 {
                     Spawn();
                 }
@@ -88,9 +88,9 @@ public class SmartSpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(SelectEnemy(), transform.position, Quaternion.identity);
         newEnemy.transform.parent = this.transform;
 
-        RoundManager._instance.RecordEnemySpawn();
+        RoundManager.instance.RecordEnemySpawn();
 
-        _orderAmount -= 1;
+        orderAmount -= 1;
     }
 
     /// <summary>
@@ -99,15 +99,15 @@ public class SmartSpawner : MonoBehaviour
     /// <returns>Prefab</returns>
     public GameObject SelectEnemy()
     {
-        switch (_enemyType)
+        switch (enemyType)
         {
             case Order.EnemyTypes.Soldier:
 
-                return _enemies[0];
+                return enemies[0];
 
             case Order.EnemyTypes.Swarm:
 
-                return _enemies[1];
+                return enemies[1];
 
         }
 
@@ -120,7 +120,7 @@ public class SmartSpawner : MonoBehaviour
     /// <param name="amount">The amount of enemies to be added to the queue</param>
     public void AcceptOrder(int amount)
     {
-        _orderAmount += amount;
+        orderAmount += amount;
     }
 
     /// <summary>
@@ -129,8 +129,8 @@ public class SmartSpawner : MonoBehaviour
     /// <returns>Number of remaining enemies in the order</returns>
     public int ClearOrderRemaining()
     {
-        int remaining = _orderAmount;
-        _orderAmount = 0;
+        int remaining = orderAmount;
+        orderAmount = 0;
         return remaining;
     }
 

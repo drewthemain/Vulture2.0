@@ -5305,14 +5305,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: GUI
+      value: 
+      objectReference: {fileID: 6483637421311361410}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: _GUI
       value: 
       objectReference: {fileID: 6483637421311361410}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 3108390133620031847}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: _crosshair
       value: 
       objectReference: {fileID: 3108390133620031847}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: ammoSlider
+      value: 
+      objectReference: {fileID: 6042038265458196893}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _ammoSlider
@@ -5322,12 +5337,32 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoCounter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1603820838625339008}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _ammoCounter
       value: 
       objectReference: {fileID: 1603820838625339008}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: currentRound
+      value: 
+      objectReference: {fileID: 3683438374694644061}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: gameUIParent
+      value: 
+      objectReference: {fileID: 834124418848805869}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 7801946860426618830}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: loseUIParent
+      value: 
+      objectReference: {fileID: 6657632132743318030}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _currentRound
@@ -5350,6 +5385,26 @@ PrefabInstance:
       objectReference: {fileID: 6657632132743318030}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: healthCounter
+      value: 
+      objectReference: {fileID: 7344534586499724349}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: objectiveText
+      value: 
+      objectReference: {fileID: 92624717506527489}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: pauseUIParent
+      value: 
+      objectReference: {fileID: 6791056292687360888}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: warningBanner
+      value: 
+      objectReference: {fileID: 3524659685900094993}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: _healthCounter
       value: 
       objectReference: {fileID: 7344534586499724349}
@@ -5370,6 +5425,16 @@ PrefabInstance:
       objectReference: {fileID: 3524659685900094993}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 4493794384873792208}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: settingsButton
+      value: 
+      objectReference: {fileID: 7174383519968855631}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: _continueButton
       value: 
       objectReference: {fileID: 4493794384873792208}
@@ -5380,6 +5445,11 @@ PrefabInstance:
       objectReference: {fileID: 7174383519968855631}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: crosshairCanvas
+      value: 
+      objectReference: {fileID: 436893270960776322}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: _crosshairCanvas
       value: 
       objectReference: {fileID: 436893270960776322}
@@ -5388,6 +5458,16 @@ PrefabInstance:
       propertyPath: _sensitivityText
       value: 
       objectReference: {fileID: 8023526746704191856}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: settingsUIParent
+      value: 
+      objectReference: {fileID: 347591008404080091}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 5516827408085064321}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _settingsUIParent
@@ -5408,6 +5488,11 @@ PrefabInstance:
       propertyPath: _aimSensitivitySlider
       value: 
       objectReference: {fileID: 7909882899081927629}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
+      propertyPath: crosshairCanvasPosition
+      value: 
+      objectReference: {fileID: 5392467977388239139}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _crosshairCanvasPosition
@@ -6172,14 +6257,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
+      propertyPath: inBetweenLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
       propertyPath: _inBetweenLength
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
       propertyPath: _rounds.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c9d44048d92362c4b9c76e565b2cc464,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 24ee1930dc70632498d56c30afacade2,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0aed6258296d2a4b96bbd96145fda00,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f2b15d284f4bec4aa02ad4836662cb1,
+        type: 2}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
       propertyPath: _rounds.Array.data[0]
