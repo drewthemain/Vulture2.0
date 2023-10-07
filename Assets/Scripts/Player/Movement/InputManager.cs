@@ -42,6 +42,7 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerIsJumping()
     {
+        if (Time.timeScale == 0) return false;
         float inputVal = input.Player.Jump.ReadValue<float>();
         if (inputVal == 0)
         {
@@ -55,6 +56,7 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerIsSprinting()
     {
+        if (Time.timeScale == 0) return false;
         float inputVal = input.Player.Sprint.ReadValue<float>();
         if (inputVal == 0)
         {
@@ -68,6 +70,7 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerIsCrouching()
     {
+        if (Time.timeScale == 0) return false;
         float inputVal = input.Player.Crouch.ReadValue<float>();
         if (inputVal == 0)
         {
@@ -81,21 +84,25 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerStartedSprinting()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.Sprint.triggered && input.Player.Sprint.ReadValue<float>() > 0;
     }
 
     public bool PlayerStartedCrouching()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.Crouch.triggered && input.Player.Crouch.ReadValue<float>() > 0;
     }
 
     public bool PlayerStartedJumping()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.Jump.triggered && input.Player.Jump.ReadValue<float>() > 0;
     }
 
     public bool PlayerIsFiring()
     {
+        if (Time.timeScale == 0) return false;
         float inputVal = input.Player.Fire.ReadValue<float>();
         if (inputVal == 0)
         {
@@ -109,11 +116,13 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerStartedFiring()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.Fire.triggered && input.Player.Fire.ReadValue<float>() > 0;
     }
 
     public bool PlayerStartedReloading()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.Reload.triggered && input.Player.Reload.ReadValue<float>() > 0;
     }
 
@@ -160,6 +169,7 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerIsAiming()
     {
+        if (Time.timeScale == 0) return false;
         float inputVal = input.Player.ADS.ReadValue<float>();
         if (inputVal == 0)
         {
@@ -173,6 +183,7 @@ public class InputManager : MonoBehaviour
 
     public bool PlayerStartedAiming()
     {
+        if (Time.timeScale == 0) return false;
         return input.Player.ADS.triggered && input.Player.ADS.ReadValue<float>() > 0;
     }
 }
