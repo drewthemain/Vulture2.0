@@ -5534,6 +5534,10 @@ MonoBehaviour:
   crosshair: {fileID: 2984107113603599642}
   ADScrosshair: {fileID: 8300986499487707813}
   crosshairCanvasPosition: {fileID: 5392467977388239139}
+  maxCrosshairChangeDist: 100
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 43137
 --- !u!1001 &4032782738551616983
 PrefabInstance:
   m_ObjectHideFlags: 0
