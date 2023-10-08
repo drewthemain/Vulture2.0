@@ -84,16 +84,6 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the settings button")]
     [SerializeField] private GameObject settingsButton;
 
-    [Header("Crosshair References")]
-    [Tooltip("The reference to the continue button")]
-    [SerializeField] private Canvas crosshairCanvas;
-
-    [Tooltip("The reference to the settings button")]
-    [SerializeField] private GameObject crosshair;
-
-    [Tooltip("The reference to the crosshair canvas position transform")]
-    [SerializeField] private Transform crosshairCanvasPosition;
-
     // General References
     // Reference to the player gameobject
     private PlayerController controller;
@@ -430,24 +420,6 @@ public class UIManager : MonoBehaviour
                 currentSettingsMenu = SettingsMenuType.Main;
                 break;
         }
-    }
-
-    /// <summary>
-    /// Switch the crosshair to display on the gun rather than on the camera
-    /// </summary>
-    public void EnableWorldspaceCrosshair()
-    {
-        crosshairCanvas.renderMode = RenderMode.WorldSpace;
-        Vector3 pos = crosshairCanvasPosition.localPosition;
-        crosshairCanvas.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(pos.x, pos.y, pos.z);
-    }
-
-    /// <summary>
-    /// Switch the crosshair to display on the screenspace rather than on the gun
-    /// </summary>
-    public void EnableScreenCamCrosshair()
-    {
-        crosshairCanvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
     public void ChangeGUIOpacity(float opacityPercentage)

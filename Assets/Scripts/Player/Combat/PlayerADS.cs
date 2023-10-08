@@ -24,6 +24,8 @@ public class PlayerADS : MonoBehaviour
     private InputManager input;
     // Reference to the UI manager
     private UIManager ui;
+    // Reference to the crosshair manager
+    private CrosshairManager crosshair;
     // Reference to the player gun
     private PlayerGun gun;
     // Reference to the player controller
@@ -40,6 +42,7 @@ public class PlayerADS : MonoBehaviour
     {
         input = InputManager.instance;
         ui = UIManager.instance;
+        crosshair = CrosshairManager.instance;
     }
 
     private void Update()
@@ -87,7 +90,7 @@ public class PlayerADS : MonoBehaviour
         float time = 0;
         if(!aiming)
         {
-            ui.EnableScreenCamCrosshair();
+            crosshair.EnableHipfireScreenCamCrosshair();
             controller.DisableAimSensitivity();
         }
         while (time < adsSnapTime)
@@ -101,7 +104,7 @@ public class PlayerADS : MonoBehaviour
         // gun has fully scoped in
         if (aiming && gunModel.localPosition == adsTransform.localPosition)
         {
-            ui.EnableWorldspaceCrosshair();
+            crosshair.EnableADSWorldspaceCrosshair();
             // switch the sensitivity to aiming
             controller.EnableAimSensitivity();
         }

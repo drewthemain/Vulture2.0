@@ -38,15 +38,6 @@ public class SettingsManager : MonoBehaviour
     [Tooltip("The reference to the textbox next to the slider displaying the number")]
     [SerializeField] private TextMeshProUGUI aimSensitivityText;
 
-    //[Header("Crosshair References")]
-    //[Tooltip("The reference to the continue button")]
-    //[SerializeField] private Canvas _crosshairCanvas;
-
-    //[Tooltip("The reference to the settings button")]
-    //[SerializeField] private GameObject _crosshair;
-
-    //[Tooltip("The reference to the crosshair canvas position transform")]
-    //[SerializeField] private Transform _crosshairCanvasPosition;
 
     // General References
     // Reference to the player gameobject
