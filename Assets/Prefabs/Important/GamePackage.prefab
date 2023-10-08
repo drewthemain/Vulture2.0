@@ -4526,21 +4526,9 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 344022932003552860}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2359648623470498234 stripped
+--- !u!1 &2984107113603599642 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2628150426773106662, guid: 2c069714f59171345b9ff3934301bf05,
-    type: 3}
-  m_PrefabInstance: {fileID: 344022932003552860}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2714689942429141484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2407933858616473520, guid: 2c069714f59171345b9ff3934301bf05,
-    type: 3}
-  m_PrefabInstance: {fileID: 344022932003552860}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3108390133620031847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3451181539569221435, guid: 2c069714f59171345b9ff3934301bf05,
+  m_CorrespondingSourceObject: {fileID: 3292019810101621574, guid: 2c069714f59171345b9ff3934301bf05,
     type: 3}
   m_PrefabInstance: {fileID: 344022932003552860}
   m_PrefabAsset: {fileID: 0}
@@ -4559,6 +4547,12 @@ Camera:
 --- !u!4 &6853195437310318542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6619526159688100242, guid: 2c069714f59171345b9ff3934301bf05,
+    type: 3}
+  m_PrefabInstance: {fileID: 344022932003552860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8300986499487707813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8643868064333417721, guid: 2c069714f59171345b9ff3934301bf05,
     type: 3}
   m_PrefabInstance: {fileID: 344022932003552860}
   m_PrefabAsset: {fileID: 0}
@@ -5257,12 +5251,12 @@ PrefabInstance:
         type: 3}
       propertyPath: crosshair
       value: 
-      objectReference: {fileID: 3108390133620031847}
+      objectReference: {fileID: 0}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: _crosshair
       value: 
-      objectReference: {fileID: 3108390133620031847}
+      objectReference: {fileID: 0}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
       propertyPath: ammoSlider
@@ -5537,8 +5531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshairCanvas: {fileID: 436893270960776322}
-  crosshair: {fileID: 2359648623470498234}
-  ADScrosshair: {fileID: 2714689942429141484}
+  crosshair: {fileID: 2984107113603599642}
+  ADScrosshair: {fileID: 8300986499487707813}
   crosshairCanvasPosition: {fileID: 5392467977388239139}
 --- !u!1001 &4032782738551616983
 PrefabInstance:
