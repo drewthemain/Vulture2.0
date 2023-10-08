@@ -5538,6 +5538,9 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 43137
+  walkingCrosshairScale: 200
+  movingCrosshairScale: 300
+  crosshairScalingDuration: 0.25
 --- !u!1001 &4032782738551616983
 PrefabInstance:
   m_ObjectHideFlags: 0

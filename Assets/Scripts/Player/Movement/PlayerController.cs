@@ -493,4 +493,19 @@ public class PlayerController : MonoBehaviour
         useAimSensitivity = false;
         UpdateSensitivity();
     }
+
+    /// <summary>
+    /// Check whether or not the player is holding movement inputs
+    /// </summary>
+    /// <returns>Standing status</returns>
+    public bool IsPlayerStandingStill()
+    {
+        Vector2 move = input.GetPlayerMovement();
+        if(move.x != 0 || move.y != 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
 }
