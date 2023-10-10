@@ -289,6 +289,6 @@ public class PlayerGun : MonoBehaviour
     /// <param name="hit">The hit information from performing the raycast</param>
     private void SpawnBullethole(RaycastHit hit)
     {
-        Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+        Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal), hit.collider.gameObject.transform);
     }
 }
