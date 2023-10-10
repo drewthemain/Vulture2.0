@@ -15,3 +15,10 @@ MonoBehaviour:
   component: PlayerController
   action: PlayerSpeedBoost
   description: Adrenaline is kicking in, I need to move faster!
+  optionalParameters:
+    keys:
+    - Speed Multiplier
+    values:
+    - component: {fileID: 0}
+      number: 1.5
+      quote: 

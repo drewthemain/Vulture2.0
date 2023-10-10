@@ -15,3 +15,10 @@ MonoBehaviour:
   component: PlayerController
   action: SlowOnDamage
   description: "Their goo seems to be messing with my suit, I can\u2019t move!"
+  optionalParameters:
+    keys:
+    - Slow Amount
+    values:
+    - component: {fileID: 0}
+      number: 0.03
+      quote: 

@@ -80,6 +80,8 @@ public class EventManager : MonoBehaviour
 
     public void FactoryChannels(Component target, bool up)
     {
+        Event.UDictionary parameters = events[currentIndex].optionalParameters;
+
         switch (target)
         {
             case Health:
@@ -87,7 +89,7 @@ public class EventManager : MonoBehaviour
                 switch (events[currentIndex].action)
                 {
                     case "IncreaseEnemyMaxHealth":
-                        EventFactory.IncreaseEnemyMaxHealth((EnemyHealth)target, up);
+                        EventFactory.IncreaseEnemyMaxHealth((EnemyHealth)target, up, parameters);
                         break;
 
                     default:
@@ -101,7 +103,7 @@ public class EventManager : MonoBehaviour
                 switch (events[currentIndex].action)
                 {
                     case "EnemySpeedBoost":
-                        EventFactory.EnemySpeedBoost((NavMeshAgent)target, up);
+                        EventFactory.EnemySpeedBoost((NavMeshAgent)target, up, parameters);
                         break;
 
                     default:
@@ -115,7 +117,7 @@ public class EventManager : MonoBehaviour
                 switch (events[currentIndex].action)
                 {
                     case "ToggleDoubleBullets":
-                        EventFactory.ToggleDoubleBullets((Soldier)target, up);
+                        EventFactory.ToggleDoubleBullets((Soldier)target, up, parameters);
                         break;
 
                     default:
@@ -129,7 +131,7 @@ public class EventManager : MonoBehaviour
                 switch (events[currentIndex].action)
                 {
                     case "ToggleGravity":
-                        EventFactory.ToggleGravity(up);
+                        EventFactory.ToggleGravity(up, parameters);
                         break;
 
                     default:
@@ -143,11 +145,11 @@ public class EventManager : MonoBehaviour
                 switch (events[currentIndex].action)
                 {
                     case "SlowOnDamage":
-                        EventFactory.SlowOnDamage((PlayerController)target, up);
+                        EventFactory.SlowOnDamage((PlayerController)target, up, parameters);
                         break;
 
                     case "PlayerSpeedBoost":
-                        EventFactory.PlayerSpeedBoost((PlayerController)target, up);
+                        EventFactory.PlayerSpeedBoost((PlayerController)target, up, parameters);
                         break;
 
                     default:

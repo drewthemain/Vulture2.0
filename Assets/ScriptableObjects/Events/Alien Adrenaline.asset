@@ -14,3 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   component: NavMeshAgent
   action: EnemySpeedBoost
+  description: Wait, the aliens are faster now?
+  optionalParameters:
+    keys:
+    - Enemy Speed Boost
+    values:
+    - component: {fileID: 0}
+      number: 3
+      quote: 

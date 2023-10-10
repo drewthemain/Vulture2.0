@@ -1,33 +1,37 @@
+using System;
+using System.IO;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
 
 public static class EventFactory
 {
-    public static void IncreaseEnemyMaxHealth(EnemyHealth health, bool up)
+    public static void IncreaseEnemyMaxHealth(EnemyHealth health, bool up, Event.UDictionary parameters)
     {
+        float increaseAmount = parameters["Enemy Health Boost"].number;
         if (up)
         {
-            health.IncreaseMax(20);
+            health.IncreaseMax(increaseAmount);
             return;
         }
 
         health.ResetMax();
     }
 
-    public static void EnemySpeedBoost(NavMeshAgent agent, bool up)
+    public static void EnemySpeedBoost(NavMeshAgent agent, bool up, Event.UDictionary parameters)
     {
+        float increaseAmount = parameters["Enemy Speed Boost"].number;
         if (up)
         {
-            agent.speed += 3;
+            agent.speed += increaseAmount;
             return;
         }
 
-        agent.speed -= 3;
+        agent.speed -= increaseAmount;
     }
 
-    public static void ToggleDoubleBullets(Soldier soldier, bool up)
+    public static void ToggleDoubleBullets(Soldier soldier, bool up, Event.UDictionary parameters)
     {
         if (up)
         {
@@ -38,7 +42,7 @@ public static class EventFactory
         soldier.GetComponent<EnemyGun>().ToggleDoubleBullets(false);
     }
 
-    public static void ToggleGravity(bool up)
+    public static void ToggleGravity(bool up, Event.UDictionary parameters)
     {
         if (up)
         {
@@ -49,22 +53,24 @@ public static class EventFactory
         GameManager.instance.ResetGravity();
     }
 
-    public static void SlowOnDamage(PlayerController controller, bool up)
+    public static void SlowOnDamage(PlayerController controller, bool up, Event.UDictionary parameters)
     {
+        float decreaseAmount = parameters["Slow Amount"].number;
         if (up)
         {
-            controller.GetComponent<PlayerHealth>().speedDecreaseOnDamage = 0.03f;
+            controller.GetComponent<PlayerHealth>().speedDecreaseOnDamage = decreaseAmount;
             return;
         }
 
         controller.speedMultiplier = 1;
     }
 
-    public static void PlayerSpeedBoost(PlayerController controller, bool up)
+    public static void PlayerSpeedBoost(PlayerController controller, bool up, Event.UDictionary parameters)
     {
+        float multiplier = parameters["Speed Multiplier"].number;
         if (up)
         {
-            controller.speedMultiplier = 2f;
+            controller.speedMultiplier = multiplier;
             return;
         }
 

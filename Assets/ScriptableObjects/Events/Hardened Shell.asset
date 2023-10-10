@@ -15,3 +15,10 @@ MonoBehaviour:
   component: EnemyHealth
   action: IncreaseEnemyMaxHealth
   description: The aliens seem to have grown an extra shell of armor...
+  optionalParameters:
+    keys:
+    - Enemy Health Boost
+    values:
+    - component: {fileID: 0}
+      number: 20
+      quote: 
