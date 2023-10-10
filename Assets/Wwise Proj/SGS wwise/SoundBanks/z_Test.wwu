@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{8AC2F36C-7093-41FB-905D-FCF539B0311D}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="z_Test" ID="{8AC2F36C-7093-41FB-905D-FCF539B0311D}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Test" ID="{ECAD06E9-AF35-4886-8B75-9C4BB7757251}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496" ID="{CB5A234E-C401-4D80-BE50-D49E0E0E2A51}" WorkUnitID="{CA5748D2-5876-47D0-AA92-AB728415315C}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

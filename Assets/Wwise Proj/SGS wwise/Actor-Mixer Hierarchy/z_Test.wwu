@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{DD530617-DC83-45AB-B774-E64B70CBF6D6}" SchemaVersion="110" RootDocumentID="{8B552871-55F3-4DF1-BE9E-428444D82310}" ParentDocumentID="{8B552871-55F3-4DF1-BE9E-428444D82310}">
+	<AudioObjects>
+		<WorkUnit Name="z_Test" ID="{DD530617-DC83-45AB-B774-E64B70CBF6D6}" OwnerID="{8B552871-55F3-4DF1-BE9E-428444D82310}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{9679DA4C-FBBD-4FE2-9D73-604D7281506C}" ShortID="873567716">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}">
+							<Language>SFX</Language>
+							<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="541906591"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
