@@ -119,6 +119,16 @@ public class Enemy : MonoBehaviour
 
     #region Methods
 
+    private void OnEnable()
+    {
+        GameManager.OnClear += Clear;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnClear -= Clear;
+    }
+
     /// <summary>
     /// Changes and properly transitions all enemy states
     /// </summary>
@@ -451,6 +461,11 @@ public class Enemy : MonoBehaviour
     {
         Vector3 targetPostition = new Vector3(target.position.x, this.transform.position.y, target.position.z);
         this.transform.LookAt(targetPostition);
+    }
+
+    private void Clear()
+    {
+        Destroy(this.gameObject);
     }
 
     #endregion

@@ -58,6 +58,8 @@ public class RoundManager : MonoBehaviour
 
     private int currentLoop = 1;
 
+    private int nextRoundOverride = -1;
+
 
     #endregion
 
@@ -171,7 +173,17 @@ public class RoundManager : MonoBehaviour
                 if (totalEnemiesRemaining <= 0)
                 {
                     Debug.Log($"Round {rounds[currentRound]} over!".Color("green").Bold());
-                    currentRound++;
+
+                    if (nextRoundOverride != -1)
+                    {
+                        currentRound++;
+                    }
+                    else
+                    {
+                        currentRound = nextRoundOverride;
+                        nextRoundOverride = -1;
+                    }
+
                     totalCurrentRound++;
                     playerHealth.EndOfTurnHeal();
                     ChangeRoundState(RoundState.InBetween);
@@ -292,6 +304,37 @@ public class RoundManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Force ends the current round and resets all values
+    /// </summary>
+    public void ForceQuit()
+    {
+        SmartMap.instance.ClearAll();
+
+        totalEnemiesRemaining = 0;
+        totalEnemiesSpawned = 0;
+        segmentEnemiesRemaining = 0;
+    }
+
+    /// <summary>
+    /// Sets an override for the next round
+    /// </summary>
+    /// <param name="nextIndex">The index of the next round</param>
+    /// <returns>The name of the next round</returns>
+    public string SetOverride(int nextIndex)
+    {
+        if (roundState == RoundState.InBetween)
+        {
+            currentRound = nextIndex;
+        }
+        else
+        {
+            nextRoundOverride = nextIndex;
+        }
+
+        return rounds[nextIndex].name;
     }
 
     #endregion

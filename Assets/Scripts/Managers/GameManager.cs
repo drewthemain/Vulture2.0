@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DavidFDev.DevConsole;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,9 +26,22 @@ public class GameManager : MonoBehaviour
     public delegate void GravChange();
     public static event GravChange OnLowGrav;
 
+    public delegate void ClearAll();
+    public static event ClearAll OnClear;
+
     #endregion
 
     #region Methods
+
+    private void OnEnable()
+    {
+        DevConsole.OnConsoleOpened += UIManager.instance.PauseGame;
+    }
+
+    private void OnDisable()
+    {
+        DevConsole.OnConsoleOpened -= UIManager.instance.PauseGame;
+    }
 
     private void Awake()
     {
@@ -156,6 +170,65 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerTransform.GetComponent<PlayerController>().EnableCamera();
     }
+
+    #region Dev Console
+
+    [DevConsoleCommand(
+      name: "EndRound",
+      aliases: "end",
+      helpText: "Ends the current round"
+    )]
+    private static void EndRound()
+    {
+        Debug.Log("Force Round Quit...".Bold().Color("purple"));
+        RoundManager.instance.ForceQuit();
+
+        OnClear?.Invoke();
+
+        DevConsole.CloseConsole();
+    }
+
+    [DevConsoleCommand(
+      name: "NextRound",
+      aliases: "nextround",
+      helpText: "Sets the next round",
+      parameterHelpText: new string[2] {"The index of the next round", 
+          "Whether to force end the current round"}
+    )]
+    private static void NextRound(int nextIndex, bool endCurrent = false)
+    {
+        string nextRound = RoundManager.instance.SetOverride(nextIndex);
+        Debug.Log($"Next round will be ... {nextRound}".Bold().Color("purple"));
+
+        if (endCurrent)
+        {
+            EndRound();
+        }
+
+        DevConsole.CloseConsole();
+    }
+
+    [DevConsoleCommand(
+      name: "NextEvent",
+      aliases: "nextevent",
+      helpText: "Sets the next event",
+      parameterHelpText: new string[2] {"The index of the next event",
+              "Whether to force end the current round"}
+    )]
+    private static void NextEvent(int nextIndex, bool endCurrent = false)
+    {
+        string nextEvent = EventManager.instance.SetOverride(nextIndex);
+        Debug.Log($"Next event will be ... {nextEvent}".Bold().Color("purple"));
+
+        if (endCurrent)
+        {
+            EndRound();
+        }
+
+        DevConsole.CloseConsole();
+    }
+
+    #endregion
 
     #endregion
 }

@@ -14,8 +14,9 @@ public class EventManager : MonoBehaviour
     [Tooltip("The list of available events to choose from")]
     [SerializeField] private List<Event> events;
 
-    private int currentIndex = -1;
+    public int currentIndex = -1;
     private int previousIndex = -1;
+    private int indexOverride = -1;
 
     public delegate Component EventStart();
     public static event EventStart OnEventStart;
@@ -172,7 +173,16 @@ public class EventManager : MonoBehaviour
         int safety = 0;
         do
         {
-            currentIndex = Random.Range(0, events.Count);
+            if (indexOverride == -1)
+            {
+                currentIndex = Random.Range(0, events.Count);
+            }
+            else
+            {
+                currentIndex = indexOverride;
+                indexOverride = -1;
+                break;
+            }
 
             if (events.Count <= 1 || safety >= 50)
             {
@@ -199,6 +209,13 @@ public class EventManager : MonoBehaviour
 
         previousIndex = currentIndex;
         currentIndex = -1;
+    }
+
+    public string SetOverride(int nextIndex)
+    {
+        indexOverride = nextIndex;
+
+        return events[indexOverride].name;
     }
 
 

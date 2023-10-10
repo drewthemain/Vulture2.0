@@ -148,5 +148,13 @@ public class SmartMap : MonoBehaviour
         return newOrder;
     }
 
+    public void ClearAll()
+    {
+        foreach (Room room in rooms)
+        {
+            room.Shutdown();
+        }
+    }
+
     #endregion
 }

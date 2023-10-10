@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.davidfdev.devconsole": {
+      "version": "https://github.com/DavidF-Dev/Unity-DeveloperConsole.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0128f8c70b1799b87a344c3f315163fa70613ac5"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
