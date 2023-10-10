@@ -8,10 +8,6 @@ public class PlayerWallRun : MonoBehaviour
     [SerializeField] private float wallRunForce;
     [Tooltip("The amount of force pushing the player up the wall when starting to wall run")]
     [SerializeField] private float verticalForceAmount;
-    [Tooltip("Amount of vertical force when jumping off of a wall run")]
-    [SerializeField] private float wallJumpUpForce;
-    [Tooltip("Amount of horizontal force when jumping off of a wall run")]
-    [SerializeField] private float wallJumpSideForce;
     [Tooltip("The maximum duration that the player can continue to wall run")]
     [SerializeField] private float maxWallRunTime;
     [Tooltip("Time the player must wait between jumping from a wall and starting another wall run")]
@@ -28,6 +24,20 @@ public class PlayerWallRun : MonoBehaviour
     [SerializeField] private float wallRunLookAngle;
     [Tooltip("Minimum distance a player needs to jump to wall run")]
     [SerializeField] private float minJumpHeight;
+
+    [Header("Wall Jump Values")]
+    [Tooltip("Amount of vertical force when jumping off of a wall run when using the smaller version of the wall run jump")]
+    [SerializeField] private float smallWallJumpUpForce;
+    [Tooltip("Amount of horizontal force when jumping off of a wall run when using the smaller version of the wall run jump")]
+    [SerializeField] private float smallWallJumpSideForce;
+    [Tooltip("Amount of vertical force when jumping off of a wall run when using the larger version of the wall run jump")]
+    [SerializeField] private float largeWallJumpUpForce;
+    [Tooltip("Amount of horizontal force when jumping off of a wall run when using the larger version of the wall run jump")]
+    [SerializeField] private float largeWallJumpSideForce;
+    [Tooltip("The distance that will be checked above the player for deciding if the jump should be large / small")]
+    [SerializeField] private float jumpChangeHeightThreshold;
+    [Tooltip("The layers that should be detected above the player when checking for switching wall jumps")]
+    [SerializeField] private LayerMask ceilingLayers;
 
     [Header("Gravity")]
     [Tooltip("Whether or not the wall run will be affected by gravity / slowly drop while running")]
@@ -191,7 +201,15 @@ public class PlayerWallRun : MonoBehaviour
             // wall jump
             if (input.PlayerStartedJumping())
             {
-                WallJump();
+                bool ceilingAbove = Physics.Raycast(cameraTransform.position, cameraTransform.up, jumpChangeHeightThreshold, ceilingLayers);
+                if(ceilingAbove)
+                {
+                    WallJump(smallWallJumpUpForce, smallWallJumpSideForce);
+                }
+                else
+                {
+                    WallJump(largeWallJumpUpForce, largeWallJumpSideForce);
+                }
             }
         }
 
@@ -301,14 +319,16 @@ public class PlayerWallRun : MonoBehaviour
     /// <summary>
     /// Jump off the wall according to the given values for the vertical and horizontal planes of the jump, along with reseting the wall timer.
     /// </summary>
-    private void WallJump()
+    /// <param name="up">The amount of upwards force applied</param>
+    /// <param name="side">The amount of downwards force applied</param>
+    private void WallJump(float up, float side)
     {
         // enter exiting wall state
         exitingWall = true;
         exitWallTimer = wallRunCooldown;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
-        Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
+        Vector3 forceToApply = transform.up * up + wallNormal * side;
 
         // reset y velocity and add force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);

@@ -634,6 +634,7 @@ MonoBehaviour:
   slideSpeed: 30
   wallRunSpeed: 12
   climbSpeed: 3
+  speedMultiplier: 1
   groundDrag: 5
   instantSpeedChangeThreshold: 8
   state: 0
@@ -708,6 +709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  speedIncreaseOnDamage: 0
+  speedDecreaseOnDamage: 0
   passiveHealingIncrement: 1
   passiveHealTickDelay: 0.5
   inCombatTime: 3
@@ -729,13 +732,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallRunForce: 200
   verticalForceAmount: 10
-  wallJumpUpForce: 11.5
-  wallJumpSideForce: 23.5
   maxWallRunTime: 3
   wallRunCooldown: 0.7
   wallCheckDistance: 0.7
   wallRunLookAngle: 90
   minJumpHeight: 2
+  smallWallJumpUpForce: 11.5
+  smallWallJumpSideForce: 23.5
+  largeWallJumpUpForce: 15
+  largeWallJumpSideForce: 25
+  jumpChangeHeightThreshold: 6
+  ceilingLayers:
+    serializedVersion: 2
+    m_Bits: 262145
   useGravity: 1
   gravityCounterForce: 25
   tiltAmount: 5
