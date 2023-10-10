@@ -4526,6 +4526,12 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 344022932003552860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2127559273314276876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1819644377808808016, guid: 2c069714f59171345b9ff3934301bf05,
+    type: 3}
+  m_PrefabInstance: {fileID: 344022932003552860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2984107113603599642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3292019810101621574, guid: 2c069714f59171345b9ff3934301bf05,
@@ -5541,6 +5547,8 @@ MonoBehaviour:
   walkingCrosshairScale: 200
   movingCrosshairScale: 300
   crosshairScalingDuration: 0.25
+  hitMarker: {fileID: 2127559273314276876}
+  state: 0
 --- !u!1001 &4032782738551616983
 PrefabInstance:
   m_ObjectHideFlags: 0

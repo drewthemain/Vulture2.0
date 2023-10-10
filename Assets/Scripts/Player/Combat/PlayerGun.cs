@@ -156,11 +156,12 @@ public class PlayerGun : MonoBehaviour
                 float multiplier = 1;
 
                 hit.collider.GetComponent<Health>().TakeDamage(damage, multiplier);
-
+                CrosshairManager.instance.EnableHitMarker();
             }
             else if (hit.collider.GetComponent<LimbCollider>())
             {
                 hit.collider.GetComponent<LimbCollider>().SignalDamage(damage);
+                CrosshairManager.instance.EnableHitMarker();
             }
             else if (hit.collider.GetComponent<Prop>())
             {

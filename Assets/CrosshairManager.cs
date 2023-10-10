@@ -26,6 +26,8 @@ public class CrosshairManager : MonoBehaviour
     [SerializeField] private float movingCrosshairScale;
     [Tooltip("How long (seconds) the crosshair will take to change scale")]
     [SerializeField] private float crosshairScalingDuration;
+    [Tooltip("Hitmarker game object")]
+    [SerializeField] private GameObject hitMarker;
 
     // General References
     // Reference to the player gameobject
@@ -219,5 +221,34 @@ public class CrosshairManager : MonoBehaviour
             crosshair.GetComponent<LayoutElement>().preferredHeight = target;
             crosshair.GetComponent<LayoutElement>().preferredWidth = target;
         }
+    }
+
+    /// <summary>
+    /// Turn on the hitmarker
+    /// </summary>
+    public void EnableHitMarker()
+    {
+        hitMarker.SetActive(true);
+        StopCoroutine(flashHitMarker(.1f));
+
+        StartCoroutine(flashHitMarker(.1f));
+    }
+
+    /// <summary>
+    /// Turn off the hitmarker
+    /// </summary>
+    private void DisableHitMarker()
+    {
+        hitMarker.SetActive(false);
+    }
+
+    /// <summary>
+    /// Coroutine for how long the hitmarker will stay active
+    /// </summary>
+    /// <param name="duration">How long the hitmarker is active</param>
+    IEnumerator flashHitMarker (float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        DisableHitMarker();
     }
 }
