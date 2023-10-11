@@ -452,7 +452,7 @@ public class Enemy : MonoBehaviour
         ChangeState(EnemyStates.Stop);
         SmartMap.instance.RespawnEnemy(GetComponent<EnemyHealth>().enemyType);
 
-        Debug.Log($"Respawning, stuck in room {(currentRoom ? currentRoom.GetRoomID() : "hallway")}".Color("red").Italic());
+        Debug.Log($"Respawning, stuck in room {(currentRoom ? currentRoom.GetRoomID() : "hallway")}".Color("yellow").Italic());
 
         Destroy(this.gameObject);
     }

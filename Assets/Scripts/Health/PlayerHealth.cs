@@ -60,6 +60,11 @@ public class PlayerHealth : Health
             controller.speedMultiplier -= speedDecreaseOnDamage;
         }
 
+        if (speedIncreaseOnDamage != 0 && controller)
+        {
+            controller.speedMultiplier += speedIncreaseOnDamage;
+        }
+
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);
         EnterCombat();
