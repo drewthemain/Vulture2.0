@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{3B419F64-EE4B-4F04-A672-E51E199B1C60}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Weapons" ID="{3B419F64-EE4B-4F04-A672-E51E199B1C60}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Weapon_AR_SingleBurst" ID="{793360A1-E3C6-47E8-9852-ED57E39E5C26}">
+					<ChildrenList>
+						<Action Name="" ID="{7475B16B-4C12-4C6B-8686-2653DA28A624}" ShortID="119073073">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_SingleBurst" ID="{602629D8-FBE1-43C0-A679-B1AEE4089706}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

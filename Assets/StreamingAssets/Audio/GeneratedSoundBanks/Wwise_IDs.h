@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__SINE_WAVE_SND3496 = 2851956297U;
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__TRIANGLE_WAVE_SND3494 = 2393213630U;
+        static const AkUniqueID PLAY_WEAPON_AR_SINGLEBURST = 3935357643U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS
@@ -34,6 +35,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID MISSION_1 = 1137549969U;
         static const AkUniqueID TEST = 3157003241U;
     } // namespace BANKS
 
