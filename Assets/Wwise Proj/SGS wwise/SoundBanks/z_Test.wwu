@@ -5,7 +5,8 @@
 			<ChildrenList>
 				<SoundBank Name="Test" ID="{ECAD06E9-AF35-4886-8B75-9C4BB7757251}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496" ID="{CB5A234E-C401-4D80-BE50-D49E0E0E2A51}" WorkUnitID="{CA5748D2-5876-47D0-AA92-AB728415315C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Archived__Test_Tone__1000_Hz__Triangle_Wave_SND3494" ID="{F7A6B212-F0C6-44C4-B986-5B1379C161A4}" WorkUnitID="{CA5748D2-5876-47D0-AA92-AB728415315C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496" ID="{CB5A234E-C401-4D80-BE50-D49E0E0E2A51}" WorkUnitID="{CA5748D2-5876-47D0-AA92-AB728415315C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

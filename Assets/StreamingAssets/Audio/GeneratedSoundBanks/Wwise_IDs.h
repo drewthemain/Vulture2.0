@@ -13,7 +13,8 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_ARCHIVED__TEST_TONE__1000_HZ__SINE_WAVE_SND3496 = 2803769236U;
+        static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__SINE_WAVE_SND3496 = 2851956297U;
+        static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__TRIANGLE_WAVE_SND3494 = 2393213630U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS

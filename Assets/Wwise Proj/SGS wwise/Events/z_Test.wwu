@@ -3,12 +3,23 @@
 	<Events>
 		<WorkUnit Name="z_Test" ID="{CA5748D2-5876-47D0-AA92-AB728415315C}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496" ID="{CB5A234E-C401-4D80-BE50-D49E0E0E2A51}">
+				<Event Name="Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496" ID="{CB5A234E-C401-4D80-BE50-D49E0E0E2A51}">
 					<ChildrenList>
 						<Action Name="" ID="{785EB380-356F-48EC-B184-AD54D0F833AE}" ShortID="220756769">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{9679DA4C-FBBD-4FE2-9D73-604D7281506C}" WorkUnitID="{DD530617-DC83-45AB-B774-E64B70CBF6D6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Archived__Test_Tone__1000_Hz__Triangle_Wave_SND3494" ID="{F7A6B212-F0C6-44C4-B986-5B1379C161A4}">
+					<ChildrenList>
+						<Action Name="" ID="{5D1047D1-D356-4E40-BF26-2C328D293CDD}" ShortID="867409165">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{A094F93D-F964-4850-9D27-A8966DFE03CF}" WorkUnitID="{DD530617-DC83-45AB-B774-E64B70CBF6D6}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
