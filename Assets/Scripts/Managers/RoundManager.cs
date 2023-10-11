@@ -174,7 +174,7 @@ public class RoundManager : MonoBehaviour
                 {
                     Debug.Log($"Round {rounds[currentRound]} over!".Color("green").Bold());
 
-                    if (nextRoundOverride != -1)
+                    if (nextRoundOverride == -1)
                     {
                         currentRound++;
                     }
