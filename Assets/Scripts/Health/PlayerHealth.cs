@@ -28,6 +28,9 @@ public class PlayerHealth : Health
     // status for if the player is currently in combat
     private bool inCombat;
 
+    // Should the player take damage?
+    public bool godMode;
+
     // References
 
     private PlayerController controller;
@@ -53,6 +56,11 @@ public class PlayerHealth : Health
 
     public override void TakeDamage(float dmg, float multiplier)
     {
+        if (godMode)
+        {
+            return;
+        }
+
         base.TakeDamage(dmg, multiplier);
 
         if (speedDecreaseOnDamage != 0 && controller)

@@ -59,9 +59,14 @@ public class Health : MonoBehaviour
     /// Increases max health and heals
     /// </summary>
     /// <param name="increase">The amount of HP to increase by</param>
-    public virtual void IncreaseMax(float increase)
+    public virtual void IncreaseMax(float increase, bool permanant = false)
     {
         currentMaxHealth += increase;
+
+        if (permanant)
+        {
+            maxHealth = currentMaxHealth;
+        }
 
         currentHealth = currentMaxHealth;
     }

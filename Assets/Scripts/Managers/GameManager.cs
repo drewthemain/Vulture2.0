@@ -228,6 +228,20 @@ public class GameManager : MonoBehaviour
         DevConsole.CloseConsole();
     }
 
+    [DevConsoleCommand(
+      name: "GodMode",
+      aliases: "god",
+      helpText: "Sets god mode for the player"
+    )]
+    private static void GodMode()
+    {
+        Debug.Log("ENTERING GOD MODE".Bold().Color("purple"));
+
+        GameManager.instance.playerTransform.GetComponent<PlayerHealth>().godMode = true;
+
+        DevConsole.CloseConsole();
+    }
+
     #endregion
 
     #endregion
