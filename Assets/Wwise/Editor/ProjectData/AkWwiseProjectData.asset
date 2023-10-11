@@ -344,7 +344,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\z_Test
     guid: 6cf3c28a9370fb41905dfcf539b0311d
     GuidInternal: 
-    m_lastTime: -8585046634844187537
+    m_lastTime: -8585045418459340599
     List:
     - name: Test
       guid: e906adec35af86488b759c4bb7757251
@@ -372,7 +372,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: e6f8ba9315d3fe4fb3758cc654b4bf02
     GuidInternal: 
-    m_lastTime: -8585046634844223310
+    m_lastTime: -8585045418459224502
     List: []
   - PhysicalPath: Events\z_Test.wwu
     PathAndIcons:
@@ -385,11 +385,11 @@ MonoBehaviour:
     ParentPath: Events\z_Test
     guid: d24857ca7658d047aa92ab728415315c
     GuidInternal: 
-    m_lastTime: -8585045529336106902
+    m_lastTime: -8585045418459284333
     List:
-    - name: Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
+    - name: Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
       guid: 4e235acb01c4804dbe50d49e0e0e2a51
-      id: 2803769236
+      id: 2851956297
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -397,13 +397,30 @@ MonoBehaviour:
       - ElementName: z_Test
         ObjectType: 12
         guid: d24857ca7658d047aa92ab728415315c
-      - ElementName: Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
+      - ElementName: Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
         ObjectType: 3
         guid: 4e235acb01c4804dbe50d49e0e0e2a51
-      Path: Events\z_Test\Play_Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
+      Path: Events\z_Test\Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
       maxAttenuation: 0
       maxDuration: 25.8825
       minDuration: 25.8825
+    - name: Archived__Test_Tone__1000_Hz__Triangle_Wave_SND3494
+      guid: 12b2a6f7c6f0c444b9865b1379c161a4
+      id: 2393213630
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: z_Test
+        ObjectType: 12
+        guid: d24857ca7658d047aa92ab728415315c
+      - ElementName: Archived__Test_Tone__1000_Hz__Triangle_Wave_SND3494
+        ObjectType: 3
+        guid: 12b2a6f7c6f0c444b9865b1379c161a4
+      Path: Events\z_Test\Archived__Test_Tone__1000_Hz__Triangle_Wave_SND3494
+      maxAttenuation: 0
+      maxDuration: 20.232271
+      minDuration: 20.232271
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
