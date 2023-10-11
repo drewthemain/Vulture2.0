@@ -53,15 +53,16 @@ public static class EventFactory
         GameManager.instance.ResetGravity();
     }
 
-    public static void SlowOnDamage(PlayerController controller, bool up, Event.UDictionary parameters)
+    public static void BoostOnDamage(PlayerController controller, bool up, Event.UDictionary parameters)
     {
-        float decreaseAmount = parameters["Slow Amount"].number;
+        float increaseAmount = parameters["Boost Amount"].number;
         if (up)
         {
-            controller.GetComponent<PlayerHealth>().speedDecreaseOnDamage = decreaseAmount;
+            controller.GetComponent<PlayerHealth>().speedIncreaseOnDamage = increaseAmount;
             return;
         }
 
+        controller.GetComponent<PlayerHealth>().speedIncreaseOnDamage = 0;
         controller.speedMultiplier = 1;
     }
 

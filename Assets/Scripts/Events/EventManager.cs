@@ -145,8 +145,8 @@ public class EventManager : MonoBehaviour
 
                 switch (events[currentIndex].action)
                 {
-                    case "SlowOnDamage":
-                        EventFactory.SlowOnDamage((PlayerController)target, up, parameters);
+                    case "BoostOnDamage":
+                        EventFactory.BoostOnDamage((PlayerController)target, up, parameters);
                         break;
 
                     case "PlayerSpeedBoost":
