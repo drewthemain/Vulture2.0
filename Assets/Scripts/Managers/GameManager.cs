@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        DevConsole.OnConsoleOpened += UIManager.instance.PauseGame;
+        DevConsole.OnConsoleOpened += ConsolePause;
     }
 
     private void OnDisable()
     {
-        DevConsole.OnConsoleOpened -= UIManager.instance.PauseGame;
+        DevConsole.OnConsoleOpened -= ConsolePause;
     }
 
     private void Awake()
@@ -172,6 +172,14 @@ public class GameManager : MonoBehaviour
     }
 
     #region Dev Console
+
+    public void ConsolePause()
+    {
+        if (!isPaused)
+        {
+            UIManager.instance.PauseGame();
+        }
+    }
 
     [DevConsoleCommand(
       name: "EndRound",
