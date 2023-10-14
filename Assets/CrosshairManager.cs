@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,6 +40,8 @@ public class CrosshairManager : MonoBehaviour
     private RaycastHit hit;
     // Storage for the last color used
     private Color originalColor;
+    // Storage for the change raycast color
+    private Color rayHitColor = Color.red;
     // The original width/height of the crosshair
     private float originalCrosshairScale;
     // The current state of the crosshair spread
@@ -116,8 +120,8 @@ public class CrosshairManager : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == 7)
             {
-                ChangeChildrenColors(crosshair, Color.red);
-                ChangeChildrenColors(ADScrosshair, Color.red);
+                ChangeChildrenColors(crosshair, rayHitColor);
+                ChangeChildrenColors(ADScrosshair, rayHitColor);
             }
             else
             {
@@ -248,7 +252,19 @@ public class CrosshairManager : MonoBehaviour
     /// <param name="duration">How long the hitmarker is active</param>
     IEnumerator flashHitMarker (float duration)
     {
+        ChangeChildrenColors(hitMarker, originalColor);
         yield return new WaitForSeconds(duration);
         DisableHitMarker();
+    }
+
+    /// <summary>
+    /// Changes crosshair opacity and updates it in PlayerPrefs
+    /// </summary>
+    /// <param name="opacityPercentage"></param>
+    public void ChangeCrosshairOpacity(float opacityPercentage)
+    {
+        PlayerPrefs.SetFloat("crosshairOpacity", opacityPercentage);
+        originalColor.a = opacityPercentage;
+        rayHitColor.a = opacityPercentage;
     }
 }

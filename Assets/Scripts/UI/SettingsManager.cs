@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -38,6 +39,12 @@ public class SettingsManager : MonoBehaviour
 
     [Tooltip("The reference to the textbox next to the slider displaying the number")]
     [SerializeField] private TextMeshProUGUI aimSensitivityText;
+
+    [Tooltip("The reference to the crosshair opacity slider")]
+    [SerializeField] private Slider crosshairOpacitySlider;
+
+    [Tooltip("The reference to the textbox next to the slider displaying the number")]
+    [SerializeField] private TextMeshProUGUI crosshairOpacityText;
 
 
     // General References
@@ -88,6 +95,10 @@ public class SettingsManager : MonoBehaviour
         // load in aim sensitivity slider input
         aimSensitivitySlider.value = PlayerPrefs.GetFloat("aimSensitivity", .1f);
         aimSensitivityText.text = (aimSensitivitySlider.value * 10).ToString("F2");
+
+        // load in crosshair opacity slider input
+        crosshairOpacitySlider.value = PlayerPrefs.GetFloat("crosshairOpacity", 1f);
+        crosshairOpacityText.text = (crosshairOpacitySlider.value * 100).ToString("F2");
     }
 
     /// <summary>
@@ -123,6 +134,18 @@ public class SettingsManager : MonoBehaviour
         aimSensitivityText.text = (sens * 10).ToString("F2");
         controller.ChangeAimSensitivity(sens);
 
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    /// <summary>
+    /// UI portion of adjusting the players crosshair visibility
+    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity
+    /// </summary>
+    public void CrosshairOpacitySliderInput()
+    {
+        float val = crosshairOpacitySlider.value;
+        crosshairOpacityText.text = (val * 100).ToString("F2");
+        UIManager.instance.GetComponent<CrosshairManager>().ChangeCrosshairOpacity(val);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
