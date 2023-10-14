@@ -110,11 +110,11 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public void ToggleCameraShake(bool state)
+    public void ToggleCameraShake(float val)
     {
-        cameraShakeEnabled = state;
-        int toggle = cameraShakeEnabled ? 1 : 0;
-        PlayerPrefs.SetInt("cameraShake", toggle);
+        cameraShakeEnabled = (val == 1);
+        //int toggle = cameraShakeEnabled ? 1 : 0;
+        PlayerPrefs.SetInt("cameraShake", (int)val);
     }
     
     IEnumerator ShakeTimer(float duration)

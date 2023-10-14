@@ -190,7 +190,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 5498
+        value: 7383
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -199,7 +199,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.16666667
-        value: -1200
+        value: 685
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -210,7 +210,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: SettingsUIVideo/Title and Menu/Menu/Menu Options/Camera Shake/ShakeToggle
+    path: SettingsUIVideo/Title and Menu/Menu/Menu Options/Camera Shake/Shake Toggle
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -264,7 +264,7 @@ AnimationClip:
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2986756697
+      path: 1721928063
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -465,7 +465,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 5498
+        value: 7383
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -474,7 +474,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.16666667
-        value: -1200
+        value: 685
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -485,7 +485,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: SettingsUIVideo/Title and Menu/Menu/Menu Options/Camera Shake/ShakeToggle
+    path: SettingsUIVideo/Title and Menu/Menu/Menu Options/Camera Shake/Shake Toggle
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

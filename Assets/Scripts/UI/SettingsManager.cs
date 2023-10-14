@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class SettingsManager : MonoBehaviour
 
     [Header("Video Settings References")]
     [Tooltip("The reference to the camera shake toggle")]
-    [SerializeField] private Toggle cameraShakeToggle;
+    [SerializeField] private Slider cameraShakeToggle;
 
     [Tooltip("The reference to the textbox next to the toggle displaying the state")]
     [SerializeField] private TextMeshProUGUI cameraShakeText;
@@ -103,6 +104,8 @@ public class SettingsManager : MonoBehaviour
 
         sensitivityText.text = (sens * 10).ToString("F2");
         controller.ChangeSensitivity(sens);
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     /// <summary>
@@ -119,6 +122,8 @@ public class SettingsManager : MonoBehaviour
 
         aimSensitivityText.text = (sens * 10).ToString("F2");
         controller.ChangeAimSensitivity(sens);
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     #endregion
@@ -127,8 +132,8 @@ public class SettingsManager : MonoBehaviour
     public void LoadVideoSettings()
     {
         // load in camera shake toggle value
-        cameraShakeToggle.isOn = (PlayerPrefs.GetInt("cameraShake", 1) == 1) ? true : false;
-        SetCameraShakeText(cameraShakeToggle.isOn);
+        cameraShakeToggle.value = (PlayerPrefs.GetInt("cameraShake", 1) == 1) ? 1 : 0;
+        SetCameraShakeText(cameraShakeToggle.value);
 
         // load in gui opacity slider input
         GUIOpacitySlider.value = PlayerPrefs.GetFloat("GUIOpacity", 1f);
@@ -144,17 +149,20 @@ public class SettingsManager : MonoBehaviour
         float val = GUIOpacitySlider.value;
         GUIOpacityText.text = (val * 100).ToString("F2");
         UIManager.instance.ChangeGUIOpacity(val);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void CameraShakeToggleInput()
     {
-        CameraManager.instance.ToggleCameraShake(cameraShakeToggle.isOn);
-        SetCameraShakeText(cameraShakeToggle.isOn);
+        float val = cameraShakeToggle.value;
+        CameraManager.instance.ToggleCameraShake(cameraShakeToggle.value);
+        SetCameraShakeText(cameraShakeToggle.value);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
-    private void SetCameraShakeText(bool state)
+    private void SetCameraShakeText(float val)
     {
-        cameraShakeText.text = state ? "On" : "Off";
+        cameraShakeText.text = val == 1 ? "Enabled" : "Disabled";
     }
 
     #endregion
