@@ -44,4 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb6d01449d80494aaba0f60c363ffbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rounds: []
+  roundState: 0
+  inBetweenLength: 6
+  rounds: []
+  currentRound: 0
+  currentSegment: 0
+  totalEnemiesRemaining: 0
+  totalEnemiesSpawned: 0
+  segmentEnemiesRemaining: 0
+  spawningEarlyBuffer: 0

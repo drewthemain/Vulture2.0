@@ -97,7 +97,7 @@ public class SettingsManager : MonoBehaviour
         aimSensitivityText.text = (aimSensitivitySlider.value * 10).ToString("F2");
 
         // load in crosshair opacity slider input
-        crosshairOpacitySlider.value = PlayerPrefs.GetFloat("crosshairOpacity", 1f);
+        crosshairOpacitySlider.value = PlayerPrefs.GetFloat("crosshairOpacity", .65f);
         crosshairOpacityText.text = (crosshairOpacitySlider.value * 100).ToString("F2");
     }
 
