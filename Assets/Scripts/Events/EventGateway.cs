@@ -49,6 +49,12 @@ public class EventGateway : MonoBehaviour
             transmitOnStart = false;
         }
 
+        string target = EventManager.instance.GetTargetComponent();
+        if (target == null)
+        {
+            return this;
+        }
+
         return GetComponent(EventManager.instance.GetTargetComponent()) as Component;
     }
 

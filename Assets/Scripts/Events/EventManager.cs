@@ -14,9 +14,17 @@ public class EventManager : MonoBehaviour
     [Tooltip("The list of available events to choose from")]
     [SerializeField] private List<Event> events;
 
+    [Tooltip("The base chances of a random event occuring")]
+    [SerializeField] private float baseEventChance = 0.3f;
+
+    [Tooltip("The growth in chances after a non-event round")]
+    [SerializeField] private float eventChanceGrowth = 0.1f;
+
+
     public int currentIndex = -1;
     private int previousIndex = -1;
     private int indexOverride = -1;
+    private float eventChance = 0.3f;
 
     public delegate Component EventStart();
     public static event EventStart OnEventStart;
@@ -35,6 +43,7 @@ public class EventManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            eventChance = baseEventChance;
             
         } 
         else
@@ -64,7 +73,7 @@ public class EventManager : MonoBehaviour
         {
             Component target = (Component) d.Method.Invoke(d.Target, null);
 
-            if (target == null)
+            if (target == null || target is EventGateway)
             {
                 continue;
             }
@@ -76,6 +85,12 @@ public class EventManager : MonoBehaviour
     public void TransmitSubscriber(EventGateway gateway)
     {
         Component target = (Component)gateway.TransmitTarget();
+
+        if (target == null || target is EventGateway)
+        {
+            return;
+        }
+
         FactoryChannels(target, true);
     }
 
@@ -167,6 +182,15 @@ public class EventManager : MonoBehaviour
         if (events.Count == 0)
         {
             Debug.Log("Events are turned on, but missing events!");
+            return;
+        }
+
+        float chanceCheck = Random.Range(0f, 1f);
+        Debug.Log(chanceCheck);
+        if (chanceCheck >= eventChance && indexOverride == -1)
+        {
+            currentIndex = -1;
+            eventChance += eventChanceGrowth;
             return;
         }
 
