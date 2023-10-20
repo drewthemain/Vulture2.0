@@ -2441,6 +2441,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 344022932003552860}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5005320546084835996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733370674317438144, guid: 2c069714f59171345b9ff3934301bf05,
+    type: 3}
+  m_PrefabInstance: {fileID: 344022932003552860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd467e45284d4b42b5b073d63affd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5392467977388239139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5626071285920290687, guid: 2c069714f59171345b9ff3934301bf05,
@@ -3461,6 +3473,7 @@ MonoBehaviour:
   movingCrosshairScale: 300
   crosshairScalingDuration: 0.25
   hitMarker: {fileID: 2127559273314276876}
+  gun: {fileID: 5005320546084835996}
   state: 0
 --- !u!1001 &4032782738551616983
 PrefabInstance:

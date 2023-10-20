@@ -30,6 +30,8 @@ public class CrosshairManager : MonoBehaviour
     [SerializeField] private float crosshairScalingDuration;
     [Tooltip("Hitmarker game object")]
     [SerializeField] private GameObject hitMarker;
+    [Tooltip("Reference to the player gun script")]
+    [SerializeField] private PlayerGun gun;
 
     // General References
     // Reference to the player gameobject
@@ -43,7 +45,9 @@ public class CrosshairManager : MonoBehaviour
     // Storage for the change raycast color
     private Color rayHitColor = Color.red;
     // The original width/height of the crosshair
-    private float originalCrosshairScale;
+    private float originalCrosshairHeightWidth;
+    // The original scale of the crosshair rect transform
+    private Vector3 originalCrosshairScale;
     // The current state of the crosshair spread
     public CrosshairState state;
 
@@ -78,7 +82,8 @@ public class CrosshairManager : MonoBehaviour
     {
         cam = Camera.main;
         originalColor = crosshair.GetComponentInChildren<Image>().color;
-        originalCrosshairScale = crosshair.GetComponent<LayoutElement>().preferredHeight;
+        originalCrosshairHeightWidth = crosshair.GetComponent<LayoutElement>().preferredHeight;
+        originalCrosshairScale = crosshair.GetComponent<RectTransform>().localScale;
         state = CrosshairState.walking;
     }
 
@@ -161,14 +166,22 @@ public class CrosshairManager : MonoBehaviour
     {
         if(crosshair.activeInHierarchy)
         {
+            if (gun.reloading)
+            {
+                crosshair.GetComponent<RectTransform>().localScale = Vector3.zero;
+            }
+            else if (!gun.reloading)
+            {
+                crosshair.GetComponent<RectTransform>().localScale = originalCrosshairScale;
+            }
             if (controller.state == PlayerController.MovementState.walking)
             {
                 // standing still
-                if(state != CrosshairState.standing && controller.IsPlayerStandingStill())
+                if (state != CrosshairState.standing && controller.IsPlayerStandingStill())
                 {
                     state = CrosshairState.standing;
                     StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairScale, crosshairScalingDuration));
+                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
                 }
                 // walking
                 else if (state != CrosshairState.walking && !controller.IsPlayerStandingStill())
@@ -186,7 +199,7 @@ public class CrosshairManager : MonoBehaviour
                 {
                     state = CrosshairState.standing;
                     StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairScale, crosshairScalingDuration));
+                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
                 }
                 // moving faster than walking
                 else if (state != CrosshairState.moving && !controller.IsPlayerStandingStill())
@@ -195,9 +208,7 @@ public class CrosshairManager : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, movingCrosshairScale, crosshairScalingDuration));
                 }
-
             }
-
         }
     }
     

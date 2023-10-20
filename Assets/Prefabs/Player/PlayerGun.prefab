@@ -283,7 +283,7 @@ MonoBehaviour:
   fireRate: 0.15
   spread: 0.02
   range: 100
-  reloadTime: 1.75
+  reloadTime: 1.45
   timeBetweenShots: 0
   magSize: 30
   bulletsPerTap: 1
