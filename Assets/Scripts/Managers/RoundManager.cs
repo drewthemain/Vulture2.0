@@ -146,7 +146,7 @@ public class RoundManager : MonoBehaviour
 
                 inBetweenTimer = inBetweenLength;
 
-                UIManager.instance.UpdateRound(-1, "Prepare.", -1);
+                UIManager.instance.UpdateRound(-1, "Prepare", -1);
 
                 GameManager.instance.ResetGravity();
 
@@ -220,18 +220,30 @@ public class RoundManager : MonoBehaviour
 
             case RoundState.InBetween:
 
+                inBetweenTimer -= Time.deltaTime;
+
                 if (inBetweenTimer <= 0)
                 {
-                    UIManager.instance.ToggleWarningBanner(false);
+                    //Stop animations
+                    //UIManager.instance.ToggleWarningBanner(false);
+                    UIManager.instance.TriggerRoundAnimation(false, false);
 
                     ChangeRoundState(RoundState.InRound);
                 }
-                else if (inBetweenTimer <= 2)
+                else if (inBetweenTimer <= 1)
+                {
+                    //This "false" parameter is HARDCODED and needs to become a bool set by whether
+                    //there is an event or not
+                    UIManager.instance.TriggerRoundAnimation(false /*CHANGE ME*/, true);
+
+                    UIManager.instance.ToggleWarningBanner(false);
+                }
+                //This "true" parameter is HARDCODED and needs to become a bool set by whether
+                //there is an event or not
+                else if (inBetweenTimer <= 3 && true /*CHANGE ME*/)
                 {
                     UIManager.instance.ToggleWarningBanner(true);
                 }
-
-                inBetweenTimer -= Time.deltaTime;
 
                 break;
 

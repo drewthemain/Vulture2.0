@@ -50,6 +50,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The UI aspects that are always displayed and can change opacity")]
     [SerializeField] private GameObject GUI;
 
+    [Tooltip("The reference to the round UI Parent")]
+    [SerializeField] private GameObject roundUIParent;
+
     [Header("Game References")]
 
     [Tooltip("The reference to the ammo counter text")]
@@ -93,9 +96,11 @@ public class UIManager : MonoBehaviour
     private Animator PauseAnim;
     //Reference to animator on settings menu
     private Animator settingsAnim;
+    //Reference to animator on round UI
+    private Animator roundAnim;
 
-    // UI Animation References
-    private float animDuration = 1 / 6f;
+    // UI Animation Values
+    private float settingsAnimDuration = 1 / 6f;
 
 
     void Awake()
@@ -112,6 +117,7 @@ public class UIManager : MonoBehaviour
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         PauseAnim = pauseUIParent.GetComponent<Animator>();
         settingsAnim = settingsUIParent.GetComponent<Animator>();
+        roundAnim = roundUIParent.gameObject.GetComponent<Animator>();
         input = InputManager.instance;
 
         if (controller == null)
@@ -188,7 +194,9 @@ public class UIManager : MonoBehaviour
         {
             if (currRound == -1)
             {
-                currentRound.SetText("Incoming hostiles...");
+                currentRound.SetText("Incoming!");
+                //This bool makes the event section of the round UI disappear
+                roundAnim.SetBool("RoundEnd", true);
             }
             else
             {
@@ -199,6 +207,29 @@ public class UIManager : MonoBehaviour
         if (objectiveText != null)
         {
             objectiveText.SetText($"{roundName} {ToRoman(loop)}");
+        }
+    }
+
+    public void TriggerRoundAnimation(bool isEvent = false, bool animate = true)
+    {
+        roundAnim.SetBool("RoundEnd", false);
+
+        if (animate)
+        {
+            if (isEvent)
+            {
+                roundAnim.SetBool("Event", true);
+            }
+            else
+            {
+                roundAnim.SetBool("NoEvent", true);
+            }
+        }
+        //When inBetweenTimer reaches 0, stop animating
+        else
+        {
+            roundAnim.SetBool("Event", false);
+            roundAnim.SetBool("NoEvent", false);
         }
     }
 
@@ -291,7 +322,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator ToSettingsCoroutine()
     {
-        yield return new WaitForSecondsRealtime(animDuration);
+        yield return new WaitForSecondsRealtime(settingsAnimDuration);
 
         ToggleOnScreenUI(UIType.Settings);
     }
@@ -329,7 +360,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator PauseToGameCoroutine()
     {
-        yield return new WaitForSecondsRealtime(animDuration);
+        yield return new WaitForSecondsRealtime(settingsAnimDuration);
 
         ToggleOnScreenUI(UIType.Game);
         GameManager.instance.Unpause();
@@ -359,7 +390,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator ExitSettingsCoroutine()
     {
-        yield return new WaitForSecondsRealtime(animDuration);
+        yield return new WaitForSecondsRealtime(settingsAnimDuration);
 
         ReturnToPause();
         PauseAnim.SetTrigger("FromSettings");
@@ -370,7 +401,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private IEnumerator ExitSettingsMenusCoroutine()
     {
-        yield return new WaitForSecondsRealtime(animDuration);
+        yield return new WaitForSecondsRealtime(settingsAnimDuration);
 
         ReturnToSettings();
         //settingsAnim.SetTrigger("FromSettingsMenu");
