@@ -15,7 +15,18 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	4262522749	Wood_Bright			\Factory Acoustic Textures\Textures\Wood_Bright	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	393239870	SFX			\Default Work Unit\Master Bus\SFX	
+	712897226	MUS			\Default Work Unit\Master Bus\MUS	
+	1399649189	Master Bus			\Default Work Unit\Master Bus	
+	3583497273	SFX_Ambience			\Default Work Unit\Master Bus\SFX\SFX_Ambience	
+	3587590657	SFX_Gameplay			\Default Work Unit\Master Bus\SFX\SFX_Gameplay	
+	3691540007	SFX_OBJS			\Default Work Unit\Master Bus\SFX\SFX_OBJS	
+	3862737079	SFX_UI			\Default Work Unit\Master Bus\SFX\SFX_UI	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	2611802776	AUX_MST			\Default Work Unit\Master Bus\AUX_MST	
+	3058796868	AUX_MST_SFX			\Default Work Unit\Master Bus\AUX_MST\AUX_MST_SFX	
+	3703043559	SPECIFIC_AREA			\Default Work Unit\Master Bus\AUX_MST\AUX_MST_SFX\SPECIFIC_AREA	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

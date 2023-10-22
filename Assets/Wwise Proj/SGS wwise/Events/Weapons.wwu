@@ -3,7 +3,7 @@
 	<Events>
 		<WorkUnit Name="Weapons" ID="{3B419F64-EE4B-4F04-A672-E51E199B1C60}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Weapon_AR_SingleBurst" ID="{793360A1-E3C6-47E8-9852-ED57E39E5C26}">
+				<Event Name="Weapon_AR_SingleBurst" ID="{793360A1-E3C6-47E8-9852-ED57E39E5C26}">
 					<ChildrenList>
 						<Action Name="" ID="{7475B16B-4C12-4C6B-8686-2653DA28A624}" ShortID="119073073">
 							<ReferenceList>

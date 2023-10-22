@@ -188,6 +188,9 @@ public class PlayerGun : MonoBehaviour
         // VFX Spawning
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity, transform);
 
+        // Wwise Post SFX
+        AkSoundEngine.PostEvent("Weapon_AR_SingleBurst", this.gameObject);
+
         bulletsLeft--;
         bulletsShot--;
 

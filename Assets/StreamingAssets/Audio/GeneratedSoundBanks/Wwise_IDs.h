@@ -15,7 +15,7 @@ namespace AK
     {
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__SINE_WAVE_SND3496 = 2851956297U;
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__TRIANGLE_WAVE_SND3494 = 2393213630U;
-        static const AkUniqueID PLAY_WEAPON_AR_SINGLEBURST = 3935357643U;
+        static const AkUniqueID WEAPON_AR_SINGLEBURST = 2798880610U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS
@@ -41,8 +41,21 @@ namespace AK
 
     namespace BUSSES
     {
-        static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MASTER_BUS = 1399649189U;
+        static const AkUniqueID MUS = 712897226U;
+        static const AkUniqueID SFX = 393239870U;
+        static const AkUniqueID SFX_AMBIENCE = 3583497273U;
+        static const AkUniqueID SFX_GAMEPLAY = 3587590657U;
+        static const AkUniqueID SFX_OBJS = 3691540007U;
+        static const AkUniqueID SFX_UI = 3862737079U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID AUX_MST = 2611802776U;
+        static const AkUniqueID AUX_MST_SFX = 3058796868U;
+        static const AkUniqueID SPECIFIC_AREA = 3703043559U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
