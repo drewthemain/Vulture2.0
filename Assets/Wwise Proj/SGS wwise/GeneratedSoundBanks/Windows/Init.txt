@@ -17,6 +17,7 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	393239870	SFX			\Default Work Unit\Master Bus\SFX	
 	712897226	MUS			\Default Work Unit\Master Bus\MUS	
+	1350043778	SFX_Weap			\Default Work Unit\Master Bus\SFX\SFX_OBJS\SFX_Weap	
 	1399649189	Master Bus			\Default Work Unit\Master Bus	
 	3583497273	SFX_Ambience			\Default Work Unit\Master Bus\SFX\SFX_Ambience	
 	3587590657	SFX_Gameplay			\Default Work Unit\Master Bus\SFX\SFX_Gameplay	

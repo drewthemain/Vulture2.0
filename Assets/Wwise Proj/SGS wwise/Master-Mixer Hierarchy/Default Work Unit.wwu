@@ -15,7 +15,11 @@
 								<Bus Name="SFX_Gameplay" ID="{B27D442F-A32B-4117-BA16-CC90736472A2}"/>
 								<Bus Name="SFX_Ambience" ID="{546AAB48-ACB2-4CB3-B232-988C556508A5}"/>
 								<Bus Name="SFX_UI" ID="{9D3E6FCF-FE51-4246-9E19-3B6C02A6E496}"/>
-								<Bus Name="SFX_OBJS" ID="{6816F577-CE23-4D4D-86A4-5E2D309A5621}"/>
+								<Bus Name="SFX_OBJS" ID="{6816F577-CE23-4D4D-86A4-5E2D309A5621}">
+									<ChildrenList>
+										<Bus Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}"/>
+									</ChildrenList>
+								</Bus>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="MUS" ID="{A90DF4D8-C3BA-4DDB-8916-DA07269C6299}"/>

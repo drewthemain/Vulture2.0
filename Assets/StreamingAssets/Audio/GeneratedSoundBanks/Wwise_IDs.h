@@ -48,6 +48,7 @@ namespace AK
         static const AkUniqueID SFX_GAMEPLAY = 3587590657U;
         static const AkUniqueID SFX_OBJS = 3691540007U;
         static const AkUniqueID SFX_UI = 3862737079U;
+        static const AkUniqueID SFX_WEAP = 1350043778U;
     } // namespace BUSSES
 
     namespace AUX_BUSSES

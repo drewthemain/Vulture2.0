@@ -9,49 +9,44 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{08A67300-893E-E016-BC55-C67016E4B063}">
+		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{0F2C3AD7-5E2B-A987-B1A9-F38B0DB67C62}">
 			<ShortName>Mission_1</ShortName>
 			<Path>Mission_1.bnk</Path>
 			<Media>
 				<File Id="10573796" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_E958306D.wem</CachePath>
+					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_5D1C52A1.wem</CachePath>
 				</File>
 				<File Id="207213858" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_02036385.wem</CachePath>
+					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_283CB7CA.wem</CachePath>
 				</File>
 				<File Id="236999867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_C3A99EE1.wem</CachePath>
-				</File>
-				<File Id="283974126" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_5E2E808A.wem</CachePath>
+					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_923860A0.wem</CachePath>
 				</File>
 				<File Id="654797722" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_6FEFCF7E.wem</CachePath>
+					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_2421C17E.wem</CachePath>
 				</File>
 				<File Id="802048380" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
-					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_EAD32A50.wem</CachePath>
+					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_F856AF75.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="2798880610" Name="Weapon_AR_SingleBurst" DurationType="OneShot" DurationMin="0.8229098" DurationMax="1.4264735">
+				<Event Id="2798880610" Name="Weapon_AR_SingleBurst" DurationType="OneShot" DurationMin="0.6587501" DurationMax="1.4218963">
 					<MediaRefs>
 						<MediaRef Id="10573796"/>
 						<MediaRef Id="207213858"/>
 						<MediaRef Id="236999867"/>
-						<MediaRef Id="283974126"/>
 						<MediaRef Id="654797722"/>
 						<MediaRef Id="802048380"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{DEC14768-8F62-99D3-D5A6-D99051335009}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{33647410-F43F-C45F-84E5-3B301C0E9E55}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -63,6 +58,7 @@
 			<Busses>
 				<Bus Id="393239870" Name="SFX"/>
 				<Bus Id="712897226" Name="MUS"/>
+				<Bus Id="1350043778" Name="SFX_Weap"/>
 				<Bus Id="1399649189" Name="Master Bus"/>
 				<Bus Id="3583497273" Name="SFX_Ambience"/>
 				<Bus Id="3587590657" Name="SFX_Gameplay"/>
@@ -236,5 +232,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{DDE624C5-0206-9D27-44F5-AB841A91057B}</FileHash>
+	<FileHash>{7C992096-3573-3577-8D5B-B76942BC9C0D}</FileHash>
 </SoundBanksInfo>

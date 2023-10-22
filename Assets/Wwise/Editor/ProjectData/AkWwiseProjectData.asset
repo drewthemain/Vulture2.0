@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 197663616767c942aa7575108a3cec5a
     GuidInternal: 
-    m_lastTime: -8585036044512596480
+    m_lastTime: -8585036017463565190
     List:
     - name: AUX_MST
       guid: 439501bc1c0db04e8ce3ede4e8fd0952
@@ -470,6 +470,29 @@ MonoBehaviour:
         ObjectType: 2
         guid: cf6f3e9d51fe46429e193b6c02a6e496
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Bus\SFX\SFX_UI
+    - name: SFX_Weap
+      guid: 1e372d487697574196d6cb16cc06c0f6
+      id: 1350043778
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: Master Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 4f98759fe3ea964f97e5c19f18a2a539
+      - ElementName: SFX_OBJS
+        ObjectType: 2
+        guid: 77f5166823ce4d4d86a45e2d309a5621
+      - ElementName: SFX_Weap
+        ObjectType: 2
+        guid: 1e372d487697574196d6cb16cc06c0f6
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Bus\SFX\SFX_OBJS\SFX_Weap
     - name: SPECIFIC_AREA
       guid: 236220dc2fd02b4fb04354b97d3b1137
       id: 3703043559
@@ -603,8 +626,8 @@ MonoBehaviour:
         guid: a1603379c6e3e8479852ed57e39e5c26
       Path: Events\Weapons\Weapon_AR_SingleBurst
       maxAttenuation: 0
-      maxDuration: 1.4264735
-      minDuration: 0.8229098
+      maxDuration: 1.4218963
+      minDuration: 0.6587501
   - PhysicalPath: Events\z_Test.wwu
     PathAndIcons:
     - ElementName: Events
