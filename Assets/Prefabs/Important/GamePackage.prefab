@@ -3266,6 +3266,11 @@ PrefabInstance:
       objectReference: {fileID: 6791056292687360888}
     - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
         type: 3}
+      propertyPath: roundUIParent
+      value: 
+      objectReference: {fileID: 6133954698752332577}
+    - target: {fileID: 726992319729170593, guid: 4dcd9665d18a8554fbc28bf23fc41dd2,
+        type: 3}
       propertyPath: warningBanner
       value: 
       objectReference: {fileID: 3524659685900094993}
@@ -4170,6 +4175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6133954698752332577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268970624283172899, guid: 133ff10a1db852e44b47ee99d9030853,
+    type: 3}
+  m_PrefabInstance: {fileID: 4952945031283831554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5236079147844283630
 PrefabInstance:
   m_ObjectHideFlags: 0
