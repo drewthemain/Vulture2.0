@@ -8,7 +8,7 @@
 						<Action Name="" ID="{7475B16B-4C12-4C6B-8686-2653DA28A624}" ShortID="119073073">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Weapon_AR_SingleBurst" ID="{602629D8-FBE1-43C0-A679-B1AEE4089706}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+									<ObjectRef Name="Weapon_AR_SingleBurst_SingleShots" ID="{602629D8-FBE1-43C0-A679-B1AEE4089706}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
