@@ -20,6 +20,8 @@ public class EventManager : MonoBehaviour
     [Tooltip("The growth in chances after a non-event round")]
     [SerializeField] private float eventChanceGrowth = 0.1f;
 
+    public bool isEventHappening = false;
+
 
     public int currentIndex = -1;
     private int previousIndex = -1;
@@ -177,6 +179,20 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void EventChance()
+    {
+        float chanceCheck = Random.Range(0f, 1f);
+        if (chanceCheck >= eventChance && indexOverride == -1)
+        {
+            isEventHappening = false;
+            currentIndex = -1;
+            eventChance += eventChanceGrowth;
+            return;
+        }
+
+        isEventHappening = true;
+    }
+
     public void AugmentSubscribers()
     {
         if (events.Count == 0)
@@ -185,14 +201,11 @@ public class EventManager : MonoBehaviour
             return;
         }
 
-        float chanceCheck = Random.Range(0f, 1f);
-        Debug.Log(chanceCheck);
-        if (chanceCheck >= eventChance && indexOverride == -1)
+        if (!isEventHappening)
         {
-            currentIndex = -1;
-            eventChance += eventChanceGrowth;
             return;
         }
+
 
         int safety = 0;
         do
@@ -240,6 +253,16 @@ public class EventManager : MonoBehaviour
         indexOverride = nextIndex;
 
         return events[indexOverride].name;
+    }
+
+    public Event GetEvent()
+    {
+        if (currentIndex == -1)
+        {
+            return null;
+        }
+
+        return events[currentIndex];
     }
 
 

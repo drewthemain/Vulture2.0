@@ -181,6 +181,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ConsoleUnpause()
+    {
+        if (isPaused)
+        {
+            UIManager.instance.PauseGame();
+        }
+    }
+
     [DevConsoleCommand(
       name: "EndRound",
       aliases: "end",
@@ -188,6 +196,8 @@ public class GameManager : MonoBehaviour
     )]
     private static void EndRound()
     {
+        GameManager.instance.ConsoleUnpause();
+
         Debug.Log("Force Round Quit...".Bold().Color("purple"));
         RoundManager.instance.ForceQuit();
 
@@ -213,6 +223,7 @@ public class GameManager : MonoBehaviour
             EndRound();
         }
 
+        UIManager.instance.EndRoundSet(true);
         DevConsole.CloseConsole();
     }
 
@@ -233,6 +244,7 @@ public class GameManager : MonoBehaviour
             EndRound();
         }
 
+        UIManager.instance.EndRoundSet(true);
         DevConsole.CloseConsole();
     }
 
