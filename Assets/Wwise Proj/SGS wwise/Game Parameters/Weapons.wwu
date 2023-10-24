@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A31E7F27-CF40-4504-91CD-C658410AD583}" SchemaVersion="110">
+	<GameParameters>
+		<WorkUnit Name="Weapons" ID="{A31E7F27-CF40-4504-91CD-C658410AD583}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="30"/>
+						<Property Name="Max" Type="Real64" Value="30"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>
