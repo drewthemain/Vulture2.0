@@ -73,6 +73,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the objective text")]
     [SerializeField] private TextMeshProUGUI objectiveText;
 
+    [Tooltip("The reference to the objective description")]
+    [SerializeField] private TextMeshProUGUI objectiveDescription;
+
     [Tooltip("The reference to the warning banner")]
     [SerializeField] private GameObject warningBanner;
 
@@ -188,7 +191,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     /// <param name="currRound">What number round is it</param>
     /// <param name="roundName">The name of the current round</param>
-    public void UpdateRound(int currRound, string roundName, int loop)
+    public void UpdateRound(int currRound, string roundName, string description)
     {
         if (currentRound != null)
         {
@@ -206,7 +209,12 @@ public class UIManager : MonoBehaviour
 
         if (objectiveText != null)
         {
-            objectiveText.SetText($"{roundName} {ToRoman(loop)}");
+            objectiveText.SetText($"{roundName}");
+        }
+
+        if (objectiveDescription != null)
+        {
+            objectiveDescription.SetText($"{description}");
         }
     }
 

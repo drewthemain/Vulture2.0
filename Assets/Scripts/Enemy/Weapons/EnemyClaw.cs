@@ -8,10 +8,7 @@ public class EnemyClaw : EnemyWeapon
     {
         base.Fire();
 
-        if (colliderPrefab != null)
-        {
-            // Damage the player directly
-            playerHealth.TakeDamage(colliderDamage, 1);
-        }
+        // Damage the player directly
+        playerHealth.TakeDamage(colliderDamage, 1);
     }
 }

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     // Is the game currently paused?
     private bool isPaused = false;
 
+    [HideInInspector] public bool wasConsoleUnpause = false;
+
     // Is the game currently in low grav?
     public bool isLowGrav = false;
 
@@ -36,11 +38,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         DevConsole.OnConsoleOpened += ConsolePause;
+        DevConsole.OnConsoleClosed += ConsoleUnpause;
     }
 
     private void OnDisable()
     {
         DevConsole.OnConsoleOpened -= ConsolePause;
+        DevConsole.OnConsoleClosed -= ConsoleUnpause;
     }
 
     private void Awake()
@@ -181,6 +185,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ConsoleUnpause()
+    {
+        if (isPaused)
+        {
+            wasConsoleUnpause = true;
+            UIManager.instance.PauseGame();
+        }
+    }
+
     [DevConsoleCommand(
       name: "EndRound",
       aliases: "end",
@@ -211,6 +224,7 @@ public class GameManager : MonoBehaviour
         if (endCurrent)
         {
             EndRound();
+            return;
         }
 
         DevConsole.CloseConsole();
@@ -231,6 +245,7 @@ public class GameManager : MonoBehaviour
         if (endCurrent)
         {
             EndRound();
+            return;
         }
 
         DevConsole.CloseConsole();

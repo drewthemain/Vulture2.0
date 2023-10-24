@@ -131,7 +131,8 @@ public class RoundManager : MonoBehaviour
                     EventManager.instance.AugmentSubscribers();
                 }
 
-                UIManager.instance.UpdateRound(totalCurrentRound, rounds[currentRound].name, currentLoop);
+                Event currEvent = EventManager.instance.GetEvent();
+                UIManager.instance.UpdateRound(totalCurrentRound, currEvent ? currEvent.name : "", currEvent ? currEvent.description : "");
 
                 SpawnSegment();
 
@@ -146,11 +147,13 @@ public class RoundManager : MonoBehaviour
 
                 inBetweenTimer = inBetweenLength;
 
-                UIManager.instance.UpdateRound(-1, "Prepare", -1);
+                UIManager.instance.UpdateRound(-1, "Prepare", "");
 
                 GameManager.instance.ResetGravity();
 
                 SmartMap.instance.FixWindows();
+
+                EventManager.instance.EventChance();
 
                 break;
 
@@ -232,15 +235,11 @@ public class RoundManager : MonoBehaviour
                 }
                 else if (inBetweenTimer <= 1)
                 {
-                    //This "false" parameter is HARDCODED and needs to become a bool set by whether
-                    //there is an event or not
-                    UIManager.instance.TriggerRoundAnimation(false /*CHANGE ME*/, true);
+                    UIManager.instance.TriggerRoundAnimation(EventManager.instance.isEventHappening, true);
 
                     UIManager.instance.ToggleWarningBanner(false);
                 }
-                //This "true" parameter is HARDCODED and needs to become a bool set by whether
-                //there is an event or not
-                else if (inBetweenTimer <= 3 && true /*CHANGE ME*/)
+                else if (inBetweenTimer <= 3 && EventManager.instance.isEventHappening)
                 {
                     UIManager.instance.ToggleWarningBanner(true);
                 }
