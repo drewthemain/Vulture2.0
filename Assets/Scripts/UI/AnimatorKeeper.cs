@@ -54,6 +54,16 @@ public class AnimatorKeeper : MonoBehaviour
         }
         if (m_Animator != null)
         {
+            // HANDLES THE CASE OF DEV CONSOLE ENDING THE ROUND
+            if (GameManager.instance && GameManager.instance.wasConsoleUnpause)
+            {
+                m_Animator.Rebind();
+                m_Animator.Update(0f);
+
+                GameManager.instance.wasConsoleUnpause = false;
+                return;
+            }
+
             foreach (KeyValuePair<int, AnimatorParameterValue> kvp in m_Parameters)
             {
                 switch (kvp.Value.m_Type)

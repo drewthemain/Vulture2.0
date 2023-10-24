@@ -479,9 +479,4 @@ public class UIManager : MonoBehaviour
             text.color = textColor;
         }
     }
-
-    public void EndRoundSet(bool endRound)
-    {
-        roundAnim.SetBool("RoundEnd", endRound);
-    }
 }
