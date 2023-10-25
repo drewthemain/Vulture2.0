@@ -3,7 +3,7 @@
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{61637619-6767-42C9-AA75-75108A3CEC5A}" PersistMode="Standalone">
 			<ChildrenList>
-				<Bus Name="Master Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+				<Bus Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<ReferenceList>
 						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
 							<ObjectRef Name="System" ID="{43DEAF1A-EED8-434F-9A08-5CB9C67603CE}" WorkUnitID="{64EF5837-B65A-4B72-922F-7BAC43DC340A}"/>
@@ -21,8 +21,87 @@
 									</ChildrenList>
 								</Bus>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{DAEAF7F0-90EC-4077-8CB4-44F0AD15922A}" ShortID="952271479">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="UI_Volume_SFX" ID="{9616D5E8-A07B-4F6F-A0AC-009514F9A45E}" WorkUnitID="{69714BA4-5708-4E45-A562-FBDC50267690}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{D5D6369C-3A0B-49CF-8581-E6863FE00704}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</Bus>
-						<Bus Name="MUS" ID="{A90DF4D8-C3BA-4DDB-8916-DA07269C6299}"/>
+						<Bus Name="MUS" ID="{A90DF4D8-C3BA-4DDB-8916-DA07269C6299}">
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{719F2E95-4ABB-4E64-8237-0502C68F0249}" ShortID="503027282">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="UI_Volume_MUS" ID="{626B5F2F-8B8A-4141-9A46-EB027C7A5DF7}" WorkUnitID="{69714BA4-5708-4E45-A562-FBDC50267690}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{B6129920-E32C-48F5-A78F-633F556D3E59}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</Bus>
 						<AuxBus Name="AUX_MST" ID="{BC019543-0D1C-4EB0-8CE3-EDE4E8FD0952}">
 							<ChildrenList>
 								<AuxBus Name="AUX_MST_SFX" ID="{C65CB392-AC7C-424D-893D-A7ACE1411900}">
@@ -33,6 +112,45 @@
 							</ChildrenList>
 						</AuxBus>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{106FD33E-5399-421E-9348-68CAF48E5674}" ShortID="528883296">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="UI_Volume_MST" ID="{822C6DF0-B24C-4BD1-B731-7FDA9FCECC82}" WorkUnitID="{69714BA4-5708-4E45-A562-FBDC50267690}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{A34985AE-1997-454C-B179-9451AC637D8D}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

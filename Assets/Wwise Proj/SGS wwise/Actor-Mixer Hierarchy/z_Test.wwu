@@ -3,50 +3,62 @@
 	<AudioObjects>
 		<WorkUnit Name="z_Test" ID="{DD530617-DC83-45AB-B774-E64B70CBF6D6}" OwnerID="{8B552871-55F3-4DF1-BE9E-428444D82310}" PersistMode="Nested">
 			<ChildrenList>
-				<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{9679DA4C-FBBD-4FE2-9D73-604D7281506C}" ShortID="873567716">
+				<ActorMixer Name="Test" ID="{02ABF32C-594F-43F3-A4B7-103A4660A6B8}" ShortID="353396339">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+							<ObjectRef Name="SFX" ID="{9F75984F-EAE3-4F96-97E5-C19F18A2A539}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}">
-							<Language>SFX</Language>
-							<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="541906591"/>
-							</MediaIDList>
-						</AudioFileSource>
+						<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{9679DA4C-FBBD-4FE2-9D73-604D7281506C}" ShortID="873567716">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}">
+									<Language>SFX</Language>
+									<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="541906591"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{A094F93D-F964-4850-9D27-A8966DFE03CF}" ShortID="704377899">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{3C31653F-1352-4462-9F65-D7C1A14309A4}">
+									<Language>SFX</Language>
+									<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="682666718"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{3C31653F-1352-4462-9F65-D7C1A14309A4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{3983A407-C61B-4984-A926-406FDD4BCE21}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
-				<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{A094F93D-F964-4850-9D27-A8966DFE03CF}" ShortID="704377899">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{3C31653F-1352-4462-9F65-D7C1A14309A4}">
-							<Language>SFX</Language>
-							<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="682666718"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{3C31653F-1352-4462-9F65-D7C1A14309A4}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
