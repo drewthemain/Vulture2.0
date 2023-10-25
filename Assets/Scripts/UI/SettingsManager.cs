@@ -47,6 +47,28 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI crosshairOpacityText;
 
 
+    [Header("Audio Settings References")]
+    [Tooltip("The reference to the volume master slider")]
+    [SerializeField] private Slider volumeMasterSlider;
+
+    [Tooltip("The reference to the textbox next to the slider displaying the number")]
+    [SerializeField] private TextMeshProUGUI volumeMasterText;
+
+    [Tooltip("The reference to the volume sfx slider")]
+    [SerializeField] private Slider volumeSfxSlider;
+
+    [Tooltip("The reference to the textbox next to the slider displaying the number")]
+    [SerializeField] private TextMeshProUGUI volumeSfxText;
+
+    [Tooltip("The reference to the volume music slider")]
+    [SerializeField] private Slider volumeMusicSlider;
+
+    [Tooltip("The reference to the textbox next to the slider displaying the number")]
+    [SerializeField] private TextMeshProUGUI volumeMusicText;
+
+
+
+
     // General References
     // Reference to the player gameobject
     private PlayerController controller;
@@ -81,9 +103,68 @@ public class SettingsManager : MonoBehaviour
     /// </summary>
     public void LoadSettings()
     {
-        LoadGameplaySettings();
         LoadVideoSettings();
+        LoadGameplaySettings();
+        LoadAudioSettings();  
     }
+
+    #region VideoSettings
+    public void LoadVideoSettings()
+    {
+        // load in camera shake toggle value
+        cameraShakeToggle.value = (PlayerPrefs.GetInt("cameraShake", 1) == 1) ? 1 : 0;
+        SetCameraShakeText(cameraShakeToggle.value);
+
+        // load in gui opacity slider input
+        GUIOpacitySlider.value = PlayerPrefs.GetFloat("GUIOpacity", 1f);
+        GUIOpacityText.text = (GUIOpacitySlider.value * 100).ToString("F2");
+    }
+
+    /// <summary>
+    /// UI portion of adjusting the players overall sensitivity
+    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity
+    /// </summary>
+    public void GUIOpacitySliderInput()
+    {
+        float val = GUIOpacitySlider.value;
+        GUIOpacityText.text = (val * 100).ToString("F2");
+        UIManager.instance.ChangeGUIOpacity(val);
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void CameraShakeToggleInput()
+    {
+        float val = cameraShakeToggle.value;
+        CameraManager.instance.ToggleCameraShake(cameraShakeToggle.value);
+        SetCameraShakeText(cameraShakeToggle.value);
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    private void SetCameraShakeText(float val)
+    {
+        cameraShakeText.text = val == 1 ? "Enabled" : "Disabled";
+    }
+
+    #endregion
+
+    #region AudioSettings
+
+    public void LoadAudioSettings()
+    {
+        // load in crosshair opacity slider input
+        volumeMasterSlider.value = PlayerPrefs.GetFloat("volumeMaster", .8f);
+        volumeMasterText.text = (volumeMasterSlider.value * 100).ToString("F2");
+    }
+
+    public void VolumeMasterSliderInput()
+    {
+        float val = volumeMasterSlider.value;
+        volumeMasterText.text = (val * 100).ToString("F2");
+        //Set RTPC Here (Wwise)
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    #endregion
 
     #region GameplaySettings
     public void LoadGameplaySettings()
@@ -151,42 +232,6 @@ public class SettingsManager : MonoBehaviour
 
     #endregion
 
-    #region VideoSettings
-    public void LoadVideoSettings()
-    {
-        // load in camera shake toggle value
-        cameraShakeToggle.value = (PlayerPrefs.GetInt("cameraShake", 1) == 1) ? 1 : 0;
-        SetCameraShakeText(cameraShakeToggle.value);
 
-        // load in gui opacity slider input
-        GUIOpacitySlider.value = PlayerPrefs.GetFloat("GUIOpacity", 1f);
-        GUIOpacityText.text = (GUIOpacitySlider.value * 100).ToString("F2");
-    }
-
-    /// <summary>
-    /// UI portion of adjusting the players overall sensitivity
-    /// Passes the input slider value through to the player controller where it adjusts the camera sensitivity
-    /// </summary>
-    public void GUIOpacitySliderInput()
-    {
-        float val = GUIOpacitySlider.value;
-        GUIOpacityText.text = (val * 100).ToString("F2");
-        UIManager.instance.ChangeGUIOpacity(val);
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    public void CameraShakeToggleInput()
-    {
-        float val = cameraShakeToggle.value;
-        CameraManager.instance.ToggleCameraShake(cameraShakeToggle.value);
-        SetCameraShakeText(cameraShakeToggle.value);
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    private void SetCameraShakeText(float val)
-    {
-        cameraShakeText.text = val == 1 ? "Enabled" : "Disabled";
-    }
-
-    #endregion
+    
 }
