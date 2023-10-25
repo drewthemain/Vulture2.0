@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
         OutOfRange,
         InRange,
         NoGrav,
-        Covering,
+        Action,
         Stop
     }
 
@@ -43,22 +43,6 @@ public class Enemy : MonoBehaviour
     [Tooltip("The layers that will be allowed in the player detection raycast")]
     [SerializeField] protected LayerMask sightMask;
 
-    [Header("Movement")]
-
-    [Tooltip("Should the enemy slow down once the player is spotted?")]
-    [SerializeField] protected bool slowWhenPlayerSpotted = true;
-
-    [Tooltip("If slowed, this value will be the speed reduction percentage")]
-    [Range(0, 1)]
-    [SerializeField] protected float speedReductionPercentage = 0.5f;
-
-    [Tooltip("Should the enemy speed up the further they are from the player?")]
-    [SerializeField] protected bool proximitySpeedBoost = true;
-
-    [Tooltip("If out of range, this value will be the speed boost percentage")]
-    [Range(0, 1)]
-    [SerializeField] protected float speedBoostPercentage = 0.5f;
-
     [Tooltip("The range of time in between the enemy determining if it should respawn")]
     [SerializeField] protected float respawnCheckBuffer = 5f;
 
@@ -79,9 +63,6 @@ public class Enemy : MonoBehaviour
 
     // Reference to the player GameObject
     protected Transform playerRef;
-
-    // Reference to the NavMesh Agent
-    protected NavMeshAgent agent;
 
     // The target transform reference for pathing
     protected Transform target;
@@ -135,76 +116,16 @@ public class Enemy : MonoBehaviour
     /// <param name="newState">The new state of this enemy</param>
     public virtual void ChangeState(EnemyStates newState)
     {
-        state = newState;
-
-        if (agent && agent.enabled == false)
-        {
-            agent.enabled = true;
-            body.isKinematic = true;
-        }
-
-        switch (newState)
-        {
-            case EnemyStates.OutOfRange:
-
-                if (agent && proximitySpeedBoost)
-                {
-                    agent.speed = baseSpeed + (baseSpeed * speedBoostPercentage);
-                }
-
-                mutable = true;
-                break;
-            case EnemyStates.InRange:
-
-                if (agent)
-                {
-                    agent.speed = baseSpeed;
-                }
-
-                mutable = true;
-                break;
-            case EnemyStates.NoGrav:
-
-                // Turn off navmesh when floating
-                agent.enabled = false;
-
-                // Turn on rigidbody
-                body.isKinematic = false;
-
-                gameObject.layer = LayerMask.NameToLayer("Sucked");
-
-                // Set velocity toward the window
-                if (currentRoom.GetBrokenWindow() != null)
-                {
-                    Vector3 targetDir = (currentRoom.GetBrokenWindow().pullTarget.transform.position - transform.position).normalized;
-                    body.velocity = targetDir * pullSpeed * 10;
-
-                    Ragdollize("Sucked");
-                }
-
-                mutable = false;
-                break;
-            case EnemyStates.Covering:
-                mutable = false;
-                break;
-        }
+       
     }
 
     protected virtual void Awake()
     {
         // Initial reference grabbing
         state = EnemyStates.OutOfRange;
-        agent = GetComponent<NavMeshAgent>();
         weapon = GetComponent<EnemyWeapon>();
         body = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-
-        baseSpeed = agent.speed;
-
-        if (!agent)
-        {
-            Debug.LogWarning($"Enemy {this.transform.name} is missing a NavMeshAgent component!");
-        }
 
         if (!weapon)
         {
@@ -252,7 +173,7 @@ public class Enemy : MonoBehaviour
                     pullTimer += Time.deltaTime;
 
                     break;
-                case EnemyStates.Covering:
+                case EnemyStates.Action:
                     CheckProximity();
                     break;
             }
@@ -282,16 +203,6 @@ public class Enemy : MonoBehaviour
     protected virtual void TogglePlayerSightline(bool playerSpotted)
     {
         playerInSight = playerSpotted;
-        
-        if (slowWhenPlayerSpotted && mutable)
-        {
-            agent.speed = !playerSpotted ? baseSpeed : (baseSpeed - (baseSpeed * speedReductionPercentage));
-
-            if (proximitySpeedBoost && state == EnemyStates.OutOfRange)
-            {
-                agent.speed += baseSpeed * speedBoostPercentage;
-            }
-        }
     }
 
     /// <summary>
@@ -329,7 +240,7 @@ public class Enemy : MonoBehaviour
                 }
                 return;
 
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 if (distanceFromPlayer > (inRangeProximity * 1.5f))
                 {

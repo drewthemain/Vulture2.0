@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : Enemy
+public class Patrol : NavMeshEnemy
 {
     #region Variables
 
@@ -97,7 +97,7 @@ public class Patrol : Enemy
                 break;
             case EnemyStates.NoGrav:
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
                 break;
         }
     }
@@ -164,7 +164,7 @@ public class Patrol : Enemy
 
                 break;
 
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 break;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Swarm : Enemy
+public class Swarm : NavMeshEnemy
 {
     #region Variables
 
@@ -66,7 +66,7 @@ public class Swarm : Enemy
                 break;
             case EnemyStates.NoGrav:
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
                 break;
         }
     }
@@ -116,7 +116,7 @@ public class Swarm : Enemy
                 break;
             case EnemyStates.NoGrav:
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
                 break;
         }
     }

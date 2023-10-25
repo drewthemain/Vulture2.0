@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Soldier : Enemy
+public class Soldier : NavMeshEnemy
 {
     #region Variables
 
@@ -142,7 +142,7 @@ public class Soldier : Enemy
                 }
 
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 // Query cover from room and move
                 if (agent)
@@ -246,7 +246,7 @@ public class Soldier : Enemy
                 case EnemyStates.NoGrav:
 
                     break;
-                case EnemyStates.Covering:
+                case EnemyStates.Action:
 
                     if (!coverActionsStarted)
                     {
@@ -420,7 +420,7 @@ public class Soldier : Enemy
 
             if (coverRoll < coverOdds)
             {
-                ChangeState(EnemyStates.Covering);
+                ChangeState(EnemyStates.Action);
                 return;
             }
 
@@ -479,7 +479,7 @@ public class Soldier : Enemy
                 {
                     if (currentRoom != null)
                     {
-                        ChangeState(EnemyStates.Covering);
+                        ChangeState(EnemyStates.Action);
                         return;
                     }
                     else
@@ -519,7 +519,7 @@ public class Soldier : Enemy
             {
                 actionTimer = 0;
 
-                ChangeState(EnemyStates.Covering);
+                ChangeState(EnemyStates.Action);
             }
         }
 
@@ -590,7 +590,7 @@ public class Soldier : Enemy
     {
         if (other.CompareTag("Room"))
         {
-            if (state == EnemyStates.Covering)
+            if (state == EnemyStates.Action)
             {
                 currentRoom.ReturnCover(target);
             }

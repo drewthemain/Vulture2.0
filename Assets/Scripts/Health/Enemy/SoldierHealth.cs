@@ -20,9 +20,9 @@ public class SoldierHealth : EnemyHealth
     {
         base.TakeDamage(dmg, multiplier);
 
-        if (currentHealth <= (currentMaxHealth / 2) && currentHealth > 0 && soldier.GetState() != Enemy.EnemyStates.Covering)
+        if (currentHealth <= (currentMaxHealth / 2) && currentHealth > 0 && soldier.GetState() != Enemy.EnemyStates.Action)
         {
-            soldier.ChangeState(Enemy.EnemyStates.Covering);
+            soldier.ChangeState(Enemy.EnemyStates.Action);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Tracer : Enemy
+public class Tracer : NavMeshEnemy
 {
     #region Variables
 
@@ -135,7 +135,7 @@ public class Tracer : Enemy
                 break;
             case EnemyStates.NoGrav:
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 if (Vector3.Distance(transform.position, targetPosition) < 2f)
                 {
@@ -176,7 +176,7 @@ public class Tracer : Enemy
                 break;
             case EnemyStates.NoGrav:
                 break;
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 TriggerSwap();
 
@@ -207,7 +207,7 @@ public class Tracer : Enemy
         if (swapRoll < swapOdds)
         {
             // previousGrounded = true;
-            ChangeState(EnemyStates.Covering);
+            ChangeState(EnemyStates.Action);
             return;
         }
 
@@ -271,7 +271,7 @@ public class Tracer : Enemy
         if (swapRoll < swapOdds)
         {
             // previousGrounded = false;
-            ChangeState(EnemyStates.Covering);
+            ChangeState(EnemyStates.Action);
             return;
         }
 
@@ -511,7 +511,7 @@ public class Tracer : Enemy
                 }
                 return;
 
-            case EnemyStates.Covering:
+            case EnemyStates.Action:
 
                 return;
         }
