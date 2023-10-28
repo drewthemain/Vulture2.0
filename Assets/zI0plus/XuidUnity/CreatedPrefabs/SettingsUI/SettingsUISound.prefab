@@ -5048,6 +5048,21 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VolumeMasterSliderInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937e39f4c3bf2d246a347469c2319d80, type: 3}
 --- !u!224 &5585896899930791477 stripped
@@ -5193,6 +5208,21 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VolumeSFXSliderInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937e39f4c3bf2d246a347469c2319d80, type: 3}
 --- !u!224 &7587600057435528537 stripped
@@ -5337,6 +5367,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VolumeMusicSliderInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819491846718511240, guid: 937e39f4c3bf2d246a347469c2319d80,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937e39f4c3bf2d246a347469c2319d80, type: 3}

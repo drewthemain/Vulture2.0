@@ -149,18 +149,60 @@ public class SettingsManager : MonoBehaviour
 
     #region AudioSettings
 
+    /// <summary>
+    /// Load values for all of the audio settings and their text from PlayerPrefs
+    /// </summary>
     public void LoadAudioSettings()
     {
-        // load in crosshair opacity slider input
+        // load in master volume settings
         volumeMasterSlider.value = PlayerPrefs.GetFloat("volumeMaster", .8f);
         volumeMasterText.text = (volumeMasterSlider.value * 100).ToString("F2");
+
+        // load in SFX volume settings
+        volumeSfxSlider.value = PlayerPrefs.GetFloat("volumeSFX", .8f);
+        volumeSfxText.text = (volumeSfxSlider.value * 100).ToString("F2");
+
+        // load in music volume settings
+        volumeMusicSlider.value = PlayerPrefs.GetFloat("volumeMusic", .8f);
+        volumeMusicText.text = (volumeMusicSlider.value * 100).ToString("F2");
     }
 
+    /// <summary>
+    /// UI portion of adjusting the players MASTER volume
+    /// Calls the AudioManager ChangeVolume function and multiplies the input value from the 
+    /// slider (1-10) by the scale set in AudioManager
+    /// </summary>
     public void VolumeMasterSliderInput()
     {
         float val = volumeMasterSlider.value;
         volumeMasterText.text = (val * 100).ToString("F2");
-        //Set RTPC Here (Wwise)
+        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Master);
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    /// <summary>
+    /// UI portion of adjusting the players SFX volume
+    /// Calls the AudioManager ChangeVolume function and multiplies the input value from the 
+    /// slider (1-10) by the scale set in AudioManager
+    /// </summary>
+    public void VolumeSFXSliderInput()
+    {
+        float val = volumeSfxSlider.value;
+        volumeSfxText.text = (val * 100).ToString("F2");
+        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.SFX);
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    /// <summary>
+    /// UI portion of adjusting the players MUSIC volume
+    /// Calls the AudioManager ChangeVolume function and multiplies the input value from the 
+    /// slider (1-10) by the scale set in AudioManager
+    /// </summary>
+    public void VolumeMusicSliderInput()
+    {
+        float val = volumeMusicSlider.value;
+        volumeMusicText.text = (val * 100).ToString("F2");
+        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Music);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -232,6 +274,4 @@ public class SettingsManager : MonoBehaviour
 
     #endregion
 
-
-    
 }
