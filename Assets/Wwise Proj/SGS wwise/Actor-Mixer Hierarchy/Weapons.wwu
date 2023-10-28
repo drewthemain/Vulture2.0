@@ -237,6 +237,90 @@
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{6ED2CE60-69F5-40B7-B07F-C44A5833479A}" ShortID="275276142">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{CB7754C4-8E3D-4241-83A0-A4D5E1383837}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>500</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{C1E51238-5AD4-4191-964A-4C623006E3DC}" ShortID="427110652">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Highpass"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{26A5162A-7E4A-494D-8C39-391B99A47848}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>20</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire" ID="{19CF1084-4A61-40B0-B8AB-A6EB1273D5C3}" ShortID="459435279">
 									<PropertyList>
@@ -454,6 +538,158 @@
 								</ObjectList>
 							</ObjectLists>
 						</BlendContainer>
+						<RandomSequenceContainer Name="Weapon_AR_Reload_L1_PullGunUp" ID="{A74AA7A5-139F-4AA7-BFA5-2BEDF0774CA5}" ShortID="930706497">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496_Short" ID="{9D42D0DC-5C96-49B0-B834-B70B882043B8}" ShortID="500780351">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{686B8E2E-8D7F-4846-9884-1A8C9DD390FE}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.176779561892097"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="911685796"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{686B8E2E-8D7F-4846-9884-1A8C9DD390FE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Weapon_AR_Reload_L2_PullMagOut" ID="{C6404D37-A3F5-446F-B5BA-4072C606C9EC}" ShortID="469491841">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494_Short" ID="{8B7ECCC6-0556-4D7E-8025-2950C90FCBA8}" ShortID="256459166">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{E9B9ACC1-AA43-4062-9DA0-02811D7433A5}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.384157041139241"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="355318758"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{E9B9ACC1-AA43-4062-9DA0-02811D7433A5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Weapon_AR_Reload_L3_FumbleWithMag" ID="{77561B86-6C8F-4EEB-BCC3-73E3564FB395}" ShortID="179078875">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496_Short" ID="{6C251EBB-4991-467A-A2B5-FC581A01A4D8}" ShortID="833519597">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{36D84097-31E2-4B70-8C9B-3113B64B677C}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.176779561892097"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="911685796"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{36D84097-31E2-4B70-8C9B-3113B64B677C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Weapon_AR_Reload_L4_PutMagIn" ID="{C6E5412F-54B2-475A-8F80-2F3D110B7FDB}" ShortID="172797141">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494_Short" ID="{B7336DC5-DAB8-4D38-84AF-8C39F2533853}" ShortID="534783588">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{43087533-A6F2-4051-819C-E71E98E07158}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.384157041139241"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="355318758"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{43087533-A6F2-4051-819C-E71E98E07158}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

@@ -1,4 +1,5 @@
 Game Parameter	ID	Name			Wwise Object Path	Notes
+	174009356	UI_Volume_SFX			\UI\UI_Volume_SFX	
 	504532776	Brick			\Factory Acoustic Textures\Textures\Brick	
 	513139656	Mountain			\Factory Acoustic Textures\Textures\Mountain	
 	841620460	Concrete			\Factory Acoustic Textures\Textures\Concrete	
@@ -11,23 +12,25 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	2928161104	Curtains			\Factory Acoustic Textures\Textures\Curtains	
 	3195498748	Cork_Tiles			\Factory Acoustic Textures\Textures\Cork_Tiles	
 	3670307564	Drywall			\Factory Acoustic Textures\Textures\Drywall	
+	3876934621	UI_Volume_MST			\UI\UI_Volume_MST	
+	3910489788	UI_Volume_MUS			\UI\UI_Volume_MUS	
 	4168643977	Acoustic_Banner			\Factory Acoustic Textures\Textures\Acoustic_Banner	
 	4262522749	Wood_Bright			\Factory Acoustic Textures\Textures\Wood_Bright	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	393239870	SFX			\Default Work Unit\Master Bus\SFX	
-	712897226	MUS			\Default Work Unit\Master Bus\MUS	
-	1350043778	SFX_Weap			\Default Work Unit\Master Bus\SFX\SFX_OBJS\SFX_Weap	
-	1399649189	Master Bus			\Default Work Unit\Master Bus	
-	3583497273	SFX_Ambience			\Default Work Unit\Master Bus\SFX\SFX_Ambience	
-	3587590657	SFX_Gameplay			\Default Work Unit\Master Bus\SFX\SFX_Gameplay	
-	3691540007	SFX_OBJS			\Default Work Unit\Master Bus\SFX\SFX_OBJS	
-	3862737079	SFX_UI			\Default Work Unit\Master Bus\SFX\SFX_UI	
+	393239870	SFX			\Default Work Unit\MST\SFX	
+	712897226	MUS			\Default Work Unit\MST\MUS	
+	746452395	MST			\Default Work Unit\MST	
+	1350043778	SFX_Weap			\Default Work Unit\MST\SFX\SFX_OBJS\SFX_Weap	
+	3583497273	SFX_Ambience			\Default Work Unit\MST\SFX\SFX_Ambience	
+	3587590657	SFX_Gameplay			\Default Work Unit\MST\SFX\SFX_Gameplay	
+	3691540007	SFX_OBJS			\Default Work Unit\MST\SFX\SFX_OBJS	
+	3862737079	SFX_UI			\Default Work Unit\MST\SFX\SFX_UI	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	2611802776	AUX_MST			\Default Work Unit\Master Bus\AUX_MST	
-	3058796868	AUX_MST_SFX			\Default Work Unit\Master Bus\AUX_MST\AUX_MST_SFX	
-	3703043559	SPECIFIC_AREA			\Default Work Unit\Master Bus\AUX_MST\AUX_MST_SFX\SPECIFIC_AREA	
+	2611802776	AUX_MST			\Default Work Unit\MST\AUX_MST	
+	3058796868	AUX_MST_SFX			\Default Work Unit\MST\AUX_MST\AUX_MST_SFX	
+	3703043559	SPECIFIC_AREA			\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\SPECIFIC_AREA	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

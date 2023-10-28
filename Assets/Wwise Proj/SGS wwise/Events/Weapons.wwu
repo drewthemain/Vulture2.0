@@ -14,6 +14,50 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Weapon_AR_Reload_L1_PullGunUp" ID="{3C4E35A5-3C48-4600-90B4-26CE2660FA94}">
+					<ChildrenList>
+						<Action Name="" ID="{D5F497B8-2182-4233-BCAC-5E3A9A92120C}" ShortID="985723714">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L1_PullGunUp" ID="{A74AA7A5-139F-4AA7-BFA5-2BEDF0774CA5}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Weapon_AR_Reload_L2_PullMagOut" ID="{F5AFD163-CDC3-433F-84B3-6FD01183D3A6}">
+					<ChildrenList>
+						<Action Name="" ID="{3FF020AC-E0A6-41F9-BFBF-A678B8D0D835}" ShortID="1028307502">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L2_PullMagOut" ID="{C6404D37-A3F5-446F-B5BA-4072C606C9EC}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Weapon_AR_Reload_L3_FumbleWithMag" ID="{95E60513-7205-4CA9-9143-A779D5EECE2D}">
+					<ChildrenList>
+						<Action Name="" ID="{8DC2A378-4812-4476-9EE4-E9181C4F0445}" ShortID="703689422">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L3_FumbleWithMag" ID="{77561B86-6C8F-4EEB-BCC3-73E3564FB395}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Weapon_AR_Reload_L4_PutMagIn" ID="{005AEE93-E33C-46BC-AEA4-02F38C96E053}">
+					<ChildrenList>
+						<Action Name="" ID="{9DB1F5A0-0CA0-44CE-A910-96238A758209}" ShortID="556897386">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L4_PutMagIn" ID="{C6E5412F-54B2-475A-8F80-2F3D110B7FDB}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -57,6 +57,58 @@
 								<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{3C31653F-1352-4462-9F65-D7C1A14309A4}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496_Short" ID="{005DA26D-6F28-42C5-B0F0-E313B16A6E65}" ShortID="977844407">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{A64128E9-E34C-4304-B043-63A2B8B65D60}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.176779561892097"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="911685796"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496" ID="{A64128E9-E34C-4304-B043-63A2B8B65D60}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494_Short" ID="{9BFD8FCC-0576-4E35-91BB-D4865FB2E669}" ShortID="85853922">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{C9624FA4-D805-480A-A44B-2D9F9183BAA4}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.384157041139241"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="355318758"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494" ID="{C9624FA4-D805-480A-A44B-2D9F9183BAA4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

@@ -15,21 +15,19 @@ namespace AK
     {
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__SINE_WAVE_SND3496 = 2851956297U;
         static const AkUniqueID ARCHIVED__TEST_TONE__1000_HZ__TRIANGLE_WAVE_SND3494 = 2393213630U;
+        static const AkUniqueID WEAPON_AR_RELOAD_L1_PULLGUNUP = 4284962476U;
+        static const AkUniqueID WEAPON_AR_RELOAD_L2_PULLMAGOUT = 1881291373U;
+        static const AkUniqueID WEAPON_AR_RELOAD_L3_FUMBLEWITHMAG = 54041688U;
+        static const AkUniqueID WEAPON_AR_RELOAD_L4_PUTMAGIN = 1330795928U;
         static const AkUniqueID WEAPON_AR_SINGLEBURST = 2798880610U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS
     {
-        static const AkUniqueID SS_AIR_FEAR = 1351367891U;
-        static const AkUniqueID SS_AIR_FREEFALL = 3002758120U;
-        static const AkUniqueID SS_AIR_FURY = 1029930033U;
-        static const AkUniqueID SS_AIR_MONTH = 2648548617U;
-        static const AkUniqueID SS_AIR_PRESENCE = 3847924954U;
-        static const AkUniqueID SS_AIR_RPM = 822163944U;
-        static const AkUniqueID SS_AIR_SIZE = 3074696722U;
-        static const AkUniqueID SS_AIR_STORM = 3715662592U;
-        static const AkUniqueID SS_AIR_TIMEOFDAY = 3203397129U;
-        static const AkUniqueID SS_AIR_TURBULENCE = 4160247818U;
+        static const AkUniqueID UI_VOLUME_MST = 3876934621U;
+        static const AkUniqueID UI_VOLUME_MUS = 3910489788U;
+        static const AkUniqueID UI_VOLUME_SFX = 174009356U;
+        static const AkUniqueID WEAPON_AR_AMMOLEFT = 3338723421U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS
@@ -41,7 +39,7 @@ namespace AK
 
     namespace BUSSES
     {
-        static const AkUniqueID MASTER_BUS = 1399649189U;
+        static const AkUniqueID MST = 746452395U;
         static const AkUniqueID MUS = 712897226U;
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SFX_AMBIENCE = 3583497273U;

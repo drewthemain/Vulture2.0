@@ -541,7 +541,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Mission 1
     guid: b66528a792274643acf8a2f4c49aeb09
     GuidInternal: 
-    m_lastTime: -8585036059256675960
+    m_lastTime: -8585031355601030185
     List:
     - name: Mission_1
       guid: 6532da857a25ca48916f4ac243f84d8d
@@ -596,7 +596,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: e6f8ba9315d3fe4fb3758cc654b4bf02
     GuidInternal: 
-    m_lastTime: -8585045387598117752
+    m_lastTime: -8585031355600975237
     List: []
   - PhysicalPath: Events\Weapons.wwu
     PathAndIcons:
@@ -609,8 +609,76 @@ MonoBehaviour:
     ParentPath: Events\Weapons
     guid: 649f413b4bee044fa672e51e199b1c60
     GuidInternal: 
-    m_lastTime: -8585034956262154267
+    m_lastTime: -8585031355601086149
     List:
+    - name: Weapon_AR_Reload_L1_PullGunUp
+      guid: a5354e3c483c004690b426ce2660fa94
+      id: 4284962476
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Weapons
+        ObjectType: 12
+        guid: 649f413b4bee044fa672e51e199b1c60
+      - ElementName: Weapon_AR_Reload_L1_PullGunUp
+        ObjectType: 3
+        guid: a5354e3c483c004690b426ce2660fa94
+      Path: Events\Weapons\Weapon_AR_Reload_L1_PullGunUp
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Weapon_AR_Reload_L2_PullMagOut
+      guid: 63d1aff5c3cd3f4384b36fd01183d3a6
+      id: 1881291373
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Weapons
+        ObjectType: 12
+        guid: 649f413b4bee044fa672e51e199b1c60
+      - ElementName: Weapon_AR_Reload_L2_PullMagOut
+        ObjectType: 3
+        guid: 63d1aff5c3cd3f4384b36fd01183d3a6
+      Path: Events\Weapons\Weapon_AR_Reload_L2_PullMagOut
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Weapon_AR_Reload_L3_FumbleWithMag
+      guid: 1305e6950572a94c9143a779d5eece2d
+      id: 54041688
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Weapons
+        ObjectType: 12
+        guid: 649f413b4bee044fa672e51e199b1c60
+      - ElementName: Weapon_AR_Reload_L3_FumbleWithMag
+        ObjectType: 3
+        guid: 1305e6950572a94c9143a779d5eece2d
+      Path: Events\Weapons\Weapon_AR_Reload_L3_FumbleWithMag
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Weapon_AR_Reload_L4_PutMagIn
+      guid: 93ee5a003ce3bc46aea402f38c96e053
+      id: 1330795928
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Weapons
+        ObjectType: 12
+        guid: 649f413b4bee044fa672e51e199b1c60
+      - ElementName: Weapon_AR_Reload_L4_PutMagIn
+        ObjectType: 3
+        guid: 93ee5a003ce3bc46aea402f38c96e053
+      Path: Events\Weapons\Weapon_AR_Reload_L4_PutMagIn
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Weapon_AR_SingleBurst
       guid: a1603379c6e3e8479852ed57e39e5c26
       id: 2798880610
