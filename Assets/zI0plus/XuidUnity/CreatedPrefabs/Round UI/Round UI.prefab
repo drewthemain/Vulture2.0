@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536800291728149345}
-  - component: {fileID: 5086024880608556853}
+  - component: {fileID: 3733378199120491483}
   - component: {fileID: 6663846917320568930}
   m_Layer: 5
   m_Name: Round UI
@@ -159,7 +159,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 613.5112, y: 269.3871}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5086024880608556853
+--- !u!114 &3733378199120491483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1268970624283172899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd792d0130071044968afd851ad11e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a0d7355b059b31489d6e8231bd7f8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &6663846917320568930
