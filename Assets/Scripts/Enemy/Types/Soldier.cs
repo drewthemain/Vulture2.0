@@ -250,6 +250,8 @@ public class Soldier : NavMeshEnemy
 
                     if (!coverActionsStarted)
                     {
+                        LockedLookAt(playerRef);
+
                         // If done moving to cover, start doing actions!
                         if (agent.remainingDistance < 2f)
                         {
