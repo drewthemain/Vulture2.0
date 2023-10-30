@@ -2780,7 +2780,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.5000001
-  m_Speed: 5
+  m_Speed: 8
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -2813,10 +2813,6 @@ MonoBehaviour:
   sightMask:
     serializedVersion: 2
     m_Bits: 567
-  slowWhenPlayerSpotted: 0
-  speedReductionPercentage: 0.5
-  proximitySpeedBoost: 1
-  speedBoostPercentage: 0.5
   respawnCheckBuffer: 10
   roomMask:
     serializedVersion: 2
@@ -2825,6 +2821,10 @@ MonoBehaviour:
   pullSlowdownMultiplier: 0.7
   timeTilDeathAfterSuck: 5
   currentRoom: {fileID: 0}
+  slowWhenPlayerSpotted: 0
+  speedReductionPercentage: 0.5
+  proximitySpeedBoost: 1
+  speedBoostPercentage: 0.5
   wallMask:
     serializedVersion: 2
     m_Bits: 11319
@@ -2844,8 +2844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bc7dbedabb1c348ab2470d80c9fef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  currentHealth: 30
+  maxHealth: 15
+  currentHealth: 15
   speedIncreaseOnDamage: 0
   speedDecreaseOnDamage: 0
   enemyType: 1

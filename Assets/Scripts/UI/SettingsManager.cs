@@ -176,7 +176,10 @@ public class SettingsManager : MonoBehaviour
     {
         float val = volumeMasterSlider.value;
         volumeMasterText.text = (val * 100).ToString("F2");
-        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Master);
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Master);
+        }
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -189,7 +192,10 @@ public class SettingsManager : MonoBehaviour
     {
         float val = volumeSfxSlider.value;
         volumeSfxText.text = (val * 100).ToString("F2");
-        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.SFX);
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.SFX);
+        }
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -202,7 +208,10 @@ public class SettingsManager : MonoBehaviour
     {
         float val = volumeMusicSlider.value;
         volumeMusicText.text = (val * 100).ToString("F2");
-        AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Music);
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.ChangeVolume(val * AudioManager.instance.volumeScale, AudioManager.AudioType.Music);
+        }
         EventSystem.current.SetSelectedGameObject(null);
     }
 
