@@ -2780,7 +2780,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.5000001
-  m_Speed: 8
+  m_Speed: 9
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -2865,7 +2865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderPrefab: {fileID: 1100664159678594653, guid: af58aa30412f82141ad9971003037918,
     type: 3}
-  colliderDamage: 5
+  colliderDamage: 10
   attackDelay: 1
   colliderOffset: {x: 4, y: 0}
 --- !u!114 &981896740632364073

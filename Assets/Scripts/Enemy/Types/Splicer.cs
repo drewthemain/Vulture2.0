@@ -77,6 +77,7 @@ public class Splicer : NavMeshEnemy
 
                 if (weapon)
                 {
+                    anim.SetBool("isAttacking", false);
                     weapon.ToggleFiring(false);
                 }
 
@@ -85,6 +86,7 @@ public class Splicer : NavMeshEnemy
 
                 if (weapon)
                 {
+                    anim.SetBool("isAttacking", true);
                     agent.ResetPath();
                     weapon.ToggleFiring(true);
                 }
