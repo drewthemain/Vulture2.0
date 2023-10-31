@@ -52,19 +52,14 @@ public class SmartMap : MonoBehaviour
     {
         if (activeRoom != null)
         {
-            Vector2 backlog = activeRoom.Shutdown();
+            Dictionary<Order.EnemyTypes, int> backlog = activeRoom.Shutdown();
 
             Segment backlogSegment = new Segment();
             backlogSegment.orders = new List<Order>();
-            
-            if (backlog.x != 0)
-            {
-                backlogSegment.orders.Add(CreateOrder(Order.EnemyTypes.Soldier, (int)backlog.x));
-            }
 
-            if (backlog.y != 0)
+            foreach (Order.EnemyTypes type in backlog.Keys)
             {
-                backlogSegment.orders.Add(CreateOrder(Order.EnemyTypes.Swarm, (int)backlog.y));
+                backlogSegment.orders.Add(CreateOrder(type, backlog[type]));
             }
 
             AcceptSegment(backlogSegment, 1);

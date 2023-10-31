@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SmartSpawner : MonoBehaviour
 {
     #region Variables
 
-    [Tooltip("The types of enemies to spawn")]
-    public Order.EnemyTypes enemyType;
+    [Tooltip("Whether this spawner will spawn grounded enemies or not")]
+    public bool isGroundSpawner;
 
     [Tooltip("The amount of time inbetween spawns")]
     [SerializeField] private float maxSpawnBuffer = 3;
-
-    [Header("References")]
-
-    [Tooltip("The current pool of enemies")]
-    [SerializeField] private List<GameObject> enemies;
 
     private Transform eggParent;
 
@@ -25,7 +21,7 @@ public class SmartSpawner : MonoBehaviour
     private Room parentRoom;
 
     // The current number of enemies waiting to be spawned
-    private int orderAmount = 0;
+    private Dictionary<Order.EnemyTypes, int> orders = new Dictionary<Order.EnemyTypes, int>();
 
     // The time inbetween spawns
     private float spawnBuffer = 0;
@@ -63,7 +59,7 @@ public class SmartSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (orderAmount > 0)
+        if (orders.Count > 0)
         {
             spawnTimer += Time.deltaTime;
 
@@ -85,53 +81,51 @@ public class SmartSpawner : MonoBehaviour
     /// </summary>
     public void Spawn()
     {
-        GameObject newEnemy = Instantiate(SelectEnemy(), transform.position, Quaternion.identity);
+        Order.EnemyTypes[] availableTypes = orders.Keys.ToArray();
+        Order.EnemyTypes chosenType = availableTypes[Random.Range(0, availableTypes.Length)];
+
+        GameObject enemyPrefab = EnemyManager.instance.GetPrefabByEnemyType(chosenType);
+
+        if (!enemyPrefab)
+        {
+            return;
+        }
+
+        GameObject newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         newEnemy.transform.parent = this.transform;
 
         RoundManager.instance.RecordEnemySpawn();
 
-        orderAmount -= 1;
-    }
+        int currentCount;
+        orders.TryGetValue(chosenType, out currentCount);
+        orders[chosenType] = currentCount - 1;
 
-    /// <summary>
-    /// Selects the enemy prefab based on the type
-    /// </summary>
-    /// <returns>Prefab</returns>
-    public GameObject SelectEnemy()
-    {
-        switch (enemyType)
+        if (orders[chosenType] <= 0)
         {
-            case Order.EnemyTypes.Soldier:
-
-                return enemies[0];
-
-            case Order.EnemyTypes.Swarm:
-
-                return enemies[1];
-
+            orders.Remove(chosenType);
         }
-
-        return null;
     }
 
     /// <summary>
     /// Adds numbers onto the order pile
     /// </summary>
     /// <param name="amount">The amount of enemies to be added to the queue</param>
-    public void AcceptOrder(int amount)
+    public void AcceptOrder(Order.EnemyTypes enemyType, int amount)
     {
-        orderAmount += amount;
+        int currentCount;
+        orders.TryGetValue(enemyType, out currentCount);
+        orders[enemyType] = currentCount + 1;
     }
 
     /// <summary>
     /// Clears the current order remaining for a reset
     /// </summary>
     /// <returns>Number of remaining enemies in the order</returns>
-    public int ClearOrderRemaining()
+    public Dictionary<Order.EnemyTypes, int> ClearOrderRemaining()
     {
-        int remaining = orderAmount;
-        orderAmount = 0;
-        return remaining;
+        Dictionary<Order.EnemyTypes, int> copy = new Dictionary<Order.EnemyTypes, int>(orders);
+        orders.Clear();
+        return copy;
     }
 
     #endregion

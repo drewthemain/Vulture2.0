@@ -10,6 +10,7 @@ public class Order
     {
         Soldier,
         Swarm,
+        Splicer
     }
 
     [Tooltip("The type of enemy of this order")]

@@ -18,6 +18,8 @@ MonoBehaviour:
       enemyAmount: 3
     - enemy: 1
       enemyAmount: 1
+    - enemy: 2
+      enemyAmount: 2
     allowEarlySpawning: 0
   - orders:
     - enemy: 1

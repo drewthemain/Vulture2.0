@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Room : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class Room : MonoBehaviour
     private List<Transform> coverTransforms = new List<Transform>();
 
     // The list of all possible spawners
-    private List<SmartSpawner> soldierSpawners = new List<SmartSpawner>();
+    private List<SmartSpawner> groundSpawners = new List<SmartSpawner>();
 
     // Reference to the breakable window
     private List<Window> windows = new List<Window>();
@@ -44,7 +45,7 @@ public class Room : MonoBehaviour
     private bool depressurized = false;
 
     // The list of all possible spawners
-    private List<SmartSpawner> swarmSpawners = new List<SmartSpawner>();
+    private List<SmartSpawner> wallSpawners = new List<SmartSpawner>();
 
     // Is the player currently inside this room?
     private bool playerInside = false;
@@ -69,13 +70,13 @@ public class Room : MonoBehaviour
 
         foreach (SmartSpawner spawner in GetComponentsInChildren<SmartSpawner>())
         {
-            if (spawner.enemyType == Order.EnemyTypes.Soldier)
+            if (spawner.isGroundSpawner)
             {
-                soldierSpawners.Add(spawner);
+                groundSpawners.Add(spawner);
             }
             else
             {
-                swarmSpawners.Add(spawner);
+                wallSpawners.Add(spawner);
             }
         }
 
@@ -244,14 +245,25 @@ public class Room : MonoBehaviour
     /// <returns>True if spawned, else false</returns>
     public bool CommandSpawn(Order.EnemyTypes type)
     {
-        List<SmartSpawner> spawners = type == Order.EnemyTypes.Soldier ? soldierSpawners : swarmSpawners;
+        List<SmartSpawner> spawners = new List<SmartSpawner>();
+
+        switch (type)
+        {
+            case Order.EnemyTypes.Soldier:
+            case Order.EnemyTypes.Splicer:
+                spawners = groundSpawners;
+                break;
+            case Order.EnemyTypes.Swarm:
+                spawners = wallSpawners;
+                break;
+        }
 
         if (spawners.Count == 0)
         {
             return false;
         }
 
-        spawners[Random.Range(0, spawners.Count)].AcceptOrder(1);
+        spawners[Random.Range(0, spawners.Count)].AcceptOrder(type, 1);
 
         return true;
     }
@@ -266,9 +278,10 @@ public class Room : MonoBehaviour
         switch (type)
         {
             case Order.EnemyTypes.Soldier:
-                return soldierSpawners.Count > 0;
+            case Order.EnemyTypes.Splicer:
+                return groundSpawners.Count > 0;
             case Order.EnemyTypes.Swarm:
-                return swarmSpawners.Count > 0;
+                return wallSpawners.Count > 0;
         }
 
         return false;
@@ -278,18 +291,20 @@ public class Room : MonoBehaviour
     /// Tells the spawners in this room to shut down
     /// </summary>
     /// <returns>The remaining enemies to be spawned in this room</returns>
-    public Vector2 Shutdown()
+    public Dictionary<Order.EnemyTypes, int> Shutdown()
     {
-        Vector2 carryOn = Vector2.zero;
+        Dictionary<Order.EnemyTypes, int> carryOn = new Dictionary<Order.EnemyTypes, int>();
 
-        foreach (SmartSpawner spawner in soldierSpawners)
+        foreach (SmartSpawner spawner in groundSpawners.Union(wallSpawners))
         {
-            carryOn.x += spawner.ClearOrderRemaining();
-        }
+            Dictionary<Order.EnemyTypes, int> leftOver = spawner.ClearOrderRemaining();
 
-        foreach (SmartSpawner spawner in swarmSpawners)
-        {
-            carryOn.y += spawner.ClearOrderRemaining();
+            foreach (Order.EnemyTypes type in leftOver.Keys)
+            {
+                int currentCount;
+                carryOn.TryGetValue(type, out currentCount);
+                carryOn[type] = currentCount + leftOver[type];
+            }
         }
 
         return carryOn;

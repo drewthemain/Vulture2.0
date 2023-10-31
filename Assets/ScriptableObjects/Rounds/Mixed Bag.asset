@@ -18,11 +18,15 @@ MonoBehaviour:
       enemyAmount: 5
     - enemy: 1
       enemyAmount: 5
+    - enemy: 2
+      enemyAmount: 7
     allowEarlySpawning: 1
   - orders:
     - enemy: 0
-      enemyAmount: 8
+      enemyAmount: 4
     - enemy: 1
+      enemyAmount: 4
+    - enemy: 2
       enemyAmount: 8
     allowEarlySpawning: 1
   maxEnemiesSpawned: 10
