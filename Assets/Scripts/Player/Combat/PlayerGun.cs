@@ -58,6 +58,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private LayerMask bulletholeLayers;
     [Tooltip("Visual effects for various parts of the gun")]
     [SerializeField] private GameObject muzzleFlash, bulletHole;
+    [Tooltip("The multiplier needed for a limb collider to count towards a headshot")]
+    [SerializeField] private float headshotDmgThreshold;
     // Storage for the raycast to use
     private RaycastHit hit;
     // Reference to the input manager
@@ -156,12 +158,20 @@ public class PlayerGun : MonoBehaviour
                 float multiplier = 1;
 
                 hit.collider.GetComponent<Health>().TakeDamage(damage, multiplier);
-                CrosshairManager.instance.EnableHitMarker();
+                CrosshairManager.instance.EnableHitMarker(false);
             }
             else if (hit.collider.GetComponent<LimbCollider>())
             {
-                hit.collider.GetComponent<LimbCollider>().SignalDamage(damage);
-                CrosshairManager.instance.EnableHitMarker();
+                LimbCollider limb = hit.collider.GetComponent<LimbCollider>();
+                limb.SignalDamage(damage);
+                if(limb.damageMultiplier >= headshotDmgThreshold)
+                {
+                    CrosshairManager.instance.EnableHitMarker(true);
+                }
+                else
+                {
+                    CrosshairManager.instance.EnableHitMarker(false);
+                }
             }
             else if (hit.collider.GetComponent<Prop>())
             {

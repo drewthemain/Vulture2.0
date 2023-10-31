@@ -44,12 +44,22 @@ public class CrosshairManager : MonoBehaviour
     private Color originalColor;
     // Storage for the change raycast color
     private Color rayHitColor = Color.red;
+    // Storage for the hitmarker default color
+    private Color originalHitmarkerColor;
+    // Storage for the headshot hitmarker color
+    private Color headshotHitmarkerColor = Color.red;
     // The original width/height of the crosshair
     private float originalCrosshairHeightWidth;
     // The original scale of the crosshair rect transform
     private Vector3 originalCrosshairScale;
     // The current state of the crosshair spread
     public CrosshairState state;
+    // The coroutine making crosshair size changes
+    private Coroutine scaleCoroutine;
+    // The coroutine making hitmarkers
+    private Coroutine hitmarkerCoroutine;
+    // Boolean checking whether or not a shot was a headshot
+    [HideInInspector] public bool headshot;
 
     public enum CrosshairState
     {
@@ -82,6 +92,7 @@ public class CrosshairManager : MonoBehaviour
     {
         cam = Camera.main;
         originalColor = crosshair.GetComponentInChildren<Image>().color;
+        originalHitmarkerColor = hitMarker.GetComponentInChildren<Image>().color;
         originalCrosshairHeightWidth = crosshair.GetComponent<LayoutElement>().preferredHeight;
         originalCrosshairScale = crosshair.GetComponent<RectTransform>().localScale;
         state = CrosshairState.walking;
@@ -180,15 +191,15 @@ public class CrosshairManager : MonoBehaviour
                 if (state != CrosshairState.standing && controller.IsPlayerStandingStill())
                 {
                     state = CrosshairState.standing;
-                    StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
+                    if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+                    scaleCoroutine = StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
                 }
                 // walking
                 else if (state != CrosshairState.walking && !controller.IsPlayerStandingStill())
                 {
                     state = CrosshairState.walking;
-                    StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, walkingCrosshairScale, crosshairScalingDuration));
+                    if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+                    scaleCoroutine = StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, walkingCrosshairScale, crosshairScalingDuration));
                 }
 
             }
@@ -198,15 +209,15 @@ public class CrosshairManager : MonoBehaviour
                 if (state != CrosshairState.standing && controller.IsPlayerStandingStill())
                 {
                     state = CrosshairState.standing;
-                    StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
+                    if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+                    scaleCoroutine = StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, originalCrosshairHeightWidth, crosshairScalingDuration));
                 }
                 // moving faster than walking
                 else if (state != CrosshairState.moving && !controller.IsPlayerStandingStill())
                 {
                     state = CrosshairState.moving;
-                    StopAllCoroutines();
-                    StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, movingCrosshairScale, crosshairScalingDuration));
+                    if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+                    scaleCoroutine = StartCoroutine(LerpCrosshairScale(crosshair.GetComponent<LayoutElement>().preferredHeight, movingCrosshairScale, crosshairScalingDuration));
                 }
             }
         }
@@ -241,12 +252,18 @@ public class CrosshairManager : MonoBehaviour
     /// <summary>
     /// Turn on the hitmarker
     /// </summary>
-    public void EnableHitMarker()
+    public void EnableHitMarker(bool headshot)
     {
         hitMarker.SetActive(true);
-        StopCoroutine(flashHitMarker(.1f));
-
-        StartCoroutine(flashHitMarker(.1f));
+        if(hitmarkerCoroutine != null) StopCoroutine(hitmarkerCoroutine);
+        if(headshot)
+        {
+            hitmarkerCoroutine = StartCoroutine(FlashHitMarker(.1f, headshotHitmarkerColor));
+        }
+        else
+        {
+            hitmarkerCoroutine = StartCoroutine(FlashHitMarker(.1f, originalHitmarkerColor));
+        }
     }
 
     /// <summary>
@@ -261,9 +278,9 @@ public class CrosshairManager : MonoBehaviour
     /// Coroutine for how long the hitmarker will stay active
     /// </summary>
     /// <param name="duration">How long the hitmarker is active</param>
-    IEnumerator flashHitMarker (float duration)
+    IEnumerator FlashHitMarker (float duration, Color color)
     {
-        ChangeChildrenColors(hitMarker, originalColor);
+        ChangeChildrenColors(hitMarker, color);
         yield return new WaitForSeconds(duration);
         DisableHitMarker();
     }
