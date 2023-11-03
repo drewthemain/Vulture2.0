@@ -29,8 +29,14 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// A "store" for enemy prefabs, used by spawners
+    /// </summary>
+    /// <param name="enemyType">The type to be retreived</param>
+    /// <returns>A prefab instance of the required type</returns>
     public GameObject GetPrefabByEnemyType(Order.EnemyTypes enemyType)
     {
+        // LIST MUST BE KEPT IN ORDER
         switch (enemyType)
         {
             case Order.EnemyTypes.Soldier:

@@ -100,6 +100,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the gravity at the end of the round, handles fallout
+    /// </summary>
     public void ResetGravity()
     {
         foreach (Window window in brokenWindowPool)
@@ -113,6 +116,10 @@ public class GameManager : MonoBehaviour
         OnLowGrav?.Invoke();
     }
 
+    /// <summary>
+    /// Gets a broken window if there is one
+    /// </summary>
+    /// <returns>Window instance, else null</returns>
     public Window GetPullingWindow()
     {
         return brokenWindowPool.Count > 0 ? brokenWindowPool[0] : null;
@@ -177,6 +184,9 @@ public class GameManager : MonoBehaviour
 
     #region Dev Console
 
+    /// <summary>
+    /// Helper function for pausing the game when console opened
+    /// </summary>
     public void ConsolePause()
     {
         if (!isPaused)
@@ -185,6 +195,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Helper function for pausing the game when console closed
+    /// </summary>
     public void ConsoleUnpause()
     {
         if (isPaused)

@@ -29,6 +29,10 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, timeTilDestroy);
     }
 
+    /// <summary>
+    /// Sets the damage value of this bullet instance
+    /// </summary>
+    /// <param name="dmg">The amount of dmg done to a target</param>
     public void SetDamage(float dmg)
     {
         damage = dmg;

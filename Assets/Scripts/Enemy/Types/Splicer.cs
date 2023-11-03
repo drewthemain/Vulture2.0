@@ -55,6 +55,10 @@ public class Splicer : NavMeshEnemy
         }
     }
 
+    /// <summary>
+    /// Changes the state and handles all logic shifts
+    /// </summary>
+    /// <param name="newState">The new state to become</param>
     public override void ChangeState(EnemyStates newState)
     {
         // Resets (clears out) the path of the navmesh for every change

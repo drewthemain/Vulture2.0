@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// CURRENTLY DEPRECATED
+
 public class ObjectMover : MonoBehaviour
 {
     #region Variables

@@ -361,6 +361,10 @@ public class Room : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determines whether the room should be focused in on
+    /// </summary>
+    /// <returns>True if player is inside</returns>
     public bool isActiveRoom()
     {
         return playerInside;

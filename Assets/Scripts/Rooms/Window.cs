@@ -20,6 +20,7 @@ public class Window : MonoBehaviour
     [Tooltip("The amount of time the room will remain depressurized")]
     [SerializeField] private float depressurizeTime = 15f;
 
+    // References
     private Room parentRoom;
     private bool broken = false;
     private CanisterHealth canister;
@@ -75,6 +76,7 @@ public class Window : MonoBehaviour
         }
     }
 
+    // Force closes the window and repressurizes
     public void ForceClose()
     {
         broken = false;
@@ -97,6 +99,9 @@ public class Window : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the window by resetting gameobject states
+    /// </summary>
     public void FixWindow()
     {
         if (!canister.gameObject.activeSelf)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyGun : EnemyWeapon
 {
+    #region Variables
 
     [Tooltip("The speed of the bullet")]
     [SerializeField] protected float bulletSpeed = 20;
@@ -19,13 +20,21 @@ public class EnemyGun : EnemyWeapon
 
     private Animator anim;
 
+    // Event bool
     private bool fireDoubleBullets = false;
+
+    #endregion
+
+    #region Methods
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
     }
 
+    /// <summary>
+    /// Fire override
+    /// </summary>
     protected override void Fire()
     {
         base.Fire();
@@ -34,6 +43,9 @@ public class EnemyGun : EnemyWeapon
         anim.SetTrigger("Shoot");
     }
 
+    /// <summary>
+    /// Called from the animation directly
+    /// </summary>
     public void SpawnBullet()
     {
         if (colliderPrefab != null)
@@ -43,6 +55,10 @@ public class EnemyGun : EnemyWeapon
         }
     }
 
+    /// <summary>
+    /// Event function
+    /// </summary>
+    /// <param name="doDouble">Whether to do double bullets or not</param>
     public void ToggleDoubleBullets(bool doDouble)
     {
         fireDoubleBullets = doDouble;
@@ -81,4 +97,6 @@ public class EnemyGun : EnemyWeapon
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    #endregion
 }

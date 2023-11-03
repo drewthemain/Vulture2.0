@@ -143,6 +143,9 @@ public class SmartMap : MonoBehaviour
         return newOrder;
     }
 
+    /// <summary>
+    /// Manually clears all rooms
+    /// </summary>
     public void ClearAll()
     {
         foreach (Room room in rooms)

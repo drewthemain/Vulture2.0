@@ -22,11 +22,15 @@ public class EventManager : MonoBehaviour
 
     public bool isEventHappening = false;
 
-
+    // The id of the event (part of it's name)
     public int currentId = -1;
+    // The previous event id, saved for anti-repeating
     private int previousId = -1;
+    // An optional override to set the event
     private int eventOverride = -1;
+    // The actual chances of an event
     private float eventChance = 0.3f;
+    // The current index of the event in the list
     private int currentIndex = -1;
 
     public delegate Component EventStart();
@@ -59,6 +63,10 @@ public class EventManager : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// Gets a string representation of the component to be targeted
+    /// </summary>
+    /// <returns>A component name, or null if no index</returns>
     public string GetTargetComponent()
     {
         if (currentIndex == -1)
@@ -69,6 +77,10 @@ public class EventManager : MonoBehaviour
         return events[currentIndex].component;
     }
 
+    /// <summary>
+    /// Accepts all subscribers and facilitiates the factory to begin workingt on the components
+    /// </summary>
+    /// <param name="up">Whether we are starting or ending the event</param>
     public void TransmitSubscribers(bool up)
     {
         invokeList = OnEventStart.GetInvocationList();
@@ -76,6 +88,7 @@ public class EventManager : MonoBehaviour
         {
             Component target = (Component) d.Method.Invoke(d.Target, null);
 
+            // EventGateway is given to cancel the subscription
             if (target == null || target is EventGateway)
             {
                 continue;
@@ -85,6 +98,11 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Transmits only one subscriber, called on spawned entities during runtime
+    /// Brings a spawned entity "up to speed" on the state of events
+    /// </summary>
+    /// <param name="gateway">The spawned entities gateway</param>
     public void TransmitSubscriber(EventGateway gateway)
     {
         Component target = (Component)gateway.TransmitTarget();
@@ -97,6 +115,11 @@ public class EventManager : MonoBehaviour
         FactoryChannels(target, true);
     }
 
+    /// <summary>
+    /// Does the nasty work of widdling down each event to a proper factory
+    /// </summary>
+    /// <param name="target">The target component to be passed to a factory</param>
+    /// <param name="up">Whether the event is starting or stopping</param>
     public void FactoryChannels(Component target, bool up)
     {
         if (currentIndex == -1)
@@ -185,6 +208,9 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates the chances of an event happening
+    /// </summary>
     public void EventChance()
     {
         float chanceCheck = Random.Range(0f, 1f);
@@ -200,6 +226,9 @@ public class EventManager : MonoBehaviour
         isEventHappening = true;
     }
 
+    /// <summary>
+    /// Kicks off the event process, calculates next event (if there is one) and transmits result to subscribers
+    /// </summary>
     public void AugmentSubscribers()
     {
         if (events.Count == 0)
@@ -243,6 +272,9 @@ public class EventManager : MonoBehaviour
         TransmitSubscribers(true);
     }
 
+    /// <summary>
+    /// Turns the event off for all subscribers
+    /// </summary>
     public void RestoreSubscribers()
     {
         if (currentId == -1)
@@ -258,6 +290,11 @@ public class EventManager : MonoBehaviour
         currentIndex = -1;
     }
 
+    /// <summary>
+    /// Called through devlog or by a round, bypasses the chance system
+    /// </summary>
+    /// <param name="eventId">The event ID of the next event</param>
+    /// <returns>The string name of the event</returns>
     public string SetOverride(int eventId)
     {
         int indexOverride = GetEventIndexById(eventId);
@@ -272,6 +309,10 @@ public class EventManager : MonoBehaviour
         return events[indexOverride].GetDisplayName();
     }
 
+    /// <summary>
+    /// Gets the current event
+    /// </summary>
+    /// <returns>An event instance</returns>
     public Event GetEvent()
     {
         if (currentIndex == -1)
@@ -282,6 +323,11 @@ public class EventManager : MonoBehaviour
         return events[currentIndex];
     }
 
+    /// <summary>
+    /// Maps an events ID to it's place in the list
+    /// </summary>
+    /// <param name="id">The id of the event</param>
+    /// <returns>The index in this instances event list</returns>
     public int GetEventIndexById(int id)
     {
         for (int i = 0; i < events.Count; i++)

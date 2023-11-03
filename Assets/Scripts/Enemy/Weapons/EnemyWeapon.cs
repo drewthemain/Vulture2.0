@@ -67,6 +67,10 @@ public class EnemyWeapon : MonoBehaviour
         isFiring = shouldFire;
     }
 
+    /// <summary>
+    /// IS the enemy currently firing?
+    /// </summary>
+    /// <returns>Whether the enemy is firing</returns>
     public bool IsFiring()
     {
         return isFiring;

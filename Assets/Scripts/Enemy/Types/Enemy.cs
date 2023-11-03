@@ -89,11 +89,9 @@ public class Enemy : MonoBehaviour
     // Updated distance from player
     protected float distanceFromPlayer = 0;
 
-    // An integer check for aiding the suck process
+    // Integer checks for aiding the suck process
     private int pullChecks = 0;
-
     private float pullTimer = 0f;
-
     private float respawnTimer = 0f;
 
     #endregion
@@ -310,6 +308,11 @@ public class Enemy : MonoBehaviour
         return state;
     }
 
+    /// <summary>
+    /// Turns the enemy into a ragdoll state after death
+    /// Handles additional logic for window pulling
+    /// </summary>
+    /// <param name="layer"></param>
     public void Ragdollize(string layer = "")
     {
         mesh.SetActive(false);
@@ -367,12 +370,19 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Keeps enemy look ats locked on one axis, stops weird rotation
+    /// </summary>
+    /// <param name="target">The target to look at</param>
     protected void LockedLookAt(Transform target)
     {
         Vector3 targetPostition = new Vector3(target.position.x, this.transform.position.y, target.position.z);
         this.transform.LookAt(targetPostition);
     }
 
+    /// <summary>
+    /// Wiped out of existence...
+    /// </summary>
     private void Clear()
     {
         Destroy(this.gameObject);

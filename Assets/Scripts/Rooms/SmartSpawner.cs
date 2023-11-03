@@ -13,8 +13,8 @@ public class SmartSpawner : MonoBehaviour
     [Tooltip("The amount of time inbetween spawns")]
     [SerializeField] private float maxSpawnBuffer = 3;
 
+    // TO DO
     private Transform eggParent;
-
     private List<GameObject> eggSpawns = new List<GameObject>();
 
     // Reference to the Room this belongs to

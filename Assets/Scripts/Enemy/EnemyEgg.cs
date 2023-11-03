@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EnemyEgg : Enemy
 {
-    
+    // TO DO
 }

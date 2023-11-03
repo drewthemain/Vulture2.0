@@ -56,8 +56,10 @@ public class RoundManager : MonoBehaviour
     // The overall current number of rounds
     private int totalCurrentRound = 1;
 
+    // The current round loop (how many repeats of the queue)
     private int currentLoop = 1;
 
+    // Optional override for next round id
     private int nextRoundOverride = -1;
 
 
@@ -361,6 +363,11 @@ public class RoundManager : MonoBehaviour
         return rounds[nextIndex].name;
     }
 
+    /// <summary>
+    /// Gets the current round index in list by it's id
+    /// </summary>
+    /// <param name="id">The id (in the name) of the round</param>
+    /// <returns>The integer index in the rounds list</returns>
     public int GetRoundIndexById(int id)
     {
         for (int i = 0; i < rounds.Count; i++)

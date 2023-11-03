@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// CURRENTLY DEPRECATED
+
 public class Tracer : NavMeshEnemy
 {
     #region Variables

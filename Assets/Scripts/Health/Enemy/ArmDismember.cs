@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ArmDismember : MonoBehaviour
 {
+    #region Variables 
+
     [Header("References")]
 
     [Tooltip("The fleshy bit appearing after dismemberment")]
@@ -17,6 +19,10 @@ public class ArmDismember : MonoBehaviour
 
     [Tooltip("The health of the arm before dismemberment")]
     public float health = 20;
+
+    #endregion
+
+    #region Methods
 
     /// <summary>
     /// Damage taken from LimbCollider
@@ -40,6 +46,7 @@ public class ArmDismember : MonoBehaviour
         if (!fleshyBit.activeSelf)
         {
             scaledArm.transform.localScale = new Vector3(0, 0, 0);
+
             fleshyBit.SetActive(true);
             dismemberedArm.SetActive(true);
             dismemberedArm.transform.parent = null;
@@ -49,5 +56,7 @@ public class ArmDismember : MonoBehaviour
             Destroy(this);
         }
     }
+
+    #endregion
 
 }

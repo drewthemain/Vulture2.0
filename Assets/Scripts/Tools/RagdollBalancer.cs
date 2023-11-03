@@ -24,6 +24,10 @@ public class RagdollBalancer : EditorWindow
         }
     }
 
+    /// <summary>
+    /// Sets all rotations of normal rig equal to the ragdoll rig
+    /// Should not be used during runtime, an editor tool
+    /// </summary>
     private void Balancer()
     {
         if (normalParent == null || ragdollParent == null)

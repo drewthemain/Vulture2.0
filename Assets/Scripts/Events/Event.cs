@@ -51,6 +51,10 @@ public class Event : ScriptableObject
 
     #region Methods
 
+    /// <summary>
+    /// Strips the name and removes the ID
+    /// </summary>
+    /// <returns>The string portion of the name</returns>
     public string GetDisplayName()
     {
         int indexOf = name.IndexOf('_');
@@ -62,6 +66,10 @@ public class Event : ScriptableObject
         return "";
     }
 
+    /// <summary>
+    /// Gets the id section of the name as an integer
+    /// </summary>
+    /// <returns>The ID of the event as an int</returns>
     public int GetId()
     {
         int indexOf = name.IndexOf('_');
