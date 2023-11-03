@@ -3533,6 +3533,7 @@ MonoBehaviour:
   hitMarker: {fileID: 2127559273314276876}
   gun: {fileID: 5005320546084835996}
   state: 0
+  headshot: 0
 --- !u!1001 &4032782738551616983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4267,7 +4268,7 @@ PrefabInstance:
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
       propertyPath: rounds.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
@@ -4290,13 +4291,37 @@ PrefabInstance:
         type: 3}
       propertyPath: rounds.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: c0aed6258296d2a4b96bbd96145fda00,
+      objectReference: {fileID: 11400000, guid: 5f2b15d284f4bec4aa02ad4836662cb1,
         type: 2}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}
       propertyPath: rounds.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 5f2b15d284f4bec4aa02ad4836662cb1,
+      objectReference: {fileID: 11400000, guid: 30aa6efdd89d3a84eaa57384be72cbe1,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0aed6258296d2a4b96bbd96145fda00,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 898d2facc57aacc4fa2c8279920ae345,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 99eda87197dfcc34e8c18b1b48809427,
+        type: 2}
+    - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
+        type: 3}
+      propertyPath: rounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: a0765184c9b39c64da09e3e57a38e60d,
         type: 2}
     - target: {fileID: 6025302136542754515, guid: 219e91a45d99acf408c0ca339b247408,
         type: 3}

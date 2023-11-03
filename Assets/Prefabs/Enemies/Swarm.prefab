@@ -2866,7 +2866,7 @@ MonoBehaviour:
   colliderPrefab: {fileID: 1100664159678594653, guid: af58aa30412f82141ad9971003037918,
     type: 3}
   colliderDamage: 10
-  attackDelay: 1
+  attackDelay: 2
   colliderOffset: {x: 4, y: 0}
 --- !u!114 &981896740632364073
 MonoBehaviour:

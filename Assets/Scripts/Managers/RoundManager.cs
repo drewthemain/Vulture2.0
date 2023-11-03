@@ -32,7 +32,7 @@ public class RoundManager : MonoBehaviour
     // Reference to the player health
     private PlayerHealth playerHealth;
 
-    // The current round
+    // The index in the list of the current round
     public int currentRound = 0;
 
     // The current segment within the round
@@ -114,7 +114,7 @@ public class RoundManager : MonoBehaviour
                 // Calculate the total number of enemies this round
                 totalEnemiesRemaining = rounds[currentRound].GetTotalEnemies() * currentLoop;
 
-                Debug.Log("Current Round: ".Color("white").Size(12) + $"{rounds[currentRound].name}".Bold().Color("green").Size(13));
+                Debug.Log("Current Round: ".Color("white").Size(12) + $"{rounds[currentRound].GetDisplayName()}".Bold().Color("green").Size(13));
 
                 // Set the segment value
                 if (rounds[currentRound].segments.Count > 0)
@@ -132,7 +132,7 @@ public class RoundManager : MonoBehaviour
                 }
 
                 Event currEvent = EventManager.instance.GetEvent();
-                UIManager.instance.UpdateRound(totalCurrentRound, currEvent ? currEvent.name : "", currEvent ? currEvent.description : "");
+                UIManager.instance.UpdateRound(totalCurrentRound, currEvent ? currEvent.GetDisplayName() : "", currEvent ? currEvent.description : "");
 
                 SpawnSegment();
 
@@ -143,6 +143,11 @@ public class RoundManager : MonoBehaviour
                 if (EventManager.instance)
                 {
                     EventManager.instance.RestoreSubscribers();
+
+                    if (rounds[currentRound].connectedEvent != -1)
+                    {
+                        EventManager.instance.SetOverride(rounds[currentRound].connectedEvent);
+                    }
                 }
 
                 inBetweenTimer = inBetweenLength;
@@ -332,10 +337,18 @@ public class RoundManager : MonoBehaviour
     /// <summary>
     /// Sets an override for the next round
     /// </summary>
-    /// <param name="nextIndex">The index of the next round</param>
+    /// <param name="roundId">The id of the next round</param>
     /// <returns>The name of the next round</returns>
-    public string SetOverride(int nextIndex)
+    public string SetOverride(int roundId)
     {
+        int nextIndex = GetRoundIndexById(roundId);
+
+        if (nextIndex == -1)
+        {
+            Debug.LogWarning("Round override used an invalid ID");
+            return "";
+        }
+
         if (roundState == RoundState.InBetween)
         {
             currentRound = nextIndex;
@@ -346,6 +359,19 @@ public class RoundManager : MonoBehaviour
         }
 
         return rounds[nextIndex].name;
+    }
+
+    public int GetRoundIndexById(int id)
+    {
+        for (int i = 0; i < rounds.Count; i++)
+        {
+            if (rounds[i].GetId() == id)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     #endregion

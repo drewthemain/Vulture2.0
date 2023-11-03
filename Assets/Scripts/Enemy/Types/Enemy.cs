@@ -116,7 +116,6 @@ public class Enemy : MonoBehaviour
     /// <param name="newState">The new state of this enemy</param>
     public virtual void ChangeState(EnemyStates newState)
     {
-       
     }
 
     protected virtual void Awake()

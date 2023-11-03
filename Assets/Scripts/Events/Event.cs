@@ -49,4 +49,31 @@ public class Event : ScriptableObject
 
     #endregion
 
+    #region Methods
+
+    public string GetDisplayName()
+    {
+        int indexOf = name.IndexOf('_');
+        if (indexOf >= 0)
+        {
+            return name.Substring(indexOf + 1);
+        }
+
+        return "";
+    }
+
+    public int GetId()
+    {
+        int indexOf = name.IndexOf('_');
+        if (indexOf >= 0)
+        {
+
+            return int.Parse(name.Substring(0, indexOf));
+        }
+
+        return -1;
+    }
+
+    #endregion
+
 }

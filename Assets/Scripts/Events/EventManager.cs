@@ -23,10 +23,11 @@ public class EventManager : MonoBehaviour
     public bool isEventHappening = false;
 
 
-    public int currentIndex = -1;
-    private int previousIndex = -1;
-    private int indexOverride = -1;
+    public int currentId = -1;
+    private int previousId = -1;
+    private int eventOverride = -1;
     private float eventChance = 0.3f;
+    private int currentIndex = -1;
 
     public delegate Component EventStart();
     public static event EventStart OnEventStart;
@@ -98,6 +99,11 @@ public class EventManager : MonoBehaviour
 
     public void FactoryChannels(Component target, bool up)
     {
+        if (currentIndex == -1)
+        {
+            return;
+        }
+
         Event.UDictionary parameters = events[currentIndex].optionalParameters;
 
         switch (target)
@@ -182,9 +188,10 @@ public class EventManager : MonoBehaviour
     public void EventChance()
     {
         float chanceCheck = Random.Range(0f, 1f);
-        if (chanceCheck >= eventChance && indexOverride == -1)
+        if (chanceCheck >= eventChance && eventOverride == -1)
         {
             isEventHappening = false;
+            currentId = -1;
             currentIndex = -1;
             eventChance += eventChanceGrowth;
             return;
@@ -210,14 +217,14 @@ public class EventManager : MonoBehaviour
         int safety = 0;
         do
         {
-            if (indexOverride == -1)
+            if (eventOverride == -1)
             {
-                currentIndex = Random.Range(0, events.Count);
+                currentId = events[Random.Range(0, events.Count)].GetId();
             }
             else
             {
-                currentIndex = indexOverride;
-                indexOverride = -1;
+                currentId = eventOverride;
+                eventOverride = -1;
                 break;
             }
 
@@ -228,15 +235,17 @@ public class EventManager : MonoBehaviour
 
             safety++;
         } 
-        while (currentIndex == previousIndex);
+        while (currentId == previousId);
 
-        Debug.Log("Starting event: ".Color("white").Size(12) +  $"{events[currentIndex].name}".Bold().Color("orange").Size(13));
+        currentIndex = GetEventIndexById(currentId);
+
+        Debug.Log("Starting event: ".Color("white").Size(12) +  $"{events[currentIndex].GetDisplayName()}".Bold().Color("orange").Size(13));
         TransmitSubscribers(true);
     }
 
     public void RestoreSubscribers()
     {
-        if (currentIndex == -1)
+        if (currentId == -1)
         {
             return;
         }
@@ -244,15 +253,23 @@ public class EventManager : MonoBehaviour
         Debug.Log("Ending event: ".Color("white").Size(12) + $"{events[currentIndex].name}".Bold().Color("orange").Size(13));
         TransmitSubscribers(false);
 
-        previousIndex = currentIndex;
+        previousId = currentId;
+        currentId = -1;
         currentIndex = -1;
     }
 
-    public string SetOverride(int nextIndex)
+    public string SetOverride(int eventId)
     {
-        indexOverride = nextIndex;
+        int indexOverride = GetEventIndexById(eventId);
 
-        return events[indexOverride].name;
+        if (indexOverride == -1)
+        {
+            return "";
+        }
+
+        eventOverride = eventId;
+
+        return events[indexOverride].GetDisplayName();
     }
 
     public Event GetEvent()
@@ -263,6 +280,19 @@ public class EventManager : MonoBehaviour
         }
 
         return events[currentIndex];
+    }
+
+    public int GetEventIndexById(int id)
+    {
+        for (int i = 0; i < events.Count; i++)
+        {
+            if (events[i].GetId() == id)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
 
