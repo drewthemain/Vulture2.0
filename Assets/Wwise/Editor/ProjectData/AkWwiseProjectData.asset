@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5f086ed454b472499b172a4735bb53fb
     GuidInternal: 
-    m_lastTime: -8585034184696750396
+    m_lastTime: -8585046661842798690
     List: []
   - PhysicalPath: Virtual Acoustics\Factory Acoustic Textures.wwu
     PathAndIcons:
@@ -37,7 +37,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Factory Acoustic Textures
     guid: 6b663d46a83ca54f8b4a5fef12b883f6
     GuidInternal: 
-    m_lastTime: -8585034184696740389
+    m_lastTime: -8585046663393449788
     List:
     - name: Acoustic_Banner
       guid: f2532d2fccda8e408b8898b1b52a26d6
@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 197663616767c942aa7575108a3cec5a
     GuidInternal: 
-    m_lastTime: -8585028938841669632
+    m_lastTime: -8585034180161530930
     List:
     - name: AUX_MST
       guid: 439501bc1c0db04e8ce3ede4e8fd0952
@@ -528,7 +528,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: cc045ed5954e4442b8f226282c9a5747
     GuidInternal: 
-    m_lastTime: -8585034184696840462
+    m_lastTime: -8585046656810245091
     List: []
   - PhysicalPath: SoundBanks\Mission 1.wwu
     PathAndIcons:
@@ -541,7 +541,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Mission 1
     guid: b66528a792274643acf8a2f4c49aeb09
     GuidInternal: 
-    m_lastTime: -8585028938841659618
+    m_lastTime: -8585031355601030185
     List:
     - name: Mission_1
       guid: 6532da857a25ca48916f4ac243f84d8d
@@ -568,7 +568,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\z_Test
     guid: 6cf3c28a9370fb41905dfcf539b0311d
     GuidInternal: 
-    m_lastTime: -8585034184696820432
+    m_lastTime: -8585045418459340599
     List:
     - name: Test
       guid: e906adec35af86488b759c4bb7757251
@@ -596,8 +596,59 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: e6f8ba9315d3fe4fb3758cc654b4bf02
     GuidInternal: 
-    m_lastTime: -8585034184698613446
-    List: []
+    m_lastTime: -8585022812335794897
+    List:
+    - name: Play_Weapon_AR_Reload_L1_PullGunUp
+      guid: 834e4f5af5d63e49a61b0f2ef7735aa0
+      id: 3953937337
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e6f8ba9315d3fe4fb3758cc654b4bf02
+      - ElementName: Play_Weapon_AR_Reload_L1_PullGunUp
+        ObjectType: 3
+        guid: 834e4f5af5d63e49a61b0f2ef7735aa0
+      Path: Events\Default Work Unit\Play_Weapon_AR_Reload_L1_PullGunUp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Weapon_AR_Reload_L2_PullMagOut
+      guid: b8f222c74eff924db589be1f66d33186
+      id: 43594530
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e6f8ba9315d3fe4fb3758cc654b4bf02
+      - ElementName: Play_Weapon_AR_Reload_L2_PullMagOut
+        ObjectType: 3
+        guid: b8f222c74eff924db589be1f66d33186
+      Path: Events\Default Work Unit\Play_Weapon_AR_Reload_L2_PullMagOut
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Weapon_AR_Reload_L4_PutMagIn
+      guid: 9a71394a57131b46a18616b37d9275cd
+      id: 1548935647
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e6f8ba9315d3fe4fb3758cc654b4bf02
+      - ElementName: Play_Weapon_AR_Reload_L4_PutMagIn
+        ObjectType: 3
+        guid: 9a71394a57131b46a18616b37d9275cd
+      Path: Events\Default Work Unit\Play_Weapon_AR_Reload_L4_PutMagIn
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events\Weapons.wwu
     PathAndIcons:
     - ElementName: Events
@@ -609,7 +660,7 @@ MonoBehaviour:
     ParentPath: Events\Weapons
     guid: 649f413b4bee044fa672e51e199b1c60
     GuidInternal: 
-    m_lastTime: -8585028938842155212
+    m_lastTime: -8585031355601086149
     List:
     - name: Weapon_AR_Reload_L1_PullGunUp
       guid: a5354e3c483c004690b426ce2660fa94
@@ -626,8 +677,8 @@ MonoBehaviour:
         guid: a5354e3c483c004690b426ce2660fa94
       Path: Events\Weapons\Weapon_AR_Reload_L1_PullGunUp
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.3256463
+      minDuration: 1.280068
     - name: Weapon_AR_Reload_L2_PullMagOut
       guid: 63d1aff5c3cd3f4384b36fd01183d3a6
       id: 1881291373
@@ -643,8 +694,8 @@ MonoBehaviour:
         guid: 63d1aff5c3cd3f4384b36fd01183d3a6
       Path: Events\Weapons\Weapon_AR_Reload_L2_PullMagOut
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.3470749
+      minDuration: 1.2270294
     - name: Weapon_AR_Reload_L3_FumbleWithMag
       guid: 1305e6950572a94c9143a779d5eece2d
       id: 54041688
@@ -677,8 +728,8 @@ MonoBehaviour:
         guid: 93ee5a003ce3bc46aea402f38c96e053
       Path: Events\Weapons\Weapon_AR_Reload_L4_PutMagIn
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.3775057
+      minDuration: 1.3730159
     - name: Weapon_AR_SingleBurst
       guid: a1603379c6e3e8479852ed57e39e5c26
       id: 2798880610
@@ -707,7 +758,7 @@ MonoBehaviour:
     ParentPath: Events\z_Test
     guid: d24857ca7658d047aa92ab728415315c
     GuidInternal: 
-    m_lastTime: -8585034184698603427
+    m_lastTime: -8585034180161580884
     List:
     - name: Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
       guid: 4e235acb01c4804dbe50d49e0e0e2a51
@@ -755,7 +806,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 2f4f3d9e567bdb4bb0e2fe8d7b31cdcc
     GuidInternal: 
-    m_lastTime: -8585034184698593428
+    m_lastTime: -8585046661843038408
     List: []
   - PhysicalPath: Game Parameters\UI.wwu
     PathAndIcons:
@@ -768,7 +819,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\UI
     guid: a44b71690857454ea562fbdc50267690
     GuidInternal: 
-    m_lastTime: -8585028938842105160
+    m_lastTime: -8585034180161351439
     List:
     - name: UI_Volume_MST
       guid: f06d2c824cb2d14bb7317fda9fcecc82
@@ -823,7 +874,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Weapons
     guid: 277f1ea340cf044591cdc658410ad583
     GuidInternal: 
-    m_lastTime: -8585034184698583417
+    m_lastTime: -8585034956262093210
     List:
     - name: Weapon_AR_AmmoLeft
       guid: 400cec30d7568847b4e4df4ee09a42ac
@@ -851,7 +902,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 4451b8b633bdaf46b36321cb16e6f16f
     GuidInternal: 
-    m_lastTime: -8585034184696790432
+    m_lastTime: -8585046661843541628
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -865,7 +916,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 3a4b8e1f9b57c244a64be78affc5f91e
     GuidInternal: 
-    m_lastTime: -8585034184696780424
+    m_lastTime: -8585046661843095598
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -879,7 +930,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 908b1db6e8b32848b5bf5537bf76bc5f
     GuidInternal: 
-    m_lastTime: -8585034184696760394
+    m_lastTime: -8585046661843333505
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 

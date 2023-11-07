@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{93BAF8E6-D315-4FFE-B375-8CC654B4BF02}" SchemaVersion="110">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{93BAF8E6-D315-4FFE-B375-8CC654B4BF02}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{93BAF8E6-D315-4FFE-B375-8CC654B4BF02}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Weapon_AR_Reload_L1_PullGunUp" ID="{5A4F4E83-D6F5-493E-A61B-0F2EF7735AA0}">
+					<ChildrenList>
+						<Action Name="" ID="{CD1923BF-85DB-46DC-9C78-065F7E8FEF79}" ShortID="931387944">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L1_PullGunUp" ID="{A74AA7A5-139F-4AA7-BFA5-2BEDF0774CA5}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Weapon_AR_Reload_L2_PullMagOut" ID="{C722F2B8-FF4E-4D92-B589-BE1F66D33186}">
+					<ChildrenList>
+						<Action Name="" ID="{92EB609C-67FF-46FC-AA37-3C388A5DEFD3}" ShortID="287760249">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L2_PullMagOut" ID="{C6404D37-A3F5-446F-B5BA-4072C606C9EC}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Weapon_AR_Reload_L4_PutMagIn" ID="{4A39719A-1357-461B-A186-16B37D9275CD}">
+					<ChildrenList>
+						<Action Name="" ID="{E7467D7E-1CD9-43BE-92AA-94BA55F01FB3}" ShortID="610108992">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Weapon_AR_Reload_L4_PutMagIn" ID="{C6E5412F-54B2-475A-8F80-2F3D110B7FDB}" WorkUnitID="{0A7F6668-C802-423F-B961-73C00CC4F053}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

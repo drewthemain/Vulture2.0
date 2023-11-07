@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{132E77B9-40C7-CE54-8949-4F852F674B99}">
+		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{2735C8FC-7178-8DC6-91E6-46B692DF3163}">
 			<ShortName>Mission_1</ShortName>
 			<Path>Mission_1.bnk</Path>
 			<Media>
@@ -17,28 +17,82 @@
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_284F8A5C.wem</CachePath>
 				</File>
+				<File Id="154638444" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L1_V3.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L1_V3_10C4C929.wem</CachePath>
+				</File>
 				<File Id="207213858" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_8D731E54.wem</CachePath>
+				</File>
+				<File Id="233657618" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L4_V2.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L4_V2_10C4C929.wem</CachePath>
 				</File>
 				<File Id="236999867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_DB19306E.wem</CachePath>
 				</File>
+				<File Id="355019010" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L2_V1.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L2_V1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="365016684" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L1_V2.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L1_V2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="625813705" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L1_V1.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L1_V1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="653422947" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L2_V2.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L2_V2_10C4C929.wem</CachePath>
+				</File>
 				<File Id="654797722" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_1B1549A1.wem</CachePath>
+				</File>
+				<File Id="694723621" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L4_V1.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L4_V1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="802048380" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_69C92DC7.wem</CachePath>
 				</File>
+				<File Id="857740063" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L2_V3.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L2_V3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="980480644" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Weapon_AR_Reload_L4_V3.wav</ShortName>
+					<CachePath>SFX/Weapon_AR_Reload_L4_V3_10C4C929.wem</CachePath>
+				</File>
 			</Media>
 			<Events>
-				<Event Id="4284962476" Name="Weapon_AR_Reload_L1_PullGunUp" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1881291373" Name="Weapon_AR_Reload_L2_PullMagOut" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4284962476" Name="Weapon_AR_Reload_L1_PullGunUp" DurationType="OneShot" DurationMin="1.280068" DurationMax="1.3256463">
+					<MediaRefs>
+						<MediaRef Id="154638444"/>
+						<MediaRef Id="365016684"/>
+						<MediaRef Id="625813705"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1881291373" Name="Weapon_AR_Reload_L2_PullMagOut" DurationType="OneShot" DurationMin="1.2270294" DurationMax="1.3470749">
+					<MediaRefs>
+						<MediaRef Id="355019010"/>
+						<MediaRef Id="653422947"/>
+						<MediaRef Id="857740063"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="54041688" Name="Weapon_AR_Reload_L3_FumbleWithMag" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1330795928" Name="Weapon_AR_Reload_L4_PutMagIn" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1330795928" Name="Weapon_AR_Reload_L4_PutMagIn" DurationType="OneShot" DurationMin="1.3730159" DurationMax="1.3775057">
+					<MediaRefs>
+						<MediaRef Id="233657618"/>
+						<MediaRef Id="694723621"/>
+						<MediaRef Id="980480644"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2798880610" Name="Weapon_AR_SingleBurst" DurationType="OneShot" DurationMin="0.6587501" DurationMax="1.4218963">
 					<MediaRefs>
 						<MediaRef Id="10573796"/>
@@ -233,5 +287,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F4BB82F2-85EC-9547-218E-9C91216EC8D5}</FileHash>
+	<FileHash>{53120BA0-5E22-BA96-8753-712D15D45675}</FileHash>
 </SoundBanksInfo>
