@@ -56,8 +56,10 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [Tooltip("Layers that will spawn a bullethole")]
     [SerializeField] private LayerMask bulletholeLayers;
+    [Tooltip("Layers that will spawn a blood vfx")]
+    [SerializeField] private LayerMask enemyLayers;
     [Tooltip("Visual effects for various parts of the gun")]
-    [SerializeField] private GameObject muzzleFlash, bulletHole;
+    [SerializeField] private GameObject muzzleFlash, bulletHole, bloodVFX;
     [Tooltip("The multiplier needed for a limb collider to count towards a headshot")]
     [SerializeField] private float headshotDmgThreshold;
     // Storage for the raycast to use
@@ -158,13 +160,16 @@ public class PlayerGun : MonoBehaviour
                 float multiplier = 1;
 
                 hit.collider.GetComponent<Health>().TakeDamage(damage, multiplier);
+
                 CrosshairManager.instance.EnableHitMarker(false);
             }
             else if (hit.collider.GetComponent<LimbCollider>())
             {
                 LimbCollider limb = hit.collider.GetComponent<LimbCollider>();
                 limb.SignalDamage(damage);
-                if(limb.damageMultiplier >= headshotDmgThreshold)
+                SpawnBlood(hit);
+
+                if (limb.damageMultiplier >= headshotDmgThreshold)
                 {
                     CrosshairManager.instance.EnableHitMarker(true);
                 }
@@ -187,7 +192,6 @@ public class PlayerGun : MonoBehaviour
         {
             SpawnBullethole(hit);
         }
-
 
         // Camera shake
         recoilShake.ScreenShake();
@@ -295,7 +299,7 @@ public class PlayerGun : MonoBehaviour
         Quaternion target = Quaternion.Euler(rot.x - height, rot.y, rot.z);
         StartCoroutine(RecoilLerpUp(target, recoilUpDuration));
     }
-    
+
     /// <summary>
     /// Spawn a bullethole facing outwards from the target it hits (layers determined by raycast layermask)
     /// </summary>
@@ -303,5 +307,14 @@ public class PlayerGun : MonoBehaviour
     private void SpawnBullethole(RaycastHit hit)
     {
         Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal), hit.collider.gameObject.transform);
+    }
+    /// <summary>
+    /// Spawn a blood vfx facing outwards from the target it hits (layers determined by raycast layermask)
+    /// </summary>
+    /// <param name="hit">The hit information from performing the raycast</param>
+    private void SpawnBlood(RaycastHit hit)
+    {
+        Instantiate(bloodVFX, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+        Debug.Log(hit.collider.transform.root.name + " / " + hit.collider.gameObject.name);
     }
 }

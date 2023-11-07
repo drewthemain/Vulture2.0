@@ -301,9 +301,14 @@ MonoBehaviour:
   bulletholeLayers:
     serializedVersion: 2
     m_Bits: 43009
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
   muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
     type: 3}
   bulletHole: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  bloodVFX: {fileID: 1968768301186447902, guid: 8bdf11030b3ea3c438a110a947a75a19,
+    type: 3}
   headshotDmgThreshold: 1.5
   text: {fileID: 0}
 --- !u!114 &3628941023735501717
