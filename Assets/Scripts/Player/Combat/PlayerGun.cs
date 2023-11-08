@@ -315,6 +315,5 @@ public class PlayerGun : MonoBehaviour
     private void SpawnBlood(RaycastHit hit)
     {
         Instantiate(bloodVFX, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
-        Debug.Log(hit.collider.transform.root.name + " / " + hit.collider.gameObject.name);
     }
 }
