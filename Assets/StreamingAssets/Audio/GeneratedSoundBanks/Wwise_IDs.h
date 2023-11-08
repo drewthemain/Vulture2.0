@@ -53,7 +53,7 @@ namespace AK
     {
         static const AkUniqueID AUX_MST = 2611802776U;
         static const AkUniqueID AUX_MST_SFX = 3058796868U;
-        static const AkUniqueID SPECIFIC_AREA = 3703043559U;
+        static const AkUniqueID OBS = 863601605U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES

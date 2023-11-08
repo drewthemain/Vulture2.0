@@ -28,9 +28,13 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	3862737079	SFX_UI			\Default Work Unit\MST\SFX\SFX_UI	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	863601605	OBS			\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS	
 	2611802776	AUX_MST			\Default Work Unit\MST\AUX_MST	
 	3058796868	AUX_MST_SFX			\Default Work Unit\MST\AUX_MST\AUX_MST_SFX	
-	3703043559	SPECIFIC_AREA			\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\SPECIFIC_AREA	
+
+Effect plug-ins	ID	Name	Type				Notes
+	2258521792	Brick_Wall_Minus_1dB_Peak_Slow_Release	Wwise Peak Limiter			
+	3673681183	Large_Bright_Chamber1	Wwise Matrix Reverb			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

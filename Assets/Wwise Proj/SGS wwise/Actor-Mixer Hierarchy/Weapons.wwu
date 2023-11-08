@@ -8,6 +8,9 @@
 			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="Weapons" ID="{6A0E8E80-9A26-4AF3-A640-3CA8E2F15EC9}" ShortID="336476944">
+					<PropertyList>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
@@ -24,6 +27,9 @@
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="OBS" ID="{DC206223-D02F-4F2B-B043-54B97D3B1137}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -538,7 +544,7 @@
 								</ObjectList>
 							</ObjectLists>
 						</BlendContainer>
-						<RandomSequenceContainer Name="Weapon_AR_Reload_L1_PullGunUp" ID="{A74AA7A5-139F-4AA7-BFA5-2BEDF0774CA5}" ShortID="930706497">
+						<ActorMixer Name="Weapon_AR_Reload" ID="{A1C376B1-946C-46FC-A1AD-757E1CACA3A8}" ShortID="261754814">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
@@ -548,7 +554,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Weapon_AR_Reload_L1_V1" ID="{B0A2FA31-ED22-4164-971F-6E1F8FA674BA}" ShortID="564032317">
+								<RandomSequenceContainer Name="Weapon_AR_Reload_L3_FumbleWithMag" ID="{77561B86-6C8F-4EEB-BCC3-73E3564FB395}" ShortID="179078875">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Weapon_AR_Reload_L4_PutMagIn" ID="{C6E5412F-54B2-475A-8F80-2F3D110B7FDB}" ShortID="172797141">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
@@ -558,19 +580,78 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L1_V1" ID="{D3A1B614-6384-4345-A5C3-F9C9DCF49DEB}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L1_V1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="625813705"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<Sound Name="Weapon_AR_Reload_L4_V2" ID="{B1D71315-1204-480E-B2C7-87034E3068A6}" ShortID="444294301">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L4_V2" ID="{C213A5AF-C820-4171-BFE5-FBDAAE85C3D8}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L4_V2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="233657618"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L4_V2" ID="{C213A5AF-C820-4171-BFE5-FBDAAE85C3D8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L4_V3" ID="{8A53C7B3-18B5-44CB-B787-8E27B5B3C0AF}" ShortID="319834054">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L4_V3" ID="{9ACA3515-3F29-4068-9760-2CA3856AD44B}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L4_V3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="980480644"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L4_V3" ID="{9ACA3515-3F29-4068-9760-2CA3856AD44B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L4_V1" ID="{53AA5B0E-4E01-4154-92D1-A789FA37C144}" ShortID="549470782">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L4_V1" ID="{47A74CD3-ACA5-4ECF-8AF1-B13D688483B5}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L4_V1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="694723621"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L4_V1" ID="{47A74CD3-ACA5-4ECF-8AF1-B13D688483B5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L1_V1" ID="{D3A1B614-6384-4345-A5C3-F9C9DCF49DEB}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L1_V3" ID="{83EEF9F5-BDA4-4B97-A4C3-5DFA87B69CF0}" ShortID="488766031">
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Weapon_AR_Reload_L1_PullGunUp" ID="{A74AA7A5-139F-4AA7-BFA5-2BEDF0774CA5}" ShortID="930706497">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
@@ -580,19 +661,78 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L1_V3" ID="{864AB417-77FD-46E3-99DF-48931570F7D7}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L1_V3.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="154638444"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<Sound Name="Weapon_AR_Reload_L1_V1" ID="{B0A2FA31-ED22-4164-971F-6E1F8FA674BA}" ShortID="564032317">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L1_V1" ID="{D3A1B614-6384-4345-A5C3-F9C9DCF49DEB}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L1_V1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="625813705"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L1_V1" ID="{D3A1B614-6384-4345-A5C3-F9C9DCF49DEB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L1_V3" ID="{83EEF9F5-BDA4-4B97-A4C3-5DFA87B69CF0}" ShortID="488766031">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L1_V3" ID="{864AB417-77FD-46E3-99DF-48931570F7D7}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L1_V3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="154638444"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L1_V3" ID="{864AB417-77FD-46E3-99DF-48931570F7D7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L1_V2" ID="{68BA95C4-E2AF-4F41-BD17-FD5CEAF4CD02}" ShortID="442649741">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L1_V2" ID="{B915D554-CBD6-42DB-BB12-50E6BB23E917}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L1_V2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="365016684"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L1_V2" ID="{B915D554-CBD6-42DB-BB12-50E6BB23E917}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L1_V3" ID="{864AB417-77FD-46E3-99DF-48931570F7D7}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L1_V2" ID="{68BA95C4-E2AF-4F41-BD17-FD5CEAF4CD02}" ShortID="442649741">
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Weapon_AR_Reload_L2_PullMagOut" ID="{C6404D37-A3F5-446F-B5BA-4072C606C9EC}" ShortID="469491841">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
@@ -602,186 +742,76 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L1_V2" ID="{B915D554-CBD6-42DB-BB12-50E6BB23E917}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L1_V2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="365016684"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<Sound Name="Weapon_AR_Reload_L2_V2" ID="{F0CDA80B-DA47-410C-B317-1369E76BA243}" ShortID="144129535">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L2_V2" ID="{37204901-4CC6-4609-BE65-565442B2B5F8}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L2_V2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="653422947"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L2_V2" ID="{37204901-4CC6-4609-BE65-565442B2B5F8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L2_V1" ID="{B2ED4763-6E4E-47EF-BBA2-D85C65E01027}" ShortID="992073904">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L2_V1" ID="{C1A48090-1B65-40D6-9BDE-C606BFA287F8}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L2_V1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="355019010"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L2_V1" ID="{C1A48090-1B65-40D6-9BDE-C606BFA287F8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Weapon_AR_Reload_L2_V3" ID="{2649715A-2372-4706-89C3-E5AB2196F0EC}" ShortID="285866351">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Weapon_AR_Reload_L2_V3" ID="{085E0EE6-1889-4235-B50C-BE7557AB8CE0}">
+													<Language>SFX</Language>
+													<AudioFile>Weapon_AR_Reload_L2_V3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="857740063"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Weapon_AR_Reload_L2_V3" ID="{085E0EE6-1889-4235-B50C-BE7557AB8CE0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L1_V2" ID="{B915D554-CBD6-42DB-BB12-50E6BB23E917}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
+								</RandomSequenceContainer>
 							</ChildrenList>
-						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Weapon_AR_Reload_L2_PullMagOut" ID="{C6404D37-A3F5-446F-B5BA-4072C606C9EC}" ShortID="469491841">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="Weapon_AR_Reload_L2_V2" ID="{F0CDA80B-DA47-410C-B317-1369E76BA243}" ShortID="144129535">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L2_V2" ID="{37204901-4CC6-4609-BE65-565442B2B5F8}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L2_V2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="653422947"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L2_V2" ID="{37204901-4CC6-4609-BE65-565442B2B5F8}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L2_V1" ID="{B2ED4763-6E4E-47EF-BBA2-D85C65E01027}" ShortID="992073904">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L2_V1" ID="{C1A48090-1B65-40D6-9BDE-C606BFA287F8}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L2_V1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="355019010"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L2_V1" ID="{C1A48090-1B65-40D6-9BDE-C606BFA287F8}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L2_V3" ID="{2649715A-2372-4706-89C3-E5AB2196F0EC}" ShortID="285866351">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L2_V3" ID="{085E0EE6-1889-4235-B50C-BE7557AB8CE0}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L2_V3.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="857740063"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L2_V3" ID="{085E0EE6-1889-4235-B50C-BE7557AB8CE0}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Weapon_AR_Reload_L3_FumbleWithMag" ID="{77561B86-6C8F-4EEB-BCC3-73E3564FB395}" ShortID="179078875">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-								</Reference>
-							</ReferenceList>
-						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Weapon_AR_Reload_L4_PutMagIn" ID="{C6E5412F-54B2-475A-8F80-2F3D110B7FDB}" ShortID="172797141">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="Weapon_AR_Reload_L4_V2" ID="{B1D71315-1204-480E-B2C7-87034E3068A6}" ShortID="444294301">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L4_V2" ID="{C213A5AF-C820-4171-BFE5-FBDAAE85C3D8}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L4_V2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="233657618"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L4_V2" ID="{C213A5AF-C820-4171-BFE5-FBDAAE85C3D8}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L4_V3" ID="{8A53C7B3-18B5-44CB-B787-8E27B5B3C0AF}" ShortID="319834054">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L4_V3" ID="{9ACA3515-3F29-4068-9760-2CA3856AD44B}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L4_V3.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="980480644"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L4_V3" ID="{9ACA3515-3F29-4068-9760-2CA3856AD44B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Weapon_AR_Reload_L4_V1" ID="{53AA5B0E-4E01-4154-92D1-A789FA37C144}" ShortID="549470782">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Weapon_AR_Reload_L4_V1" ID="{47A74CD3-ACA5-4ECF-8AF1-B13D688483B5}">
-											<Language>SFX</Language>
-											<AudioFile>Weapon_AR_Reload_L4_V1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="694723621"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Weapon_AR_Reload_L4_V1" ID="{47A74CD3-ACA5-4ECF-8AF1-B13D688483B5}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</RandomSequenceContainer>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
