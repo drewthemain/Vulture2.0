@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
@@ -25,6 +26,18 @@ public class PlayerHealth : Health
     [Tooltip("Duration of the camera shake for taking damage")]
     [SerializeField] private float onDamageShakeDuration;
 
+    [Header("Damage Overlay")]
+    [Tooltip("The damage overlay GameObject")]
+    public Image overlay;
+    [Tooltip("How long the image stays fully opaque")]
+    public float duration;
+    [Tooltip("How quickly the image will fade")]
+    public float fadeSpeed;
+
+    private float durationTimer; // timer to check against the duration
+
+
+
     // status for if the player is currently in combat
     private bool inCombat;
 
@@ -42,6 +55,26 @@ public class PlayerHealth : Health
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
+    }
+
+    private void Start()
+    {
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
+    }
+
+    void Update()
+    {
+        if (overlay.color.a > 0)
+        {
+            durationTimer += Time.deltaTime;
+            if (durationTimer > duration)
+            {
+                // fade the image
+                float tempAlpha = overlay.color.a;
+                tempAlpha -= Time.deltaTime * fadeSpeed;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+            }
+        }
     }
 
     protected override void Die()
@@ -72,6 +105,9 @@ public class PlayerHealth : Health
         {
             controller.speedMultiplier += speedIncreaseOnDamage;
         }
+
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
+        durationTimer = 0;
 
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);

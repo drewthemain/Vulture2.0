@@ -83,3 +83,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
+
+# Wwise meta files to ignore
+Assets/Wwise Proj/SGS wwise/Originals/SFX/*.akd.meta
+Assets/Wwise Proj/SGS wwise/*.prof.meta
+Assets/Wwise Proj/SGS wwise/*.validationcache.meta
+Assets/Wwise Proj/SGS wwise/*.wsettings.meta
