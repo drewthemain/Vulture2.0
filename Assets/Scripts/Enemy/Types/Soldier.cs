@@ -82,6 +82,8 @@ public class Soldier : NavMeshEnemy
     // The current odds of choosing a cover
     private float coverOdds = 0.05f;
 
+    private Vector3 normalizedVelocity = Vector3.zero;
+
     #endregion
 
     #region Override Methods
@@ -116,7 +118,6 @@ public class Soldier : NavMeshEnemy
                 {
                     target = playerRef;
                     agent.SetDestination(target.position);
-                    anim.SetFloat("Speed", 1);
                 }
 
                 break;
@@ -129,7 +130,6 @@ public class Soldier : NavMeshEnemy
                     weapon.ToggleFiring(true);
                 }
 
-                anim.SetFloat("Speed", 1f);
                 actionTimer = 0;
 
                 break;
@@ -147,7 +147,6 @@ public class Soldier : NavMeshEnemy
                 // Query cover from room and move
                 if (agent)
                 {
-                    anim.SetFloat("Speed", 1f);
 
                     if (currentRoom == null)
                     {
@@ -214,6 +213,14 @@ public class Soldier : NavMeshEnemy
     protected override void Update()
     {
         base.Update();
+
+        if (anim)
+        {
+            normalizedVelocity = agent.velocity.normalized;
+
+            anim.SetFloat("X", normalizedVelocity.x);
+            anim.SetFloat("Y", normalizedVelocity.z);
+        }
 
         if (playerRef)
         {
@@ -288,7 +295,6 @@ public class Soldier : NavMeshEnemy
             case CoverActions.Shoot:
 
                 additionalLimit = Random.Range(coverTimeConstraints.x / 2, coverTimeConstraints.y / 2);
-                anim.SetFloat("Speed", 1f);
 
                 break;
             case CoverActions.Wait:
@@ -297,7 +303,6 @@ public class Soldier : NavMeshEnemy
                 if (agent && target)
                 {
                     agent.SetDestination(target.position);
-                    anim.SetFloat("Speed", 1f);
                 }
 
                 // Stop firing!
@@ -349,7 +354,6 @@ public class Soldier : NavMeshEnemy
                     if (agent)
                     {
                         agent.SetDestination(playerRef.position);
-                        anim.SetFloat("Speed", 1f);
                     }
                 }
                 else
@@ -360,7 +364,6 @@ public class Soldier : NavMeshEnemy
                     if (weapon)
                     {
                         weapon.ToggleFiring(true);
-                        anim.SetFloat("Speed", 0);
                     }
                 }
 
@@ -384,7 +387,6 @@ public class Soldier : NavMeshEnemy
                             if (weapon)
                             {
                                 weapon.ToggleFiring(false);
-                                anim.SetFloat("Speed", 0);
                             }
                         }
                     }
@@ -438,8 +440,6 @@ public class Soldier : NavMeshEnemy
                 targetPosition = transform.position + (-transform.right * (Random.Range(5, maxStrafeDistance)));
                 agent.SetDestination(targetPosition);
 
-                anim.SetFloat("Speed", 1f);
-
                 break;
 
             case InRangeActions.StrafeRight:
@@ -449,8 +449,6 @@ public class Soldier : NavMeshEnemy
                 targetPosition = transform.position + (transform.right * (Random.Range(5, maxStrafeDistance)));
                 agent.SetDestination(targetPosition);
 
-                anim.SetFloat("Speed", 1f);
-
                 break;
 
             case InRangeActions.Charge:
@@ -459,15 +457,11 @@ public class Soldier : NavMeshEnemy
                 actionLimit = Random.Range(chargeTimeConstraints.x, chargeTimeConstraints.y);
                 target = playerRef;
 
-                anim.SetFloat("Speed", 1f);
-
                 break;
 
             case InRangeActions.Stand:
 
                 actionLimit = Random.Range(standTimeConstraints.x, standTimeConstraints.y);
-
-                anim.SetFloat("Speed", 0);
 
                 break;
 
@@ -493,8 +487,6 @@ public class Soldier : NavMeshEnemy
                 }
 
                 agent.SetDestination(targetPosition);
-
-                anim.SetFloat("Speed", -1f);
 
                 break;
         }
