@@ -106,12 +106,12 @@ public class PlayerHealth : Health
             controller.speedMultiplier += speedIncreaseOnDamage;
         }
 
-        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
-        durationTimer = 0;
-
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);
         EnterCombat();
+
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
+        durationTimer = 0;
     }
 
     protected override void Heal(float heal)
