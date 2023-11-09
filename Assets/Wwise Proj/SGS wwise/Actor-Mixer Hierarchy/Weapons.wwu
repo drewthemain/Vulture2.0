@@ -18,12 +18,12 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="OBS_MIDDLEFLOOR" ID="{B837F384-A122-484C-ABD5-27FDD46EA8D3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<BlendContainer Name="Weapon_AR_SingleBurst" ID="{A5723D54-2908-49A1-9C03-898D1E8C4E75}" ShortID="297597467">
-							<PropertyList>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
