@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 197663616767c942aa7575108a3cec5a
     GuidInternal: 
-    m_lastTime: -8585021995256493574
+    m_lastTime: -8585021119745758846
     List:
     - name: AUX_MST
       guid: 439501bc1c0db04e8ce3ede4e8fd0952
@@ -396,6 +396,84 @@ MonoBehaviour:
         ObjectType: 1
         guid: 236220dc2fd02b4fb04354b97d3b1137
       Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS
+    - name: OBS_LOWERFLOOR
+      guid: 8e420fc682f3654a8e59583bfd17466e
+      id: 20830927
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: OBS
+        ObjectType: 1
+        guid: 236220dc2fd02b4fb04354b97d3b1137
+      - ElementName: OBS_LOWERFLOOR
+        ObjectType: 1
+        guid: 8e420fc682f3654a8e59583bfd17466e
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_LOWERFLOOR
+    - name: OBS_MIDDLEFLOOR
+      guid: 84f337b822a14c48abd527fdd46ea8d3
+      id: 1041210479
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: OBS
+        ObjectType: 1
+        guid: 236220dc2fd02b4fb04354b97d3b1137
+      - ElementName: OBS_MIDDLEFLOOR
+        ObjectType: 1
+        guid: 84f337b822a14c48abd527fdd46ea8d3
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_MIDDLEFLOOR
+    - name: OBS_UPPERFLOOR
+      guid: eb6082323d1af74ca3c162b3d03c0ee4
+      id: 3044882142
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: OBS
+        ObjectType: 1
+        guid: 236220dc2fd02b4fb04354b97d3b1137
+      - ElementName: OBS_UPPERFLOOR
+        ObjectType: 1
+        guid: eb6082323d1af74ca3c162b3d03c0ee4
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_UPPERFLOOR
     - name: SFX
       guid: 4f98759fe3ea964f97e5c19f18a2a539
       id: 393239870
