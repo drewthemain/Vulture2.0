@@ -33,20 +33,20 @@ public class PlayerHealth : Health
     public float duration;
     [Tooltip("How quickly the image will fade")]
     public float fadeSpeed;
-
-    private float durationTimer; // timer to check against the duration
-
-
+    [Tooltip("The multiplier for the blood overlay alpha (alpha = damage * multiplier)")]
+    [SerializeField] private float bloodMultiplier;
+    // timer to check against the duration
+    private float durationTimer; 
 
     // status for if the player is currently in combat
     private bool inCombat;
-
     // Should the player take damage?
     public bool godMode;
 
     // References
-
     private PlayerController controller;
+    // Current alpha level of the blood overlay
+    private float currentBloodAlpha;
 
     #endregion
 
@@ -70,9 +70,8 @@ public class PlayerHealth : Health
             if (durationTimer > duration)
             {
                 // fade the image
-                float tempAlpha = overlay.color.a;
-                tempAlpha -= Time.deltaTime * fadeSpeed;
-                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+                currentBloodAlpha -= Time.deltaTime * fadeSpeed;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, currentBloodAlpha);
             }
         }
     }
@@ -106,8 +105,8 @@ public class PlayerHealth : Health
             controller.speedMultiplier += speedIncreaseOnDamage;
         }
 
-        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
-        durationTimer = 0;
+        UpdateBloodOverlay(dmg);
+
 
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);
@@ -177,5 +176,24 @@ public class PlayerHealth : Health
         currentHealth = maxHealthLimit;
     }
 
+    /// <summary>
+    /// Update the blood overlay based on the damage taken
+    /// </summary>
+    /// <param name="damage">The amount of damage from an attack</param>
+    private void UpdateBloodOverlay(float damage)
+    {
+        float newAlpha = currentBloodAlpha + (damage / 100) * bloodMultiplier;
+
+        if (newAlpha < 1)
+        {
+            currentBloodAlpha = newAlpha;
+        }
+        else if (newAlpha >= 1)
+        {
+            currentBloodAlpha = 1;
+        }
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, currentBloodAlpha);
+        durationTimer = 0;
+    }
     #endregion
 }
