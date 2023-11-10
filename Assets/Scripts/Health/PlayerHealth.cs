@@ -59,6 +59,7 @@ public class PlayerHealth : Health
 
     private void Start()
     {
+        overlay.gameObject.SetActive(true);
         overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
     }
 
