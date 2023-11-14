@@ -196,6 +196,10 @@ public class RoundManager : MonoBehaviour
 
                     totalCurrentRound++;
                     playerHealth.EndOfTurnHeal();
+
+                    StatsManager.IncrementStat(StatsManager.Stats.gameRoundsPlayed);
+                    StatsManager.IncrementStat(StatsManager.Stats.totalRoundsPlayed);
+
                     ChangeRoundState(RoundState.InBetween);
 
                     return;

@@ -140,6 +140,9 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         Pause();
+
+        StatsManager.IncrementStat(StatsManager.Stats.totalGamesPlayed);
+
         UIManager.instance.ToggleOnScreenUI(UIManager.UIType.End);
     }
 
