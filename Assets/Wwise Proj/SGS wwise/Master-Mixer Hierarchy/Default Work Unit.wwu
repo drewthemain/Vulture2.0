@@ -8,6 +8,9 @@
 						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
 							<ObjectRef Name="System" ID="{43DEAF1A-EED8-434F-9A08-5CB9C67603CE}" WorkUnitID="{64EF5837-B65A-4B72-922F-7BAC43DC340A}"/>
 						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+							<ObjectRef Name="Brick_Wall_Minus_1dB_Peak_Slow_Release" ID="{9FB8DC2B-7F1C-4E4E-8FA5-50872652D2DD}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<Bus Name="SFX" ID="{9F75984F-EAE3-4F96-97E5-C19F18A2A539}">
@@ -106,7 +109,28 @@
 							<ChildrenList>
 								<AuxBus Name="AUX_MST_SFX" ID="{C65CB392-AC7C-424D-893D-A7ACE1411900}">
 									<ChildrenList>
-										<AuxBus Name="SPECIFIC_AREA" ID="{DC206223-D02F-4F2B-B043-54B97D3B1137}"/>
+										<AuxBus Name="OBS" ID="{DC206223-D02F-4F2B-B043-54B97D3B1137}">
+											<ReferenceList/>
+											<ChildrenList>
+												<AuxBus Name="OBS_MIDDLEFLOOR" ID="{B837F384-A122-484C-ABD5-27FDD46EA8D3}">
+													<ReferenceList/>
+												</AuxBus>
+												<AuxBus Name="OBS_UPPERFLOOR" ID="{328260EB-1A3D-4CF7-A3C1-62B3D03C0EE4}">
+													<ReferenceList>
+														<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+															<ObjectRef Name="Medium" ID="{AEB3F175-958B-45F2-A4C2-3FBD4F456568}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+														</Reference>
+													</ReferenceList>
+												</AuxBus>
+												<AuxBus Name="OBS_LOWERFLOOR" ID="{C60F428E-F382-4A65-8E59-583BFD17466E}">
+													<ReferenceList>
+														<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+															<ObjectRef Name="Medium" ID="{AEB3F175-958B-45F2-A4C2-3FBD4F456568}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+														</Reference>
+													</ReferenceList>
+												</AuxBus>
+											</ChildrenList>
+										</AuxBus>
 									</ChildrenList>
 								</AuxBus>
 							</ChildrenList>

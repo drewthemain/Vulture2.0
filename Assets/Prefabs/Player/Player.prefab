@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusTracking: 0
+  m_FocusTarget: {fileID: 0}
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!1 &2547628216260439480
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +723,11 @@ MonoBehaviour:
   roundEndHealDelay: 0.1
   onDamageShakeIntensity: 3
   onDamageShakeDuration: 0.1
+  overlay: {fileID: 0}
+  duration: 2
+  fadeSpeed: 0.5
+  bloodMultiplier: 1
+  godMode: 0
 --- !u!114 &3063529463560417964
 MonoBehaviour:
   m_ObjectHideFlags: 0

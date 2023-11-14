@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{2735C8FC-7178-8DC6-91E6-46B692DF3163}">
+		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{E1AEAF3F-5CA5-E267-86D4-26AF016906B4}">
 			<ShortName>Mission_1</ShortName>
 			<Path>Mission_1.bnk</Path>
 			<Media>
@@ -107,10 +107,14 @@
 				<GameParameter Id="3338723421" Name="Weapon_AR_AmmoLeft"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{AD55AEB2-5A5D-0CBC-2E38-28EEB7394735}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{928995A4-ADC9-EBBF-E536-E90F259747FE}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<ShareSets>
+					<Plugin Id="2258521792" Name="Brick_Wall_Minus_1dB_Peak_Slow_Release" LibName="Wwise Peak Limiter" LibId="7208963"/>
+					<Plugin Id="3673681183" Name="Large_Bright_Chamber1" LibName="Wwise Matrix Reverb" LibId="7536643"/>
+				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
@@ -119,7 +123,13 @@
 			<Busses>
 				<Bus Id="393239870" Name="SFX"/>
 				<Bus Id="712897226" Name="MUS"/>
-				<Bus Id="746452395" Name="MST"/>
+				<Bus Id="746452395" Name="MST">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="1350043778" Name="SFX_Weap"/>
 				<Bus Id="3583497273" Name="SFX_Ambience"/>
 				<Bus Id="3587590657" Name="SFX_Gameplay"/>
@@ -127,15 +137,20 @@
 				<Bus Id="3862737079" Name="SFX_UI"/>
 			</Busses>
 			<AuxBusses>
+				<AuxBus Id="863601605" Name="OBS">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3673681183"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3058796868" Name="AUX_MST_SFX"/>
+					</AuxBusRefs>
+				</AuxBus>
 				<AuxBus Id="2611802776" Name="AUX_MST"/>
 				<AuxBus Id="3058796868" Name="AUX_MST_SFX">
 					<AuxBusRefs>
 						<AuxBusRef Id="2611802776" Name="AUX_MST"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="3703043559" Name="SPECIFIC_AREA">
-					<AuxBusRefs>
-						<AuxBusRef Id="3058796868" Name="AUX_MST_SFX"/>
 					</AuxBusRefs>
 				</AuxBus>
 			</AuxBusses>
@@ -287,5 +302,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{53120BA0-5E22-BA96-8753-712D15D45675}</FileHash>
+	<FileHash>{4DA7706D-1667-A3EC-44F0-2D969DFC3730}</FileHash>
 </SoundBanksInfo>
