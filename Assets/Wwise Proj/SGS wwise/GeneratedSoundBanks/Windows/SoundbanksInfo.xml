@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{E1AEAF3F-5CA5-E267-86D4-26AF016906B4}">
+		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{FE20B56F-DBAE-D4FC-3EB4-5C3ACEE0B2E6}">
 			<ShortName>Mission_1</ShortName>
 			<Path>Mission_1.bnk</Path>
 			<Media>
@@ -107,13 +107,17 @@
 				<GameParameter Id="3338723421" Name="Weapon_AR_AmmoLeft"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{928995A4-ADC9-EBBF-E536-E90F259747FE}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F512FA06-5041-2863-8572-F216B7CE2BAA}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<Custom>
+					<Plugin Id="117940597" Name="Metal_Hangar (Metal Medium)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="320823440" Name="Metal_Hangar (Metal Medium)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="400646762" Name="Metal_Hangar (Metal Medium)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
 				<ShareSets>
 					<Plugin Id="2258521792" Name="Brick_Wall_Minus_1dB_Peak_Slow_Release" LibName="Wwise Peak Limiter" LibId="7208963"/>
-					<Plugin Id="3673681183" Name="Large_Bright_Chamber1" LibName="Wwise Matrix Reverb" LibId="7536643"/>
 				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
@@ -137,20 +141,45 @@
 				<Bus Id="3862737079" Name="SFX_UI"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="863601605" Name="OBS">
+				<AuxBus Id="20830927" Name="OBS_LOWERFLOOR">
 					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="3673681183"/>
-						</ShareSets>
+						<Custom>
+							<PluginRef Id="320823440"/>
+						</Custom>
 					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="863601605" Name="OBS"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="863601605" Name="OBS">
 					<AuxBusRefs>
 						<AuxBusRef Id="3058796868" Name="AUX_MST_SFX"/>
 					</AuxBusRefs>
 				</AuxBus>
 				<AuxBus Id="2611802776" Name="AUX_MST"/>
+				<AuxBus Id="3044882142" Name="OBS_UPPERFLOOR">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="400646762"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="863601605" Name="OBS"/>
+					</AuxBusRefs>
+				</AuxBus>
 				<AuxBus Id="3058796868" Name="AUX_MST_SFX">
 					<AuxBusRefs>
 						<AuxBusRef Id="2611802776" Name="AUX_MST"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="3650721432" Name="OBS_LOWER_HALLWAY">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="117940597"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="863601605" Name="OBS"/>
 					</AuxBusRefs>
 				</AuxBus>
 			</AuxBusses>
@@ -302,5 +331,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4DA7706D-1667-A3EC-44F0-2D969DFC3730}</FileHash>
+	<FileHash>{F2FF1221-9A63-47FB-AD94-12033054F98C}</FileHash>
 </SoundBanksInfo>

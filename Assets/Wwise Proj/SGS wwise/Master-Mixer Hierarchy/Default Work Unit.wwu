@@ -110,22 +110,105 @@
 								<AuxBus Name="AUX_MST_SFX" ID="{C65CB392-AC7C-424D-893D-A7ACE1411900}">
 									<ChildrenList>
 										<AuxBus Name="OBS" ID="{DC206223-D02F-4F2B-B043-54B97D3B1137}">
-											<ReferenceList/>
 											<ChildrenList>
-												<AuxBus Name="OBS_MIDDLEFLOOR" ID="{B837F384-A122-484C-ABD5-27FDD46EA8D3}">
-													<ReferenceList/>
-												</AuxBus>
 												<AuxBus Name="OBS_UPPERFLOOR" ID="{328260EB-1A3D-4CF7-A3C1-62B3D03C0EE4}">
 													<ReferenceList>
-														<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-															<ObjectRef Name="Medium" ID="{AEB3F175-958B-45F2-A4C2-3FBD4F456568}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+														<Reference Name="Effect0">
+															<Custom CreatedFrom="{C4A4605C-42EF-476A-B53C-E31C7A442C24}">
+																<Effect Name="Metal_Hangar (Metal Medium)" ID="{81030760-73B5-404B-8E8E-B1B73137DFE8}" ShortID="400646762" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																	<PropertyList>
+																		<Property Name="Density" Type="Real32" Value="17"/>
+																		<Property Name="Diffusion" Type="Real32" Value="57"/>
+																		<Property Name="ERLevel" Type="Real32" Value="-19"/>
+																		<Property Name="ERPattern" Type="int32" Value="4"/>
+																		<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																		<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																		<Property Name="Filter1Freq" Type="Real32" Value="700"/>
+																		<Property Name="Filter1Gain" Type="Real32" Value="-13.5"/>
+																		<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
+																		<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																		<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
+																		<Property Name="Filter3Freq" Type="Real32" Value="12000"/>
+																		<Property Name="Filter3Gain" Type="Real32" Value="2.5"/>
+																		<Property Name="HFDamping" Type="Real32" Value="5.95"/>
+																		<Property Name="LFELevel" Type="Real32" Value="-0.3"/>
+																		<Property Name="PreDelay" Type="Real32" Value="0"/>
+																		<Property Name="Quality" Type="int32" Value="12"/>
+																		<Property Name="ReverbLevel" Type="Real32" Value="-27"/>
+																		<Property Name="RoomShape" Type="Real32" Value="0"/>
+																		<Property Name="RoomSize" Type="Real32" Value="100"/>
+																		<Property Name="StereoWidth" Type="Real32" Value="140"/>
+																	</PropertyList>
+																</Effect>
+															</Custom>
 														</Reference>
 													</ReferenceList>
 												</AuxBus>
 												<AuxBus Name="OBS_LOWERFLOOR" ID="{C60F428E-F382-4A65-8E59-583BFD17466E}">
 													<ReferenceList>
-														<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-															<ObjectRef Name="Medium" ID="{AEB3F175-958B-45F2-A4C2-3FBD4F456568}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+														<Reference Name="Effect0">
+															<Custom CreatedFrom="{C4A4605C-42EF-476A-B53C-E31C7A442C24}">
+																<Effect Name="Metal_Hangar (Metal Medium)" ID="{15DA825F-BB8C-4491-8E97-217B354F4751}" ShortID="320823440" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																	<PropertyList>
+																		<Property Name="DecayTime" Type="Real32" Value="0.95"/>
+																		<Property Name="Diffusion" Type="Real32" Value="72"/>
+																		<Property Name="ERLevel" Type="Real32" Value="-19"/>
+																		<Property Name="ERPattern" Type="int32" Value="4"/>
+																		<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																		<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																		<Property Name="Filter1Freq" Type="Real32" Value="700"/>
+																		<Property Name="Filter1Gain" Type="Real32" Value="-13.5"/>
+																		<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
+																		<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																		<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
+																		<Property Name="Filter3Freq" Type="Real32" Value="12000"/>
+																		<Property Name="Filter3Gain" Type="Real32" Value="2.5"/>
+																		<Property Name="HFDamping" Type="Real32" Value="10"/>
+																		<Property Name="LFELevel" Type="Real32" Value="-0.3"/>
+																		<Property Name="PreDelay" Type="Real32" Value="0"/>
+																		<Property Name="Quality" Type="int32" Value="12"/>
+																		<Property Name="ReverbLevel" Type="Real32" Value="-27"/>
+																		<Property Name="RoomShape" Type="Real32" Value="0"/>
+																		<Property Name="RoomSize" Type="Real32" Value="65"/>
+																		<Property Name="StereoWidth" Type="Real32" Value="140"/>
+																	</PropertyList>
+																</Effect>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+												</AuxBus>
+												<AuxBus Name="OBS_LOWER_HALLWAY" ID="{E69D52D6-1556-4996-A92D-662AEEEECC74}">
+													<ReferenceList>
+														<Reference Name="Effect0">
+															<Custom CreatedFrom="{C4A4605C-42EF-476A-B53C-E31C7A442C24}">
+																<Effect Name="Metal_Hangar (Metal Medium)" ID="{B521D692-C8A6-4518-ADB1-7260065F04BE}" ShortID="117940597" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																	<PropertyList>
+																		<Property Name="DecayTime" Type="Real32" Value="0.33"/>
+																		<Property Name="Density" Type="Real32" Value="100"/>
+																		<Property Name="Diffusion" Type="Real32" Value="72"/>
+																		<Property Name="ERFrontBackDelay" Type="Real32" Value="27"/>
+																		<Property Name="ERLevel" Type="Real32" Value="-19"/>
+																		<Property Name="ERPattern" Type="int32" Value="4"/>
+																		<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																		<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																		<Property Name="Filter1Freq" Type="Real32" Value="700"/>
+																		<Property Name="Filter1Gain" Type="Real32" Value="-13.5"/>
+																		<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
+																		<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																		<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
+																		<Property Name="Filter3Freq" Type="Real32" Value="12000"/>
+																		<Property Name="Filter3Gain" Type="Real32" Value="2.5"/>
+																		<Property Name="HFDamping" Type="Real32" Value="2.15"/>
+																		<Property Name="LFELevel" Type="Real32" Value="-0.3"/>
+																		<Property Name="PreDelay" Type="Real32" Value="0"/>
+																		<Property Name="Quality" Type="int32" Value="12"/>
+																		<Property Name="ReverbLevel" Type="Real32" Value="-27"/>
+																		<Property Name="RoomShape" Type="Real32" Value="0"/>
+																		<Property Name="RoomSize" Type="Real32" Value="-100"/>
+																		<Property Name="StereoWidth" Type="Real32" Value="49"/>
+																	</PropertyList>
+																</Effect>
+															</Custom>
 														</Reference>
 													</ReferenceList>
 												</AuxBus>

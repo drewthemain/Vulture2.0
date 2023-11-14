@@ -18,9 +18,6 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 						</Reference>
-						<Reference Name="UserAuxSend0">
-							<ObjectRef Name="OBS_MIDDLEFLOOR" ID="{B837F384-A122-484C-ABD5-27FDD46EA8D3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<BlendContainer Name="Weapon_AR_SingleBurst" ID="{A5723D54-2908-49A1-9C03-898D1E8C4E75}" ShortID="297597467">
@@ -32,7 +29,7 @@
 									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 								</Reference>
 								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="OBS" ID="{DC206223-D02F-4F2B-B043-54B97D3B1137}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+									<ObjectRef Name="OBS_LOWERFLOOR" ID="{C60F428E-F382-4A65-8E59-583BFD17466E}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -815,6 +812,530 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
+						<BlendContainer Name="Weapon_AR_SingleBurst_01" ID="{B6FC9C93-81F0-4594-9A8F-5144B636E6A8}" ShortID="299935736">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="OBS_LOWER_HALLWAY" ID="{E69D52D6-1556-4996-A92D-662AEEEECC74}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Weapon_AR_SingleBurst_SingleShots" ID="{9D7688B7-D632-4CB5-A93A-9272E5CEF8D3}" ShortID="152765397">
+									<PropertyList>
+										<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A279B900-F06E-4757-BC76-784D065DBAD5}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-30"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{E7973C55-4ADE-42BE-B172-B26859157C75}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-2"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_01" ID="{F154000D-476F-44B9-A845-DF80A152C322}" ShortID="99680138">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{A4C7E6E1-B689-4576-BA97-2752D6B3A43A}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="3.28156005004224"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.08580672186462"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="207213858"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{A4C7E6E1-B689-4576-BA97-2752D6B3A43A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_02" ID="{39825CEF-5A9F-49F2-B9A0-B793D1FEC2B4}" ShortID="803704551">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B525543C-1C18-4C7E-A68D-B8CB212464F5}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="6.62633220045817"/>
+														<Property Name="TrimEnd" Type="Real64" Value="7.64356092765557"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="236999867"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B525543C-1C18-4C7E-A68D-B8CB212464F5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_03" ID="{2E34C12A-2101-4ED7-8B24-F07210A90C4D}" ShortID="722984247">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-0.8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B6D6844B-359E-4785-B5B8-44C7F3032BE3}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="10.1243042393657"/>
+														<Property Name="TrimEnd" Type="Real64" Value="11.2125883025244"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="654797722"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B6D6844B-359E-4785-B5B8-44C7F3032BE3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_04" ID="{5802A410-2BFF-483F-8718-BD011376B051}" ShortID="308464426">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-0.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{52183D9E-BF55-4E94-85BB-0721FA3A539A}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="13.4010544311639"/>
+														<Property Name="TrimEnd" Type="Real64" Value="14.7985233218083"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="10573796"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{52183D9E-BF55-4E94-85BB-0721FA3A539A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_05" ID="{9B95A204-530D-463D-A4ED-6DDEA0F58A3E}" ShortID="787967603">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-0.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{AE90676B-3FCC-46C1-A94D-BBFBFB1E39CA}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.162472421150341"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="17.110275988354"/>
+														<Property Name="TrimEnd" Type="Real64" Value="17.7690260787925"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="802048380"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{AE90676B-3FCC-46C1-A94D-BBFBFB1E39CA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{2AAF6AEC-3FC3-4017-9B27-4A7E28E8AFBD}" ShortID="451474506">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{B1D54CDB-8D80-482A-81AA-2B62AF24367B}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>500</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{0D41A81D-359B-4224-BB9B-3F99DB817C5F}" ShortID="127064974">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Highpass"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{58884EBA-801E-497E-8A6D-8E16B4BEE4D9}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>20</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire" ID="{4EA4EB6A-DCE9-426A-91B0-0B9DFB64D19F}" ShortID="862741540">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{E7D5FD2A-F7DD-48B3-BFD9-CBA4824B0E2C}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{E2F07F21-E55E-47EA-BB9C-E24F8D472B07}" ShortID="14518162">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{32E48190-3798-452B-8B4C-B70C03EFEEC5}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0180791034362463"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.119979504622362"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="921637195"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{32E48190-3798-452B-8B4C-B70C03EFEEC5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{DF98DEBF-D68D-421D-8D78-74EF0734B762}" ShortID="382934437">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{4BFBC2EE-0423-4E39-BE23-6A0D08F32D66}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.00396071799267239"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0201283688387611"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.0653892310916209"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="112510348"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{4BFBC2EE-0423-4E39-BE23-6A0D08F32D66}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{178FB403-9E59-4A67-87BD-6A627E2DAA6F}" ShortID="203667444">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{A723D412-224B-44DB-8772-DBDE1BD9493E}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6.001</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{A0A48506-1DF0-450C-AC5E-EE51A9560653}" ShortID="1037735513">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{A4DDCE54-1E30-4A1F-81B0-D52647AE493E}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>500</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>6</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{AF6FF70D-1DA7-494D-BA72-43C73A74B20A}" ShortID="1026304722">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{6C2D6297-6997-4F48-A565-44262F700841}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>30</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
