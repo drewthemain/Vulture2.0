@@ -45,6 +45,9 @@ public class EnemyHealth : Health
 
         RoundManager.instance.RecordEnemyKill(enemyType);
 
+        StatsManager.IncrementStat(StatsManager.Stats.totalEnemiesKilled);
+        StatsManager.IncrementStat(StatsManager.Stats.gameEnemiesKilled);
+
         if (GetComponent<Enemy>().ragdoll != null)
         {
             GetComponent<Enemy>().Ragdollize();
