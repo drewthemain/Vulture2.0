@@ -44,23 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888d726c3a0fb8f4eb64812626763e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameUIParent: {fileID: 0}
-  _pauseUIParent: {fileID: 0}
-  _loseUIParent: {fileID: 0}
-  _settingsUIParent: {fileID: 0}
-  _ammoCounter: {fileID: 0}
-  _ammoSlider: {fileID: 0}
-  _healthCounter: {fileID: 0}
-  _healthSlider: {fileID: 0}
-  _currentRound: {fileID: 0}
-  _objectiveText: {fileID: 0}
-  _warningBanner: {fileID: 0}
-  _worldSpaceCanvas: {fileID: 0}
-  _continueButton: {fileID: 0}
-  _settingsButton: {fileID: 0}
-  _sensitivitySlider: {fileID: 0}
-  _sensitivityText: {fileID: 0}
-  _aimSensitivitySlider: {fileID: 0}
-  _crosshairCanvas: {fileID: 0}
-  _crosshair: {fileID: 0}
-  _crosshairCanvasPosition: {fileID: 0}
+  gameUIParent: {fileID: 0}
+  pauseUIParent: {fileID: 0}
+  loseUIParent: {fileID: 0}
+  settingsUIParent: {fileID: 0}
+  GUI: {fileID: 0}
+  roundUIParent: {fileID: 0}
+  ammoCounter: {fileID: 0}
+  ammoSlider: {fileID: 0}
+  healthCounter: {fileID: 0}
+  healthSlider: {fileID: 0}
+  currentRound: {fileID: 0}
+  objectiveText: {fileID: 0}
+  objectiveDescription: {fileID: 0}
+  warningBanner: {fileID: 0}
+  worldSpaceCanvas: {fileID: 0}
+  continueButton: {fileID: 0}
+  settingsButton: {fileID: 0}
+  damageSlider: {fileID: 0}
+  damageSliderBG: {fileID: 0}
+  dmgBarShrinkIncrement: 1
+  dmgBarShrinkDelay: 0.02
+  damageBarDelay: 1.25

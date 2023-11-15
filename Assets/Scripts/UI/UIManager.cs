@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -90,6 +89,23 @@ public class UIManager : MonoBehaviour
     [Tooltip("The reference to the settings button")]
     [SerializeField] private GameObject settingsButton;
 
+    [Header("Damage Bar Values")]
+
+    [Tooltip("The reference to the red damage slider")]
+    [SerializeField] private Slider damageSlider;
+
+    [Tooltip("The reference to the red damage slider background")]
+    [SerializeField] private Image damageSliderBG;
+
+    [Tooltip("The increment between each reduction of the damage bar (probably a pretty small number, could be 1)")]
+    [SerializeField] private float dmgBarShrinkIncrement;
+
+    [Tooltip("The time each tick of the damage slider takes (each time it will increment)")]
+    [SerializeField] private float dmgBarShrinkDelay;
+
+    [Tooltip("The time before the damage bar starts shrinking after taking damage")]
+    [SerializeField] private float damageBarDelay;
+
     // General References
     // Reference to the player gameobject
     private PlayerController controller;
@@ -101,10 +117,19 @@ public class UIManager : MonoBehaviour
     private Animator settingsAnim;
     //Reference to animator on round UI
     private Animator roundAnim;
+    // Reference to the player's max health
+    private float playerMaxHealth;
+    // Reference to the player health component
+    private PlayerHealth playerHealth;
+    // The current fill amount of the damage slider background
+    private float dmgSliderBGFill = 100f;
+    // Reference to the damage bar delay so it can be stopped 
+    private Coroutine dmgBarDelay;
+    // Reference to the damage bar motion so it can be stopped 
+    private Coroutine dmgBarMotion;
 
     // UI Animation Values
     private float settingsAnimDuration = 1 / 6f;
-
 
     void Awake()
     {
@@ -122,6 +147,9 @@ public class UIManager : MonoBehaviour
         settingsAnim = settingsUIParent.GetComponent<Animator>();
         roundAnim = roundUIParent.gameObject.GetComponent<Animator>();
         input = InputManager.instance;
+        playerHealth = controller.GetComponent<PlayerHealth>();
+        playerMaxHealth = playerHealth.GetMaxHealth();
+
 
         if (controller == null)
         {
@@ -182,8 +210,49 @@ public class UIManager : MonoBehaviour
         }
         if (healthSlider != null)
         {
-            healthSlider.value = currentHealth / controller.GetComponent<PlayerHealth>().GetMaxHealth();
+            healthSlider.value = currentHealth / playerMaxHealth;
         }
+        if(damageSlider && damageSliderBG)
+        {
+            if (dmgSliderBGFill <= playerHealth.currentHealth)
+            {
+                dmgSliderBGFill = playerHealth.currentHealth;
+            }
+            damageSliderBG.fillAmount = dmgSliderBGFill / playerMaxHealth;
+            damageSlider.value = ((playerMaxHealth - currentHealth) / playerMaxHealth);
+        }
+    }
+
+    // lerp from dmgsliderbgfill to current health, set dmgslider bg fill to current health after
+    public void UpdateDamageBar(float currentHealth)
+    {
+        if(dmgBarDelay != null) StopCoroutine(dmgBarDelay);
+        //if (dmgBarMotion != null) StopCoroutine(dmgBarMotion);
+        dmgBarDelay = StartCoroutine(DamageBarDelay(currentHealth));
+    }
+
+    /// <summary>
+    /// The delay before the damage bar starts going down
+    /// </summary>
+    IEnumerator DamageBarDelay(float currentHealth)
+    {
+        yield return new WaitForSeconds(damageBarDelay);
+        dmgBarMotion = StartCoroutine(LerpDamageBar(dmgBarShrinkIncrement, dmgBarShrinkDelay, currentHealth));
+    }
+
+    /// <summary>
+    /// Coroutine for the slowly increasing the health by a rate of one (increment / delay) up to a maximum value
+    /// </summary>
+    IEnumerator LerpDamageBar(float increment, float delay, float currentHealth)
+    {
+        while ((dmgSliderBGFill - increment) > currentHealth)
+        {
+            dmgSliderBGFill -= increment;
+            damageSliderBG.fillAmount = dmgSliderBGFill / playerMaxHealth;
+            yield return new WaitForSeconds(delay);
+        }
+        dmgSliderBGFill = currentHealth;
+        damageSliderBG.fillAmount = dmgSliderBGFill / playerMaxHealth;
     }
 
     /// <summary>

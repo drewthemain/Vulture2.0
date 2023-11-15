@@ -111,6 +111,7 @@ public class PlayerHealth : Health
 
         CameraManager.instance.CameraShake(onDamageShakeIntensity, onDamageShakeDuration);
         UIManager.instance.UpdateHealth(currentHealth);
+        UIManager.instance.UpdateDamageBar(currentHealth);
         EnterCombat();
     }
 
