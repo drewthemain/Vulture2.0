@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5f086ed454b472499b172a4735bb53fb
     GuidInternal: 
-    m_lastTime: -8585038535804384168
+    m_lastTime: -8585034184696750396
     List: []
   - PhysicalPath: Virtual Acoustics\Factory Acoustic Textures.wwu
     PathAndIcons:
@@ -37,7 +37,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Factory Acoustic Textures
     guid: 6b663d46a83ca54f8b4a5fef12b883f6
     GuidInternal: 
-    m_lastTime: -8585038535804374169
+    m_lastTime: -8585034184696740389
     List:
     - name: Acoustic_Banner
       guid: f2532d2fccda8e408b8898b1b52a26d6
@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 197663616767c942aa7575108a3cec5a
     GuidInternal: 
-    m_lastTime: -8585016894055252788
+    m_lastTime: -8585016003961299661
     List:
     - name: AUX_MST
       guid: 439501bc1c0db04e8ce3ede4e8fd0952
@@ -396,6 +396,32 @@ MonoBehaviour:
         ObjectType: 1
         guid: 236220dc2fd02b4fb04354b97d3b1137
       Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS
+    - name: OBS_LOWER_HALLWAY
+      guid: d6529de656159649a92d662aeeeecc74
+      id: 3650721432
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: OBS
+        ObjectType: 1
+        guid: 236220dc2fd02b4fb04354b97d3b1137
+      - ElementName: OBS_LOWER_HALLWAY
+        ObjectType: 1
+        guid: d6529de656159649a92d662aeeeecc74
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_LOWER_HALLWAY
     - name: OBS_LOWERFLOOR
       guid: 8e420fc682f3654a8e59583bfd17466e
       id: 20830927
@@ -422,32 +448,6 @@ MonoBehaviour:
         ObjectType: 1
         guid: 8e420fc682f3654a8e59583bfd17466e
       Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_LOWERFLOOR
-    - name: OBS_MIDDLEFLOOR
-      guid: 84f337b822a14c48abd527fdd46ea8d3
-      id: 1041210479
-      PathAndIcons:
-      - ElementName: Master-Mixer Hierarchy
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 197663616767c942aa7575108a3cec5a
-      - ElementName: MST
-        ObjectType: 2
-        guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: AUX_MST
-        ObjectType: 1
-        guid: 439501bc1c0db04e8ce3ede4e8fd0952
-      - ElementName: AUX_MST_SFX
-        ObjectType: 1
-        guid: 92b35cc67cac4d42893da7ace1411900
-      - ElementName: OBS
-        ObjectType: 1
-        guid: 236220dc2fd02b4fb04354b97d3b1137
-      - ElementName: OBS_MIDDLEFLOOR
-        ObjectType: 1
-        guid: 84f337b822a14c48abd527fdd46ea8d3
-      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_MIDDLEFLOOR
     - name: OBS_UPPERFLOOR
       guid: eb6082323d1af74ca3c162b3d03c0ee4
       id: 3044882142
@@ -606,7 +606,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: cc045ed5954e4442b8f226282c9a5747
     GuidInternal: 
-    m_lastTime: -8585038535804434596
+    m_lastTime: -8585034184696840462
     List: []
   - PhysicalPath: SoundBanks\Mission 1.wwu
     PathAndIcons:
@@ -619,7 +619,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Mission 1
     guid: b66528a792274643acf8a2f4c49aeb09
     GuidInternal: 
-    m_lastTime: -8585028998380460653
+    m_lastTime: -8585028938841659618
     List:
     - name: Mission_1
       guid: 6532da857a25ca48916f4ac243f84d8d
@@ -646,7 +646,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\z_Test
     guid: 6cf3c28a9370fb41905dfcf539b0311d
     GuidInternal: 
-    m_lastTime: -8585038535804434596
+    m_lastTime: -8585034184696820432
     List:
     - name: Test
       guid: e906adec35af86488b759c4bb7757251
@@ -674,7 +674,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: e6f8ba9315d3fe4fb3758cc654b4bf02
     GuidInternal: 
-    m_lastTime: -8585022087123584072
+    m_lastTime: -8585022070668419379
     List:
     - name: Play_Weapon_AR_Reload_L1_PullGunUp
       guid: 834e4f5af5d63e49a61b0f2ef7735aa0
@@ -738,7 +738,7 @@ MonoBehaviour:
     ParentPath: Events\Weapons
     guid: 649f413b4bee044fa672e51e199b1c60
     GuidInternal: 
-    m_lastTime: -8585028998384301700
+    m_lastTime: -8585028938842155212
     List:
     - name: Weapon_AR_Reload_L1_PullGunUp
       guid: a5354e3c483c004690b426ce2660fa94
@@ -836,7 +836,7 @@ MonoBehaviour:
     ParentPath: Events\z_Test
     guid: d24857ca7658d047aa92ab728415315c
     GuidInternal: 
-    m_lastTime: -8585038535809813599
+    m_lastTime: -8585034184698603427
     List:
     - name: Archived__Test_Tone__1000_Hz__Sine_Wave_SND3496
       guid: 4e235acb01c4804dbe50d49e0e0e2a51
@@ -884,7 +884,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 2f4f3d9e567bdb4bb0e2fe8d7b31cdcc
     GuidInternal: 
-    m_lastTime: -8585038535809803586
+    m_lastTime: -8585034184698593428
     List: []
   - PhysicalPath: Game Parameters\UI.wwu
     PathAndIcons:
@@ -897,7 +897,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\UI
     guid: a44b71690857454ea562fbdc50267690
     GuidInternal: 
-    m_lastTime: -8585032490217164141
+    m_lastTime: -8585028938842105160
     List:
     - name: UI_Volume_MST
       guid: f06d2c824cb2d14bb7317fda9fcecc82
@@ -952,7 +952,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Weapons
     guid: 277f1ea340cf044591cdc658410ad583
     GuidInternal: 
-    m_lastTime: -8585034192680686088
+    m_lastTime: -8585034184698583417
     List:
     - name: Weapon_AR_AmmoLeft
       guid: 400cec30d7568847b4e4df4ee09a42ac
@@ -980,7 +980,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 4451b8b633bdaf46b36321cb16e6f16f
     GuidInternal: 
-    m_lastTime: -8585038535804404164
+    m_lastTime: -8585034184696790432
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -994,7 +994,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 3a4b8e1f9b57c244a64be78affc5f91e
     GuidInternal: 
-    m_lastTime: -8585038535804394165
+    m_lastTime: -8585034184696780424
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1008,7 +1008,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 908b1db6e8b32848b5bf5537bf76bc5f
     GuidInternal: 
-    m_lastTime: -8585038535804384168
+    m_lastTime: -8585034184696760394
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
