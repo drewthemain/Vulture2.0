@@ -183,15 +183,15 @@
 															<Custom CreatedFrom="{C4A4605C-42EF-476A-B53C-E31C7A442C24}">
 																<Effect Name="Metal_Hangar (Metal Medium)" ID="{B521D692-C8A6-4518-ADB1-7260065F04BE}" ShortID="117940597" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																	<PropertyList>
-																		<Property Name="DecayTime" Type="Real32" Value="0.33"/>
+																		<Property Name="DecayTime" Type="Real32" Value="0.4"/>
 																		<Property Name="Density" Type="Real32" Value="100"/>
 																		<Property Name="Diffusion" Type="Real32" Value="72"/>
-																		<Property Name="ERFrontBackDelay" Type="Real32" Value="27"/>
+																		<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
 																		<Property Name="ERLevel" Type="Real32" Value="-19"/>
-																		<Property Name="ERPattern" Type="int32" Value="4"/>
+																		<Property Name="ERPattern" Type="int32" Value="10"/>
 																		<Property Name="EnableToneControls" Type="bool" Value="True"/>
 																		<Property Name="Filter1Curve" Type="int32" Value="2"/>
-																		<Property Name="Filter1Freq" Type="Real32" Value="700"/>
+																		<Property Name="Filter1Freq" Type="Real32" Value="850"/>
 																		<Property Name="Filter1Gain" Type="Real32" Value="-13.5"/>
 																		<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
 																		<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
@@ -205,7 +205,7 @@
 																		<Property Name="ReverbLevel" Type="Real32" Value="-27"/>
 																		<Property Name="RoomShape" Type="Real32" Value="0"/>
 																		<Property Name="RoomSize" Type="Real32" Value="-100"/>
-																		<Property Name="StereoWidth" Type="Real32" Value="49"/>
+																		<Property Name="StereoWidth" Type="Real32" Value="4"/>
 																	</PropertyList>
 																</Effect>
 															</Custom>

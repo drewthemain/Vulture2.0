@@ -813,6 +813,9 @@
 							</ChildrenList>
 						</ActorMixer>
 						<BlendContainer Name="Weapon_AR_SingleBurst_01" ID="{B6FC9C93-81F0-4594-9A8F-5144B636E6A8}" ShortID="299935736">
+							<PropertyList>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>

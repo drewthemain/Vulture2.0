@@ -107,7 +107,7 @@
 				<GameParameter Id="3338723421" Name="Weapon_AR_AmmoLeft"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F512FA06-5041-2863-8572-F216B7CE2BAA}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{6F7D8FDA-2307-A279-9599-77FB24E30343}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -331,5 +331,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F2FF1221-9A63-47FB-AD94-12033054F98C}</FileHash>
+	<FileHash>{53DC56CA-CD67-E9D2-0975-A89B69C9840D}</FileHash>
 </SoundBanksInfo>
