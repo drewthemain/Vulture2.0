@@ -304,8 +304,13 @@
 																		<PointList>
 																			<Point>
 																				<XPos>0</XPos>
-																				<YPos>20</YPos>
+																				<YPos>-100</YPos>
 																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.001</XPos>
+																				<YPos>19</YPos>
+																				<Flags>0</Flags>
 																			</Point>
 																			<Point>
 																				<XPos>6</XPos>
@@ -325,28 +330,52 @@
 													</RTPC>
 												</Local>
 											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{0963C7D7-6BF1-489B-BF13-6FFDFCE18B73}" ShortID="358862385">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{BFE990A1-F8FE-4B12-A4F1-A70AE33B8792}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.001</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
 										</ObjectList>
 									</ObjectLists>
 								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire" ID="{19CF1084-4A61-40B0-B8AB-A6EB1273D5C3}" ShortID="459435279">
+								<RandomSequenceContainer Name="Weapon_AR_AlmostOutofAmmo" ID="{B944904A-8DAD-4EA0-B56F-DB3849F7FC62}" ShortID="313594698">
 									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E0279C53-C6E4-4D38-87A6-3F2C3D258CD1}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="10"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -357,59 +386,334 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{B55A6C30-7BA5-422A-899E-A2379B115B03}" ShortID="582688164">
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001" ID="{14A728C4-BE27-4AE7-8048-C1F891A0FC3C}" ShortID="149550474">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{DEE887AB-D05E-46FB-A297-14DAAEE400CC}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.0180791034362463"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.119979504622362"/>
-													</PropertyList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001" ID="{67D7E8F6-789E-478B-A873-88FB7EA09899}">
 													<Language>SFX</Language>
-													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002.wav</AudioFile>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="921637195"/>
+														<MediaID ID="594326767"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{DEE887AB-D05E-46FB-A297-14DAAEE400CC}" Platform="Linked"/>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001" ID="{67D7E8F6-789E-478B-A873-88FB7EA09899}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{4FCDA9D4-770E-4233-A7BC-12674F285930}" ShortID="180186501">
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002" ID="{710A8388-54E4-44E3-8F90-BA7D312E2584}" ShortID="421250708">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{DF765ECC-9346-4E28-A6EA-481DAA230F4F}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.00396071799267239"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.0201283688387611"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.0653892310916209"/>
-													</PropertyList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002" ID="{8AB53199-9FA0-441D-880C-7A6899351D4B}">
 													<Language>SFX</Language>
-													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001.wav</AudioFile>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="112510348"/>
+														<MediaID ID="311500416"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{DF765ECC-9346-4E28-A6EA-481DAA230F4F}" Platform="Linked"/>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002" ID="{8AB53199-9FA0-441D-880C-7A6899351D4B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-003" ID="{BBA1D067-5F54-4987-B535-4499E0CA2FE4}" ShortID="153106961">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-003" ID="{F78C1CB4-C84F-49B4-B964-83E119247428}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="156472526"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-003" ID="{F78C1CB4-C84F-49B4-B964-83E119247428}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-004" ID="{202FF776-5740-48AE-8246-1908C9D1191F}" ShortID="707089990">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-004" ID="{A0681DF2-82D3-4488-B531-EDE4B6EA6DDC}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="329119457"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-004" ID="{A0681DF2-82D3-4488-B531-EDE4B6EA6DDC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005" ID="{7CEEF637-D8C9-43DC-81D5-3275D90D9B46}" ShortID="472708017">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005" ID="{27F86BE4-148C-423A-A7E4-7415D3BD08EE}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="342605493"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005" ID="{27F86BE4-148C-423A-A7E4-7415D3BD08EE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007" ID="{D7F1B8AA-7E2D-43D8-9199-17D3E76A5A5C}" ShortID="863367216">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007" ID="{688A5692-F48E-4F16-8E67-A3A38025FA8D}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="229324265"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007" ID="{688A5692-F48E-4F16-8E67-A3A38025FA8D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009" ID="{4B9CF86E-A1A2-44C5-B258-4A011027492D}" ShortID="300577254">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009" ID="{D37175D7-64DC-4E54-B901-DA404D695D5F}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="390107009"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009" ID="{D37175D7-64DC-4E54-B901-DA404D695D5F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-011" ID="{D318D9DB-C15A-41BD-82D9-619CF02DC1BB}" ShortID="938749534">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-011" ID="{18DBF102-85FF-47AD-A63D-4A387D9A54DA}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-011.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="188785364"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-011" ID="{18DBF102-85FF-47AD-A63D-4A387D9A54DA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012" ID="{172AA72B-51B7-4E24-AEB2-4E252E4F119C}" ShortID="132428899">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012" ID="{B880C171-F70F-4881-80FE-78ABCBA9EC2D}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="58560064"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012" ID="{B880C171-F70F-4881-80FE-78ABCBA9EC2D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013" ID="{EE2D858E-0E85-43A3-887F-03739CA63262}" ShortID="651469974">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013" ID="{6AF4E480-9092-4C95-A3A6-647DD90F5E50}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="486573111"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013" ID="{6AF4E480-9092-4C95-A3A6-647DD90F5E50}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014" ID="{8039BBBF-7E36-4333-B767-D91C91C4847B}" ShortID="154736047">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014" ID="{C98CA55E-147E-4DB3-A3A8-5BD76012A484}">
+													<Language>SFX</Language>
+													<AudioFile>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="17826312"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014" ID="{C98CA55E-147E-4DB3-A3A8-5BD76012A484}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -417,7 +721,7 @@
 										<ObjectList Name="RTPC">
 											<Reference>
 												<Local>
-													<RTPC Name="" ID="{E3E3E49C-79DC-4409-824C-C770AFD6987D}" ShortID="481618645">
+													<RTPC Name="" ID="{3919F8F7-A51B-424C-8CA8-9F5BE40B1EC5}" ShortID="236112024">
 														<PropertyList>
 															<Property Name="PropertyName" Type="string" Value="Volume"/>
 														</PropertyList>
@@ -427,7 +731,7 @@
 															</Reference>
 															<Reference Name="Curve">
 																<Custom>
-																	<Curve Name="" ID="{D58270F4-FE6A-4734-90A0-A8CF2E4E3032}">
+																	<Curve Name="" ID="{20C48301-AAFA-4D03-8612-CF327F34371E}">
 																		<PropertyList>
 																			<Property Name="Flags" Type="int32" Value="3"/>
 																		</PropertyList>
@@ -439,7 +743,7 @@
 																			</Point>
 																			<Point>
 																				<XPos>6</XPos>
-																				<YPos>0</YPos>
+																				<YPos>-0</YPos>
 																				<Flags>0</Flags>
 																			</Point>
 																			<Point>
@@ -460,11 +764,179 @@
 													</RTPC>
 												</Local>
 											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Weapon_AR_OutofAmmo" ID="{E41FE879-BFE9-4B04-9DC8-0A69DADCBC3E}" ShortID="196097945">
+									<PropertyList>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002" ID="{4868F041-9C2D-4CCF-99DA-F6E8931ECAAF}" ShortID="166739722">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002" ID="{F82F57FA-4C1E-4E1C-B6B0-C0A413487720}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.040474248246844"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.040474248246844"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="569878408"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002" ID="{F82F57FA-4C1E-4E1C-B6B0-C0A413487720}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006" ID="{E83B457E-6A03-4560-B23B-5114C41C887D}" ShortID="1013636074">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006" ID="{E5BF3FC5-F826-4ED5-B712-2907C72CF631}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0392107298487633"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0392107298487633"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="222656669"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006" ID="{E5BF3FC5-F826-4ED5-B712-2907C72CF631}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005" ID="{1F4E2F71-A031-442B-9BB5-3CCD8CC054D3}" ShortID="774275718">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005" ID="{91224563-32E8-44E5-AA15-F11D2C528725}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0407007832183749"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0407007832183749"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="999620493"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005" ID="{91224563-32E8-44E5-AA15-F11D2C528725}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003" ID="{E51DBD36-5C84-4085-9193-AC39D12928C4}" ShortID="1004358856">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003" ID="{7971DCC5-78C5-4E1B-AC6D-6EAADECE892E}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0404351746647954"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0404351746647954"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="762708567"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003" ID="{7971DCC5-78C5-4E1B-AC6D-6EAADECE892E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001" ID="{37FF5B93-0231-48AC-80CC-6C8BB848072A}" ShortID="793791251">
+											<PropertyList>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001" ID="{B066EC08-5FC9-4809-9BEA-D282223A14FA}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0407241853195002"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="642772751"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001" ID="{B066EC08-5FC9-4809-9BEA-D282223A14FA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
 											<Reference>
 												<Local>
-													<RTPC Name="" ID="{EB808965-03E4-4545-91C8-2B3D2F4F055B}" ShortID="625069231">
+													<RTPC Name="" ID="{4ACDD886-3BC1-4A69-8189-C05768E8C8BC}" ShortID="137473631">
 														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
 														</PropertyList>
 														<ReferenceList>
 															<Reference Name="ControlInput">
@@ -472,24 +944,29 @@
 															</Reference>
 															<Reference Name="Curve">
 																<Custom>
-																	<Curve Name="" ID="{ACB363FE-1D49-408A-B7E9-786867D8D849}">
+																	<Curve Name="" ID="{79B5D86D-8977-4904-9D2C-422DF3D65CA0}">
 																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
+																			<Property Name="Flags" Type="int32" Value="3"/>
 																		</PropertyList>
 																		<PointList>
 																			<Point>
 																				<XPos>0</XPos>
-																				<YPos>500</YPos>
+																				<YPos>0</YPos>
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>
-																				<XPos>6</XPos>
-																				<YPos>0</YPos>
+																				<XPos>0.001</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.501</XPos>
+																				<YPos>-200</YPos>
 																				<Flags>0</Flags>
 																			</Point>
 																			<Point>
 																				<XPos>30</XPos>
-																				<YPos>0</YPos>
+																				<YPos>-200</YPos>
 																				<Flags>37</Flags>
 																			</Point>
 																		</PointList>
@@ -812,533 +1289,6 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
-						<BlendContainer Name="Weapon_AR_SingleBurst_01" ID="{B6FC9C93-81F0-4594-9A8F-5144B636E6A8}" ShortID="299935736">
-							<PropertyList>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-								</Reference>
-								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="OBS_LOWER_HALLWAY" ID="{E69D52D6-1556-4996-A92D-662AEEEECC74}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<RandomSequenceContainer Name="Weapon_AR_SingleBurst_SingleShots" ID="{9D7688B7-D632-4CB5-A93A-9272E5CEF8D3}" ShortID="152765397">
-									<PropertyList>
-										<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{A279B900-F06E-4757-BC76-784D065DBAD5}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-30"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
-										<Property Name="Volume" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E7973C55-4ADE-42BE-B172-B26859157C75}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-2"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX_Weap" ID="{482D371E-9776-4157-96D6-CB16CC06C0F6}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_01" ID="{F154000D-476F-44B9-A845-DF80A152C322}" ShortID="99680138">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-1.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{A4C7E6E1-B689-4576-BA97-2752D6B3A43A}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="3.28156005004224"/>
-														<Property Name="TrimEnd" Type="Real64" Value="4.08580672186462"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="207213858"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{A4C7E6E1-B689-4576-BA97-2752D6B3A43A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_02" ID="{39825CEF-5A9F-49F2-B9A0-B793D1FEC2B4}" ShortID="803704551">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-1</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B525543C-1C18-4C7E-A68D-B8CB212464F5}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="6.62633220045817"/>
-														<Property Name="TrimEnd" Type="Real64" Value="7.64356092765557"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="236999867"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B525543C-1C18-4C7E-A68D-B8CB212464F5}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_03" ID="{2E34C12A-2101-4ED7-8B24-F07210A90C4D}" ShortID="722984247">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-0.8</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B6D6844B-359E-4785-B5B8-44C7F3032BE3}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="10.1243042393657"/>
-														<Property Name="TrimEnd" Type="Real64" Value="11.2125883025244"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="654797722"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{B6D6844B-359E-4785-B5B8-44C7F3032BE3}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_04" ID="{5802A410-2BFF-483F-8718-BD011376B051}" ShortID="308464426">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-0.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{52183D9E-BF55-4E94-85BB-0721FA3A539A}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="13.4010544311639"/>
-														<Property Name="TrimEnd" Type="Real64" Value="14.7985233218083"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="10573796"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{52183D9E-BF55-4E94-85BB-0721FA3A539A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_05" ID="{9B95A204-530D-463D-A4ED-6DDEA0F58A3E}" ShortID="787967603">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-0.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{AE90676B-3FCC-46C1-A94D-BBFBFB1E39CA}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.162472421150341"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="17.110275988354"/>
-														<Property Name="TrimEnd" Type="Real64" Value="17.7690260787925"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="802048380"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505" ID="{AE90676B-3FCC-46C1-A94D-BBFBFB1E39CA}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="RTPC">
-											<Reference>
-												<Local>
-													<RTPC Name="" ID="{2AAF6AEC-3FC3-4017-9B27-4A7E28E8AFBD}" ShortID="451474506">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Pitch"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{B1D54CDB-8D80-482A-81AA-2B62AF24367B}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>500</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>30</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<RTPC Name="" ID="{0D41A81D-359B-4224-BB9B-3F99DB817C5F}" ShortID="127064974">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Highpass"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{58884EBA-801E-497E-8A6D-8E16B4BEE4D9}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>20</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>30</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire" ID="{4EA4EB6A-DCE9-426A-91B0-0B9DFB64D19F}" ShortID="862741540">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E7D5FD2A-F7DD-48B3-BFD9-CBA4824B0E2C}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{E2F07F21-E55E-47EA-BB9C-E24F8D472B07}" ShortID="14518162">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{32E48190-3798-452B-8B4C-B70C03EFEEC5}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.0180791034362463"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.119979504622362"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="921637195"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire__DESIGNED-002" ID="{32E48190-3798-452B-8B4C-B70C03EFEEC5}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{DF98DEBF-D68D-421D-8D78-74EF0734B762}" ShortID="382934437">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{17026173-F60E-4F80-8F91-A23B62C8A1F6}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MST" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{61637619-6767-42C9-AA75-75108A3CEC5A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{4BFBC2EE-0423-4E39-BE23-6A0D08F32D66}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.00396071799267239"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.0201283688387611"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.0653892310916209"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="112510348"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Guns_Mechanism_Semi-Automatic_Rifle_DryFire_DESIGNED-001" ID="{4BFBC2EE-0423-4E39-BE23-6A0D08F32D66}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="RTPC">
-											<Reference>
-												<Local>
-													<RTPC Name="" ID="{178FB403-9E59-4A67-87BD-6A627E2DAA6F}" ShortID="203667444">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Volume"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{A723D412-224B-44DB-8772-DBDE1BD9493E}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="3"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6.001</XPos>
-																				<YPos>-200</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>30</XPos>
-																				<YPos>-200</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<RTPC Name="" ID="{A0A48506-1DF0-450C-AC5E-EE51A9560653}" ShortID="1037735513">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Pitch"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{A4DDCE54-1E30-4A1F-81B0-D52647AE493E}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>500</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>30</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="RTPC">
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{AF6FF70D-1DA7-494D-BA72-43C73A74B20A}" ShortID="1026304722">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Volume"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Weapon_AR_AmmoLeft" ID="{30EC0C40-56D7-4788-B4E4-DF4EE09A42AC}" WorkUnitID="{A31E7F27-CF40-4504-91CD-C658410AD583}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{6C2D6297-6997-4F48-A565-44262F700841}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>30</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
