@@ -214,6 +214,17 @@
 												</AuxBus>
 											</ChildrenList>
 										</AuxBus>
+										<AuxBus Name="HALLWAYS" ID="{95F55CAD-78F4-4464-8050-7E5EEDB2E6C3}">
+											<ChildrenList>
+												<AuxBus Name="OBS_RCT" ID="{063E9365-9A47-426E-9C89-8CED92B16C57}">
+													<ReferenceList>
+														<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+															<ObjectRef Name="Machine_Gun_Hangar" ID="{B8FD966C-FC0F-4CD3-8236-B28DF27CDE7D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+														</Reference>
+													</ReferenceList>
+												</AuxBus>
+											</ChildrenList>
+										</AuxBus>
 									</ChildrenList>
 								</AuxBus>
 							</ChildrenList>

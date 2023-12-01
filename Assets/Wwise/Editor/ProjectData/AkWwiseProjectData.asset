@@ -303,7 +303,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 197663616767c942aa7575108a3cec5a
     GuidInternal: 
-    m_lastTime: -8585016011615886987
+    m_lastTime: -8585002075805016751
     List:
     - name: AUX_MST
       guid: 439501bc1c0db04e8ce3ede4e8fd0952
@@ -342,6 +342,29 @@ MonoBehaviour:
         ObjectType: 1
         guid: 92b35cc67cac4d42893da7ace1411900
       Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX
+    - name: HALLWAYS
+      guid: ad5cf595f478644480507e5eedb2e6c3
+      id: 4053971408
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: HALLWAYS
+        ObjectType: 1
+        guid: ad5cf595f478644480507e5eedb2e6c3
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\HALLWAYS
     - name: MST
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 746452395
@@ -448,6 +471,32 @@ MonoBehaviour:
         ObjectType: 1
         guid: 8e420fc682f3654a8e59583bfd17466e
       Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\OBS\OBS_LOWERFLOOR
+    - name: OBS_RCT
+      guid: 65933e06479a6e429c898ced92b16c57
+      id: 2935346875
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 197663616767c942aa7575108a3cec5a
+      - ElementName: MST
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AUX_MST
+        ObjectType: 1
+        guid: 439501bc1c0db04e8ce3ede4e8fd0952
+      - ElementName: AUX_MST_SFX
+        ObjectType: 1
+        guid: 92b35cc67cac4d42893da7ace1411900
+      - ElementName: HALLWAYS
+        ObjectType: 1
+        guid: ad5cf595f478644480507e5eedb2e6c3
+      - ElementName: OBS_RCT
+        ObjectType: 1
+        guid: 65933e06479a6e429c898ced92b16c57
+      Path: Master-Mixer Hierarchy\Default Work Unit\MST\AUX_MST\AUX_MST_SFX\HALLWAYS\OBS_RCT
     - name: OBS_UPPERFLOOR
       guid: eb6082323d1af74ca3c162b3d03c0ee4
       id: 3044882142
@@ -738,7 +787,7 @@ MonoBehaviour:
     ParentPath: Events\Weapons
     guid: 649f413b4bee044fa672e51e199b1c60
     GuidInternal: 
-    m_lastTime: -8585021995256382379
+    m_lastTime: -8585002092586580517
     List:
     - name: Weapon_AR_Reload_L1_PullGunUp
       guid: a5354e3c483c004690b426ce2660fa94
@@ -823,8 +872,8 @@ MonoBehaviour:
         guid: a1603379c6e3e8479852ed57e39e5c26
       Path: Events\Weapons\Weapon_AR_SingleBurst
       maxAttenuation: 0
-      maxDuration: 1.4218963
-      minDuration: 0.6587501
+      maxDuration: 1.4682167
+      minDuration: 1.451958
   - PhysicalPath: Events\z_Test.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1011,7 +1060,7 @@ MonoBehaviour:
     m_lastTime: -8585046661843333505
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 030000000400000005000000a6e40a00a7e40a00a8e40a00
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

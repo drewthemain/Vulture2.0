@@ -203,6 +203,8 @@ public class PlayerGun : MonoBehaviour
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity, transform);
 
         // Wwise Post SFX
+
+        AkSoundEngine.SetRTPCValue("Weapon_AR_AmmoLeft", bulletsLeft, this.gameObject);
         AkSoundEngine.PostEvent("Weapon_AR_SingleBurst", this.gameObject);
 
         bulletsLeft--;

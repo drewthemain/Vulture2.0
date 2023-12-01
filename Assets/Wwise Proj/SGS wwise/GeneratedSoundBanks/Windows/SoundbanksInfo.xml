@@ -9,13 +9,21 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{85DA674C-4F70-FF6E-BFB3-CA0A774F06CE}">
+		<SoundBank Id="1137549969" Type="User" Language="SFX" Hash="{4F4F6DA1-1FEB-3C93-FEF8-CF527D05905F}">
 			<ShortName>Mission_1</ShortName>
 			<Path>Mission_1.bnk</Path>
 			<Media>
 				<File Id="10573796" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_284F8A5C.wem</CachePath>
+				</File>
+				<File Id="17826312" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-014_10C4C929.wem</CachePath>
+				</File>
+				<File Id="58560064" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-012_10C4C929.wem</CachePath>
 				</File>
 				<File Id="154638444" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Weapon_AR_Reload_L1_V3.wav</ShortName>
@@ -25,6 +33,14 @@
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_8D731E54.wem</CachePath>
 				</File>
+				<File Id="222656669" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006.wav</ShortName>
+					<CachePath>SFX/Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-006_63CE666D.wem</CachePath>
+				</File>
+				<File Id="229324265" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-007_10C4C929.wem</CachePath>
+				</File>
 				<File Id="233657618" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Weapon_AR_Reload_L4_V2.wav</ShortName>
 					<CachePath>SFX/Weapon_AR_Reload_L4_V2_10C4C929.wem</CachePath>
@@ -32,6 +48,14 @@
 				<File Id="236999867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_DB19306E.wem</CachePath>
+				</File>
+				<File Id="311500416" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-002_10C4C929.wem</CachePath>
+				</File>
+				<File Id="342605493" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-005_10C4C929.wem</CachePath>
 				</File>
 				<File Id="355019010" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Weapon_AR_Reload_L2_V1.wav</ShortName>
@@ -41,9 +65,29 @@
 					<ShortName>Weapon_AR_Reload_L1_V2.wav</ShortName>
 					<CachePath>SFX/Weapon_AR_Reload_L1_V2_10C4C929.wem</CachePath>
 				</File>
+				<File Id="390107009" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-009_10C4C929.wem</CachePath>
+				</File>
+				<File Id="486573111" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-013_10C4C929.wem</CachePath>
+				</File>
+				<File Id="569878408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002.wav</ShortName>
+					<CachePath>SFX/Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-002_C632FADB.wem</CachePath>
+				</File>
+				<File Id="594326767" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001.wav</ShortName>
+					<CachePath>SFX/Mechanical, Ratchet, Crank, Fastening, Metal, Single, Large 02-001_10C4C929.wem</CachePath>
+				</File>
 				<File Id="625813705" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Weapon_AR_Reload_L1_V1.wav</ShortName>
 					<CachePath>SFX/Weapon_AR_Reload_L1_V1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="642772751" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001.wav</ShortName>
+					<CachePath>SFX/Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-001_0D2AEC20.wem</CachePath>
 				</File>
 				<File Id="653422947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Weapon_AR_Reload_L2_V2.wav</ShortName>
@@ -57,6 +101,10 @@
 					<ShortName>Weapon_AR_Reload_L4_V1.wav</ShortName>
 					<CachePath>SFX/Weapon_AR_Reload_L4_V1_10C4C929.wem</CachePath>
 				</File>
+				<File Id="762708567" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003.wav</ShortName>
+					<CachePath>SFX/Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-003_45A5C335.wem</CachePath>
+				</File>
 				<File Id="802048380" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505.wav</ShortName>
 					<CachePath>SFX/Guns, Automatic, Assault Rifle, HK G36, Single Shots SND35505_69C92DC7.wem</CachePath>
@@ -69,7 +117,16 @@
 					<ShortName>Weapon_AR_Reload_L4_V3.wav</ShortName>
 					<CachePath>SFX/Weapon_AR_Reload_L4_V3_10C4C929.wem</CachePath>
 				</File>
+				<File Id="999620493" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005.wav</ShortName>
+					<CachePath>SFX/Guns, Mechanism, Semi-Automatic Rifle, Dry Fire-005_AA80C752.wem</CachePath>
+				</File>
 			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1008402193" Name="Low_Pass_20KHz" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</ShareSets>
+			</Plugins>
 			<Events>
 				<Event Id="4284962476" Name="Weapon_AR_Reload_L1_PullGunUp" DurationType="OneShot" DurationMin="1.280068" DurationMax="1.3256463">
 					<MediaRefs>
@@ -93,21 +150,39 @@
 						<MediaRef Id="980480644"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2798880610" Name="Weapon_AR_SingleBurst" DurationType="OneShot" DurationMin="0.6587501" DurationMax="1.4218963">
+				<Event Id="2798880610" Name="Weapon_AR_SingleBurst" DurationType="OneShot" DurationMin="1.451958" DurationMax="1.4682167">
 					<MediaRefs>
 						<MediaRef Id="10573796"/>
+						<MediaRef Id="17826312"/>
+						<MediaRef Id="58560064"/>
 						<MediaRef Id="207213858"/>
+						<MediaRef Id="222656669"/>
+						<MediaRef Id="229324265"/>
 						<MediaRef Id="236999867"/>
+						<MediaRef Id="311500416"/>
+						<MediaRef Id="342605493"/>
+						<MediaRef Id="390107009"/>
+						<MediaRef Id="486573111"/>
+						<MediaRef Id="569878408"/>
+						<MediaRef Id="594326767"/>
+						<MediaRef Id="642772751"/>
 						<MediaRef Id="654797722"/>
+						<MediaRef Id="762708567"/>
 						<MediaRef Id="802048380"/>
+						<MediaRef Id="999620493"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1008402193"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 			</Events>
 			<GameParameters>
 				<GameParameter Id="3338723421" Name="Weapon_AR_AmmoLeft"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{6F7D8FDA-2307-A279-9599-77FB24E30343}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{4E15D000-7494-6B1F-9B9D-A25EE2F5479C}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -331,5 +406,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E99E6F37-6C06-FA12-DDEA-5068DEB2101E}</FileHash>
+	<FileHash>{84366697-76B7-F29B-0737-407C660DF095}</FileHash>
 </SoundBanksInfo>
