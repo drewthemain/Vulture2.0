@@ -447,6 +447,7 @@ public class PlayerController : MonoBehaviour
     public void ChangeSensitivity(float settingsValue)
     {
         PlayerPrefs.SetFloat("sensitivity", settingsValue);
+        UpdateSensitivity();
     }
 
     /// <summary>
@@ -456,6 +457,7 @@ public class PlayerController : MonoBehaviour
     public void ChangeAimSensitivity(float settingsValue)
     {
         PlayerPrefs.SetFloat("aimSensitivity", settingsValue);
+        UpdateSensitivity();
     }
 
     /// <summary>
