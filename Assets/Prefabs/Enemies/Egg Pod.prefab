@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681774165974083189}
-  - component: {fileID: 919132148688505066}
   - component: {fileID: 919132148688505067}
-  m_Layer: 0
+  - component: {fileID: 3044480361466815681}
+  - component: {fileID: 5906593028280686521}
+  - component: {fileID: 5032569467054436018}
+  - component: {fileID: 3717127367813779600}
+  m_Layer: 7
   m_Name: Egg Pod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +38,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &919132148688505066
+--- !u!114 &919132148688505067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161554891932449999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bed3ea71a1b39d4a85c91c774e814ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 1245808264977530043}
+  ragdoll: {fileID: 0}
+  state: 0
+  playerInSight: 0
+  inRangeProximity: 5
+  sightDistance: 30
+  sightMask:
+    serializedVersion: 2
+    m_Bits: 567
+  respawnCheckBuffer: 5
+  roomMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  pullSpeed: 300
+  pullSlowdownMultiplier: 0.5
+  timeTilDeathAfterSuck: 5
+  currentRoom: {fileID: 0}
+--- !u!95 &3044480361466815681
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -55,7 +87,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &919132148688505067
+--- !u!65 &5906593028280686521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161554891932449999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &5032569467054436018
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161554891932449999}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3717127367813779600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,26 +125,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 161554891932449999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bed3ea71a1b39d4a85c91c774e814ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ed6e38ce3323994f8f3ab7f54418afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 1245808264977530043}
-  ragdoll: {fileID: 0}
-  state: 0
-  playerInSight: 0
-  inRangeProximity: 8
-  sightDistance: 30
-  sightMask:
-    serializedVersion: 2
-    m_Bits: 567
-  respawnCheckBuffer: 5
-  roomMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  pullSpeed: 300
-  pullSlowdownMultiplier: 0.5
-  timeTilDeathAfterSuck: 5
-  currentRoom: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  speedIncreaseOnDamage: 0
+  speedDecreaseOnDamage: 0
+  enemyType: 0
+  damageNumber: {fileID: 495747941628052658, guid: a3ce85dd2c796db4b86983ac0b88a9a1,
+    type: 3}
 --- !u!1 &239950312620690258
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435481292689192042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502207785540672889}
   - component: {fileID: 1823313568365984470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pod Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8320689492921641257}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 907890081047642728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6170637845861143943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +358,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8486735182593242859}
-  m_Layer: 0
+  - component: {fileID: 1606772271737953469}
+  m_Layer: 7
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,6 +386,26 @@ Transform:
   m_Father: {fileID: 681774165974083189}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1606772271737953469
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023509072327277729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f8f715afcced58478198c20ba5b5712, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &9106772664906383032
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5649198568400664261}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
