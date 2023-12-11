@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class EnemyEgg : Enemy
 {
+
+    #region Variables
+
+    [Tooltip("The gas cloud to appear on destruction")]
+    [SerializeField] private GasCloud cloud;
+
+    #endregion
+
+    #region Methods
     public override void ChangeState(EnemyStates newState)
     {
         base.ChangeState(newState);
@@ -17,7 +26,6 @@ public class EnemyEgg : Enemy
             case EnemyStates.Stop:
                 break;
             case EnemyStates.Action:
-                // TODO: EXPLODE
                 TriggerExplodeAnim();
                 break;
             case EnemyStates.InRange:
@@ -33,6 +41,11 @@ public class EnemyEgg : Enemy
 
     public void Explode()
     {
+        cloud.transform.parent = null;
+        cloud.gameObject.SetActive(true);
         Debug.Log("EXPLODE");
+        Destroy(this.gameObject);
     }
+
+    #endregion
 }
