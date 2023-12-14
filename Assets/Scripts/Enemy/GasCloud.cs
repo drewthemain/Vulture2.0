@@ -31,7 +31,7 @@ public class GasCloud : MonoBehaviour
             damageTimer += Time.deltaTime;
         } else
         {
-            playerHealth = other.GetComponent<PlayerHealth>();
+            playerHealth = other.GetComponentInParent<PlayerHealth>();
         }
     }
 
